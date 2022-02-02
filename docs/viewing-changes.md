@@ -13,25 +13,17 @@ $ git show 3f29a16  # (Not a real commit sha)
 
 2. To view diffs on an entire branch, relative to another branch...
 ```
-$ git diff master..sample-solution  # In diff output, master is on the left, sample-solution on the right
+$ git diff main..someotherbranch  # In diff output, main is on the left, someotherbranch on the right.
 ```
-3. For some branch comparisons, you may want to exclude one or more files from the `git diff` output. For instance, no need to see the entire jquery file when it's added to the code base. Also no need to view diffs in the "docs" directory ...
+3. For some branch comparisons, you may want to exclude one or more files from the `git diff` output. For instance, no need to see an entire jquery file when it's added to the code base. Also, no need to view diffs in a "docs" directory ...
 ```
-$ git diff master..sample-solution ':(exclude)*jquery*.js' ':(exclude)docs/'
+$ git diff main..sample-solution ':(exclude)*jquery*.js' ':(exclude)docs/'
 ```
 
 ## More ways to view changes
-**Look at them on github.com.** Navigate to https://github.com/walquis/tags/tree/sample-solution (or visit https://github.com/walquis/tags and choose `sample-solution` from the branch dropdown).  Then click "Contribute", directly under the green "Code" button, then "Compare".  This will show diffs with respect to `master`.
+**Look at them on github.com.** Navigate to https://github.com/walquis/tags/tree/sample-solution (or visit https://github.com/walquis/tags and choose `sample-solution` from the branch dropdown).  Then click "Contribute", directly under the green "Code" button, then "Compare".  This will show diffs with respect to `main`.
 
-**Download [SourceTree](https://www.sourcetreeapp.com)** (or another git GUI, such as Github Desktop--but SourceTree is quite good), and point it at your local tags repo.
+**Download [SourceTree](https://www.sourcetreeapp.com)** (or another git GUI, such as Github Desktop--but SourceTree is quite good), and point it at your local repo.
 
-SourceTree nicely displays the branches that label the changes along the `sample-solution` branch.
-
-VSCode marketplace has plugins such as [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph){:target="_blank"}).
-
-![Viewing the Tags Repo in SourceTree](/docs/images/tags-repo-in-sourcetree.png)
-
-In SourceTree, browse the changes, and explore the options for viewing changes--for instance, highlighting multiple commits with shift-click will show diffs across those commits (so you can, for example, see the sum of changes to get from "empty django web service", all the way to "hello world!"); also, the file viewer can switch from flat list to tree view; etc.
-
-Your project team will be implementing these changes and delivering to `master`, but keep in mind that it's not necessary to use these commits or branches "as-is" or even at all.  They are just there as an example of how one might accomplish the task.  When your project team gets going, feel free to make use of these branches as little or as much as you please.
+Browse the changes, and explore the options for viewing changes--for instance, highlighting multiple commits with shift-click will show diffs across those commits; also, the file viewer can switch from flat list to tree view; etc.
 

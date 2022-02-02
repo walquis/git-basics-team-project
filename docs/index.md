@@ -2,22 +2,22 @@
 
 [ ![](https://imgs.xkcd.com/comics/git.png) ](https://xkcd.com/1597/){:target="_blank"}
 
+Contents
+- [The Course In a Nutshell](#the-course-in-a-nutshell---three-objects-three-trees) - Workflows using 3 objects, 3 trees
+- [Course Layout](#course-layout) - Prework, Session One, Homework, Session Two
+- [Homework](#homework) - Between Sessions 1 and 2 - 3 objects, 3 trees
+- [References](#references) - Mostly links to [git-scm.com](https://git-scm.com)
+
 ## Introduction
 
 In this two-session hands-on course, you will experience the essence of git by working in teams to improve a simple website, laying a foundation for collaborating in a professional environment.
 
 I've presented some variation of this material to every CodePlatoon cohort since Bravo. Several graduates report that, equipped with a firm grasp of these git basics, they have become go-to git resources in their software teams.
 
-- The Course In a Nutshell - Three Objects, Three Trees
-- Course Layout - Prework, Session One, Session Two
-- Homework - Objects and Trees - Between Sessions
-- Roles in The Project Collaboration Exercise
-- References - Mostly links to [git-scm.com](https://git-scm.com)
-
 ## About the instructor
-As a devops professional with three-ish decades of experience in version control, I first experienced git in 2009 when developers, those crazy people, insisted on bringing it into my company.  I learned a few basic survival commands, but it wasn't really clicking for me. Depressingly often for a version control "expert", I got out of my depth and had to be rescued.
+As a devops professional with three-ish decades of experience in version control, I first experienced git in 2009 when developers insisted on bringing it into the company.  I learned a few basic survival commands, but it wasn't really clicking for me. Depressingly often for a version control "expert", I got out of my depth and had to be rescued.
 
-Eventually I tired of memorizing magic spells and decided to buckle down and learn the basics of git once-and-for-all.  Suddenly, git started making sense!  That feeling of enlightenment (and also the huge jump in my ability to manage code changes) eventually inspired this course.
+Eventually I tired of memorizing magic spells and decided to buckle down and learn the basics of git once-and-for-all.  Suddenly, git started making sense!  That sense of enlightenment (and also the huge boost in my ability to manage code changes) inspired this course.
 
 ## The Course In a Nutshell - Three Objects, Three Trees
 You will get lots of practice expressing your changes in terms of git's data model - **three objects** - and moving them around in git's state model - **three trees**.
@@ -29,12 +29,14 @@ Along the way, we will learn and practice some [Common Git Workflows](common-git
 By the end of our time, we'll have covered the topics in the [Course Syllabus](syllabus){:target="_blank"}.
 
 ## Course Layout
-- **[Prework](prework){:target="_blank"}** - Explore the [Tags app](https://github.com/walquis/tags){:target="_blankk"}'s sample solution.  Your team will start from the `master` branch, and make changes to the app until it looks more or less like the app on the `sample-solution` branch.  As prework, you will examine and run each of the commits from `master` (for each commit, the app is in a runnable although incomplete state), all the way to the tip of `sample-solution`.  Your team will collaborate on these changes, divvying them up and delivering them to `master`.
-- **Session One** - Set up your team and environment.  Some basic Git, and some Linux/Bash.
+- **[Prework](prework){:target="_blank"}** - Explore the [Tags app](https://github.com/walquis/tags){:target="_blankk"}'s sample solution.  Your team will start from the `main` branch, and make changes to the app until it looks more or less like the app on the `sample-solution` branch.  As prework, you will examine and run each of the commits from `main` (for each commit, the app is in a runnable although incomplete state), all the way to the tip of `sample-solution`.  Your team will collaborate on these changes, divvying them up and delivering them to `main`.
+- **Session One** - Set up your team and your git repo.  Some basic Git, and some Linux/Bash.  Some labs.
 - Homework - [Objects and Trees Handout](objects-and-trees-handout){:target="_blank"}.
 - **Session Two** - Collaborate with your team to run the project.  Handle merge conflicts.
 
-## Homework - Objects and Trees - Between Session One and Session Two
+## Homework
+[Objects and Trees Handout](objects-and-trees-handout){:target="_blank"} - Between Sessions One and Two
+
 In the Prework and Session One, you assembled your project team, set up your development environment and went over the code.  During Session One, you got an intro to The Three Objects, and The Three Trees.
 
 Now you're starting to think about how to collaborate on the changes to be made.
@@ -48,12 +50,6 @@ This should help you hit the ground running in Session Two.
 Work through the entire [Objects and Trees Handout](objects-and-trees-handout){:target="_blank"}.  We'll have already touched on parts of it in Session One, but it's worth going all the way through.
 
 Also, if for any reason you were not able to get your app up and running, *do the prework from the beginning.*  This includes deleting your fork on github.com, deleting or moving your local repo, and forking and cloning a fresh repo.  And please do let me know via Slack if anything is not working for you.
-
-## Roles in The Project Collaboration Exercise
-To keep focused on git (as opposed to Github), we will not be using any Github workflow operations apart from the fork operation.
-1. *Team Lead* - Fork this repo and invite the rest of the team as collaborators to your fork.
-1. *Each Member* - `git clone` your team lead's fork (NOT walquis/tags!) to your local machine.
-1. *Whole Team* - Take a look at the commits along your chosen MILD or SPICY path and agree as a team how you'll divide each task.  Feel free to invent your own tasks!  See [Common Git Workflows](common-git-workflows){:target="_blank"} for guidance.
 
 ## References
 Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>

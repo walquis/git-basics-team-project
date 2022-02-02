@@ -1,0 +1,7 @@
+__pycache__
+venv
+*.swp
+*.pyc
+*.sqlite3
+**/vendor/bundle
+_site

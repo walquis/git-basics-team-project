@@ -1,0 +1,49 @@
+body {
+  background-color: #000066;
+}
+
+a {
+  color: yellow;
+}
+
+h1, h2, p, .menu-sep {
+  color: white;
+}
+
+h1 {
+  font-family: 'Caesar Dressing', cursive;
+}
+
+.container-subway-map, .planets-container {
+  display:flex;
+  justify-content: space-evenly;
+}
+
+.one-column {
+  display:flex;
+  justify-content: space-evenly;
+  width: 95%;
+  border: 5px solid black;
+  padding: 20px;
+}
+
+body {
+  margin:10px;
+}
+
+.subway-map-pics {
+  margin: 20px;
+  width: 90%;
+  display: inline-block;
+}
+
+.planet {
+  margin: 20px;
+  width: 80%;
+  display: inline-block;
+}
+
+/* "inherit" lets the image resize responsively */
+img {
+  width: inherit;
+}
