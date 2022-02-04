@@ -12,7 +12,7 @@ Contents
 
 In this two-session hands-on course, you will experience the essence of git by working in teams to improve a simple website, laying a foundation for collaborating in a professional environment.
 
-I've presented some variation of this material to every CodePlatoon cohort since Bravo. Several graduates report that, equipped with a firm grasp of these git basics, they have become go-to git resources in their software teams.
+I've presented some variation of this material to every CodePlatoon cohort since Bravo. Several graduates report that, equipped with a firm grasp of these git basics, they have become go-to resources for git in their software teams.
 
 ## About the instructor
 As a devops professional with three-ish decades of experience in version control, I first experienced git in 2009 when developers insisted on bringing it into the company.  I learned a few basic survival commands, but it wasn't really clicking for me. Depressingly often for a version control "expert", I got out of my depth and had to be rescued.
@@ -29,27 +29,33 @@ Along the way, we will learn and practice some [Common Git Workflows](common-git
 By the end of our time, we'll have covered the topics in the [Course Syllabus](syllabus){:target="_blank"}.
 
 ## Course Layout
-- **[Prework](prework){:target="_blank"}** - Explore the [Tags app](https://github.com/walquis/tags){:target="_blankk"}'s sample solution.  Your team will start from the `main` branch, and make changes to the app until it looks more or less like the app on the `sample-solution` branch.  As prework, you will examine and run each of the commits from `main` (for each commit, the app is in a runnable although incomplete state), all the way to the tip of `sample-solution`.  Your team will collaborate on these changes, divvying them up and delivering them to `main`.
-- **Session One** - Set up your team and your git repo.  Some basic Git, and some Linux/Bash.  Some labs.
-- Homework - [Objects and Trees Handout](objects-and-trees-handout){:target="_blank"}.
+- **[Prework](prework){:target="_blank"}** - Define your project team, and create and share the repo to which your team will deliver changes.
+
+on the `sample-solution` branch.  As prework, you will examine and run each of the commits from `main` (for each commit, the app is in a runnable although incomplete state), all the way to the tip of `sample-solution`.
+Your team will collaborate on changes, working in parallel and delivering to `main` until your site (which you will view locally by opening index.html) looks more or less like the site in this repo's `sample-solution-static-page` directory.
+
+- **Session One**
+   - 9:00-9:40 - Set up your team and your git repo.  Some orientation w.r.t. class and basic Git/Linux/VSCode.
+   - 9:40-10:00 - LAB 1: Each member of the team commit and push at least one (non-merge-conflicting) change.
+   - 10:00-10:30 - Using each team's existing repo, begin to look at The Three Trees.
+   - 10:30-11:00 - LAB 2: Each member make another commit, but before pushing, revert it using reset, make some more changes, and then recommit.
+   - 11:00 - 11:30 - Handling merge conflicts.
+   - 11:30-11:55 - LAB 3: Each member make a change to same line [e.g. a planet list], then resolve merge conflict.
+   - 11:55 - Wrap-up.
+- HOMEWORK:  [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
 - **Session Two** - Collaborate with your team to run the project.  Handle merge conflicts.
+   - 9:00-9:30  - Branching and merging.
+   - 9:30-10:30 - LAB 4: Two or three team members collaborate on a task branch, then deliver it to main.
+   - 10:30-11:00 - Managing commits with 'git rebase' and 'git cherry-pick'.
+   - 11:00-11:30 - LAB 5:
+      - REBASE: Make 3 commits, then squash it to one with 'git rebase'.
+      - CHERRY-PICK: Team lead make a separate branch, make 2 commits, and push the branch.  Each team member: Git fetch, and practice cherry-picking the first of the leader's 2 commits.
+   - 11:30 - Wrap-up.
 
 ## Homework
-[Objects and Trees Handout](objects-and-trees-handout){:target="_blank"} - Between Sessions One and Two
+[Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"} - Between Sessions One and Two
 
-In the Prework and Session One, you assembled your project team, set up your development environment and went over the code.  During Session One, you got an intro to The Three Objects, and The Three Trees.
-
-Now you're starting to think about how to collaborate on the changes to be made.
-
-The objective of this homework is to familiarize with the two major concepts we touched upon in Session One:
-- The Three Objects - the git data model
-- The Three Trees - managing local changes
-
-This should help you hit the ground running in Session Two.
-
-Work through the entire [Objects and Trees Handout](objects-and-trees-handout){:target="_blank"}.  We'll have already touched on parts of it in Session One, but it's worth going all the way through.
-
-Also, if for any reason you were not able to get your app up and running, *do the prework from the beginning.*  This includes deleting your fork on github.com, deleting or moving your local repo, and forking and cloning a fresh repo.  And please do let me know via Slack if anything is not working for you.
+Work through the entire [Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"}, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.
 
 ## References
 Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>

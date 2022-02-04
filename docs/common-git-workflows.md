@@ -1,17 +1,17 @@
 # Common Git Workflows
 
-## A Sample Collaborative Workflow - Task branch from 'master'
+## A Sample Collaborative Workflow - Task branch from 'main'
 You will find a dizzying variety of workflows out there, but at some point they pretty much all boil down to pulling in your team's changes, merging them with your own, and delivering them back to the team.
 
-Here's one way to accomplish it: Start and work on a local `master` branch that tracks the remote `origin/master`, where your team will deliver integrated changes.
+Here's one way to accomplish it: Start and work on a local `main` branch that tracks the remote `origin/main`, where your team will deliver integrated changes.
 
-1. `git checkout master` - The branch from which you will push changes.
-1. `git pull origin master` - Catch your local `master` up with latest changes from your team.
+1. `git checkout main` - The branch from which you will push changes.
+1. `git pull origin main` - Catch your local `main` up with latest changes from your team.
 1. Implement your feature and test it.
-1. Git-add and git-commit your changes on your local `master`.
-1. `git pull origin master` (in case more changes have been pushed by teammates while you were working).
-1. (If there *are* more changes, merge 'em in from master.  Then tell your team to hold off, it's your turn now!).
-1. `git push origin master` - Share your scintillating creativity with your team by "catching-up the remote `origin/master` to your `master`.
+1. Git-add and git-commit your changes on your local `main`.
+1. `git pull origin main` (in case more changes have been pushed by teammates while you were working).
+1. (If there *are* more changes, merge 'em in from main.  Then tell your team to hold off, it's your turn now!).
+1. `git push origin main` - Share your scintillating creativity with your team by "catching-up the remote `origin/main` to your `main`.
 
 ## Forgot to pull before committing
 This workflow is very common for me!  Another variation of this workflow is "started-working-on-wrong-branch".  Both have the same basic solution: Get to the right place, and then cherry-pick the change(s).
@@ -23,7 +23,7 @@ It typically goes like this:
 1. Git rejects my updates with something like:
 
 <blockquote>
-<span style="color:red">! [rejected]</span> &nbsp; &nbsp; &nbsp; <span style="color:green">master -> master (non-fast-forward)</span><br>
+<span style="color:red">! [rejected]</span> &nbsp; &nbsp; &nbsp; <span style="color:green">main -> main (non-fast-forward)</span><br>
 <span style="color:red">error: failed to push some refs to 'git@github.com:walquis/learning-git'</span><br>
 <span style="color:gold">hint: Updates were rejected because the tip of your current branch is behind<br>
 hint: its remote counterpart. Integrate the remote changes (e.g.<br>
@@ -32,7 +32,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.<br>
 </span>
 </blockquote>
 
-Let's re-enact this scenario in our own forked repos.  Let's start by moving our local master branch to one commit behind origin/master.  (How would we do that?)
+Let's re-enact this scenario in our own forked repos.  Let's start by moving our local main branch to one commit behind origin/main.  (How would we do that?)
 
 Now change a file (e.g., add a line to git-aliases.sh), and add/commit/push.
 
@@ -52,16 +52,16 @@ $ git cherry-pick <sha-of-commit-you-couldn't-push>
 
 Let's make a merge collision happen: Branch, change the same line of a file, commit and try to merge.
 
-1. First, find a change we want to collide with.  How about master?
+1. First, find a change we want to collide with.  How about main?
 ```
 $ git show # How about the .gitignore change?
 ```
 1. Checkout a new branch that will lead to a collision (which commit should we branch from?)
 1. Make a change that will collide (i.e., to line 5 in .gitignore).
-1. Attempt to merge from master.
+1. Attempt to merge from main.
 ```
 $ git config --global core.editor "code --wait"  # Set your editor to vscode
-$ git merge master
+$ git merge main
 Auto-merging .gitignore
 CONFLICT (content): Merge conflict in .gitignore
 Automatic merge failed; fix conflicts and then commit the result.
@@ -83,7 +83,7 @@ $ git stash  # Push current work--your index and modified stuff--onto a "stash s
 $ git status # Now your workspace is clean (except for files that aren't in git).
 $ git checkout -b someNewBranch   # Or some existing branch
 [Do the work that has pre-empted you, commit/push/etc, and now return to your story]...
-$ git checkout master
+$ git checkout main
 $ git stash pop  # Restore your current work to this workspace
 $ git stash list # See if anything still on the stash stack.
 ```
