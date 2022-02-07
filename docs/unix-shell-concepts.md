@@ -11,7 +11,7 @@ Some knowledge and experience with the following material will be very helpful g
 * ps - process status
 
 ## Unix/Shell Concepts
-This is the "air you breathe" when working on a computer running any variant of Unix--whether Linux, Mac OS X, Cygwin, etc.
+This is the "air you breathe" when working on a computer running any variant of Unix--whether Linux, Mac OS X, Ubuntu-on-Windows, Cygwin, etc.
 * The Bash shell; .bash_profile and .bashrc
 * Environment Variables
 * The PATH environment variable

@@ -6,6 +6,7 @@
 - [Course Schedule](#course-schedule) - Prework, Session One, Homework, Session Two
 - [Homework](#homework) - Between Sessions 1 and 2 - 3 objects, 3 trees
 - [References](#references) - Mostly links to [git-scm.com](https://git-scm.com)
+- [Site Map](#site-map) - All the pages
 
 ## Overview
 
@@ -77,4 +78,11 @@ Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>
 - __Highly Recommended__ - A bash tutorial, such as [Bash Scripting For Beginners](https://linuxconfig.org/bash-scripting-tutorial-for-beginners){:target="_blank"}.  At a minimum, know these [basic Linux commands](unix-shell-concepts).
 - __Be Your Own Best Friend__ - Learn Vim.  Just learn it.  [Here](https://www.openvim.com/){:target="_blank"}, [here](https://linuxconfig.org/vim-tutorial){:target="_blank"}, [here](https://www.tutorialspoint.com/vim/index.htm){:target="_blank"}, and/or [here](https://vim-adventures.com/){:target="_blank"}.
 
+## Site Map
 
+- [Home (this page)](index){:target="_blank"}
+- [Prework](prework){:target="_blank"}
+- [Homework exercise - 3 Objects, 3 Trees](objects-and-trees-exercise){:target="_blank"}
+- [Viewing Changes](viewing-changes){:target="_blank"}
+- [Unix and Shell Concepts](unix-shell-concepts){:target="_blank"}
+- [Syllabus - concepts to be covered](syllabus){:target="_blank"}
