@@ -34,26 +34,27 @@ Eventually I tired of memorizing magic spells and decided to buckle down and lea
 
 - **Session One**
    - 9:00-9:40 - Set up your team and your git repo.  Some orientation w.r.t. class and basic Git/Linux/VSCode.
-   - 9:40-10:00 - LAB 1: Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member can add one of these files: index.html, help.html, about.html, faq.html, map.html.
+   - 9:40-10:00 - LAB 1 - local/remote workflow: Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member can add one of these files: index.html, help.html, about.html, faq.html, map.html.
    - 10:00-10:30 - Using each team's existing repo, begin to look at The Three Trees and `git reset`.
-   - 10:30-11:00 - LAB 2: Each member make another commit, but before pushing, revert it using reset, make some more changes, and then recommit.
+   - 10:30-11:00 - LAB 2 - `git reset`: Each member make changes and commit them (do not push them!). Then revert changes using `git reset`, make some more changes, and recommit.  Be sure to try out each of \--soft, \--mixed, and \--hard.
    - 11:00 - 11:30 - Walk through handling a merge conflict.
-   - 11:30-11:55 - LAB 3: Each member make a change to same line [e.g. a planet list], then resolve merge conflict.
+   - 11:30-11:55 - LAB 3 - merge conflicts: Each member make a change to same line [e.g. a planet list], then resolve merge conflict.
    - 11:55 - Wrap-up.
 - HOMEWORK:  [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
 - **Session Two** - Collaborate with your team to run the project.
    - 9:00-9:30  - Branching and merging.
-   - 9:30-10:30 - LAB 4: Two or three team members collaborate on a task branch, then deliver it to main.
+   - 9:30-10:30 - LAB 4 - project collaboration: Two or three team members collaborate on a task branch, then deliver it to main.
       - Change 'Hello World!' to 'Hello Sol!'.  Add a sun image.
       - Begin to use CSS styling.  Change the font of headers.
       - Add a list of first four planets to index.html, with content (images and/or summaries).
       - Put content in the pages: A solar system map, more help, more faqs, some about text.
       - Put padding/borders/margins around images.
    - 10:30-11:00 - Managing commits with 'git rebase' and 'git cherry-pick'.
-   - 11:00-11:30 - LAB 5:
+   - 11:00-11:30 - LAB 5 - rebase and cherry-pick
       - REBASE: Make 3 commits, then squash it to one with 'git rebase -i'.
       - CHERRY-PICK: Team lead make a separate branch, make 2 commits, and push the branch.  Each team member: Git fetch, and practice cherry-picking the first of the leader's 2 commits.
-   - 11:30 - Wrap-up.
+   - 11:30 - LAB 6 - Project collaboration.  Keep delivering changes to the website.
+   - 11:50 - Wrap-up.
 
 ## Homework
 [Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"} - Between Sessions One and Two
