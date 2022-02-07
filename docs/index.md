@@ -36,13 +36,13 @@ Eventually I tired of memorizing magic spells and decided to buckle down and lea
    - 9:00-9:40 - Set up your team and your git repo.  Some orientation w.r.t. class and basic Git/Linux/VSCode.
    - 9:40-10:00 - LAB 1 - local/remote workflow: Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member can add one of these files: index.html, help.html, about.html, faq.html, map.html.
    - 10:00-10:30 - Using each team's existing repo, begin to look at The Three Trees and `git reset`.
-   - 10:30-11:00 - LAB 2 - `git reset`: Each member make changes and commit them (do not push them!). Then revert changes using `git reset`, make some more changes, and recommit.  Be sure to try out each of \--soft, \--mixed, and \--hard.
+   - 10:30-11:00 - LAB 2 - `git reset`: Each member make changes and commit them locally (do not push them!). Then revert changes using `git reset`, make some more changes, and recommit.  Be sure to try out each of \--soft, \--mixed, and \--hard.
    - 11:00 - 11:30 - Walk through handling a merge conflict.
-   - 11:30-11:55 - LAB 3 - merge conflicts: Each member make a change to same line [e.g. a planet list], then resolve merge conflict.
+   - 11:30-11:55 - LAB 3 - merge conflicts: Each member make a change to same line in a file (e.g. Change "The Solar System" in index.html to something else), then resolve merge conflict.
    - 11:55 - Wrap-up.
 - HOMEWORK:  [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
 - **Session Two** - Collaborate with your team to run the project.
-   - 9:00-9:30  - Branching and merging.
+   - 9:00-9:30  - Branching and merging.  A look at a [sample project repo](https://github.com/walquis/git-basics-sample-solution){:target="_blank"}.
    - 9:30-10:30 - LAB 4 - project collaboration: Two or three team members collaborate on a task branch, then deliver it to main.
       - Change 'Hello World!' to 'Hello Sol!'.  Add a sun image.
       - Begin to use CSS styling.  Change the font of headers.
@@ -53,7 +53,7 @@ Eventually I tired of memorizing magic spells and decided to buckle down and lea
    - 11:00-11:30 - LAB 5 - rebase and cherry-pick
       - REBASE: Make 3 commits, then squash it to one with 'git rebase -i'.
       - CHERRY-PICK: Team lead make a separate branch, make 2 commits, and push the branch.  Each team member: Git fetch, and practice cherry-picking the first of the leader's 2 commits.
-   - 11:30 - LAB 6 - Project collaboration.  Keep delivering changes to the website.
+   - 11:30 - LAB 6 - Project collaboration.  Keep delivering changes to your website.  If time, get some practice on any skills that might not have fully sunk in yet.
    - 11:50 - Wrap-up.
 
 ## Homework
@@ -82,8 +82,10 @@ Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>
 ## Site Map
 
 - [Home (this page)](index){:target="_blank"}
+- [Syllabus - concepts to be covered](syllabus){:target="_blank"}
 - [Prework](prework){:target="_blank"}
 - [Homework exercise - 3 Objects, 3 Trees](objects-and-trees-exercise){:target="_blank"}
+- [The sample project repo](https://github.com/walquis/git-basics-sample-solution){:target="_blank"}
+- [Common Git Workflows](common-git-workflows){:target="_blank"}
 - [Viewing Changes](viewing-changes){:target="_blank"}
 - [Unix and Shell Concepts](unix-shell-concepts){:target="_blank"}
-- [Syllabus - concepts to be covered](syllabus){:target="_blank"}
