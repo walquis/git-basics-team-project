@@ -30,9 +30,12 @@ As a devops professional with three-ish decades of experience in version control
 Eventually I tired of memorizing magic spells and decided to buckle down and learn the basics of git once-and-for-all.  Suddenly, git started making sense!  That sense of enlightenment (along with the huge boost in my ability to efficiently manage code changes) inspired this course.
 
 ## Course Schedule
-- **[Prework](prework){:target="_blank"}** - Define your project team, and create and share the repo to which your team will deliver changes.
+### **[Prework](prework){:target="_blank"}** 
+1. Define your project team.
+2. Create and share the repo to which your team will deliver changes.
+3. Take a look at a sample project repo and try to work out what happened.
 
-- **Session One**
+### **Session One**
    - 9:00-9:40 - Set up your team and your git repo.  Some orientation w.r.t. class and basic Git/Linux/VSCode.
    - 9:40-10:00 - LAB 1 - local/remote workflow: Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member can add one of these files: index.html, help.html, about.html, faq.html, map.html.
    - 10:00-10:30 - Using each team's existing repo, begin to look at The Three Trees and `git reset`.
@@ -40,9 +43,13 @@ Eventually I tired of memorizing magic spells and decided to buckle down and lea
    - 11:00 - 11:30 - Walk through handling a merge conflict.
    - 11:30-11:55 - LAB 3 - merge conflicts: Each member make a change to same line in a file (e.g. Change "The Solar System" in index.html to something else), then resolve merge conflict.
    - 11:55 - Wrap-up.
-- HOMEWORK:  [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
-- **Session Two** - Collaborate with your team to run the project.
-   - 9:00-9:30  - Branching and merging.  A look at a [sample project repo](https://github.com/walquis/git-basics-sample-solution){:target="_blank"}.
+
+### HOMEWORK:  [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
+
+Work through the entire [Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"}, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.
+
+### **Session Two** - Collaborate with your team to run the project.
+   - 9:00-9:30  - Branching and merging.  A look at a [sample project repo](https://github.com/walquis/git-basics-sample-project-repo){:target="_blank"}.
    - 9:30-10:30 - LAB 4 - project collaboration: Two or three team members collaborate on a task branch, then deliver it to main.
       - Change 'Hello World!' to 'Hello Sol!'.  Add a sun image.
       - Begin to use CSS styling.  Change the font of headers.
@@ -56,11 +63,6 @@ Eventually I tired of memorizing magic spells and decided to buckle down and lea
    - 11:30 - LAB 6 - Project collaboration.  Keep delivering changes to your website.  If time, get some practice on any skills that might not have fully sunk in yet.
    - 11:50 - Wrap-up.
 
-## Homework
-[Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"} - Between Sessions One and Two
-
-Work through the entire [Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"}, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.
-
 ## References
 Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>
 
@@ -73,9 +75,9 @@ Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>
 - __Essential__ - [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified){:target="_blank"} - The Three Trees: HEAD, Index, Workspace
 - [Branches In a Nutshell](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell){:target="_blank"}
 - [Resolve Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts){:target="_blank"}
-- [Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"}
-- [Cherry-pick](https://git-scm.com/book/en/v2/Appendix-C:-Git-Commands-Patching){:target="_blank"}
-- [Bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git){:target="_blank"}
+- [Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"} - Replay a string of commits onto another place
+- [Cherry-pick](https://git-scm.com/book/en/v2/Appendix-C:-Git-Commands-Patching){:target="_blank"} - grab a commit from another branch
+- [Bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git){:target="_blank"} - Find the commit with the bug
 - __Highly Recommended__ - A bash tutorial, such as [Bash Scripting For Beginners](https://linuxconfig.org/bash-scripting-tutorial-for-beginners){:target="_blank"}.  At a minimum, know these [basic Linux commands](unix-shell-concepts).
 - __Be Your Own Best Friend__ - Learn Vim.  Just learn it.  [Here](https://www.openvim.com/){:target="_blank"}, [here](https://linuxconfig.org/vim-tutorial){:target="_blank"}, [here](https://www.tutorialspoint.com/vim/index.htm){:target="_blank"}, and/or [here](https://vim-adventures.com/){:target="_blank"}.
 
@@ -85,7 +87,7 @@ Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>
 - [Syllabus - concepts to be covered](syllabus){:target="_blank"}
 - [Prework](prework){:target="_blank"}
 - [Homework exercise - 3 Objects, 3 Trees](objects-and-trees-exercise){:target="_blank"}
-- [The sample project repo](https://github.com/walquis/git-basics-sample-solution){:target="_blank"}
+- [The sample project repo](https://github.com/walquis/git-basics-sample-project-repo){:target="_blank"}
 - [Common Git Workflows](common-git-workflows){:target="_blank"}
 - [Viewing Changes](viewing-changes){:target="_blank"}
 - [Unix and Shell Concepts](unix-shell-concepts){:target="_blank"}
