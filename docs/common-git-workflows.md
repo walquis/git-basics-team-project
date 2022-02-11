@@ -14,7 +14,7 @@ Here's one way to accomplish it: Start and work on a local `main` branch that tr
 1. `git push origin main` - Share your scintillating creativity with your team by "catching-up the remote `origin/main` to your `main`.
 
 ## Forgot to pull before committing
-This workflow is very common for me!  Another variation of this workflow is "started-working-on-wrong-branch".  Both have the same basic solution: Get to the right place, and then cherry-pick the change(s).
+This workflow is very common for me!  (Another variation of this workflow is "started-my-work-on-wrong-branch".)
 
 It typically goes like this: 
 1. I cd into a repo workspace that I already have cloned, but haven't touched in awhile.
@@ -32,41 +32,52 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.<br>
 </span>
 </blockquote>
 
-Let's re-enact this scenario in our own forked repos.  Let's start by moving our local main branch to one commit behind origin/main.  (How would we do that?)
+You can re-enact this scenario in our own repo, by moving your local main branch to one commit behind origin/main.  (How would you do that?)
 
-Now change a file (e.g., add a line to git-aliases.sh), and add/commit/push.
+Now change a file and git add/commit/push.
 
-What happened? What now?
+What happened?  Your main has diverged from origin/main.
 
-A couple of options:
+What now?  Some options:
 1. Pull-and-merge - valid, but creates a merge for no good reason - messy graph, confuses your team
-1. Reset, pull, cherry-pick - makes the graph like you want it
-
+1. Reset, pull, cherry-pick - makes the graph look like you want it to
 ```
-$ git reset --hard HEAD^
+$ git reset --hard @^     # Tip: '@' is a synonym for HEAD
 $ git pull
 $ git cherry-pick <sha-of-commit-you-couldn't-push>
 ```
+1. Git rebase - "Replay" changes onto another commit
+```
+$ git fetch         # Remember, 'pull' is a fetch and merge...but I don't want to merge this commit
+$ git rebase origin/main    # Replay current branch's changes onto origin/main
+```
+This is easier than cherry-pick, especially if I've made multiple changes.
 
 ## Resolve Merge Collision
+Let's experiment with making a merge collision happen: Branch, make a change that will collide, commit and try to merge.
 
-Let's make a merge collision happen: Branch, change the same line of a file, commit and try to merge.
+1. First, find a change to collide with.  Looking at the latest commit on main, choose a file and a line in that file with which to collide:
+```
+$ git checkout main
+$ git show
+```
+1. Checkout a new branch `test` _from the parent commit_ of main's head.
+```
+$ git checkout -b test HEAD^
+```
+1. Edit a file \<somefile> that was also changed on main.
 
-1. First, find a change we want to collide with.  How about main?
-```
-$ git show # How about the .gitignore change?
-```
-1. Checkout a new branch that will lead to a collision (which commit should we branch from?)
-1. Make a change that will collide (i.e., to line 5 in .gitignore).
+   Change the **same line** in that file (but to something different than was done on main).
+1. `git add`, `git commit`
 1. Attempt to merge from main.
 ```
-$ git config --global core.editor "code --wait"  # Set your editor to vscode
+$ git config --global core.editor "code --wait"  # Set git editor to vscode (only need to do this once)
 $ git merge main
-Auto-merging .gitignore
-CONFLICT (content): Merge conflict in .gitignore
+Auto-merging <somefile>
+CONFLICT (content): Merge conflict in <somefile>
 Automatic merge failed; fix conflicts and then commit the result.
 $ git status
-$ code .gitignore
+$ code <somefile>
 ```
 
 Git has modified our source file!
@@ -90,11 +101,11 @@ $ git stash list # See if anything still on the stash stack.
 
 ## Clean Up Commit History Before Pushing - [git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"} 
 
-This is another instance of using git to practice good communication skills.  Nobody wants to see my stumbling around; they just want to see the final draft.
+This is another instance of using git to practice good communication etiquette.  Nobody wants to see my stumbling around; they just want to see the final draft.
 
 Assuming I've made a series of commits I don't want people to see, I can turn them all into one commit, **while still keeping the same content**!
 
-(You may first want to set your git editor to vscode, as described above in "Resolve Merge Collision").
+(You may first want to set your git editor to vscode, as demonstrated above in "Resolve Merge Collision").
 
 ```
 $ git config --global core.editor "code --wait"  # Set your editor to vscode
@@ -104,7 +115,7 @@ See the [git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:tar
 
 ## Find a Bad Commit - [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git){:target="_blank"}
 
-Sometimes a bug creeps in and it's hard to find where it happened.
+Sometimes when a bug creeps in, it's hard to find where it happened.  `git bisect` helps you walk through a range of commits in a binary search.
 
 ```
 $ git help bisect   # You can also 'git help' any other git command.
@@ -125,4 +136,4 @@ $ git bisect run bash test.sh
 ```
 
 ## Miscellaneous
-- 'git show' - By default, HEAD's diffs vs previous commit.  Can 'git show' any SHA.
+- 'git show' - By default, shows diff of HEAD vs previous commit.  Can 'git show' any SHA.
