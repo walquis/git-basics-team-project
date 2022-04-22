@@ -15,6 +15,8 @@ If all that is in place, this prework should only take a few minutes. You'll set
    Run these commands in a Terminal session.  For best results during this class, I recommend starting Terminal.app separately, rather than running a terminal session within the shell opened by your IDE ("Integrated Development Environment", e.g. Visual Studio Code).  IDE environment-handling adds a layer of complexity that may interfere with our purposes here. However, if you know exactly how your IDE manages its shell environment, then go right ahead and use it.
 
 ```bash
+git config --global pull.rebase false  # Tell git what to do when pulling
+git config --global core.editor "code --wait"  # Set git editor to vscode
 cd                          # Start from your home directory
 mkdir -p src
 cd src                      # Or cd to wherever you keep code projects
