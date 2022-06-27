@@ -102,7 +102,7 @@ ref: refs/heads/master
 $ file refs/heads/master
 refs/heads/master: ASCII text
 $ cat !$  # BANG-dolla!  bash shorthand for "last argument of previous command"
-fc223df6e6f71a506f9bda0fac71b16041fd7004  # Your SHA will be different (why?)
+fc223df6e6f71a506f9bda0fac71b16041fd7004  # Your SHA will differ from this one (why?)
 $ ls -l refs
 $ ls -l refs/remotes
 $ ls -l refs/remotes/origin
