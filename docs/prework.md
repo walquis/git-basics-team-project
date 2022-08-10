@@ -1,18 +1,18 @@
 # Prework for Collaboration-With-Git Exercise
 
 This exercise assumes you have ...
-1. Joined a team, and chosen a Project Team Lead
-1. A [GitHub](https://github.com){:target="_blank"} account.
+1. a project team, and a Project Team Lead
+1. a [GitHub](https://github.com){:target="_blank"} account.
 1. Visual Studio Code installed.
 
 If all that is in place, this prework should only take a few minutes. You'll set up a local clone of your team lead's repo (this will be your project repo during class), install the [GitGraph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph){:target="_blank"} plugin, and practice a little with GitGraph by looking around at a sample project team's repo.
 
 ## Set up your local clone of your project's repo
 
-1. *Project Team Lead* - Create an empty repo on [github.com](https://github.com){:target="_blank"}, and invite the rest of the team as collaborators to your repo.  For example's sake, suppose Dex Rodriguez is project team lead, and creates a "cp-git-project" repo in her user space.
-2. *Each Team Member* - `git clone` your team lead's repo to your local machine.  In the context of the example team lead's 'cp-git-project' repo, the clone URL will look something like https://github.com/drodriguez/cp-git-project.
+1. *Project Team Lead* - Create an empty repo on [github.com](https://github.com){:target="_blank"}, and invite the rest of the team as collaborators to your repo.  For example's sake, suppose Dex Rodriguez is project team lead, and creates a `cp-git-project` repo in her user space.
+2. *Each Team Member* - `git clone` your team lead's repo to your local machine.  In the context of the example team lead's `cp-git-project` repo, the clone URL will look something like `https://github.com/drodriguez/cp-git-project`.
 
-   Run these commands in a Terminal session.  For best results during this class, I recommend starting Terminal.app separately, rather than running a terminal session within the shell opened by your IDE ("Integrated Development Environment", e.g. Visual Studio Code).  IDE environment-handling adds a layer of complexity that may interfere with our purposes here. However, if you know exactly how your IDE manages its shell environment, then go right ahead and use it.
+   Run these commands in a Terminal session.  For consistent results during this class, I recommend starting Terminal.app separately, rather than running a terminal session within the shell opened by your IDE ("Integrated Development Environment", e.g. Visual Studio Code).  IDE environment-handling adds a layer of complexity that may interfere with our purposes here. However, if you know exactly how your IDE manages its shell environment, then go right ahead and use it.
 
 ```bash
 git config --global pull.rebase false  # Tell git what to do when pulling
@@ -29,13 +29,13 @@ cd cp-git-project
 Visit the [GitGraph Plugin Install](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph){:target="_blank"} page and follow the install instructions.
 
 ## Browse history in a sample repo
-This repo records the project history of an imaginary five-member team: Ned, Nykhia, Dex, Deja, and Xavier.
+This repo records the project history of a five-member team: Ned, Nykhia, Dex, Deja, and Xavier.
 
 Although you won't be committing anything to it, feel free to git clone [https://github.com/walquis/git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo){:target="_blank"}.
 
-Open git-basics-sample-project-repo/index.html in your browser to view the website.
+Open `git-basics-sample-project-repo/index.html` in your browser to view the website.
 
-Point VSCode at the git-basics-sample-project-repo and use GitGraph to take a look:
+Point VSCode at the `git-basics-sample-project-repo` and use GitGraph to take a look:
 
 
 ![GitGraph of sample repo history](images/git-graph-of-sample-repo.png)
@@ -50,7 +50,7 @@ Point VSCode at the git-basics-sample-project-repo and use GitGraph to take a lo
 1. Are there any changes in the repo which have not yet been delivered?
 
 ### Explore the code at a specific commit
-You can do a 'detached head' checkout, that is, HEAD points to a commit rather than a branch name.  It's handy for manipulating the repo at chosen points in history.  For instance, you can open the website in its state as-of a specific commit.  Or run the repo's tests (if the repo had tests defined).
+Hint: You can do a 'detached head' checkout, that is, where HEAD points to a commit rather than a branch name.  It's handy for viewing the repo at chosen points in history.  For instance, you can open the website in its state as-of a specific commit.  Or run the repo's tests (if the repo had tests defined).
 
 What should Xavier have done during his merge?  Who else should have done the same?
 
@@ -63,7 +63,7 @@ $ git checkout main       # Set HEAD back to a branch reference (`main` in this 
 
 ## What's Next?
 
-In class, you and your team will be making changes in parallel that may bear resemblance to this sample history, as you experience what collaboration looks like with git.
+In class, you and your team will be making changes in parallel that may resemble this sample history, as you experience what collaboration looks like with git.
 
 ## Bonus prework - explore some [Unix/Shell Concepts](unix-shell-concepts)
 I'll touch on these *very* briefly in class, but feel free to google around on your own, focusing on the bash shell and environment variables.
