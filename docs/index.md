@@ -4,7 +4,7 @@
 
 ## Contents
 - [Course Schedule](#course-schedule) - Prework, Session One, Homework, Session Two
-- [Homework](#homework) - Between Sessions 1 and 2 - 3 objects, 3 trees
+- [3 Objects, 3 Trees Exercise](#3-objects-3-trees-exercise) - Homework to be done between Sessions 1 and 2
 - [References](#references) - Mostly links to [git-scm.com](https://git-scm.com)
 - [Site Map](#site-map) - All the pages
 
@@ -43,9 +43,9 @@ The **[Prework](prework){:target="_blank"}** consists of...
    - 30 min - Walk through handling a merge conflict.
    - 30 min - **LAB 3 - merge conflicts**: Each team member make a change to the same line in a file (e.g. Change "The Solar System" in index.html to some other text), and commit.  One team member pushes; the others pull, and then will need to resolve the merge conflict.
 
-### HOMEWORK:  [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
+### [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
 
-Work through the entire [Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"}, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.
+(In a 2-day format, this could be assigned as homework). Work through the entire [Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"}, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.
 
 ### **Session Two** - Collaborate with your team to run the project.
    - 30 min - Branching and merging.  A look at a [sample project repo](https://github.com/walquis/git-basics-sample-project-repo){:target="_blank"}.
