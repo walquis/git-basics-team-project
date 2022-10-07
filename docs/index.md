@@ -4,7 +4,6 @@
 
 ## Contents
 - [Course Schedule](#course-schedule) - Prework, Session One, Homework, Session Two
-- [3 Objects, 3 Trees Exercise](#3-objects-3-trees-exercise) - Homework to be done between Sessions 1 and 2
 - [References](#references) - Mostly links to [git-scm.com](https://git-scm.com)
 - [Site Map](#site-map) - All the pages
 

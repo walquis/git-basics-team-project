@@ -1,12 +1,8 @@
-# Homework - Three Objects, Three Trees
+# Exercise - Three Objects, Three Trees
 
-In the Prework and Session One, you assembled your project team, set up your development environment, and began to practice delivering changes.  Along the way, you got a brief intro to The Three Objects, and The Three Trees.
-
-Now you're starting to think about how to collaborate on the changes to be made.
-
-The goal of this exercise is for you to be solid on the two major concepts we touched upon in Session One:
-- The Three Objects - the git data model
-- The Three Trees - managing local changes
+The goal of this exercise is to solidify two major concepts:
+- **The Three Objects** - the git data model
+- **The Three Trees** - managing local changes
 
 This should help you hit the ground running in Session Two.
 
