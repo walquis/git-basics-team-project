@@ -5,14 +5,7 @@ This exercise assumes you have ...
 1. a [GitHub](https://github.com){:target="_blank"} account.
 1. Visual Studio Code installed.
 
-If all that is in place, this prework should only take a few minutes. You'll set up a local clone of your team lead's repo (this will be your project repo during class), install the [GitGraph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph){:target="_blank"} plugin, and practice a little with GitGraph by looking around at a sample project team's repo.
-
-## Set up your local clone of your project's repo
-
-1. *Project Team Lead* - Create an empty repo on [github.com](https://github.com){:target="_blank"}, and invite the rest of the team as collaborators to your repo.  For example's sake, suppose Dex Rodriguez is project team lead, and creates a `cp-git-project` repo in her user space.
-2. *Each Team Member* - `git clone` your team lead's repo to your local machine.  In the context of the example team lead's `cp-git-project` repo, the clone URL will look something like `https://github.com/drodriguez/cp-git-project`.
-
-   Run these commands in a Terminal session.  For consistent results during this class, I recommend starting Terminal.app separately, rather than running a terminal session within the shell opened by your IDE ("Integrated Development Environment", e.g. Visual Studio Code).  IDE environment-handling adds a layer of complexity that may interfere with our purposes here. However, if you know exactly how your IDE manages its shell environment, then go right ahead and use it.
+If all that is in place, this prework should only take a few minutes. You'll do  a little git environment setup, install the Git Graph plugin, and familiarize yourself with Git Graph by examining a sample repo for a hypothetical project team.
 
 ```bash
 git config --global pull.rebase false  # Tell git what to do when pulling

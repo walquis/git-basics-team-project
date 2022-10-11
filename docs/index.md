@@ -36,29 +36,38 @@ The **[Prework](prework){:target="_blank"}** consists of...
 
 ### **Session One**
    - 40 min - Set up your team and your git repo.  Some orientation w.r.t. class and basic Git/Linux/VSCode.
-   - 20 min - **LAB 1 - local/remote workflow**: Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member can add one of these files: index.html, help.html, about.html, faq.html, map.html.
+   - 20 min - **LAB 1 - local/remote workflow**:
+   > Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member
+   > can add one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
    - 30 min - Using each team's existing repo and `git reset`, demonstrate moving changes back and forth in [The Three Trees](objects-and-trees-exercise){:target="_blank"}.
-   - 30 min - **LAB 2 - `git reset`**: Each member make changes and commit them locally (do not push them!). Then revert changes using `git reset`, make some more changes, and recommit.  Be sure to try out each of \--soft, \--mixed, and \--hard.
-   - 30 min - Walk through handling a merge conflict.
-   - 30 min - **LAB 3 - merge conflicts**: Each team member make a change to the same line in a file (e.g. Change "The Solar System" in index.html to some other text), and commit.  One team member pushes; the others pull, and then will need to resolve the merge conflict.
+   - 30 min - **LAB 2 - `git reset`**:
+   > Each member make changes and commit them locally (do not push them!). Then revert changes using `git reset`,
+   > make some more changes, and recommit.  Be sure to try out each of \--soft, \--mixed, and \--hard.
+   - 30 min - Walk the class through creating and resolving a merge conflict.
+   - 30 min - **LAB 3 - merge conflicts**:
+   > Each team member make a change to the same line in a file (e.g. Change "The Solar System" in `index.html`
+   > to some other text), and commit.  One team member pushes; the others pull, and then will need to resolve the merge conflict.
 
 ### [3 Objects, 3 Trees Exercise](objects-and-trees-exercise){:target="_blank"}
 
 (In a 2-day format, this could be assigned as homework). Work through the entire [Objects and Trees Exercise](objects-and-trees-exercise){:target="_blank"}, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.
 
 ### **Session Two** - Collaborate with your team to run the project.
-   - 30 min - Branching and merging.  A look at a [sample project repo](https://github.com/walquis/git-basics-sample-project-repo){:target="_blank"}.
-   - 30 min - **LAB 4 - project collaboration**: Feel free to use the [sample project repo's commits](https://github.com/walquis/git-basics-sample-project-repo/commits/main){:target="_blank"} for inspiration as to what your team should do.  For instance...
-      - Add a sun image, and change 'Hello World!' to 'Hello Sol!'. 
-      - Begin to use CSS styling:  Change the font of headers.
-      - Add a list of the first four planets to index.html, with content (images and/or summaries).
-      - Put content in the pages: A solar system map, more help, more faqs, some about text.
-      - Put padding/borders/margins around images.
+   - 30 min - Branching and merging.  A look at a [sample project repo](https://github.com/git-basics-sample-project-repo){:target="_blank"}.
+   - 30 min - **LAB 4 - project collaboration**:
+   > Feel free to use the [sample project repo's commits](https://github.com/git-basics-sample-project-repo/commits/main){:target="_blank"} for inspiration as to what your team should do.  For instance...
+   >   - [Add a sun image](https://github.com/git-basics-sample-project-repo/commit/aa7f0ba34df76ddb38912f753457e07108a7c704){:target="_blank"}.
+   >   - [Begin to use CSS styling](https://github.com/git-basics-sample-project-repo/commit/da56c38e92e62408c1affd6c71e19ff87f0d93b6){:target="_blank"}.
+   >   - [Add a list of the first four planets to index.html](https://github.com/git-basics-sample-project-repo/commit/b4b184b40299ad852dd9cd51e0d4279f795ae98f){:target="_blank"}, with content (images and/or summaries).
+   >   - Put content in the pages: [A solar system map](https://github.com/git-basics-sample-project-repo/commit/4119092cac8ccdeb1b4a3ad719a6cf87d3229502){:target="_blank"}, more help, [more faqs](https://github.com/git-basics-sample-project-repo/commit/5e1d8be4574fae345ac779bddc95f73dd0bf3cc0){:target="_blank"}, [some about text](https://github.com/git-basics-sample-project-repo/commit/4c461a996aad0fd5bfa420ac366139805bf334bf){:target="_blank"}.
+   >   - [Put padding/borders/margins around images](https://github.com/git-basics-sample-project-repo/commit/d0095aa699e00873c305d62ecd97727bcc4c5bba){:target="_blank"}.
+>>>>>>> 7373cf9 (Spruce up the lab instructions a bit.  Remove stray ref to team repo in prework.)
    - 30 min - Managing commits with 'git rebase' and 'git cherry-pick'. \[Demonstrate squashing the sample repo's last 3 commits.  Discuss the caveats of altering already-pushed commits].
    - 30 min - **LAB 5 - rebase and cherry-pick**
-      - **REBASE**: Make 3 commits, then squash it to one with 'git rebase -i'.
-      - **CHERRY-PICK**: Team lead make a separate branch, make 2 commits, and push the branch.  Each team member: Git fetch, and practice cherry-picking the first of the leader's 2 commits.
-   - if time - **LAB 6 - More project collaboration**: Keep delivering changes to your website.  If time, practice on any skills that might not have fully sunk in yet (e.g. rebase).
+      > - **REBASE**: Make 3 commits, then squash it to one with 'git rebase -i'.
+      > - **CHERRY-PICK**: Team lead make a separate branch, make 2 commits, and push the branch.  Each team member: Git fetch, and practice cherry-picking the first of the leader's 2 commits.
+   - if time - **LAB 6 - More project collaboration**:
+     > Keep delivering changes to your website.  If time, practice on any skills that might not have fully sunk in yet (e.g. rebase).
    - 5-10 min - Wrap-up.  Provide link to feedback survey.
 
 ## References

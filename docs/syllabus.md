@@ -1,17 +1,12 @@
 # Syllabus for Collaborating with git
 
-Another name for this session could be "Three Objects and Three Trees".
- 
-## Overview
-
-We will learn git's data model, __The Three Objects__.  We will learn git's local-change-management model, which manipulates __Three Trees__.  In the course of running a collaborative software development exercise, your project team will use git commands to examine the state of git objects on these trees, and move them back and forth.  Some of these commands may be familiar (e.g., 'git checkout', 'git add', 'git commit', 'git status', 'git diff') and some may not ('git reset', 'git diff \--staged').
+We will learn git's data model, __The Three Objects__.  We will learn git's local-change-management model, which manipulates __Three Trees__.  In the course of running a collaborative software development exercise, your project team will use git commands to examine the state of git objects on these trees, and move them back and forth.  Some of these commands may be familiar (e.g., `git checkout`, `git add`, `git commit`, `git status`, `git diff`) and some may not (`git reset`, `git diff --staged`).
 
 ### Goals
-
-1. Understand the git data model well enough to describe your git environment in terms of __The Three Objects__.
+1. Gain confidence to make changes, by knowing specifics about how git has your back.
+1. Know how to read the commit graph, and use git commands confidently to make it look like you want.
 1. Understand how basic git commands such as `git add`, `git commit`, and `git reset` move the state of your local changes among __The Three Trees__.
-1. Know how to read the commit graph, and use git commands effectively to make it look like you want.
-1. Gain confidence to make changes, knowing specifics about how git has your back.
+1. Understand the git data model well enough to describe your git environment in terms of __The Three Objects__.
  
 ### Objectives
 
@@ -20,8 +15,8 @@ By the end of this course, students will be able to...
 #### Demonstrate these skills:
 * Work as a team to deliver changes to a chosen remote and branch
 * Understand and resolve merge collisions
-* Stash work and return to it
 * Manage a commit with 'git reset'
+* Stash work and return to it
 
 #### Explain these terms and concepts:
 * sha
@@ -60,7 +55,7 @@ By the end of this course, students will be able to...
 
 Git is a brilliantly simple data model surrounded by a dense constellation of commands and options.  Once you know the model, you know how the graph should look.  Then you are equipped to find the command that does want you want.
 
-See [Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects){:target="_blank"}.
+[Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects){:target="_blank"} at git-scm.com is good reading.
 
 - __Commit__ and its attributes
 - __Tree__ and its attributes
@@ -70,7 +65,7 @@ See [Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects){:tar
 
 The word "reset" is loaded with many connotations. In a git context, you can read `git reset` as "set-current-branch-to-an-existing-commit".  We'll explore how this works for managing local changes.
 
-git-scm.com's [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified){:target="_blank"} is good reading.
+git-scm.com's [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified){:target="_blank"} is also good reading.
 
 These are the three trees:
 
