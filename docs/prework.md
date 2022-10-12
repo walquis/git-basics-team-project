@@ -65,6 +65,8 @@ $ git checkout main       # Set HEAD back to a branch reference (`main` in this 
 
 In class, you and your team will be making changes in parallel that may resemble this sample history, as you experience what collaboration looks like with git.
 
-## Bonus prework - explore some [Unix/Shell Concepts](unix-shell-concepts)
-I'll touch on these *very* briefly in class, but feel free to google around on your own, focusing on the bash shell and environment variables.
+Take a look at the [syllabus](syllabus){:target="_blank"}.
+
+## Bonus prework - explore some [Unix/Shell Concepts](unix-shell-concepts){:target="_blank"}
+I *may* touch on these briefly in class. Feel free to google around on your own; focus on bash shell concepts, especially I/O redirection, process hierarchy and management, and environment variables.
 

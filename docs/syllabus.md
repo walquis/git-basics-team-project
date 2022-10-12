@@ -68,9 +68,9 @@ See [Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects){:tar
 
 ## Three Trees
 
-The word "reset" is loaded with so many connotations that, at first encounter within a git context, it appears meaningless.  For the purposes of this session, you can read `git reset` as "set-current-branch-to-an-existing-commit".  We'll explore how this works for managing local changes.
+The word "reset" is loaded with many connotations. In a git context, you can read `git reset` as "set-current-branch-to-an-existing-commit".  We'll explore how this works for managing local changes.
 
-See [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified){:target="_blank"}.
+git-scm.com's [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified){:target="_blank"} is good reading.
 
 These are the three trees:
 

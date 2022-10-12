@@ -9,8 +9,8 @@ This should help you hit the ground running in Session Two.
 ### Table of Contents
 - [Set up git Aliases](#set-up-git-aliases) - Command-line shortcuts for git
 - [Git versus Github](#git-versus-github) - Which operations go with each?
-- [Git Data Model](#the-git-data-model) - The Three Objects
-- [Managing Local Changes](#the-three-trees) - The Three Trees
+- [The Three Objects](#the-git-data-model---the-three-objects) - Git's Data Model
+- [The Three Trees](#the-three-trees) - Managing local changes
 
 Review [Basic Unix and Shell](unix-shell-concepts){:target="_blank"}.
 
@@ -39,7 +39,7 @@ When working with the git client and github.com, it's useful to keep in mind whi
 | pull | pull request |
 | | org,<br> team,<br> collaborator,<br> org owner |
 
-## The Git Data Model
+## The Git Data Model - The Three Objects
 
 ### Exploring the git repo - SHAs and objects
 
