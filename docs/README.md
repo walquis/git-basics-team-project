@@ -1,8 +1,8 @@
 A static site compilable with jekyll
 
 ```bash
-$ bundle install --path=vendor/bundle
-$ bundle exec jekyll serve
+$ bundle install
+$ bundle exec jekyll serve --livereload --open-url
 ```
 
 You can also use grip to compile single .md pages:

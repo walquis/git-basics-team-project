@@ -5,3 +5,4 @@ venv
 *.sqlite3
 **/vendor/bundle
 _site
+.jekyll-cache
