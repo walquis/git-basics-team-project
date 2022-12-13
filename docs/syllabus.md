@@ -1,6 +1,6 @@
 # Syllabus for Collaborating with git
 
-We will learn git's data model, __The Three Objects__.  We will learn git's local-change-management model, which manipulates __Three Trees__.  In the course of running a collaborative software development exercise, your project team will use git commands to examine the state of git objects on these trees, and move them back and forth.  Some of these commands may be familiar (e.g., `git checkout`, `git add`, `git commit`, `git status`, `git diff`) and some may not (`git reset`, `git diff --staged`).
+We will learn git's data model, __The Three Objects__.  We will learn git's local-change-management model, which manipulates __Three Trees__.  In the course of running a collaborative software development exercise, your project team will use git commands to examine the state of git objects on these trees, and move them back and forth.  Some of these commands may be familiar (e.g., `git checkout`, `git add`, `git commit`, `git status`, `git diff`) and some may not (`git reset`, `git diff --staged`, `git rebase`).
 
 ### Goals
 1. Gain confidence to make changes, by knowing specifics about how git has your back.
