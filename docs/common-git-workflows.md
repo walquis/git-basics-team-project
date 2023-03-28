@@ -1,9 +1,9 @@
 # Common Git Workflows
 
-## A Sample Collaborative Workflow - Task branch from 'main'
+## A Basic Workflow - merge from `main` and push
 You will find a dizzying variety of workflows out there, but at some point they pretty much all boil down to pulling in your team's changes, merging them with your own, and delivering them back to the team.
 
-Here's one way to accomplish it: Start and work on a local `main` branch that tracks the remote `origin/main`, where your team will deliver integrated changes.
+Here's one way to accomplish it: Start from a local `main` branch that tracks the `main` of your remote (`origin/main`, assuming your remote is named `origin`), where your team will deliver integrated changes.
 
 1. `git checkout main` - The branch from which you will push changes.
 1. `git pull origin main` - Catch your local `main` up with latest changes from your team.
@@ -13,80 +13,59 @@ Here's one way to accomplish it: Start and work on a local `main` branch that tr
 1. (If there *are* more changes, merge 'em in from main.  Then tell your team to hold off, it's your turn now!).
 1. `git push origin main` - Share your scintillating creativity with your team by "catching-up the remote `origin/main` to your `main`.
 
-## Forgot to pull before committing
-This workflow is very common for me!  (Another variation of this workflow is "started-my-work-on-wrong-branch".)
+## A Pull Request Workflow
+Instead of working-on/pushing `main`, create/work-on/push a feature branch, and ask someone to look at it before it joins `main`.
 
-It typically goes like this: 
-1. I cd into a repo workspace that I already have cloned, but haven't touched in awhile.
-1. I make some changes and commit.
-1. I 'git push'
-1. Git rejects my updates with something like:
+1. `git checkout main` - The branch from which you will branch.
+1. `git checkout -b myfeature` - Create and checkout a new `myfeature` branch.
+1. Implement your feature and test it; add and commit your changes on `myfeature`.
+1. `git push origin myfeature` - Make your `myfeature` branch visible to the team.
+1. Go to Github and create a **Pull Request (PR)** for `myfeature`.  Choose one or more reviewers.
+1. The reviewers look at your diffs, optionally make comments, and approve & merge `myfeature` to `main`.
+1. `git checkout main` - Go back to main so you can catch up.
+1. `git pull` - Grab the latest changes, including your merged PR.
 
-<blockquote>
-<span style="color:red">! [rejected]</span> &nbsp; &nbsp; &nbsp; <span style="color:green">main -> main (non-fast-forward)</span><br>
-<span style="color:red">error: failed to push some refs to 'git@github.com:walquis/learning-git'</span><br>
-<span style="color:gold">hint: Updates were rejected because the tip of your current branch is behind<br>
-hint: its remote counterpart. Integrate the remote changes (e.g.<br>
-hint: 'git pull ...') before pushing again.<br>
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.<br>
-</span>
-</blockquote>
+## Resolve Merge Conflict
+Merge conflicts (aka "collisions") happen whenever git's merge algorithm does not have enough info to make the call--for instance, when a given line in a file has been changed in different ways by two parent commits.
 
-You can re-enact this scenario in our own repo, by moving your local main branch to one commit behind origin/main.  (How would you do that?)
+Let's make the above-described kind of merge conflict happen:
 
-Now change a file and git add/commit/push.
-
-What happened?  Your main has diverged from origin/main.
-
-What now?  Some options:
-1. Pull-and-merge - valid, but creates a merge for no good reason - messy graph, confuses your team
-1. Reset, pull, cherry-pick - makes the graph look like you want it to
-```
-$ git reset --hard @^     # Tip: '@' is a synonym for HEAD
-$ git pull
-$ git cherry-pick <sha-of-commit-you-couldn't-push>
-```
-1. Git rebase - "Replay" changes onto another commit
-```
-$ git fetch         # Remember, 'pull' is a fetch and merge...but I don't want to merge this commit
-$ git rebase origin/main    # Replay current branch's changes onto origin/main
-```
-This is easier than cherry-pick, especially if I've made multiple changes.
-
-## Resolve Merge Collision
-Let's experiment with making a merge collision happen: Branch, make a change that will collide, commit and try to merge.
-
-1. First, find a change to collide with.  Looking at the latest commit on main, choose a file and a line in that file with which to collide:
+1. First, make a change to conflict with, by adding a file with one line:
 ```
 $ git checkout main
 $ git show
+$ echo "HI THERE" > aNewFile
+$ git add aNewFile
+$ git commit -m "A new file with one line"
 ```
-1. Checkout a new branch `test` _from the parent commit_ of main's head.
+1. Checkout a new branch `test` _from the parent commit_ of main's HEAD.
 ```
 $ git checkout -b test HEAD^
 ```
-1. Edit a file \<somefile> that was also changed on main.
-
-   Change the **same line** in that file (but to something different than was done on main).
-1. `git add`, `git commit`
-1. Attempt to merge from main.
+1. Make a one-line file of the same name as the one created on main.
+```
+$ echo "HI THERE, I'm on a different branch" > aNewFile  # Because on this branch, starting from where we did, aNewFile isn't there yet.
+$ git add aNewFile
+$ git commit -m "A new file with one line, but from a different branch"
+```
+1. Now, attempt to merge from main.
 ```
 $ git config --global core.editor "code --wait"  # Set git editor to vscode (only need to do this once)
 $ git merge main
-Auto-merging <somefile>
-CONFLICT (content): Merge conflict in <somefile>
+Auto-merging aNewFile
+CONFLICT (add/add): Merge conflict in aNewFile
 Automatic merge failed; fix conflicts and then commit the result.
 $ git status
-$ code <somefile>
+$ code aNewFile
 ```
 
 Git has modified our source file!
 
-Note that vscode has added some helpful "phantom text"\--'(Current Change)' and '(Incoming Change)'\--to help clarify what's what. Note also, **that text isn't part of the file**.
+Note that VSCode has added some helpful "phantom text"\--'(Current Change)' and '(Incoming Change)'\--to help clarify what's what. Note also, **that text isn't part of the file**.
 
-When you've decided what the file should look like, 'git add' to tell git it's OK now (as git itself tells you when you do 'git status').
+When you've made the file how you want it, and saved it, `git add` to tell git it's OK now (as git itself tells you when you do `git status`).
 
-Then finish the merge with a 'git commit' (again, as 'git status' instructs)..
+Finally, finish the merge with a `git commit` (again, as `git status` instructs)..
 
 ## Save Current Work and Return to it Later
 ```
@@ -112,6 +91,48 @@ $ git config --global core.editor "code --wait"  # Set your editor to vscode
 $ git rebase --interactive <some-commit-before-the-commits-to-fix>
 ```
 See the [git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"} tutorial for details on how to work thru the rebase.
+
+## Forgot to pull before committing
+This workflow is very common for me!
+
+Another variation of this workflow is "started-my-work-on-wrong-branch".
+
+It typically goes like this: 
+1. I cd into a repo workspace that I already have cloned, but haven't touched in awhile.
+1. I make some changes and commit.
+1. I `git push`.
+1. Git rejects my updates with something like:
+
+<blockquote>
+<span style="color:red">! [rejected]</span> &nbsp; &nbsp; &nbsp; <span style="color:green">main -> main (non-fast-forward)</span><br>
+<span style="color:red">error: failed to push some refs to 'git@github.com:walquis/learning-git'</span><br>
+<span style="color:gold">hint: Updates were rejected because the tip of your current branch is behind<br>
+hint: its remote counterpart. Integrate the remote changes (e.g.<br>
+hint: 'git pull ...') before pushing again.<br>
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.<br>
+</span>
+</blockquote>
+
+You can re-enact this scenario in your own repo, by moving your local `main` branch to one commit behind `origin/main`.  (How would you do that? Hover [here](doesnotexist.jpg, "git reset --hard HEAD^") to see.)
+
+Now change a file and git add/commit/push.
+
+What happened?  Your main has diverged from origin/main.
+
+What now?  Some options:
+1. Pull-and-merge - valid, but creates a merge for no good reason - messy graph, confuses your team
+1. Reset, pull, cherry-pick - makes the graph look like you want it to
+```
+$ git reset --hard @^     # Tip: '@' is a synonym for HEAD
+$ git pull
+$ git cherry-pick <sha-of-commit-you-couldn't-push>
+```
+1. Git rebase - "Replay" changes onto another commit
+```
+$ git fetch         # Remember, 'pull' is a fetch and merge...but I don't want to merge this commit
+$ git rebase origin/main    # Replay current branch's changes onto origin/main
+```
+This is easier and more straightforward than cherry-pick, especially if I've made multiple changes.
 
 ## Find a Bad Commit - [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git){:target="_blank"}
 
