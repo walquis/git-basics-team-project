@@ -12,7 +12,7 @@ This should help you hit the ground running in Session Two.
 - [The Three Objects](#the-git-data-model---the-three-objects) - Git's Data Model
 - [The Three Trees](#the-three-trees) - Managing local changes
 
-Review [Basic Unix and Shell](unix-shell-concepts){:target="_blank"}.
+Review [Basic Unix and Shell](unix-shell-concepts.md).
 
 ## Set up git aliases
 This activates cool bash shortcuts for working with git from the bash prompt.
@@ -27,7 +27,7 @@ $ adog  # This should work now.
 
 The git client is a big bag of commands for implementing version control using a local content-addressable DB (aka a repository, or "repo"), as well as efficiently communicating with other, remote repos\--a Distributed Version Control System, or DVCS.  Git was written by Linus Torvalds in 2005 for version-controlling the Linux kernel.
 
-In 2008, the social coding platform [github.com](https://github.com){:target="_blank"} came into existence, built around the git client.
+In 2008, the social coding platform [github.com](https://github.com) came into existence, built around the git client.
 
 When working with the git client and github.com, it's useful to keep in mind which operations belong to which tool.
 
@@ -222,7 +222,7 @@ Let's follow a single file through this workflow, starting with workspace change
 Make a change (which tree are you working in now, as you run the following commands?) ...
 ```
 $ code index.html   #  (or whatever file you may have in your workspace)
-[Make a minor change, and save]
+# Make a minor change to index.html in your editor, and save it. Then...
 $ git status  # or use the 'gs' alias
 $ git diff    # or use the 'gd' alias
 ```
@@ -264,7 +264,7 @@ $ git diff
 $ git diff --staged
 ```
 
-\* To understand ^, ~, @{push}, and other revision notation, see [Git Revisions](https://git-scm.com/docs/revisions){:target="_blank"}.
+\* To understand ^, ~, @{push}, and other revision notation, see [Git Revisions](https://git-scm.com/docs/revisions).
 
 What happened?  What is `git status` telling you, and why?
 

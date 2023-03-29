@@ -72,13 +72,13 @@ Finally, finish the merge with a `git commit` (again, as `git status` instructs)
 $ git stash  # Push current work--your index and modified stuff--onto a "stash stack".
 $ git status # Now your workspace is clean (except for files that aren't in git).
 $ git checkout -b someNewBranch   # Or some existing branch
-[Do the work that has pre-empted you, commit/push/etc, and now return to your story]...
+# Do the work that has pre-empted you, commit/push/etc, and now return to your story...
 $ git checkout main
 $ git stash pop  # Restore your current work to this workspace
 $ git stash list # See if anything still on the stash stack.
 ```
 
-## Clean Up Commit History Before Pushing - [git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"} 
+## Clean Up Commit History Before Pushing - [git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) 
 
 This is another instance of using git to practice good communication etiquette.  Nobody wants to see my stumbling around; they just want to see the final draft.
 
@@ -90,7 +90,7 @@ Assuming I've made a series of commits I don't want people to see, I can turn th
 $ git config --global core.editor "code --wait"  # Set your editor to vscode
 $ git rebase --interactive <some-commit-before-the-commits-to-fix>
 ```
-See the [git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"} tutorial for details on how to work thru the rebase.
+See the [git rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) tutorial for details on how to work thru the rebase.
 
 ## Forgot to pull before committing
 This workflow is very common for me!
@@ -134,16 +134,16 @@ $ git rebase origin/main    # Replay current branch's changes onto origin/main
 ```
 This is easier and more straightforward than cherry-pick, especially if I've made multiple changes.
 
-## Find a Bad Commit - [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git){:target="_blank"}
+## Find a Bad Commit - [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git)
 
 Sometimes when a bug creeps in, it's hard to find where it happened.  `git bisect` helps you walk through a range of commits in a binary search.
 
 ```
 $ git help bisect   # You can also 'git help' any other git command.
 $ git bisect start <known-bad-commit> <older-known-good-commit>
-[Test the code in your workspace to see if the current version is good.]
+# Test the code in your workspace to see if the current version is good.
 $ git bisect good # Or bad, if the test fails
-[Git will keep iterating until the bad commit is identified.]
+# Git will keep iterating until the bad commit is identified.
 ...
 $ git bisect reset  # Go back to the head of the branch
 ```

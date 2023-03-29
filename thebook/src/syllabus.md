@@ -38,10 +38,10 @@ By the end of this course, students will be able to...
 * git reset \[\--soft, \--mixed, \--hard \]
 * git branch
 * git merge
-* [git stash](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning){:target="_blank"} - "I need to save what I'm working on and come back to it later"
+* [git stash](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning) - "I need to save what I'm working on and come back to it later"
 * git cherry-pick
-* [git rebase -i](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"} - clean up commit history before pushing
-* (stretch goal) [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git){:target="_blank"} - find a bad commit
+* [git rebase -i](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) - clean up commit history before pushing
+* (stretch goal) [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git) - find a bad commit
  
 #### Identify and explain these components of a repo graph (as seen with "git log \--all \--decorate \--oneline \--graph"):
 - HEAD
@@ -55,7 +55,7 @@ By the end of this course, students will be able to...
 
 Git is a brilliantly simple data model surrounded by a dense constellation of commands and options.  Once you know the model, you know how the graph should look.  Then you are equipped to find the command that does want you want.
 
-[Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects){:target="_blank"} at git-scm.com is good reading.
+[Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects) at git-scm.com is good reading.
 
 - __Commit__ and its attributes
 - __Tree__ and its attributes
@@ -65,7 +65,7 @@ Git is a brilliantly simple data model surrounded by a dense constellation of co
 
 The word "reset" is loaded with many connotations. In a git context, you can read `git reset` as "set-current-branch-to-an-existing-commit".  We'll explore how this works for managing local changes.
 
-git-scm.com's [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified){:target="_blank"} is also good reading.
+git-scm.com's [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) is also good reading.
 
 These are the three trees:
 

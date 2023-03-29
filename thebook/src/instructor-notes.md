@@ -7,7 +7,7 @@
 - Deja
 - Xavier
 
-[Sample project repo](https://github.com/walquis/git-basics-sample-project-repo){:target="_blank"}
+[Sample project repo](https://github.com/walquis/git-basics-sample-project-repo)
 
 ## Session 1
 

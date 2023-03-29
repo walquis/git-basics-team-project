@@ -1,12 +1,12 @@
 # Prework for Collaboration-With-Git Exercise
 
 This exercise assumes you have ...
-1. A [GitHub](https://github.com){:target="_blank"} account.
+1. A [GitHub](https://github.com) account.
 1. Visual Studio Code installed.
 
 This prework should only take a few minutes. You'll do  a little git environment setup, install the Git Graph plugin, and familiarize yourself with Git Graph by examining a sample repo for a hypothetical project team.
 
-(If you really want to go deep with prework, this page will give you a head-start on the core class material: [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified){:target="_blank"}.)
+(If you really want to go deep with prework, this page will give you a head-start on the core class material: [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified).)
 
 ## Run these commands in your Terminal.app
 ```bash
@@ -21,12 +21,12 @@ cd git-basics-sample-project-repo
 
 ## Install the GitGraph plugin in your VSCode
 
-Visit the [GitGraph Plugin Install](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph){:target="_blank"} page and follow the install instructions.
+Visit the [GitGraph Plugin Install](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) page and follow the install instructions.
 
 ## Browse history in a sample repo
 This repo records the project history of a five-member team: Ned, Nykhia, Dex, Deja, and Xavier.
 
-Although you won't be committing anything to it, feel free to git clone [https://github.com/walquis/git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo){:target="_blank"}.
+Although you won't be committing anything to it, feel free to git clone [https://github.com/walquis/git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo).
 
 Open `git-basics-sample-project-repo/index.html` in your browser to view the website.
 
@@ -58,10 +58,10 @@ $ git checkout main       # Set HEAD back to a branch reference (`main` in this 
 
 ## What's Next?
 
-Take a look at the [syllabus](syllabus){:target="_blank"}.
+Take a look at the [syllabus](syllabus.md).
 
 In class, you and your team will be making changes in parallel that may resemble this sample history, as you experience what collaboration looks like with git.
 
-## Bonus prework - explore some [Unix/Shell Concepts](unix-shell-concepts){:target="_blank"}
+## Bonus prework - explore some [Unix/Shell Concepts](unix-shell-concepts.md)
 I *may* touch on these briefly in class. Feel free to google around on your own; focus on bash shell concepts, especially I/O redirection, process hierarchy and management, and environment variables.
 
