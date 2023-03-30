@@ -1,8 +1,12 @@
 # Exercise - Three Objects, Three Trees
 
+(In a 2-day format, this could be assigned as homework).
+
 The goal of this exercise is to solidify two major concepts:
 - **The Three Objects** - the git data model
 - **The Three Trees** - managing local changes
+
+Work through this entire exercise, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.
 
 This should help you hit the ground running in Session Two.
 

@@ -1,28 +1,32 @@
-# Solar System - An Exercise for Practicing Project Collaboration in git
+# Practicing Project Collaboration in git
 
-The [Curriculum Introduction](https://walquis.github.io/git-basics-team-project) describes the course, and points to [Prework](https://walquis.github.io/git-basics-team-project/prework), [Syllabus](https://walquis.github.io/git-basics-team-project/syllabus), [Object/Trees Exercise](https://walquis.github.io/git-basics-team-project/objects-and-trees-exercise), and other teaching material.
-
-_NOTE:  The markdown source code to the curriculum introduction lives in the docs/ directory, which kind of looks like a website if you click around in it inside this repo, but you'll soon notice funny syntax, links will 404, etc.  When changes are pushed to docs/, Github sees them and publishes them properly elsewhere, namely [here](https://walquis.github.io/git-basics-team-project).  See [Github Pages](https://pages.github.com) if curious how to do this for your repos._
-
-## Setting Up For The Project
-Setup is covered in the [Prework for Session One](https://walquis.github.io/git-basics-team-project/prework).
+The course is published on this repo's [Github Pages](https://walquis.github.io/git-basics-team-project).
 
 [ ![](https://imgs.xkcd.com/comics/git.png) ](https://xkcd.com/1597/)
 
-## Goal
-Your team will become comfortable collaborating with git (unlike Cueball!).
+## Installing mdBook for building/running
 
-## Objective
-Using git, you and your team collaborate to deliver changes to a code base, eventually culminating in a static page somewhat like the one in the [Sample Project Repo](https://github.com/git-basics-sample-project-repo) (which you can view by cloning the repo and opening index.html in your browser).
+https://rust-lang.github.io/mdBook/guide/installation.html
 
-## Overview
-Your team lead will create a repo and share it with the team, who will collaboratively add features and deliver them on `main`.
+## Serving the book locally
+Use this when authoring.
+```
+$ mdbook serve  # builds, watches for changes, refreshes local browser on change.
+```
 
-You and your team will deliver changes by adding and modifying static HTML and CSS files.  (The only "webserver" is your filesystem).
+## Building and publishing the book
+Builds the book as static HTML into the `docs` directory.  When pushed to GitHub, this directory is published by Github Pages.
 
-As your team begins to deliver completed tasks, you will run into challenges (merge conflicts!) associated with working in parallel on a code base, and you will practice using git to solve them.
+Recommended: Add/commit your source code changes before you "mdbook build" and publish the output.
 
-The actual code changes are purposely kept very simple; the goal here is not so much to learn new coding concepts, but to learn new git-based code collaboration skills .
+```
+# Assuming your source code changes have already been added/committed...
+$ cd thebook
+$ mdbook build
+$ cd ..
+$ git add docs
+$ git commit -m "mdbook build"
+$ git push
+```
 
-Keep the page working as you deliver each change to `master`. &nbsp;&nbsp;Don't "break the build"!
-
+The markdown source code lives in the `thebook/src` directory, which looks like a working website if you click around in it, but you'll notice that some links may not work, there is no table of contents, etc.  When mdBook-built changes in `docs/` are pushed, Github sees them and publishes them properly [here](https://walquis.github.io/git-basics-team-project).  See [Github Pages](https://pages.github.com) if curious how to publish pages from your repos (mdBook is only one of many ways to do this).
