@@ -9,7 +9,19 @@
 
 [Sample project repo](https://github.com/walquis/git-basics-sample-project-repo)
 
-## Session 1
+# Session 1
+
+## Setup
+
+## Basic Collaborative Workflow
+
+## Anatomy of a Commit
+
+## Local Git Repo and 3 Trees, or, Intro to `git reset`
+
+## Create And Resolve Merge Conflicts - With Basic Workflow
+
+## Create And Resolve Merge Conflicts - Using Branches and PR's
 
 ### 9-9:40
 - Intro - We'll be working based off the material in https://github.com/walquis/git-basics-team-project.

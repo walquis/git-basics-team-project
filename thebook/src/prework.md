@@ -1,12 +1,13 @@
-# Prework for Collaboration-With-Git Exercise
+# Prework for the Git Basics Course
 
-This exercise assumes you have ...
+This course assumes you have ...
 1. A [GitHub](https://github.com) account.
 1. Visual Studio Code installed.
+1. Access to some sort of bash shell: On MacOSX, Terminal.app; on Windows, it would be [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) or [Git For Windows](https://gitforwindows.org/).
+
 
 This prework should only take a few minutes. You'll do  a little git environment setup, install the Git Graph plugin, and familiarize yourself with Git Graph by examining a sample repo for a hypothetical project team.
 
-(If you really want to go deep with prework, this page will give you a head-start on the core class material: [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified).)
 
 ## Run these commands in your Terminal.app
 ```bash
@@ -28,9 +29,9 @@ This repo records the project history of a five-member team: Ned, Nykhia, Dex, D
 
 Although you won't be committing anything to it, feel free to git clone [https://github.com/walquis/git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo).
 
-Open `git-basics-sample-project-repo/index.html` in your browser to view the website.
+Open `index.html` to view the website:  Choose "File --> Open File..." in your browser, navigate to `git-basics-sample-project-repo/index.html`, and open it.
 
-Point VSCode at the `git-basics-sample-project-repo` and use GitGraph to take a look:
+Point your VSCode at the `git-basics-sample-project-repo` directory, and use GitGraph to take a look:
 
 
 ![GitGraph of sample repo history](images/git-graph-of-sample-repo.png)
@@ -62,6 +63,6 @@ Take a look at the [syllabus](syllabus.md).
 
 In class, you and your team will be making changes in parallel that may resemble this sample history, as you experience what collaboration looks like with git.
 
-## Bonus prework - explore some [Unix/Shell Concepts](unix-shell-concepts.md)
-I *may* touch on these briefly in class. Feel free to google around on your own; focus on bash shell concepts, especially I/O redirection, process hierarchy and management, and environment variables.
+Explore some [Unix/Shell Concepts](unix-shell-concepts.md). I *may* touch on these briefly in class. Feel free to google around on your own; focus on bash shell concepts, especially I/O redirection, process hierarchy and management, and environment variables.
 
+If you really want to go deep before class starts, [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) will give you a head-start on some of the core class material.

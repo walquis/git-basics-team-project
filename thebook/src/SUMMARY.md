@@ -1,6 +1,5 @@
 # Table of Contents
 - [Overview](./overview.md)
-- [Syllabus](./syllabus.md)
 - [Prework](./prework.md)
 - [Session 1](./session1.md)
 - [Objects-and-Trees Exercise](./objects-and-trees-exercise.md)
@@ -9,4 +8,5 @@
 - [Viewing Changes](./viewing-changes.md)
 - [Instructor Notes](./instructor-notes.md)
 - [Unix Shell Concepts](./unix-shell-concepts.md)
+- [Course Syllabus](./syllabus.md)
 - [References](./references.md)

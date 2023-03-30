@@ -5,5 +5,8 @@ multilingual = false
 src = "src"
 title = "Git Basics - Collaborating With Git"
 
+[output.html]
+default-theme = "rust"
+
 [build]
 build-dir = "../docs"

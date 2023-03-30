@@ -1,17 +1,17 @@
 # Common Git Workflows
 
-## A Basic Workflow - merge from `main` and push
-You will find a dizzying variety of workflows out there, but at some point they pretty much all boil down to pulling in your team's changes, merging them with your own, and delivering them back to the team.
+## A Basic Workflow - everybody do their work on `main`
+A dizzying variety of workflows exist, but at some point they pretty much all boil down to (a) merging your team's changes with with your own, and (b) delivering them back to the team.
 
-Here's one way to accomplish it: Start from a local `main` branch that tracks the `main` of your remote (`origin/main`, assuming your remote is named `origin`), where your team will deliver integrated changes.
+Here's one way to accomplish it: Work on a local `main` branch that tracks the `main` of your remote, i.e., `origin/main`[^remote-name], where your team will rendezvous with changes.
 
-1. `git checkout main` - The branch from which you will push changes.
+1. `git checkout main` - Get onto the branch from which you will push changes.
 1. `git pull origin main` - Catch your local `main` up with latest changes from your team.
 1. Implement your feature and test it.
-1. Git-add and git-commit your changes on your local `main`.
+1. `git add` and `git commit` your changes on your local `main`.
 1. `git pull origin main` (in case more changes have been pushed by teammates while you were working).
-1. (If there *are* more changes, merge 'em in from main.  Then tell your team to hold off, it's your turn now!).
-1. `git push origin main` - Share your scintillating creativity with your team by "catching-up the remote `origin/main` to your `main`.
+1. If there *are* changes from "upstream", a merge will happen (you may need to resolve conflicts).
+1. `git push origin main` - Share your scintillating creativity with your team by "catching-up the remote `origin/main` to your `main`.  (If someone else pushed first--since your last `git pull`--you'll have to `git pull` again.  Then beg your team to hold off, it's your turn now!)
 
 ## A Pull Request Workflow
 Instead of working-on/pushing `main`, create/work-on/push a feature branch, and ask someone to look at it before it joins `main`.
@@ -158,3 +158,6 @@ $ git bisect run bash test.sh
 
 ## Miscellaneous
 - 'git show' - By default, shows diff of HEAD vs previous commit.  Can 'git show' any SHA.
+
+---
+[^remote-name]: assuming your remote is named `origin`.  It probably is.
