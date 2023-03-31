@@ -31,9 +31,11 @@ Visit the [GitGraph Plugin Install](https://marketplace.visualstudio.com/items?i
 ## Explore the sample repo's code and history
 This repo records the work of a five-member team: Ned, Nykhia, Dex, Deja, and Xavier.
 
-Open `index.html` to view the website in the [git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo) that you cloned:  Choose "File --> Open File..." in your browser, navigate to `index.html` and open it.
+Open `index.html` to view the website in the [git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo) that you cloned:  Choose "File --> Open File..." in your browser, navigate to `index.html` and open it.  You should see something like this...
 
-Point your VSCode at the `git-basics-sample-project-repo` directory, and look at the history with GitGraph:
+![](images/the-solar-system-screenshot.jpg)
+
+Point VSCode at the `git-basics-sample-project-repo` directory, and look at the history with GitGraph:
 
 
 ![GitGraph of sample repo history](images/git-graph-of-sample-repo.png)

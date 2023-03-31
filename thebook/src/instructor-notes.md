@@ -1,8 +1,8 @@
 # Instructor notes
 
 ## [Sample project repo](https://github.com/walquis/git-basics-sample-project-repo)
+- Commits in this repo are a source for ideas of what kind of work teams can do.
 - Ned, Nykhia, Dex, Deja, Xavier
-- Commits in this repo will be mined for ideas for what kind of work to do.
 
 ## Overview
 
@@ -70,7 +70,12 @@ POINTS TO MAKE:
   - `git reflog` lets you retrace your steps.
   - `git stash` lets you switch contexts quickly.
 
+We've only used `git reset` to move our current branch back one commit.  But `git reset` will move our current branch anywhere we tell it.  When might this be useful?
+- When re-arranging branches.  Suppose you made changes on `main`, but meant to branch first?  Just make the branch where you're at, and move `main` back to where it belongs (as long as you haven't pushed those changes yet).
+
 - **Time for a break?***
+
+Have a conversation about doing a `git reset` to something before `origin`; and relatedly, `git push -f` and its pitfalls.
 
 ## Create And Resolve Merge Conflicts - With Basic Workflow
 TERMS:

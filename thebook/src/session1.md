@@ -1,4 +1,4 @@
-## **Session One**
+## Session One
 
 ### Setup
 1. Has everyone done the [Prework](prework.md)?
@@ -40,7 +40,7 @@ Now that we have some commits, let's take a closer look...
 > 1. What are the contents of HEAD's tree's first blob?
 
 ### Your Local Git repo and The Three Trees - or, "Intro to `git reset`"
-Six of the [top twelve stackoverflow questions](https://stackoverflow.com/questions?tab=Votes) are git questions!!  (Last time I checked). For at least a couple of those, the answer is `git reset`.
+When I checked end of March 2023, six of the [top twelve stackoverflow questions](https://stackoverflow.com/questions?tab=Votes) were git questions!!  For at least a couple of those, the answer is `git reset`.
 
 Using `git reset`, move changes back and forth locally between the [The Three Trees](objects-and-trees-exercise.md).
 
@@ -51,6 +51,8 @@ Use each of the `--soft`, `--mixed`, and `--hard` options to `git reset` at leas
 > 1. Make another change, and commit.
 > 1. Revert, using another option of `git reset`.  Commit.
 > 1. Revert, using another option of `git reset`.  Commit.
+
+We've only used `git reset` to move our current branch back one commit.  But `git reset` will move our current branch anywhere we tell it.  When might this be useful?
 
 ### Create And Resolve Merge Conflicts - With Basic Workflow
 
