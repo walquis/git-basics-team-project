@@ -5,6 +5,7 @@
 1. Open your Linux shell.
 1. Run these commands to set up some handy aliases...
 ```bash
+# Clone this repo only if you haven't already done so...
 git clone https://github.com/walquis/git-basics-team-project
 cd git-basics-team-project/bin
 source git-aliases.sh
