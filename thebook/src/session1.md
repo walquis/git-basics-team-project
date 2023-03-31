@@ -20,6 +20,8 @@ source git-aliases.sh
 
 ### Basic Collaborative Workflow
 
+![](images/pull-merge-push-diagram.jpg)
+
 #### LAB - Basic Collaborative Workflow
 > Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member
 > can add one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
