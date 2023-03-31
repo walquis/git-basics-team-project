@@ -1,47 +1,57 @@
 # Syllabus for Collaborating with git
 
-We will learn git's data model, __The Three Objects__.  We will learn git's local-change-management model, which manipulates __Three Trees__.  In the course of running a collaborative software development exercise, your project team will use git commands to examine the state of git objects on these trees, and move them back and forth.  Some of these commands may be familiar (e.g., `git checkout`, `git add`, `git commit`, `git status`, `git diff`) and some may not (`git reset`, `git diff --staged`, `git rebase`).
+We will learn how git's _data model_, __The Three Objects__, forms the basis of a git repo's architecture.
+
+We will learn to use git's _state model_, __The Three Trees__, to confidently manage changes between a workspace and a local git repo. 
+
+We will learn to use __Pull Requests__ within git workflows to communicate our changes to others.
+
+In the course of running a collaborative software development project, you will use various git commands in a **Bash shell** to examine and change the state of git objects in these trees on your local machine.  Some of these commands may be familiar (e.g., `git checkout`, `git add`, `git commit`, `git status`, `git diff`) and some may not (`git reset`, `git diff --staged`, `git rebase`, `git cherry-pick`).
+
+Using **pull requests** (aka PR's), you will communicate local changes to your team for review and integration into the team's shared work stream.
+
 
 ### Goals
-1. Gain confidence to make changes, by knowing specifics about how git has your back.
 1. Know how to read the commit graph, and use git commands confidently to make it look like you want.
 1. Understand how basic git commands such as `git add`, `git commit`, and `git reset` move the state of your local changes among __The Three Trees__.
-1. Understand the git data model well enough to describe your git environment in terms of __The Three Objects__.
+1. Understand __The Three Objects__ of the git data model well enough to know what git operations are required in real-life scenarios.
+1. Make changes confidently, by knowing specifically how git has your back.
  
 ### Objectives
 
 By the end of this course, students will be able to...
 
 #### Demonstrate these skills:
-* Work as a team to deliver changes to a chosen remote and branch
-* Understand and resolve merge collisions
-* Manage a commit with 'git reset'
-* Stash work and return to it
+- Use Pull Requests to deliver changes for review by one or more members of your team
+- Work as a team to deliver changes to a chosen remote and branch
+- Manage commits with `git reset` and `git rebase` - including undo, modify, move operations
+- Resolve merge collisions
+- Stash work and return to it
 
 #### Explain these terms and concepts:
-* sha
-* content-addressable filesystem
-* blob, tree, commit
-* workspace, index, HEAD
-* symbolic ref
-* branch
-* remote
-* fetch vs. pull
-* fast-forward merge
-* 'detached HEAD' state
+- sha
+- content-addressable filesystem
+- blob, tree, commit
+- workspace, index, HEAD
+- symbolic ref
+- branch
+- remote
+- fetch vs. pull
+- fast-forward merge
+- 'detached HEAD' state
 
 #### Use these commands, and understand them in terms of the 3 objects/3 trees:
-* git add
-* git status
-* git diff \[\--staged\]
-* git commit
-* git reset \[\--soft, \--mixed, \--hard \]
-* git branch
-* git merge
-* [git stash](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning) - "I need to save what I'm working on and come back to it later"
-* git cherry-pick
-* [git rebase -i](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) - clean up commit history before pushing
-* (stretch goal) [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git) - find a bad commit
+- git add
+- git status
+- git diff \[\--staged\]
+- git commit
+- git reset \[\--soft, \--mixed, \--hard \]
+- git branch
+- git merge
+- [git stash](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning) - "I need to save what I'm working on and come back to it later"
+- git cherry-pick
+- [git rebase -i](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) - clean up commit history before pushing
+- (stretch goal) [git bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git) - find a bad commit
  
 #### Identify and explain these components of a repo graph (as seen with "git log \--all \--decorate \--oneline \--graph"):
 - HEAD

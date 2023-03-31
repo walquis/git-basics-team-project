@@ -19,16 +19,17 @@ source git-aliases.sh
 **Checkpoint: Everyone has their team lead's repo cloned (including the team lead)**.
 
 ### Basic Collaborative Workflow
-   Orientation w.r.t. class practice/household items, and basic Git/Linux/VSCode.
 
 #### LAB - Basic Collaborative Workflow
-   > Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member
-   > can add one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
+> Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member
+> can add one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
 
-### The Anatomy of a Commit 
+### The Anatomy of a Git Commit, or, The Three Objects
 Now that we have some commits, let's take a closer look...
 
-#### LAB - Anatomy of a Commit 
+![](images/commit-tree-blob-diagram.jpg)
+
+#### LAB - Anatomy of a Git Commit, or, The Three Objects
 > Use `git cat-file -p` to answer these questions:
 > 1. What fields does HEAD have?
 > 1. What kind of SHA is HEAD's "parent" field? (Use `-t` instead of `-p`)
@@ -36,6 +37,8 @@ Now that we have some commits, let's take a closer look...
 > 1. What are the contents of HEAD's tree's first blob?
 
 ### Your Local Git repo and The Three Trees - or, "Intro to `git reset`"
+Six of the [top twelve stackoverflow questions](https://stackoverflow.com/questions?tab=Votes) are git questions!!  (Last time I checked). For at least a couple of those, the answer is `git reset`.
+
 Using `git reset`, move changes back and forth locally between the [The Three Trees](objects-and-trees-exercise.md).
 
 #### LAB - Practicing with `git reset`
@@ -61,10 +64,9 @@ Github supports [two collaborative development models](https://docs.github.com/e
 
 >>"In the shared repository model, collaborators are granted push access to a single shared repository and topic branches are created when changes need to be made. Pull requests (PR's) are useful in this model as they initiate code review and general discussion about a set of changes before the changes are merged into the main development branch. This model is more prevalent with small teams and organizations collaborating on private projects."
 
-We'll be working within the shared repository model, since it is indeed more prevalent at DRW
+We'll be working within the shared repository model, since it is indeed more prevalent at DRW.
 
 Why is it called a "Pull REQUEST", if you're pushing changes?
-[ANSWER: Was more correct in the fork/pull model, less so with shared-repo]
 
 #### LAB - Create/Handle merge conflicts again - but now using Pull Requests in your workflow
 > 1. Each teammate: `git checkout -b` _yourOwnBranchName_

@@ -6,7 +6,7 @@
 - [Session 2](./session2.md)
 - [Common Git Workflows](./common-git-workflows.md)
 - [Viewing Changes](./viewing-changes.md)
-- [Instructor Notes](./instructor-notes.md)
 - [Unix Shell Concepts](./unix-shell-concepts.md)
 - [Course Syllabus](./syllabus.md)
 - [References](./references.md)
+- [Instructor Notes](./instructor-notes.md)

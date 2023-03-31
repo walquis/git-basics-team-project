@@ -16,6 +16,10 @@ git config --global core.editor "code --wait"  # Set git editor to vscode
 cd                          # Start from your home directory
 mkdir -p src
 cd src                      # Or cd to wherever you keep code projects
+
+# Although you won't be committing anything to it, 
+# you'll use this sample repo as a reference...
+#
 git clone https://github.com/walquis/git-basics-sample-project-repo
 cd git-basics-sample-project-repo
 ```
@@ -24,25 +28,21 @@ cd git-basics-sample-project-repo
 
 Visit the [GitGraph Plugin Install](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) page and follow the install instructions.
 
-## Browse history in a sample repo
-This repo records the project history of a five-member team: Ned, Nykhia, Dex, Deja, and Xavier.
+## Explore the sample repo's code and history
+This repo records the work of a five-member team: Ned, Nykhia, Dex, Deja, and Xavier.
 
-Although you won't be committing anything to it, feel free to git clone [https://github.com/walquis/git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo).
+Open `index.html` to view the website in the [git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo) that you cloned:  Choose "File --> Open File..." in your browser, navigate to `index.html` and open it.
 
-Open `index.html` to view the website:  Choose "File --> Open File..." in your browser, navigate to `git-basics-sample-project-repo/index.html`, and open it.
-
-Point your VSCode at the `git-basics-sample-project-repo` directory, and use GitGraph to take a look:
+Point your VSCode at the `git-basics-sample-project-repo` directory, and look at the history with GitGraph:
 
 
 ![GitGraph of sample repo history](images/git-graph-of-sample-repo.png)
 
-## Some Suggestions for Exploration
-
-### Questions to answer using the commit graph
+### Some questions the commit graph can help answer
 
 1. What is the name of the branch to which changes have been delivered?
 1. Who added the planet images?
-1. Are there any changes in the repo which have not yet been delivered?
+1. Are there any changes in the repo that have not yet been delivered?
 1. **Challenge Question** - Why was Ned grumpy in his comment on 4 Feb 2022 12:06, commit 4b50701d? What did his teammates miss when they merged?
 
 ### Explore the code at a specific commit
@@ -65,4 +65,4 @@ In class, you and your team will be making changes in parallel that may resemble
 
 Explore some [Unix/Shell Concepts](unix-shell-concepts.md). I *may* touch on these briefly in class. Feel free to google around on your own; focus on bash shell concepts, especially I/O redirection, process hierarchy and management, and environment variables.
 
-If you really want to go deep before class starts, [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) will give you a head-start on some of the core class material.
+If you want to go deep before class starts, [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) will give you a head-start on some of the core class material.
