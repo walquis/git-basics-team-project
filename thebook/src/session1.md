@@ -44,6 +44,9 @@ When I checked end of March 2023, six of the [top twelve stackoverflow questions
 
 Using `git reset`, move changes back and forth locally between the [The Three Trees](objects-and-trees-exercise.md).
 
+This is a rather busy diagram, but worth staring at ...
+![](images/GitThreeTrees.png)
+
 #### LAB - Practicing with `git reset`
 Use each of the `--soft`, `--mixed`, and `--hard` options to `git reset` at least once.
 > 1. Make a change and commit it (do not `git push`!).

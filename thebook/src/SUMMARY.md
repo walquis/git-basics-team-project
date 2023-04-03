@@ -10,3 +10,5 @@
 - [Course Syllabus](./syllabus.md)
 - [References](./references.md)
 - [Instructor Notes](./instructor-notes.md)
+  - [Session 1 ](./instructor-notes/session1.md)
+  - [Session 2 ](./instructor-notes/session2.md)
