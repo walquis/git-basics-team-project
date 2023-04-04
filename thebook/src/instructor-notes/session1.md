@@ -7,36 +7,32 @@
 - If most ppl haven't done it, go over the setup parts.
 
 ## Basic Collaborative Workflow
-TERMS:
-- remote
-- fast-forward merge
-- merge commit (has more than one parent commit)
-
-COMMANDS:
-- `git pull`
-- `git add`
-- `git commit`
-- `git push`
 
 POINTS TO MAKE:
 - Describe the iterative workflow: pull/add/commit/push.
-- [Reference the commit/pull/push pic].
+- Discuss the pull/merge/push pic.
 - LAB: Ask ppl for red/green reactions w.r.t. completion.
+
+DISCUSS the pull-merge-push diagram
+
+SKETCHING EXERCISE: Walk with the class through the process of placing the `main` and `origin/main` branch labels corresponding with each operation:
+1. "Where do the branch labels start out when 'my repo' and 'their repo' are cloned?" (everything at the green commit).
+1. "Which branch labels move when 'they' make a change and commit?" (only `main` in 'their repo').
+1. "Which branch labels move when 'they' push?" (their local `origin/main`; Github's `main`).
+1. "What makes branch labels move in 'my repo'?" (`git pull`).
+1. "What is the sequence of branch label movements in 'my repo' when I do 'git pull'? (`origin/main` moves to blue commit; git does the merge and moves `main` to the merge commit).
+1. "What branch labels would move in 'my repo' if I did `git fetch` instead of `git pull`?"  (Just `origin/main`; NOT `main`).
+1. "What branch labels move when I push from 'my repo'? (`main` on the origin).
+1. "Does Github do a merge when I push?" (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) 
+
 - **Time for a break?***
 
 ## Anatomy of a Commit, or, The Three Objects
-TERMS:
-- sha
-- content-addressable filesystem
-- blob, tree, commit
-
-COMMANDS:
-- `git cat-file -p` - just for teaching purposes; not part of a normal workflow
-- `git reflog`
 
 POINTS TO MAKE:
 - Git has your back.
-  - sha's don't go away when you stop referring to them; they're still in the repo
+  - sha's don't go away when you stop referring to them; they're still in the repo.
+- Discuss "Content-addressable".  _What happens when a commit's content changes?_  Its address changes.
 
 Reference the commit/tree/blob pic.
 
@@ -44,18 +40,13 @@ Reference the commit/tree/blob pic.
 - LAB: Ask ppl for red/green reactions w.r.t. completion of the lab.
 
 
-## Local Git Repo and 3 Trees, or, Intro to `git reset`
-TERMS:
-- workspace, index, HEAD
-- "detached HEAD" state
-- `git diff`, `git diff --staged`
-- `git reflog`
-- `git stash`
+## Your Local Git Repo and the 3 Trees, or, Intro to `git reset`
 
 POINTS TO MAKE:
 - Git has your back (again).
   - `git reflog` lets you retrace your steps.
   - `git stash` lets you switch contexts quickly.
+- `git reset` is a local-only command.
 
 We've only used `git reset` to move our current branch back one commit.  But `git reset` will move our current branch anywhere we tell it.  When might this be useful?
 - When re-arranging branches.  Suppose you made changes on `main`, but meant to branch first?  Just make the branch where you're at, and move `main` back to where it belongs (as long as you haven't pushed those changes yet).
@@ -71,9 +62,6 @@ TERMS:
 
 COMMANDS:
 - `git branch`
-- `git merge`
-- `git fetch`
-- `git pull` - it's a 2-part command
 
 ## Create And Resolve Merge Conflicts - Using Branches and PR's
 TERMS:
@@ -82,9 +70,9 @@ TERMS:
 COMMANDS:
 - `git branch`
 
-DISCUSS: Why is it called a "Pull REQUEST", if you're pushing changes?
-- In the fork/pull model, an actual `git pull` happened when the request was granted, since multiple remote repos were involved: the source repo and its fork.  A `git pull` fetched-and-merged the changes from the forked repo to its source repo.
-- In the shared-repo model, no `git pull` is involved, since you've already pushed your changes to the source repo (although on a different branch).  However, you *are* still asking for your changes to be "pulled" into the main development stream; so in that sense, it's still a "request for a pull".
+DISCUSS: 🤔 Why is it called a "**Pull** Request", if you're **pushing** changes?
+- Back in the day, with Github's original fork/pull model, an actual `git pull` happened when the request was granted, since multiple remote repos were involved: the source repo and its fork.  A `git pull` fetched-and-merged the changes from the forked repo to its source repo.
+- In the shared-repo model however, no `git pull` is involved, since you've already pushed your changes to the source repo (although on a different branch).  However, you *are* still "requesting" for your changes to be "pulled" into the main development stream; so in a logical sense, it's still a "request for a pull".
 
 
 # Session Two
