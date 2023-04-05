@@ -1,0 +1,1213 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Git Basics - Collaborating With Git</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="prework.html"><strong aria-hidden="true">2.</strong> Prework</a></li><li class="chapter-item expanded "><a href="session1.html"><strong aria-hidden="true">3.</strong> Session 1</a></li><li class="chapter-item expanded "><a href="objects-and-trees-exercise.html"><strong aria-hidden="true">4.</strong> Objects-and-Trees Exercise</a></li><li class="chapter-item expanded "><a href="session2.html"><strong aria-hidden="true">5.</strong> Session 2</a></li><li class="chapter-item expanded "><a href="common-git-workflows.html"><strong aria-hidden="true">6.</strong> Common Git Workflows</a></li><li class="chapter-item expanded "><a href="viewing-changes.html"><strong aria-hidden="true">7.</strong> Viewing Changes</a></li><li class="chapter-item expanded "><a href="unix-shell-concepts.html"><strong aria-hidden="true">8.</strong> Unix Shell Concepts</a></li><li class="chapter-item expanded "><a href="syllabus.html"><strong aria-hidden="true">9.</strong> Course Syllabus</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">10.</strong> References</a></li><li class="chapter-item expanded "><a href="instructor-notes.html"><strong aria-hidden="true">11.</strong> Instructor Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="instructor-notes/session1.html"><strong aria-hidden="true">11.1.</strong> Session 1 </a></li><li class="chapter-item expanded "><a href="instructor-notes/session2.html"><strong aria-hidden="true">11.2.</strong> Session 2 </a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Git Basics - Collaborating With Git</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="collaborating-with-git"><a class="header" href="#collaborating-with-git">Collaborating with git</a></h1>
+<p><a href="https://xkcd.com/1597/"> <img src="https://imgs.xkcd.com/comics/git.png" alt="" /> </a></p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p><strong>Goal</strong>: Unlike Cueball in XKCD, your team will actually learn git well enough to collaborate effectively with it! In this two-session hands-on course, you will work as a team to build a simple static website, laying a foundation for communicating about code in a professional development environment.</p>
+<p>The course builds practical skills with git through hands-on work with git's <em>data model</em> - <strong>The Three Objects</strong><sup class="footnote-reference"><a href="#3objs">1</a></sup> - and moving them around in git's <em>state model</em> - <strong>The Three Trees</strong><sup class="footnote-reference"><a href="#3trees">2</a></sup>.</p>
+<p>Another major theme is <strong>workflows</strong>.  We will learn and practice some <a href="common-git-workflows.html">Common Git Workflows</a>, especially those built around <strong>Pull Requests</strong>, as we build our site. For instance, as your team begins to deliver code, you will encounter challenges (merge conflicts!) inherent in with working in parallel on a code base, and you will practice using git's and Github's features to resolve them.</p>
+<p>Your team will collaborate by working in parallel on changes and delivering to <code>main</code>, aiming toward making your site look more or less like the site in the <a href="https://github.com/walquis/git-basics-sample-project-repo">sample repo</a>'s <code>index.html</code><sup class="footnote-reference"><a href="#sample-repo-note">3</a></sup></p>
+<p>To keep the coding part simple and allow you to focus on git skills, you and your team will modify static HTML and CSS files.  The only &quot;webserver&quot; is your local filesystem.</p>
+<p>Keep your website viable as you deliver each change to <code>main</code>.   Don't &quot;break the build&quot;!</p>
+<p>By the end of our time, we'll have substantially covered the topics in the <a href="syllabus.html">Course Syllabus</a>.</p>
+<p>I've presented some variation of this material to every CodePlatoon cohort since Bravo.  Equipped with a firm grasp of these git fundamentals, graduates have reported that they have become go-to resources for git in their software teams.</p>
+<h3 id="about-the-instructor"><a class="header" href="#about-the-instructor">About the instructor</a></h3>
+<p>As a devops professional with three-ish decades of experience in version control, I first experienced git in 2009 when our developers insisted on bringing it into the company.  I learned a few basic survival commands, but it wasn't really clicking for me. Depressingly often for a version control &quot;expert&quot;, I got out of my depth and had to be rescued.</p>
+<p>Eventually I tired of memorizing magic spells and decided to buckle down and learn the basics of git once-and-for-all.  Suddenly, git started making sense!  That sense of enlightenment (along with the huge boost in my ability to efficiently manage code changes) helped inspire this course.</p>
+<hr />
+<div class="footnote-definition" id="3objs"><sup class="footnote-definition-label">1</sup>
+<p>The <strong>three objects</strong> are <code>commit</code>, <code>tree</code>, `blob</p>
+</div>
+<div class="footnote-definition" id="3trees"><sup class="footnote-definition-label">2</sup>
+<p>The <strong>three trees</strong> are <code>HEAD</code>, <code>index</code>, <code>workspace</code></p>
+</div>
+<div class="footnote-definition" id="sample-repo-note"><sup class="footnote-definition-label">3</sup>
+<p>You can't view the rendered <code>index.html</code> directly from Github; it only shows the HTML source.  When you clone the <a href="https://github.com/walquis/git-basics-sample-project-repo">sample repo</a>, you can view it by choosing &quot;File --&gt; Open File...&quot; in your browser, and navigating to the <code>index.html</code> in your local repo. </p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="prework-for-the-git-basics-course"><a class="header" href="#prework-for-the-git-basics-course">Prework for the Git Basics Course</a></h1>
+<p>This course assumes you have ...</p>
+<ol>
+<li>A <a href="https://github.com">GitHub</a> account.</li>
+<li>Visual Studio Code installed.</li>
+<li>Access to some sort of bash shell: On MacOSX, Terminal.app; on Windows, it would be <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a> or <a href="https://gitforwindows.org/">Git For Windows</a>.</li>
+</ol>
+<p>This prework should only take a few minutes. You'll do  a little git environment setup, install the Git Graph plugin, and familiarize yourself with Git Graph by examining a sample repo for a hypothetical project team.</p>
+<h2 id="run-these-commands-in-your-terminalapp"><a class="header" href="#run-these-commands-in-your-terminalapp">Run these commands in your Terminal.app</a></h2>
+<pre><code class="language-bash">git config --global pull.rebase false  # Tell git what to do when pulling
+git config --global core.editor &quot;code --wait&quot;  # Set git editor to vscode
+cd                          # Start from your home directory
+mkdir -p src
+cd src                      # Or cd to wherever you keep code projects
+
+# Although you won't be committing anything to it, 
+# you'll use this sample repo as a reference...
+#
+git clone https://github.com/walquis/git-basics-sample-project-repo
+cd git-basics-sample-project-repo
+</code></pre>
+<h2 id="install-the-gitgraph-plugin-in-your-vscode"><a class="header" href="#install-the-gitgraph-plugin-in-your-vscode">Install the GitGraph plugin in your VSCode</a></h2>
+<p>Visit the <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">GitGraph Plugin Install</a> page and follow the install instructions.</p>
+<h2 id="explore-the-sample-repos-code-and-history"><a class="header" href="#explore-the-sample-repos-code-and-history">Explore the sample repo's code and history</a></h2>
+<p>This repo records the work of a five-member team: Ned, Nykhia, Dex, Deja, and Xavier.</p>
+<p>Open <code>index.html</code> to view the website in the <a href="https://github.com/walquis/git-basics-sample-project-repo">git-basics-sample-project-repo</a> that you cloned:  Choose &quot;File --&gt; Open File...&quot; in your browser, navigate to <code>index.html</code> and open it.  You should see something like this...</p>
+<p><img src="images/the-solar-system-screenshot.jpg" alt="" /></p>
+<p>Point VSCode at the <code>git-basics-sample-project-repo</code> directory, and look at the history with GitGraph:</p>
+<p><img src="images/git-graph-of-sample-repo.png" alt="GitGraph of sample repo history" /></p>
+<h3 id="some-questions-the-commit-graph-can-help-answer"><a class="header" href="#some-questions-the-commit-graph-can-help-answer">Some questions the commit graph can help answer</a></h3>
+<ol>
+<li>What is the name of the branch to which changes have been delivered?</li>
+<li>Who added the planet images?</li>
+<li>Are there any changes in the repo that have not yet been delivered?</li>
+<li><strong>Challenge Question</strong> - Why was Ned grumpy in his comment on 4 Feb 2022 12:06, commit 4b50701d? What did his teammates miss when they merged?</li>
+</ol>
+<h3 id="explore-the-code-at-a-specific-commit"><a class="header" href="#explore-the-code-at-a-specific-commit">Explore the code at a specific commit</a></h3>
+<p><strong>Hint</strong>: You can do a 'detached head' checkout, that is, where HEAD points to a commit rather than a branch name.  It's handy for viewing the repo at chosen points in history.  For instance, you can open the website in its state as-of a specific commit.  Or run the repo's tests (if the repo had tests defined).</p>
+<p>What should Xavier have done during his merge to make Ned happy?  Who else should have done the same?</p>
+<pre><code>$ git checkout 393cd9f4   # Xavier's merge, before Ned fixed things up.
+$ open index.html         # Explore the website at this point in history.
+$ git checkout 4b50701d   # Ned's fixes
+$ git checkout main       # Set HEAD back to a branch reference (`main` in this case).
+</code></pre>
+<h2 id="whats-next"><a class="header" href="#whats-next">What's Next?</a></h2>
+<p>Take a look at the <a href="syllabus.html">syllabus</a>.</p>
+<p>In class, you and your team will be making changes in parallel that may resemble this sample history, as you experience what collaboration looks like with git.</p>
+<p>Explore some <a href="unix-shell-concepts.html">Unix/Shell Concepts</a>. I <em>may</em> touch on these briefly in class. Feel free to google around on your own; focus on bash shell concepts, especially I/O redirection, process hierarchy and management, and environment variables.</p>
+<p>If you want to go deep before class starts, <a href="https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified">Reset Demystified</a> will give you a head-start on some of the core class material.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="session-one"><a class="header" href="#session-one">Session One</a></h2>
+<h3 id="setup"><a class="header" href="#setup">Setup</a></h3>
+<ol>
+<li>Has everyone done the <a href="prework.html">Prework</a>?</li>
+<li>Open your Linux shell.</li>
+<li>Run these commands to set up some handy aliases...</li>
+</ol>
+<pre><code class="language-bash"># Clone this repo only if you haven't already done so...
+git clone https://github.com/walquis/git-basics-team-project
+cd git-basics-team-project/bin
+source git-aliases.sh
+</code></pre>
+<ol>
+<li>Define your project teams.</li>
+<li><strong>Team</strong>: Choose a team lead.</li>
+<li><strong>Team Lead</strong>: Create a repo (check the box for including a README)</li>
+<li><strong>Team Lead</strong>: Invite your team as collaborators</li>
+<li><strong>Each Teammate</strong>: Clone your team lead's repo (do NOT fork it!)</li>
+<li>Take a look at the sample project repo, if you haven't already.</li>
+</ol>
+<p><strong>Checkpoint: Everyone has their team lead's repo cloned (including the team lead)</strong>.</p>
+<h3 id="the-simplest-possible-collaborative-git-workflow"><a class="header" href="#the-simplest-possible-collaborative-git-workflow">The Simplest Possible Collaborative Git Workflow</a></h3>
+<p>Everybody working on the <code>main</code> branch.</p>
+<p><strong>Vocabulary</strong>: remote, merge commit, fast-forward merge</p>
+<p><strong>Commands</strong>: <code>git pull</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>, <code>git fetch</code>, <code>git merge</code></p>
+<p>A basic workflow in the &quot;shared-repo development model&quot;:
+<img src="images/pull-merge-push-diagram.jpg" alt="" /></p>
+<p>🤔 What is the difference between a merge commit, and a commit that has a merge conflict?</p>
+<h4 id="lab---simplest-possible-collaborative-git-workflow"><a class="header" href="#lab---simplest-possible-collaborative-git-workflow">LAB - Simplest Possible Collaborative Git Workflow</a></h4>
+<blockquote>
+<ol>
+<li><strong>Each teammate</strong>: Commit and push at least one <em>non-conflicting</em> change.  For instance, each teammate
+can add one of these files: <code>index.html</code>, <code>help.html</code>, <code>about.html</code>, <code>faq.html</code>, <code>map.html</code>.</li>
+<li><code>git push</code> and <code>git pull</code> until all of you have each other's changes and are on the same commit locally.</li>
+</ol>
+</blockquote>
+<h3 id="anatomy-of-a-git-commit-or-the-three-objects"><a class="header" href="#anatomy-of-a-git-commit-or-the-three-objects">Anatomy of a Git Commit, or, &quot;The Three Objects&quot;</a></h3>
+<p><strong>Vocabulary</strong>: sha, content-addressable, blob, tree, commit</p>
+<p><strong>Commands</strong>: </p>
+<ul>
+<li><code>git cat-file -p</code> - just for teaching purposes; not part of a normal git workflow</li>
+<li><code>git reflog</code></li>
+</ul>
+<p>Now that we have some commits, let's take a closer look...</p>
+<p><img src="images/commit-tree-blob-diagram.jpg" alt="" /></p>
+<p>🤔 Is it possible for a commit to have the same SHA as its parent?</p>
+<h4 id="lab---anatomy-of-a-git-commit-or-the-three-objects"><a class="header" href="#lab---anatomy-of-a-git-commit-or-the-three-objects">LAB - Anatomy of a Git Commit, or, The Three Objects</a></h4>
+<blockquote>
+<p>Use <code>git cat-file -p</code> to answer these questions:</p>
+<ol>
+<li>What fields does HEAD have?</li>
+<li>What kind of SHA is HEAD's &quot;parent&quot; field? (Use <code>-t</code> instead of <code>-p</code>)</li>
+<li>What fields does HEAD's tree have?</li>
+<li>What are the contents of HEAD's tree's first blob?</li>
+</ol>
+</blockquote>
+<h3 id="your-local-git-repo-and-the-three-trees---or-intro-to-git-reset"><a class="header" href="#your-local-git-repo-and-the-three-trees---or-intro-to-git-reset">Your Local Git repo and The Three Trees - or, &quot;Intro to <code>git reset</code>&quot;</a></h3>
+<p><strong>Vocabulary</strong>:</p>
+<ul>
+<li>workspace, index, HEAD</li>
+<li>&quot;detached HEAD&quot; state</li>
+</ul>
+<p><strong>Commands</strong>: <code>git diff</code>, <code>git diff --staged</code>, <code>git reflog</code>, <code>git stash</code></p>
+<p>When I last checked (end of March 2023), six of the <a href="https://stackoverflow.com/questions?tab=Votes">top twelve stackoverflow questions</a> were git questions!!  For at least a couple of those, the answer is <code>git reset</code>.</p>
+<p>Today we will learn to use <code>git reset</code> to move changes back and forth (locally) between the <a href="objects-and-trees-exercise.html">The Three Trees</a>.</p>
+<p>A busy diagram--it shows the objects as well as the trees--but worth pondering ...
+<img src="images/GitThreeTrees.png" alt="" /></p>
+<h4 id="lab---practicing-with-git-reset"><a class="header" href="#lab---practicing-with-git-reset">LAB - Practicing with <code>git reset</code></a></h4>
+<p>Use each of the <code>--soft</code>, <code>--mixed</code>, and <code>--hard</code> options to <code>git reset</code> at least once.</p>
+<blockquote>
+<ol>
+<li>Make a change and commit it (do not <code>git push</code>!).</li>
+<li>Revert the change using <code>git reset</code>.</li>
+<li>Make another change, and commit.</li>
+<li>Revert, using another option of <code>git reset</code>.  Commit.</li>
+<li>Revert, using another option of <code>git reset</code>.  Commit.</li>
+</ol>
+</blockquote>
+<p>We've only used <code>git reset</code> to move our current branch back one commit.  But with <code>git reset</code>, we can move our current branch anywhere we want.  When might this be useful?</p>
+<p><strong>Scenario</strong>: You accidentally make commits on <code>main</code>, but then realize you should be on a branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).</p>
+<h4 id="lab---simulate-branching-after-the-fact"><a class="header" href="#lab---simulate-branching-after-the-fact">LAB - Simulate branching &quot;after-the-fact&quot;</a></h4>
+<blockquote>
+<ol>
+<li>Make 3 or 4 commits on <code>main</code>.  Then realize Oops, I should be on another branch.</li>
+<li>Make a branch at your current location.  <em>Hover <a href="doesnotexist.jpg," title="'git branch mybranch' (not 'git checkout mybranch'!  Why is that?)">here</a> for a hint.</em></li>
+<li>Use <code>git reset</code> to move <code>main</code> back to where it should be.</li>
+</ol>
+</blockquote>
+<h3 id="create-and-resolve-merge-conflicts---with-basic-workflow"><a class="header" href="#create-and-resolve-merge-conflicts---with-basic-workflow">Create And Resolve Merge Conflicts - With Basic Workflow</a></h3>
+<h4 id="lab---merge-conflicts"><a class="header" href="#lab---merge-conflicts">LAB - merge conflicts</a></h4>
+<blockquote>
+<ol>
+<li>Each teammate: Change the same line in same file (e.g. Change &quot;The Solar System&quot; in <code>index.html</code> to some other text).</li>
+<li>Commit. </li>
+<li>One teammate do a <code>git push</code>; the others <code>git pull</code>.</li>
+<li>Among your team, resolve merge conflicts and <code>git push</code> until you all have the same commit sha for HEAD.</li>
+</ol>
+</blockquote>
+<h3 id="create-and-resolve-merge-conflicts---using-branches-and-prs"><a class="header" href="#create-and-resolve-merge-conflicts---using-branches-and-prs">Create And Resolve Merge Conflicts - Using Branches and PR's</a></h3>
+<p>Github supports <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models">two collaborative development models</a>:</p>
+<ul>
+<li>fork and pull</li>
+<li>shared repository &lt;--- This is us</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>&quot;In the shared repository model, collaborators are granted push access to a single shared repository and topic branches are created when changes need to be made. Pull requests (PR's) are useful in this model as they initiate code review and general discussion about a set of changes before the changes are merged into the main development branch. This model is more prevalent with small teams and organizations collaborating on private projects.&quot;</p>
+</blockquote>
+</blockquote>
+<p>We'll be working with the shared repository model.</p>
+<p>🤔 Why is it called a &quot;<strong>Pull</strong> Request&quot;, if you're <strong>pushing</strong> changes?</p>
+<h4 id="lab---createhandle-merge-conflicts-again---but-now-using-pull-requests-in-your-workflow"><a class="header" href="#lab---createhandle-merge-conflicts-again---but-now-using-pull-requests-in-your-workflow">LAB - Create/Handle merge conflicts again - but now using Pull Requests in your workflow</a></h4>
+<blockquote>
+<ol>
+<li>Each teammate: <code>git checkout -b</code> <em>yourOwnBranchName</em></li>
+<li>Each teammate: Change the same line in same file, like before.</li>
+<li>Commit. </li>
+<li><code>git push</code> <em>yourOwnBranchName</em></li>
+<li>Go to Github and make a PR for your branch; choose one or more reviewers.</li>
+<li>Reviewers: review/approve the PRs and merge.</li>
+<li>Review and merge, <code>git pull</code>, etc. until you all have the same commit sha for HEAD.</li>
+</ol>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exercise---three-objects-three-trees"><a class="header" href="#exercise---three-objects-three-trees">Exercise - Three Objects, Three Trees</a></h1>
+<p>(In a 2-day format, this could be assigned as homework).</p>
+<p>The goal of this exercise is to solidify two major concepts:</p>
+<ul>
+<li><strong>The Three Objects</strong> - the git data model</li>
+<li><strong>The Three Trees</strong> - managing local changes</li>
+</ul>
+<p>Work through this entire exercise, poking around in the project repo you started in Session 1.  We'll have already touched on these concepts, but this exercise is designed to test and expand your understanding.</p>
+<p>This should help you hit the ground running in Session Two.</p>
+<h3 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h3>
+<ul>
+<li><a href="objects-and-trees-exercise.html#set-up-git-aliases">Set up git Aliases</a> - Command-line shortcuts for git</li>
+<li><a href="objects-and-trees-exercise.html#git-versus-github">Git versus Github</a> - Which operations go with each?</li>
+<li><a href="objects-and-trees-exercise.html#the-git-data-model---the-three-objects">The Three Objects</a> - Git's Data Model</li>
+<li><a href="objects-and-trees-exercise.html#the-three-trees">The Three Trees</a> - Managing local changes</li>
+</ul>
+<p>Review <a href="unix-shell-concepts.html">Basic Unix and Shell</a>.</p>
+<h2 id="set-up-git-aliases"><a class="header" href="#set-up-git-aliases">Set up git aliases</a></h2>
+<p>This activates cool bash shortcuts for working with git from the bash prompt.</p>
+<pre><code>$ cat bin/git-aliases.sh  # See what's there
+$ source bin/git-aliases.sh   # Activate aliases in current shell
+$ bin/append-aliases-to-profile.sh  # So they'll be part of future shells.
+$ adog  # This should work now.
+</code></pre>
+<h2 id="git-versus-github"><a class="header" href="#git-versus-github">Git versus Github</a></h2>
+<p>The git client is a big bag of commands for implementing version control using a local content-addressable DB (aka a repository, or &quot;repo&quot;), as well as efficiently communicating with other, remote repos--a Distributed Version Control System, or DVCS.  Git was written by Linus Torvalds in 2005 for version-controlling the Linux kernel.</p>
+<p>In 2008, the social coding platform <a href="https://github.com">github.com</a> came into existence, built around the git client.</p>
+<p>When working with the git client and github.com, it's useful to keep in mind which operations belong to which tool.</p>
+<div class="table-wrapper"><table><thead><tr><th>-- <strong>git</strong> --</th><th>-- <strong>github.com</strong> --</th></tr></thead><tbody>
+<tr><td>repo</td><td>repo</td></tr>
+<tr><td>clone</td><td>fork</td></tr>
+<tr><td>commit,<br> push,<br>merge</td><td></td></tr>
+<tr><td>pull</td><td>pull request</td></tr>
+<tr><td></td><td>org,<br> team,<br> collaborator,<br> org owner</td></tr>
+</tbody></table>
+</div>
+<h2 id="the-git-data-model---the-three-objects"><a class="header" href="#the-git-data-model---the-three-objects">The Git Data Model - The Three Objects</a></h2>
+<h3 id="exploring-the-git-repo---shas-and-objects"><a class="header" href="#exploring-the-git-repo---shas-and-objects">Exploring the git repo - SHAs and objects</a></h3>
+<h4 id="the-git-database"><a class="header" href="#the-git-database">The git database</a></h4>
+<p>The git DB is &quot;a content-addressable filesystem&quot;.   That is, objects are stored and retrieved using keys (&quot;addresses&quot;) based on their content.  These keys are referred to as &quot;SHAs&quot;.</p>
+<p>How is this done?</p>
+<p>From your repo's workspace root, take a look around using the following as a guide.  NOTE: Your values for git SHA's will be different than what is shown here, since the contents of your objects are different.</p>
+<pre><code>$ git rev-parse HEAD
+9cd690631f73c4a396e02348744a3a2379f737bc
+$ ls .git/objects/9c  # First two characters of HEAD's SHA...
+d690631f73c4a396e02348744a3a2379f737bc
+</code></pre>
+<p>Where did the '9cd69...' string come from?  It's the address of the latest commit, generated by running that content through a SHA-1 hashing algorithm.</p>
+<p>How do we know it's a commit?</p>
+<pre><code>$ git cat-file -t 9cd69
+commit
+</code></pre>
+<p>What's actually <em>in</em> the commit?  Use &quot;-p&quot; instead of &quot;-t&quot; ...</p>
+<pre><code>$ git cat-file -p 9cd69
+tree 07018552500e8ebd52c2011c51a9b21a01c11ce4
+parent b1c24a12c733be55ab2512fc003a84405bf68126
+author Chris Walquist &lt;cwalquist@drw.com&gt; 1615843154 -0500
+committer Chris Walquist &lt;cwalquist@drw.com&gt; 1615843154 -0500
+
+ignore _site directory
+</code></pre>
+<p>Note the format of the commit record, and its fields:  tree, parent, author, committer.  (And after a blank line, the comment).</p>
+<p><em>Test your understanding</em>: Are all SHA's commits?  Are all commits SHA's?  Describe the relationship between a SHA and a git repo object.</p>
+<h4 id="exercise-commit-hitxt-through-normal-git-commands"><a class="header" href="#exercise-commit-hitxt-through-normal-git-commands">Exercise: Commit hi.txt through &quot;normal git commands&quot;</a></h4>
+<p>Create a <code>hi.txt</code> file with a line or two of content in it, and commit it into the repo, using the customary <code>git add</code> and <code>git commit</code> (or their equivalent aliases)</p>
+<ul>
+<li>What SHA corresponds to the commit?</li>
+<li>Can you find that SHA under .git/objects?</li>
+<li>Extra credit: Using <code>git cat-file -p```, can you trace from the commit SHA, all the way to the blob SHA that contains the actual contents of </code>hi.txt<code>?  HINT: there is a 'tree' SHA between the 'commit' and the 'blob', which is revealed through judicious use of `git cat-file -p</code>.  What is the SHA of that blob object?</li>
+<li>How would you print the contents of your hi.txt file, using `git cat-file -p```?</li>
+</ul>
+<h4 id="while-were-herewhat-else-can-we-see-in-git"><a class="header" href="#while-were-herewhat-else-can-we-see-in-git">While we're here...What else can we see in .git?</a></h4>
+<pre><code>$ cd .git
+$ ls -l
+$ file HEAD
+HEAD: ASCII text
+$ cat HEAD
+ref: refs/heads/master
+$ file refs/heads/master
+refs/heads/master: ASCII text
+$ cat !$  # BANG-dolla!  bash shorthand for &quot;last argument of previous command&quot;
+fc223df6e6f71a506f9bda0fac71b16041fd7004  # Your SHA will differ from this one (why?)
+$ ls -l refs
+$ ls -l refs/remotes
+$ ls -l refs/remotes/origin
+$ file refs/remotes/origin/master
+$ cat !$
+fc223df6e6f71a506f9bda0fac71b16041fd7004
+</code></pre>
+<p>So, how is HEAD stored in the git repo?  How about local and remote branches?</p>
+<h2 id="the-three-git-objects---commit-tree-blob"><a class="header" href="#the-three-git-objects---commit-tree-blob">The Three Git Objects - Commit, Tree, Blob</a></h2>
+<p>What kind of SHA is HEAD?</p>
+<pre><code>$ git cat-file -t HEAD
+commit
+</code></pre>
+<p>Let's look at the origin/master commit (HEAD was the same as origin/master, until you committed hi.txt).</p>
+<pre><code>$ git cat-file -p origin/master
+tree 07018552500e8ebd52c2011c51a9b21a01c11ce4
+parent b1c24a12c733be55ab2512fc003a84405bf68126
+author Chris Walquist &lt;cwalquist@drw.com&gt; 1615843154 -0500
+committer Chris Walquist &lt;cwalquist@drw.com&gt; 1615843154 -0500
+
+ignore _site directory
+</code></pre>
+<p>What kind of SHA is 07018?</p>
+<pre><code>$ git cat-file -t 07018
+tree
+</code></pre>
+<p>What is in 07018?  (Remember, your exact SHA, and its contents, will be different than this example)</p>
+<pre><code>$ git cat-file -p 07018
+100644 blob 2d45b22d4cbfebf78a5c78c46ecdc44fca2e1d27	.gitignore
+100644 blob 60cfe42a4102d0ad6be5ec1373f3cec61a439b23	README.md
+100644 blob 324e2e0cc5bfe49dd3faef7b674e7ba24c5347a7	app.py
+040000 tree 577935a1899acf406349842178b4caf8ab171116	bin
+100644 blob f9c1905abf276dce13ee3b883d50e699c450c728	config.py
+100644 blob 719b71285df083da25fa967460beee0a520df64c	config.yml.sample
+040000 tree 6a51471d23a4c65df321b424ba35fb2651c95b9a	config
+040000 tree 3a8b3bfe5b18db9a7317480cf1ac77d217cc1e34	db
+040000 tree 393a18221eb58a427601b4cd3b4cc7490ecc7037	lib
+100644 blob 7bac10d65439b807b8cf852b2781d7782725fad3	main.py
+040000 tree 8473c63a37cfec1c0458282195054aca4b7564a6	models
+100644 blob 308747b19d7876166a1e8385652de498c4743599	requirements.txt
+100644 blob 1f8bc52a33198cf0837159cec540611e65365cc1	views.py
+</code></pre>
+<p>What SHA contains the contents of the first entry in 07018?  What is that entry's name?</p>
+<p>How do you tell whether it's a filename or a directory name?  Hint: What kind of SHA is the first entry?</p>
+<pre><code>$ git cat-file -p 2d45b
+__pycache__
+venv
+*.swp
+*.pyc
+*.sqlite3
+_site
+</code></pre>
+<p>Consider this git object diagram, courtesy of git-scm.com:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/data-model-3.png" alt="" title="Git Data Model" /></p>
+<p>What SHAs from your repo (whether commit, tree, or blob) would correspond to this diagram's latest commit?</p>
+<p>So there they are:  <strong>The Three Objects</strong>.  <strong>commit</strong>, <strong>tree</strong>, and <strong>blob</strong>. Next up: How do they work in practice?</p>
+<h2 id="the-three-trees"><a class="header" href="#the-three-trees">The Three Trees</a></h2>
+<p>HEAD, Index, and Workspace</p>
+<p>Git manages your changes using three trees:</p>
+<div class="table-wrapper"><table><thead><tr><th>-- <strong>Tree</strong> --</th><th>-- <strong>Role</strong> --</th></tr></thead><tbody>
+<tr><td>HEAD</td><td>The latest commit</td></tr>
+<tr><td>Index</td><td>The commit-in-progress, aka &quot;staging&quot;</td></tr>
+<tr><td>Workspace</td><td>Your local filesystem (except for the .git directory itself</td></tr>
+</tbody></table>
+</div>
+<p>On the 'green path' (that is, no mistakes or side journeys), changes start in the <strong>workspace</strong> and flow to the <strong>index</strong> via <code>git add```, and finally into the repo via </code>git commit` (i.e., the branch to which <strong>HEAD</strong> points moves to the next commit):</p>
+<p>| <strong>Tree:</strong> | -- <strong>Workspace</strong> -- | -- <strong>Index</strong> -- | -- <strong>HEAD</strong> --
+| --: | ---- | ---- |
+| <strong>Operation:</strong> | 1. &lt;make changes&gt; | 2. <code>git add</code> (stage changes) | 3. <code>git commit</code></p>
+<p>See also this workflow diagram from git-scm.com:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-workflow.png" alt="" /></p>
+<p>Sometimes it's necessary to move changes the other way--for instance, when you need to add a forgotten file, change a commit message, or revert a commit.</p>
+<p><code>git reset</code>: The command that can assist with all this and more.  Why is it called &quot;reset&quot;?  Possibly because it resets trees to a state that already exists in the repo.  Unlike <code>git add</code> and <code>git commit</code>, which push new states INTO the repo, <code>git reset</code> pulls existing state the other way, OUT of the repo, and into one or more of HEAD, the index, and even the workspace.</p>
+<div class="table-wrapper"><table><thead><tr><th>Tree</th><th>Role</th><th><code>git reset</code> &quot;hardness&quot;<br>needed to move the tree</th></tr></thead><tbody>
+<tr><td>HEAD</td><td>The latest commit</td><td>--soft</td></tr>
+<tr><td>Index</td><td>The commit-in-progress</td><td>--mixed (also moves HEAD.) The default.</td></tr>
+<tr><td>Workspace</td><td>Your local filesystem</td><td>--hard (also moves HEAD and Index.)</td></tr>
+</tbody></table>
+</div>
+<p><code>git reset</code> needs to know two things:</p>
+<ol>
+<li>The &quot;hardness&quot;--that is, how many trees are to be reset, and</li>
+<li>Which commit SHA to (re)set the tree(s) to.</li>
+</ol>
+<p>If you just type &quot;git reset&quot;, the default hardness is &quot;--mixed&quot;, and the default commit SHA is HEAD.</p>
+<h2 id="putting-it-together---moving-objects-among-trees"><a class="header" href="#putting-it-together---moving-objects-among-trees">Putting It Together - Moving Objects Among Trees</a></h2>
+<p>Let's follow a single file through this workflow, starting with workspace changes, which will move into the index, and then into a commit.  Then, we'll revert it, tree by tree, all the way back using <code>git reset</code>.</p>
+<h3 id="1-move-a-change-forward-through-the-trees"><a class="header" href="#1-move-a-change-forward-through-the-trees">1. Move a change forward through the trees</a></h3>
+<p>Make a change (which tree are you working in now, as you run the following commands?) ...</p>
+<pre><code>$ code index.html   #  (or whatever file you may have in your workspace)
+# Make a minor change to index.html in your editor, and save it. Then...
+$ git status  # or use the 'gs' alias
+$ git diff    # or use the 'gd' alias
+</code></pre>
+<p>Add to the index.</p>
+<pre><code>$ git add views.py    # or 'ga' aFile.txt
+$ git status
+$ git diff
+$ git diff --staged   # or use the 'gds' alias
+</code></pre>
+<p>Which tree (or trees) have the change now?</p>
+<p>Commit it...</p>
+<pre><code>$ git rev-parse HEAD
+$ git commit -m &quot;Commented in views.py&quot;  # or use the 'gc' alias: gc -m &quot;Commented...&quot;
+$ git status
+</code></pre>
+<p>Now which tree (or trees) have the change?</p>
+<h3 id="2-move-the-same-change-backward-through-the-trees"><a class="header" href="#2-move-the-same-change-backward-through-the-trees">2. Move the same change backward through the trees</a></h3>
+<p>Recall that besides specifying &quot;hardness&quot;, we need to tell <code>git reset</code> the commit-SHA to align with--that is, which SHA to reset to.</p>
+<p>(What is the previous value of HEAD?)</p>
+<pre><code>$ git rev-parse HEAD
+$ git reset
+$ git rev-parse HEAD   # What happened?  Why?
+$ git rev-parse HEAD^   # What does the caret (^) mean?*
+$ git status
+$ git reset --soft &lt;previous-value-of-head&gt;
+$ git rev-parse HEAD
+$ git status
+$ git diff
+$ git diff --staged
+</code></pre>
+<p>* To understand ^, ~, @{push}, and other revision notation, see <a href="https://git-scm.com/docs/revisions">Git Revisions</a>.</p>
+<p>What happened?  What is <code>git status</code> telling you, and why?</p>
+<p>What happened to the commit that we were on before doing a `git reset```?  How might we get back to it?</p>
+<p>Now the branch that HEAD points to has been &quot;reset&quot;, back to where it was before we committed.  Which tree has changed?</p>
+<p>Let's change the next tree...</p>
+<pre><code>$ git reset   # Same command, but now something  happened.  Why?
+$ git status
+$ git diff
+$ git diff --staged
+</code></pre>
+<p>What changed this time?</p>
+<p>Let's change the third tree...</p>
+<pre><code>$ git reset --hard
+$ git status
+$ git diff
+$ git diff --staged
+</code></pre>
+<p>Test your understanding:</p>
+<ul>
+<li>What happened to each tree at each step?</li>
+<li>How is <code>git reset &lt;paths&gt;</code> the opposite of `git add <paths>```?</li>
+<li>When would each variation of <code>git reset</code> come in handy?</li>
+</ul>
+<h3 id="another-picture-of-how-git-reset---softmixedhard-tothiscommit--works"><a class="header" href="#another-picture-of-how-git-reset---softmixedhard-tothiscommit--works">Another picture of how <code>&quot;git reset --soft/mixed/hard &lt;ToThisCommit&gt;&quot;</code>  works</a></h3>
+<style>
+  /* For the git-versus-github table */
+  td { text-align: center; }
+  tr.bb { border-bottom: 2px solid black !important; }
+  .bb table { border-collapse:collapse; }
+</style>
+<!-- Github Markdown doesn't do colspan -->
+<table class="bb">
+<tr><th>"hardness"</th><th colspan="3">Trees that are reset &lt;ToThisCommit&gt;</th></tr>
+<tr class="bb"><th></th><th>Workspace</th><th>Index</th><th>HEAD</th></tr>
+<tr><td>--soft</td><td>-</td><td>-</td><td>YES</td></tr>
+<tr><td>--mixed</td><td>-</td><td>YES</td><td>YES</td></tr>
+<tr><td>--hard</td><td>YES</td><td>YES</td><td>YES</td></tr>
+</table>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="session-two---exercising-your-new-git-skills-to-run-a-project"><a class="header" href="#session-two---exercising-your-new-git-skills-to-run-a-project">Session Two - Exercising your new git skills to run a project</a></h2>
+<h3 id="where-to-start--with-a-github-project-board"><a class="header" href="#where-to-start--with-a-github-project-board">Where to Start?  With a Github project board!</a></h3>
+<p>Here's what a board for the sample Solar System website might look like:</p>
+<p><img src="images/project-board-for-sample-website.png" alt="" /></p>
+<p>Github Projects have lots of features and options for integration with repos, issues, PRs, etc.</p>
+<p>Some jumping-off points:</p>
+<ul>
+<li><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects">Best practices for Github Projects</a></li>
+<li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue">link PR to issue</a></li>
+</ul>
+<h4 id="lab---start-your-project-board"><a class="header" href="#lab---start-your-project-board">LAB - Start your project board</a></h4>
+<blockquote>
+<ol>
+<li><strong>Team lead</strong>: Create a kanban project in your GitHub org, and invite your teammates.</li>
+<li><strong>Each teammate</strong>: Choose a task from this list of changes from the <a href="https://github.com/walquis/git-basics-sample-project-repo">sample project repo</a>, and create a card for it, with your name on it:</li>
+</ol>
+<ul>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/4c461a996aad0fd5bfa420ac366139805bf334bf">Add some about text</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/481c4b796b6b916dc9735065cef141e1803a39a9">Add layout to pages that exist thus far.</a></li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/aa7f0ba34df76ddb38912f753457e07108a7c704">Add a sun image</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/5e1d8be4574fae345ac779bddc95f73dd0bf3cc0">Add faqs</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/da56c38e92e62408c1affd6c71e19ff87f0d93b6">Begin to use CSS styling</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/30e40524db51d96520c24df6e56223dae3a586fe">Add a list of the first four planets to index.html (no images yet)</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/d0095aa699e00873c305d62ecd97727bcc4c5bba">Put padding/borders/margins around images</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/4119092cac8ccdeb1b4a3ad719a6cf87d3229502">Add a solar system map</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/b4b184b40299ad852dd9cd51e0d4279f795ae98f">Add the planet images</a>.</li>
+</ul>
+</blockquote>
+<h4 id="lab---each-team-run-your-project"><a class="header" href="#lab---each-team-run-your-project">LAB - Each Team, Run your project</a></h4>
+<blockquote>
+<p>Spend about 45 minutes implementing the changes you have chosen.</p>
+<ul>
+<li>Deliver your changes using Pull Requests.</li>
+<li>Keep your project board up-to-date as you go.</li>
+</ul>
+</blockquote>
+<p>If your team gets stuck, get an instructor's attention and we'll work on it together! </p>
+<h3 id="intro-to-git-rebase"><a class="header" href="#intro-to-git-rebase">Intro to <code>git rebase</code></a></h3>
+<p>&quot;Replay a series of commits onto a starting point&quot;.  When might this be useful?</p>
+<p>A couple of common scenarios:</p>
+<h4 id="avoid-unnecessary-merge-commits"><a class="header" href="#avoid-unnecessary-merge-commits">Avoid Unnecessary Merge Commits</a></h4>
+<p><strong>Scenario</strong>: You are working on a shared branch.  You make some commits, but then realize you haven't first &quot;caught up&quot; (i.e., <code>git pull</code>) with what's been going on remotely.  (A common way to &quot;realize&quot; this is to attempt to push, and get rejected).</p>
+<p>A variation of this scenario is that you were caught up when you started working, but in the meantime someone else has pushed.</p>
+<p>You can do a <code>git pull</code> now, which will result in a merge.  But merging for no good reason is probably not a very good option.  In other words, if you'd started with <code>git pull</code>, there would be no merge commit.</p>
+<p>Fortunately, if you want a more linear history, a single <code>git rebase</code> command will allow this.  Simply <code>git fetch</code> (which updates your local git repo with news from the remote), and then <code>git rebase</code> onto the tip of the branch you're tracking.</p>
+<p>For instance, if you're working on <code>main</code>, and then realize <code>origin/main</code> is ahead of you, you can do something like this to re-home your local <code>main</code> to the latest <code>origin/main</code>:</p>
+<pre><code>$ git fetch  # Update your local origin/main pointer
+$ git rebase origin/main  # Replay your changes on top of where origin/main is now
+</code></pre>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge">Robust discussion</a> happens around what constitutes a &quot;good reason&quot; for a <strong>merge</strong> versus a <strong>rebase</strong>.  Some considerations:</p>
+<ol>
+<li>Is there a chance the change on the branch will be rolled back?  Then merge.</li>
+<li>Would it be useful to refer back to the branch in the future (i.e., to diff it)?  Then merge.</li>
+<li>Are there remote dependencies on the branch? Then merge.</li>
+<li>Is the branch not remarkable in any way?  Then rebase for a linear history.</li>
+<li>Want to minimize the commits with &quot;Merge branch <code>main</code> into ...&quot; messages? Then <em>rebase</em> your feature branch <strong>onto</strong> your base branch, and <em>merge</em> your feature branch <strong>into</strong> your base branch.</li>
+</ol>
+<p>🤔 What is meant by this statement? &quot;<em>Rebase is a destructive operation.</em>&quot;</p>
+</blockquote>
+<h4 id="lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase"><a class="header" href="#lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase">LAB - Simulate the above scenario and practice resolving it with <code>git rebase</code>:</a></h4>
+<blockquote>
+<ol>
+<li>Checkout a branch that starts 3 or four commits before <code>main</code>. <em>Hover <a href="./doesnotexist.jpg," title="See the git-checkout docs and 'start-point' option">here</a> for a hint.</em></li>
+<li>Make a couple of commits on that branch.</li>
+<li>Then use <code>git rebase</code> to replay those commits onto <code>main</code>.</li>
+</ol>
+</blockquote>
+<h4 id="interactive-rebase-git-rebase--i----edit-commit-history-before-pushing"><a class="header" href="#interactive-rebase-git-rebase--i----edit-commit-history-before-pushing">Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</a></h4>
+<h4 id="lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i"><a class="header" href="#lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i">LAB - Make 3 or 4 commits on current branch, and squash/rearrange with <code>git rebase -i</code></a></h4>
+<h3 id="intro-to-git-cherry-pick----if-time"><a class="header" href="#intro-to-git-cherry-pick----if-time">Intro to <code>git cherry-pick</code> -- if time</a></h3>
+<p>Somewhat like <code>git rebase</code>.  By default, only takes the one commit you specify and commits it to your current branch.</p>
+<h3 id="wrap-up"><a class="header" href="#wrap-up">Wrap-up</a></h3>
+<p>[link to feedback survey]</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="common-git-workflows"><a class="header" href="#common-git-workflows">Common Git Workflows</a></h1>
+<h2 id="a-basic-workflow---everybody-do-their-work-on-main"><a class="header" href="#a-basic-workflow---everybody-do-their-work-on-main">A Basic Workflow - everybody do their work on <code>main</code></a></h2>
+<p>A dizzying variety of workflows exist, but at some point they pretty much all boil down to (a) merging your team's changes with with your own, and (b) delivering them back to the team.</p>
+<p>Here's one way to accomplish it: Work on a local <code>main</code> branch that tracks the <code>main</code> of your remote, i.e., <code>origin/main</code><sup class="footnote-reference"><a href="#remote-name">1</a></sup>, where your team will rendezvous with changes.</p>
+<ol>
+<li><code>git checkout main</code> - Get onto the branch from which you will push changes.</li>
+<li><code>git pull origin main</code> - Catch your local <code>main</code> up with latest changes from your team.</li>
+<li>Implement your feature and test it.</li>
+<li><code>git add</code> and <code>git commit</code> your changes on your local <code>main</code>.</li>
+<li><code>git pull origin main</code> (in case more changes have been pushed by teammates while you were working).</li>
+<li>If there <em>are</em> changes from &quot;upstream&quot;, a merge will happen (you may need to resolve conflicts).</li>
+<li><code>git push origin main</code> - Share your scintillating creativity with your team by &quot;catching-up the remote <code>origin/main</code> to your <code>main</code>.  (If someone else pushed first--since your last <code>git pull</code>--you'll have to <code>git pull</code> again.  Then beg your team to hold off, it's your turn now!)</li>
+</ol>
+<h2 id="a-pull-request-workflow"><a class="header" href="#a-pull-request-workflow">A Pull Request Workflow</a></h2>
+<p>Instead of working-on/pushing <code>main</code>, create/work-on/push a feature branch, and ask someone to look at it before it joins <code>main</code>.</p>
+<ol>
+<li><code>git checkout main</code> - The branch from which you will branch.</li>
+<li><code>git checkout -b myfeature</code> - Create and checkout a new <code>myfeature</code> branch.</li>
+<li>Implement your feature and test it; add and commit your changes on <code>myfeature</code>.</li>
+<li><code>git push origin myfeature</code> - Make your <code>myfeature</code> branch visible to the team.</li>
+<li>Go to Github and create a <strong>Pull Request (PR)</strong> for <code>myfeature</code>.  Choose one or more reviewers.</li>
+<li>The reviewers look at your diffs, optionally make comments, and approve &amp; merge <code>myfeature</code> to <code>main</code>.</li>
+<li><code>git checkout main</code> - Go back to main so you can catch up.</li>
+<li><code>git pull</code> - Grab the latest changes, including your merged PR.</li>
+</ol>
+<h2 id="resolve-merge-conflict"><a class="header" href="#resolve-merge-conflict">Resolve Merge Conflict</a></h2>
+<p>Merge conflicts (aka &quot;collisions&quot;) happen whenever git's merge algorithm does not have enough info to make the call--for instance, when a given line in a file has been changed in different ways by two parent commits.</p>
+<p>Let's make the above-described kind of merge conflict happen:</p>
+<ol>
+<li>First, make a change to conflict with, by adding a file with one line:</li>
+</ol>
+<pre><code>$ git checkout main
+$ git show
+$ echo &quot;HI THERE&quot; &gt; aNewFile
+$ git add aNewFile
+$ git commit -m &quot;A new file with one line&quot;
+</code></pre>
+<ol>
+<li>Checkout a new branch <code>test</code> <em>from the parent commit</em> of main's HEAD.</li>
+</ol>
+<pre><code>$ git checkout -b test HEAD^
+</code></pre>
+<ol>
+<li>Make a one-line file of the same name as the one created on main.</li>
+</ol>
+<pre><code>$ echo &quot;HI THERE, I'm on a different branch&quot; &gt; aNewFile  # Because on this branch, starting from where we did, aNewFile isn't there yet.
+$ git add aNewFile
+$ git commit -m &quot;A new file with one line, but from a different branch&quot;
+</code></pre>
+<ol>
+<li>Now, attempt to merge from main.</li>
+</ol>
+<pre><code>$ git config --global core.editor &quot;code --wait&quot;  # Set git editor to vscode (only need to do this once)
+$ git merge main
+Auto-merging aNewFile
+CONFLICT (add/add): Merge conflict in aNewFile
+Automatic merge failed; fix conflicts and then commit the result.
+$ git status
+$ code aNewFile
+</code></pre>
+<p>Git has modified our source file!</p>
+<p>Note that VSCode has added some helpful &quot;phantom text&quot;--'(Current Change)' and '(Incoming Change)'--to help clarify what's what. Note also, <strong>that text isn't part of the file</strong>.</p>
+<p>When you've made the file how you want it, and saved it, <code>git add</code> to tell git it's OK now (as git itself tells you when you do <code>git status</code>).</p>
+<p>Finally, finish the merge with a <code>git commit</code> (again, as <code>git status</code> instructs)..</p>
+<h2 id="save-current-work-and-return-to-it-later"><a class="header" href="#save-current-work-and-return-to-it-later">Save Current Work and Return to it Later</a></h2>
+<pre><code>$ git stash  # Push current work--your index and modified stuff--onto a &quot;stash stack&quot;.
+$ git status # Now your workspace is clean (except for files that aren't in git).
+$ git checkout -b someNewBranch   # Or some existing branch
+# Do the work that has pre-empted you, commit/push/etc, and now return to your story...
+$ git checkout main
+$ git stash pop  # Restore your current work to this workspace
+$ git stash list # See if anything still on the stash stack.
+</code></pre>
+<h2 id="clean-up-commit-history-before-pushing---git-rebase"><a class="header" href="#clean-up-commit-history-before-pushing---git-rebase">Clean Up Commit History Before Pushing - <a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">git rebase</a></a></h2>
+<p>This is another instance of using git to practice good communication etiquette.  Nobody wants to see my stumbling around; they just want to see the final draft.</p>
+<p>Assuming I've made a series of commits I don't want people to see, I can turn them all into one commit, <strong>while still keeping the same content</strong>!</p>
+<p>(You may first want to set your git editor to vscode, as demonstrated above in &quot;Resolve Merge Collision&quot;).</p>
+<pre><code>$ git config --global core.editor &quot;code --wait&quot;  # Set your editor to vscode
+$ git rebase --interactive &lt;some-commit-before-the-commits-to-fix&gt;
+</code></pre>
+<p>See the <a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">git rebase</a> tutorial for details on how to work thru the rebase.</p>
+<h2 id="forgot-to-pull-before-committing"><a class="header" href="#forgot-to-pull-before-committing">Forgot to pull before committing</a></h2>
+<p>This workflow is very common for me!</p>
+<p>Another variation of this workflow is &quot;started-my-work-on-wrong-branch&quot;.</p>
+<p>It typically goes like this: </p>
+<ol>
+<li>I cd into a repo workspace that I already have cloned, but haven't touched in awhile.</li>
+<li>I make some changes and commit.</li>
+<li>I <code>git push</code>.</li>
+<li>Git rejects my updates with something like:</li>
+</ol>
+<blockquote>
+<span style="color:red">! [rejected]</span> &nbsp; &nbsp; &nbsp; <span style="color:green">main -> main (non-fast-forward)</span><br>
+<span style="color:red">error: failed to push some refs to 'git@github.com:walquis/learning-git'</span><br>
+<span style="color:gold">hint: Updates were rejected because the tip of your current branch is behind<br>
+hint: its remote counterpart. Integrate the remote changes (e.g.<br>
+hint: 'git pull ...') before pushing again.<br>
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.<br>
+</span>
+</blockquote>
+<p>You can re-enact this scenario in your own repo, by moving your local <code>main</code> branch to one commit behind <code>origin/main</code>.  (How would you do that? Hover <a href="doesnotexist.jpg," title="git reset --hard HEAD^">here</a> to see.)</p>
+<p>Now change a file and git add/commit/push.</p>
+<p>What happened?  Your main has diverged from origin/main.</p>
+<p>What now?  Some options:</p>
+<ol>
+<li>Pull-and-merge - valid, but creates a merge for no good reason - messy graph, confuses your team</li>
+<li>Reset, pull, cherry-pick - makes the graph look like you want it to</li>
+</ol>
+<pre><code>$ git reset --hard @^     # Tip: '@' is a synonym for HEAD
+$ git pull
+$ git cherry-pick &lt;sha-of-commit-you-couldn't-push&gt;
+</code></pre>
+<ol>
+<li>Git rebase - &quot;Replay&quot; changes onto another commit</li>
+</ol>
+<pre><code>$ git fetch         # Remember, 'pull' is a fetch and merge...but I don't want to merge this commit
+$ git rebase origin/main    # Replay current branch's changes onto origin/main
+</code></pre>
+<p>This is easier and more straightforward than cherry-pick, especially if I've made multiple changes.</p>
+<h2 id="find-a-bad-commit---git-bisect"><a class="header" href="#find-a-bad-commit---git-bisect">Find a Bad Commit - <a href="https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git">git bisect</a></a></h2>
+<p>Sometimes when a bug creeps in, it's hard to find where it happened.  <code>git bisect</code> helps you walk through a range of commits in a binary search.</p>
+<pre><code>$ git help bisect   # You can also 'git help' any other git command.
+$ git bisect start &lt;known-bad-commit&gt; &lt;older-known-good-commit&gt;
+# Test the code in your workspace to see if the current version is good.
+$ git bisect good # Or bad, if the test fails
+# Git will keep iterating until the bad commit is identified.
+...
+$ git bisect reset  # Go back to the head of the branch
+</code></pre>
+<p>This is effective, but a little tedious.  What if we could automate it?  If you can create a test.sh script that git can run for you, which will exit with status 0 (true) if the test succeeds, and non-zero (e.g. 1, which will mean false), then git bisect can use that script:</p>
+<pre><code>$ bash test.sh
+$ echo $?  # 0 if good, 1 if bad
+$ git bisect start &lt;known-bad-commit&gt; &lt;older-known-good-commit&gt;
+$ git bisect run bash test.sh
+</code></pre>
+<h2 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h2>
+<ul>
+<li>'git show' - By default, shows diff of HEAD vs previous commit.  Can 'git show' any SHA.</li>
+</ul>
+<hr />
+<div class="footnote-definition" id="remote-name"><sup class="footnote-definition-label">1</sup>
+<p>assuming your remote is named <code>origin</code>.  It probably is.</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hints-for-viewing-repo-changes"><a class="header" href="#hints-for-viewing-repo-changes">Hints For Viewing Repo Changes</a></h1>
+<h2 id="git-diff---the-command-line"><a class="header" href="#git-diff---the-command-line">Git Diff - the command line</a></h2>
+<p>Note that the diff'ing methods below only compare commits, that is, changes <em>already committed to the repo</em>.  They don't address contents of your working directory or index.  For that, use &quot;git diff&quot; (which shows your index vs. workspace), or &quot;git diff --staged&quot; (HEAD vs. index).</p>
+<ol>
+<li>See a given commit's diffs relative to its parent commit...</li>
+</ol>
+<p>In this form of <code>git show</code>, you see ONLY a single commit's diffs, even if you provide a branch name instead of a sha.  Just saying <code>git show</code> displays your most recent commit's changes.</p>
+<pre><code>$ git show 3f29a16  # (Substitute your own commit sha)
+</code></pre>
+<p><code>git show</code> can be handy whenever you just want to see a single commit's worth of diffs.  You can do this from anywhere--there is no need, for instance, to get your workspace into a clean state, checkout a particular branch, and &quot;git diff&quot;.</p>
+<ol start="2">
+<li>View diffs on an entire branch, relative to another branch...</li>
+</ol>
+<pre><code>$ git diff main..otherbranch  # In the diff output, main is on the left, otherbranch on the right.
+</code></pre>
+<ol start="3">
+<li>Exclude files from diff... For some branch comparisons, you may want to exclude one or more files from the <code>git diff</code> output. For instance, no need to see an entire jquery file when it's added to the code base. And, you may not want to view diffs in a &quot;docs&quot; directory ...</li>
+</ol>
+<pre><code>$ git diff main..sample-solution ':(exclude)*jquery*.js' ':(exclude)docs/'
+</code></pre>
+<h2 id="view-your-changes-on-githubcom"><a class="header" href="#view-your-changes-on-githubcom">View your changes on github.com</a></h2>
+<p>Navigate to your repo on https://github.com.  Then click &quot;Contribute&quot;, directly under the green &quot;Code&quot; button, then &quot;Compare&quot;.  This will show diffs with respect to <code>main</code>.</p>
+<h2 id="download-sourcetree-and-point-it-at-your-local-repo"><a class="header" href="#download-sourcetree-and-point-it-at-your-local-repo">Download <a href="https://www.sourcetreeapp.com">SourceTree</a> and point it at your local repo</a></h2>
+<p>Or download another git GUI, such as Github Desktop--but SourceTree is quite good.</p>
+<p>Browse the changes, and explore the options for viewing changes--for instance, highlighting multiple commits with shift-click will show diffs across those commits; also, the file viewer can switch from flat list to tree view; etc.</p>
+<div style="break-before: page; page-break-before: always;"></div><p>Some knowledge and experience with the following material will be very helpful going into the git class.</p>
+<h2 id="basic-unix-commands"><a class="header" href="#basic-unix-commands">Basic Unix Commands</a></h2>
+<ul>
+<li>ls, and its '-l', '-a', '-r', and '-t' options</li>
+<li>pwd - print working directory</li>
+<li>cd  - change directory</li>
+<li>cat - 'concatenate'</li>
+<li>grep - 'get regular expression and print'</li>
+<li>mkdir - 'make directory'</li>
+<li>vim - The Best Editor in the World (or at least really good)</li>
+<li>ps - process status</li>
+</ul>
+<h2 id="unixshell-concepts"><a class="header" href="#unixshell-concepts">Unix/Shell Concepts</a></h2>
+<p>This is the &quot;air you breathe&quot; when working on a computer running any variant of Unix--whether Linux, Mac OS X, Ubuntu-on-Windows, Cygwin, etc.</p>
+<ul>
+<li>The Bash shell; .bash_profile and .bashrc</li>
+<li>Environment Variables</li>
+<li>The PATH environment variable</li>
+<li>Standard Input (aka STDIN), Standard Output (STDOUT), Standard Error (STDERR)</li>
+<li>Pipes (that is, the vertical bar, '|') and I/O Redirection (e.g., '&lt;', '&gt;', '&lt;&lt;', '&gt;&gt;', '2&gt;&amp;1')</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="syllabus-for-collaborating-with-git"><a class="header" href="#syllabus-for-collaborating-with-git">Syllabus for Collaborating with git</a></h1>
+<p>We will learn how git's <em>data model</em>, <strong>The Three Objects</strong>, forms the basis of a git repo's architecture.</p>
+<p>We will learn to use git's <em>state model</em>, <strong>The Three Trees</strong>, to confidently manage changes between a workspace and a local git repo. </p>
+<p>We will learn to use <strong>Pull Requests</strong> within git workflows to communicate our changes to others.</p>
+<p>In the course of running a collaborative software development project, you will use various git commands in a <strong>Bash shell</strong> to examine and change the state of git objects in these trees on your local machine.  Some of these commands may be familiar (e.g., <code>git checkout</code>, <code>git add</code>, <code>git commit</code>, <code>git status</code>, <code>git diff</code>) and some may not (<code>git reset</code>, <code>git diff --staged</code>, <code>git rebase</code>, <code>git cherry-pick</code>).</p>
+<p>Using <strong>pull requests</strong> (aka PR's), you will communicate local changes to your team for review and integration into the team's shared work stream.</p>
+<h3 id="goals"><a class="header" href="#goals">Goals</a></h3>
+<ol>
+<li>Know how to read the commit graph, and use git commands confidently to make it look like you want.</li>
+<li>Understand how basic git commands such as <code>git add</code>, <code>git commit</code>, and <code>git reset</code> move the state of your local changes among <strong>The Three Trees</strong>.</li>
+<li>Understand <strong>The Three Objects</strong> of the git data model well enough to know what git operations are required in real-life scenarios.</li>
+<li>Make changes confidently, by knowing specifically how git has your back.</li>
+</ol>
+<h3 id="objectives"><a class="header" href="#objectives">Objectives</a></h3>
+<p>By the end of this course, students will be able to...</p>
+<h4 id="demonstrate-these-skills"><a class="header" href="#demonstrate-these-skills">Demonstrate these skills:</a></h4>
+<ul>
+<li>Use Pull Requests to deliver changes for review by one or more members of your team</li>
+<li>Work as a team to deliver changes to a chosen remote and branch</li>
+<li>Manage commits with <code>git reset</code> and <code>git rebase</code> - including undo, modify, move operations</li>
+<li>Resolve merge collisions</li>
+<li>Stash work and return to it</li>
+</ul>
+<h4 id="explain-these-terms-and-concepts"><a class="header" href="#explain-these-terms-and-concepts">Explain these terms and concepts:</a></h4>
+<ul>
+<li>sha</li>
+<li>content-addressable filesystem</li>
+<li>blob, tree, commit</li>
+<li>workspace, index, HEAD</li>
+<li>symbolic ref</li>
+<li>branch</li>
+<li>remote</li>
+<li>fetch vs. pull</li>
+<li>fast-forward merge</li>
+<li>'detached HEAD' state</li>
+</ul>
+<h4 id="use-these-commands-and-understand-them-in-terms-of-the-3-objects3-trees"><a class="header" href="#use-these-commands-and-understand-them-in-terms-of-the-3-objects3-trees">Use these commands, and understand them in terms of the 3 objects/3 trees:</a></h4>
+<ul>
+<li>git add</li>
+<li>git status</li>
+<li>git diff [--staged]</li>
+<li>git commit</li>
+<li>git reset [--soft, --mixed, --hard ]</li>
+<li>git branch</li>
+<li>git merge</li>
+<li><a href="https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning">git stash</a> - &quot;I need to save what I'm working on and come back to it later&quot;</li>
+<li>git cherry-pick</li>
+<li><a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">git rebase -i</a> - clean up commit history before pushing</li>
+<li>(stretch goal) <a href="https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git">git bisect</a> - find a bad commit</li>
+</ul>
+<h4 id="identify-and-explain-these-components-of-a-repo-graph-as-seen-with-git-log---all---decorate---oneline---graph"><a class="header" href="#identify-and-explain-these-components-of-a-repo-graph-as-seen-with-git-log---all---decorate---oneline---graph">Identify and explain these components of a repo graph (as seen with &quot;git log --all --decorate --oneline --graph&quot;):</a></h4>
+<ul>
+<li>HEAD</li>
+<li>master</li>
+<li>origin/master</li>
+<li>shas</li>
+<li>the lines along the left side</li>
+<li>branch/merge points</li>
+</ul>
+<h2 id="three-objects"><a class="header" href="#three-objects">Three Objects</a></h2>
+<p>Git is a brilliantly simple data model surrounded by a dense constellation of commands and options.  Once you know the model, you know how the graph should look.  Then you are equipped to find the command that does want you want.</p>
+<p><a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git Objects</a> at git-scm.com is good reading.</p>
+<ul>
+<li><strong>Commit</strong> and its attributes</li>
+<li><strong>Tree</strong> and its attributes</li>
+<li><strong>Blob</strong> and its attributes</li>
+</ul>
+<h2 id="three-trees"><a class="header" href="#three-trees">Three Trees</a></h2>
+<p>The word &quot;reset&quot; is loaded with many connotations. In a git context, you can read <code>git reset</code> as &quot;set-current-branch-to-an-existing-commit&quot;.  We'll explore how this works for managing local changes.</p>
+<p>git-scm.com's <a href="https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified">Reset Demystified</a> is also good reading.</p>
+<p>These are the three trees:</p>
+<ul>
+<li><strong>HEAD</strong> - pointer to the current branch, which points to a commit</li>
+<li><strong>Index</strong> - the place you add to; the staging area for commits</li>
+<li><strong>Workspace</strong> - the files checked out on disk (not including the git repo itself - that would be too meta)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="references"><a class="header" href="#references">References</a></h2>
+<p>Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a></p>
+<ul>
+<li>
+<p>1.1 - Nice-to-Know - Skim - 3 min - <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">About Version Control</a></p>
+</li>
+<li>
+<p>1.3 - Fundamental - Read Carefully - 10 min - <a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics">Git Basics</a></p>
+</li>
+<li>
+<p>2.2 - Fundamental - Skim - 5 min - <a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository">Recording Changes to the Repo</a></p>
+</li>
+<li>
+<p>2.5 - Fundamental - Skim - 5 min - <a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Working With Remotes</a></p>
+</li>
+<li>
+<p>5.2 - Nice-to-Know - Skim - 10 min - <a href="https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project">Contributing to a Project</a></p>
+</li>
+<li>
+<p><strong>Essential</strong> - <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git Objects</a> - The Three Objects: Commit, Tree, Blog</p>
+</li>
+<li>
+<p><strong>Essential</strong> - <a href="https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified">Reset Demystified</a> - The Three Trees: HEAD, Index, Workspace</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell">Branches In a Nutshell</a></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts">Resolve Merge Conflicts</a></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">Rebase</a> - Replay a string of commits onto another place</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/en/v2/Appendix-C:-Git-Commands-Patching">Cherry-pick</a> - grab a commit from another branch</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git">Bisect</a> - Find the commit with the bug</p>
+</li>
+<li>
+<p><strong>Highly Recommended</strong> - A bash tutorial, such as <a href="https://linuxconfig.org/bash-scripting-tutorial-for-beginners">Bash Scripting For Beginners</a>.  At a minimum, know these <a href="unix-shell-concepts.html">basic Linux commands</a>.</p>
+</li>
+<li>
+<p><strong>Be Your Own Best Friend</strong> - Learn Vim.  Just learn it.  <a href="https://www.openvim.com/">Here</a>, <a href="https://linuxconfig.org/vim-tutorial">here</a>, <a href="https://www.tutorialspoint.com/vim/index.htm">here</a>, and/or <a href="https://vim-adventures.com/">here</a>.</p>
+</li>
+<li>
+<p><a href="https://gitready.com/">gitready.com - Learn git one commit at a time</a> - Extensive set of tutorials; somewhat dated (2009-ish), but still good stuff.  Nice breakdown of skills into beginner/intermediate/advanced, and a list of resources.</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instructor-notes"><a class="header" href="#instructor-notes">Instructor notes</a></h1>
+<h2 id="sample-project-repo"><a class="header" href="#sample-project-repo"><a href="https://github.com/walquis/git-basics-sample-project-repo">Sample project repo</a></a></h2>
+<ul>
+<li>Commits in this repo are a source for ideas of what kind of work teams can do.</li>
+<li>Ned, Nykhia, Dex, Deja, Xavier</li>
+</ul>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<ul>
+<li>In session 1, lessons introduce material organized around TERMS and COMMANDS from the syllabus.</li>
+<li>Session 2 is primarily project time for practicing git skills in a moderately structured exercise.</li>
+</ul>
+<h3 id="housekeeping-items"><a class="header" href="#housekeeping-items">Housekeeping items</a></h3>
+<ul>
+<li>Take breaks every 30-45 minutes.</li>
+<li>At checkpoints, have the class use Zoom's green-checkbox and red-X &quot;reactions&quot; buttons.  For instance, &quot;Who has your team's repo cloned locally?  Give me a green checkbox if yes, red-X if no.&quot;  <em>NOTE: Unlike the quick-reaction icons along the top, these responses will stay up until the students take them down.</em></li>
+<li>They can also use the &quot;speed up&quot; and &quot;slow down&quot; buttons.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="session-1"><a class="header" href="#session-1">Session 1</a></h1>
+<h2 id="setup-1"><a class="header" href="#setup-1">Setup</a></h2>
+<ul>
+<li>Ppl will need to authenticate with a Personal Access Token, since they (probly) don't have SSH keys set up.</li>
+<li>Make sure everyone is set up in their project team.</li>
+<li>Prework: Ask ppl for red/green reactions w.r.t. completion.</li>
+<li>If most ppl haven't done it, go over the setup parts.</li>
+</ul>
+<h2 id="the-simplest-possible-collaborative-git-workflow-1"><a class="header" href="#the-simplest-possible-collaborative-git-workflow-1">The Simplest Possible Collaborative Git Workflow</a></h2>
+<p>POINTS TO MAKE:</p>
+<ul>
+<li>Describe the iterative workflow: pull/add/commit/push.</li>
+<li>Discuss the pull/merge/push pic.</li>
+<li>LAB: Ask ppl for red/green reactions w.r.t. completion.</li>
+</ul>
+<p>DESCRIBE the workflow embodied by the pull-merge-push diagram.</p>
+<ul>
+<li>Context: 'their repo' and 'my repo' are cloned from the origin.</li>
+<li>Point out missing details, e.g. &quot;step 0&quot;, where 'they' make changes</li>
+</ul>
+<p>SKETCHING EXERCISE: Walk with the class through the process of placing the <code>main</code> and <code>origin/main</code> branch labels corresponding with each operation:</p>
+<ol>
+<li>&quot;Where do the branch labels start out when 'my repo' and 'their repo' are cloned?&quot; (everything at the green commit).</li>
+<li>&quot;Which branch labels move when 'they' make a change and commit?&quot; (only <code>main</code> in 'their repo').</li>
+<li>&quot;Which branch labels move when 'they' push?&quot; (their local <code>origin/main</code>; Github's <code>main</code>).</li>
+<li>&quot;What makes branch labels move in 'my repo'?&quot; (<code>git pull</code>).</li>
+<li>&quot;What is the sequence of branch label movements in 'my repo' when I do 'git pull'? (<code>origin/main</code> moves to blue commit; git does the merge and moves <code>main</code> to the merge commit).</li>
+<li>&quot;What branch labels would move in 'my repo' if I did <code>git fetch</code> instead of <code>git pull</code>?&quot;  (Just <code>origin/main</code>; NOT <code>main</code>).</li>
+<li>&quot;What branch labels move when I push from 'my repo'? (<code>main</code> on the origin).</li>
+<li>&quot;Does Github do a merge when I push?&quot; (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) </li>
+</ol>
+<p>🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
+DISCUSS:</p>
+<ul>
+<li>Is a merge automatically a conflict? No.</li>
+<li>What is a merge commit? A commit with 2 or more parents.</li>
+<li>What is a merge <em>conflict</em>? A merge (or rebase--we'll learn about rebase later) in which git cannot decide which change to take.</li>
+</ul>
+<h4 id="lab---simplest-possible-collaborative-git-workflow-1"><a class="header" href="#lab---simplest-possible-collaborative-git-workflow-1">LAB - Simplest Possible Collaborative Git Workflow</a></h4>
+<p>DISCUSS:</p>
+<ul>
+<li>
+<p>What was your impression of the collaborative experience?</p>
+</li>
+<li>
+<p>What was difficult?</p>
+</li>
+<li>
+<p>Any ideas about how it might be made smoother, or better in other ways?</p>
+</li>
+<li>
+<p><strong>Time for a break?</strong>*</p>
+</li>
+</ul>
+<h3 id="anatomy-of-a-git-commit-or-the-three-objects-1"><a class="header" href="#anatomy-of-a-git-commit-or-the-three-objects-1">Anatomy of a Git Commit, or, &quot;The Three Objects&quot;</a></h3>
+<p>POINTS TO MAKE:</p>
+<ul>
+<li>Git has your back.
+<ul>
+<li>sha's don't go away when you stop referring to them; they're still in the repo.</li>
+</ul>
+</li>
+<li>Discuss &quot;Content-addressable&quot;.  <em>What happens when a commit's information changes?</em>  Its address changes.
+<ul>
+<li>Reference the commit/tree/blob pic.</li>
+</ul>
+</li>
+</ul>
+<p>🤔 Is it possible for a commit to have the same SHA as its parent?
+DISCUSS:</p>
+<ul>
+<li>
+<p>What would have to be true for this to be the case? (All info in each commit must be identical).</p>
+</li>
+<li>
+<p>A commit's <code>parent</code> field is part of that info.</p>
+</li>
+<li>
+<p>LAB: Ask ppl for red/green reactions w.r.t. completion of the lab.</p>
+</li>
+</ul>
+<h2 id="your-local-git-repo-and-the-3-trees-or-intro-to-git-reset"><a class="header" href="#your-local-git-repo-and-the-3-trees-or-intro-to-git-reset">Your Local Git Repo and the 3 Trees, or, Intro to <code>git reset</code></a></h2>
+<p>POINTS TO MAKE:</p>
+<ul>
+<li>Git has your back (again).
+<ul>
+<li><code>git reflog</code> lets you retrace your steps.</li>
+<li><code>git stash</code> lets you switch contexts quickly.</li>
+</ul>
+</li>
+<li><code>git reset</code> is a local-only command.</li>
+</ul>
+<p>We've only used <code>git reset</code> to move our current branch back one commit.  But <code>git reset</code> will move our current branch anywhere we tell it.  When might this be useful?</p>
+<ul>
+<li>
+<p>When re-arranging branches.  Suppose you made changes on <code>main</code>, but meant to branch first?  Just make the branch where you're at, and move <code>main</code> back to where it belongs (as long as you haven't pushed those changes yet).</p>
+</li>
+<li>
+<p><strong>Time for a break?</strong>*</p>
+</li>
+</ul>
+<p>Have a conversation about doing a <code>git reset</code> to something before <code>origin</code>; and relatedly, <code>git push -f</code> and its pitfalls.</p>
+<h2 id="create-and-resolve-merge-conflicts---with-basic-workflow-1"><a class="header" href="#create-and-resolve-merge-conflicts---with-basic-workflow-1">Create And Resolve Merge Conflicts - With Basic Workflow</a></h2>
+<p>TERMS:</p>
+<ul>
+<li>merge conflict</li>
+<li><code>git fetch</code> vs. <code>git pull</code></li>
+</ul>
+<p>COMMANDS:</p>
+<ul>
+<li><code>git branch</code></li>
+</ul>
+<h2 id="create-and-resolve-merge-conflicts---using-branches-and-prs-1"><a class="header" href="#create-and-resolve-merge-conflicts---using-branches-and-prs-1">Create And Resolve Merge Conflicts - Using Branches and PR's</a></h2>
+<p>TERMS:</p>
+<ul>
+<li>branch</li>
+</ul>
+<p>COMMANDS:</p>
+<ul>
+<li><code>git branch</code></li>
+</ul>
+<p>DISCUSS: 🤔 Why is it called a &quot;<strong>Pull</strong> Request&quot;, if you're <strong>pushing</strong> changes?</p>
+<ul>
+<li>Back in the day, with Github's original fork/pull model, an actual <code>git pull</code> happened when the request was granted, since multiple remote repos were involved: the source repo and its fork.  A <code>git pull</code> fetched-and-merged the changes from the forked repo to its source repo.</li>
+<li>In the shared-repo model however, no <code>git pull</code> is involved, since you've already pushed your changes to the source repo (although on a different branch).  However, you <em>are</em> still &quot;requesting&quot; for your changes to be &quot;pulled&quot; into the main development stream; so in a logical sense, it's still a &quot;request for a pull&quot;.</li>
+</ul>
+<h1 id="session-two"><a class="header" href="#session-two">Session Two</a></h1>
+<h2 id="more-workflow-tools---git-rebase-and-git-cherry-pick"><a class="header" href="#more-workflow-tools---git-rebase-and-git-cherry-pick">More workflow tools - <code>git rebase</code> and <code>git cherry-pick</code></a></h2>
+<p>COMMANDS:</p>
+<ul>
+<li><code>git rebase</code></li>
+<li><code>git cherry-pick</code></li>
+</ul>
+<h3 id="930-1030-a-possible-breakdown-of-tasks"><a class="header" href="#930-1030-a-possible-breakdown-of-tasks">9:30-10:30 a possible breakdown of tasks:</a></h3>
+<p>Deja - Change ‘Hello World!’ to ‘Hello Sol!’. Add a sun image.</p>
+<p>Nykhia - Begin to use CSS styling. Change the font of headers.  [This will touch the layout, therefore everything!]</p>
+<p>Dex - Add a list of first four planets to index.html, with content (images and/or summaries).  Couple of commits and pulls-from-main before delivering.</p>
+<p>Put content in the pages:  (relatively independent changes)</p>
+<ul>
+<li>Xavier - A solar system map</li>
+<li>Ned - more help</li>
+<li>Nykhia - more faqs</li>
+<li>Dex - Add some more about text.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="session-2----exercising-your-new-git-skills"><a class="header" href="#session-2----exercising-your-new-git-skills">Session 2  - Exercising your new git skills</a></h1>
+<h3 id="where-to-start--with-a-github-project-board-1"><a class="header" href="#where-to-start--with-a-github-project-board-1">Where to Start?  With a Github project board!</a></h3>
+<h4 id="lab---start-your-project-board-1"><a class="header" href="#lab---start-your-project-board-1">LAB - Start your project board</a></h4>
+<h4 id="lab---each-team-run-your-project-1"><a class="header" href="#lab---each-team-run-your-project-1">LAB - Each Team, Run your project</a></h4>
+<h3 id="intro-to-git-rebase-1"><a class="header" href="#intro-to-git-rebase-1">Intro to <code>git rebase</code></a></h3>
+<h4 id="avoid-unnecessary-merge-commits-1"><a class="header" href="#avoid-unnecessary-merge-commits-1">Avoid Unnecessary Merge Commits</a></h4>
+<p>Discuss the statement, &quot;Rebase is a destructive operation&quot;.  This is an opportunity to further sink in the concept of how SHAs are created: by hashing a git object's contents.</p>
+<ul>
+<li><em>What is being destroyed?</em>  Even if a commit's <strong>content</strong> remains the same (its trees and blobs), the commit itself is going to have different content (e.g., date).  Therefore, if another commit B was pointing to commit A, that commit B will not hear about A's replacement.</li>
+</ul>
+<h4 id="lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase-1"><a class="header" href="#lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase-1">LAB - Simulate the above scenario and practice resolving it with <code>git rebase</code>:</a></h4>
+<h4 id="interactive-rebase-git-rebase--i----edit-commit-history-before-pushing-1"><a class="header" href="#interactive-rebase-git-rebase--i----edit-commit-history-before-pushing-1">Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</a></h4>
+<h4 id="lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i-1"><a class="header" href="#lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i-1">LAB - Make 3 or 4 commits on current branch, and squash/rearrange with <code>git rebase -i</code></a></h4>
+<h3 id="intro-to-git-cherry-pick----if-time-1"><a class="header" href="#intro-to-git-cherry-pick----if-time-1">Intro to <code>git cherry-pick</code> -- if time</a></h3>
+<h3 id="wrap-up-1"><a class="header" href="#wrap-up-1">Wrap-up</a></h3>
+<ul>
+<li>Xavier and Ned - Put padding/borders/margins around images.
+<ul>
+<li>Xavier - create the branch, make the CSS class</li>
+<li>Ned - add the class references to the images</li>
+</ul>
+</li>
+<li>Apply Caesar Dressing font to h1 HTML elements.
+<ul>
+<li>Nykhia - Update the head section in the layouts.</li>
+<li>Dex - Define the CSS class for h1.</li>
+</ul>
+</li>
+<li>Ned and Deja - Apply flex display to planets.
+<ul>
+<li>Ned - Make the CSS classes</li>
+<li>Deja - Apply to the planets</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

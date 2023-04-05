@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Session 1 - Git Basics - Collaborating With Git</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="prework.html"><strong aria-hidden="true">2.</strong> Prework</a></li><li class="chapter-item expanded "><a href="session1.html" class="active"><strong aria-hidden="true">3.</strong> Session 1</a></li><li class="chapter-item expanded "><a href="objects-and-trees-exercise.html"><strong aria-hidden="true">4.</strong> Objects-and-Trees Exercise</a></li><li class="chapter-item expanded "><a href="session2.html"><strong aria-hidden="true">5.</strong> Session 2</a></li><li class="chapter-item expanded "><a href="common-git-workflows.html"><strong aria-hidden="true">6.</strong> Common Git Workflows</a></li><li class="chapter-item expanded "><a href="viewing-changes.html"><strong aria-hidden="true">7.</strong> Viewing Changes</a></li><li class="chapter-item expanded "><a href="unix-shell-concepts.html"><strong aria-hidden="true">8.</strong> Unix Shell Concepts</a></li><li class="chapter-item expanded "><a href="syllabus.html"><strong aria-hidden="true">9.</strong> Course Syllabus</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">10.</strong> References</a></li><li class="chapter-item expanded "><a href="instructor-notes.html"><strong aria-hidden="true">11.</strong> Instructor Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="instructor-notes/session1.html"><strong aria-hidden="true">11.1.</strong> Session 1 </a></li><li class="chapter-item expanded "><a href="instructor-notes/session2.html"><strong aria-hidden="true">11.2.</strong> Session 2 </a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Git Basics - Collaborating With Git</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="session-one"><a class="header" href="#session-one">Session One</a></h2>
+<h3 id="setup"><a class="header" href="#setup">Setup</a></h3>
+<ol>
+<li>Has everyone done the <a href="prework.html">Prework</a>?</li>
+<li>Open your Linux shell.</li>
+<li>Run these commands to set up some handy aliases...</li>
+</ol>
+<pre><code class="language-bash"># Clone this repo only if you haven't already done so...
+git clone https://github.com/walquis/git-basics-team-project
+cd git-basics-team-project/bin
+source git-aliases.sh
+</code></pre>
+<ol>
+<li>Define your project teams.</li>
+<li><strong>Team</strong>: Choose a team lead.</li>
+<li><strong>Team Lead</strong>: Create a repo (check the box for including a README)</li>
+<li><strong>Team Lead</strong>: Invite your team as collaborators</li>
+<li><strong>Each Teammate</strong>: Clone your team lead's repo (do NOT fork it!)</li>
+<li>Take a look at the sample project repo, if you haven't already.</li>
+</ol>
+<p><strong>Checkpoint: Everyone has their team lead's repo cloned (including the team lead)</strong>.</p>
+<h3 id="the-simplest-possible-collaborative-git-workflow"><a class="header" href="#the-simplest-possible-collaborative-git-workflow">The Simplest Possible Collaborative Git Workflow</a></h3>
+<p>Everybody working on the <code>main</code> branch.</p>
+<p><strong>Vocabulary</strong>: remote, merge commit, fast-forward merge</p>
+<p><strong>Commands</strong>: <code>git pull</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>, <code>git fetch</code>, <code>git merge</code></p>
+<p>A basic workflow in the &quot;shared-repo development model&quot;:
+<img src="images/pull-merge-push-diagram.jpg" alt="" /></p>
+<p>🤔 What is the difference between a merge commit, and a commit that has a merge conflict?</p>
+<h4 id="lab---simplest-possible-collaborative-git-workflow"><a class="header" href="#lab---simplest-possible-collaborative-git-workflow">LAB - Simplest Possible Collaborative Git Workflow</a></h4>
+<blockquote>
+<ol>
+<li><strong>Each teammate</strong>: Commit and push at least one <em>non-conflicting</em> change.  For instance, each teammate
+can add one of these files: <code>index.html</code>, <code>help.html</code>, <code>about.html</code>, <code>faq.html</code>, <code>map.html</code>.</li>
+<li><code>git push</code> and <code>git pull</code> until all of you have each other's changes and are on the same commit locally.</li>
+</ol>
+</blockquote>
+<h3 id="anatomy-of-a-git-commit-or-the-three-objects"><a class="header" href="#anatomy-of-a-git-commit-or-the-three-objects">Anatomy of a Git Commit, or, &quot;The Three Objects&quot;</a></h3>
+<p><strong>Vocabulary</strong>: sha, content-addressable, blob, tree, commit</p>
+<p><strong>Commands</strong>: </p>
+<ul>
+<li><code>git cat-file -p</code> - just for teaching purposes; not part of a normal git workflow</li>
+<li><code>git reflog</code></li>
+</ul>
+<p>Now that we have some commits, let's take a closer look...</p>
+<p><img src="images/commit-tree-blob-diagram.jpg" alt="" /></p>
+<p>🤔 Is it possible for a commit to have the same SHA as its parent?</p>
+<h4 id="lab---anatomy-of-a-git-commit-or-the-three-objects"><a class="header" href="#lab---anatomy-of-a-git-commit-or-the-three-objects">LAB - Anatomy of a Git Commit, or, The Three Objects</a></h4>
+<blockquote>
+<p>Use <code>git cat-file -p</code> to answer these questions:</p>
+<ol>
+<li>What fields does HEAD have?</li>
+<li>What kind of SHA is HEAD's &quot;parent&quot; field? (Use <code>-t</code> instead of <code>-p</code>)</li>
+<li>What fields does HEAD's tree have?</li>
+<li>What are the contents of HEAD's tree's first blob?</li>
+</ol>
+</blockquote>
+<h3 id="your-local-git-repo-and-the-three-trees---or-intro-to-git-reset"><a class="header" href="#your-local-git-repo-and-the-three-trees---or-intro-to-git-reset">Your Local Git repo and The Three Trees - or, &quot;Intro to <code>git reset</code>&quot;</a></h3>
+<p><strong>Vocabulary</strong>:</p>
+<ul>
+<li>workspace, index, HEAD</li>
+<li>&quot;detached HEAD&quot; state</li>
+</ul>
+<p><strong>Commands</strong>: <code>git diff</code>, <code>git diff --staged</code>, <code>git reflog</code>, <code>git stash</code></p>
+<p>When I last checked (end of March 2023), six of the <a href="https://stackoverflow.com/questions?tab=Votes">top twelve stackoverflow questions</a> were git questions!!  For at least a couple of those, the answer is <code>git reset</code>.</p>
+<p>Today we will learn to use <code>git reset</code> to move changes back and forth (locally) between the <a href="objects-and-trees-exercise.html">The Three Trees</a>.</p>
+<p>A busy diagram--it shows the objects as well as the trees--but worth pondering ...
+<img src="images/GitThreeTrees.png" alt="" /></p>
+<h4 id="lab---practicing-with-git-reset"><a class="header" href="#lab---practicing-with-git-reset">LAB - Practicing with <code>git reset</code></a></h4>
+<p>Use each of the <code>--soft</code>, <code>--mixed</code>, and <code>--hard</code> options to <code>git reset</code> at least once.</p>
+<blockquote>
+<ol>
+<li>Make a change and commit it (do not <code>git push</code>!).</li>
+<li>Revert the change using <code>git reset</code>.</li>
+<li>Make another change, and commit.</li>
+<li>Revert, using another option of <code>git reset</code>.  Commit.</li>
+<li>Revert, using another option of <code>git reset</code>.  Commit.</li>
+</ol>
+</blockquote>
+<p>We've only used <code>git reset</code> to move our current branch back one commit.  But with <code>git reset</code>, we can move our current branch anywhere we want.  When might this be useful?</p>
+<p><strong>Scenario</strong>: You accidentally make commits on <code>main</code>, but then realize you should be on a branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).</p>
+<h4 id="lab---simulate-branching-after-the-fact"><a class="header" href="#lab---simulate-branching-after-the-fact">LAB - Simulate branching &quot;after-the-fact&quot;</a></h4>
+<blockquote>
+<ol>
+<li>Make 3 or 4 commits on <code>main</code>.  Then realize Oops, I should be on another branch.</li>
+<li>Make a branch at your current location.  <em>Hover <a href="doesnotexist.jpg," title="'git branch mybranch' (not 'git checkout mybranch'!  Why is that?)">here</a> for a hint.</em></li>
+<li>Use <code>git reset</code> to move <code>main</code> back to where it should be.</li>
+</ol>
+</blockquote>
+<h3 id="create-and-resolve-merge-conflicts---with-basic-workflow"><a class="header" href="#create-and-resolve-merge-conflicts---with-basic-workflow">Create And Resolve Merge Conflicts - With Basic Workflow</a></h3>
+<h4 id="lab---merge-conflicts"><a class="header" href="#lab---merge-conflicts">LAB - merge conflicts</a></h4>
+<blockquote>
+<ol>
+<li>Each teammate: Change the same line in same file (e.g. Change &quot;The Solar System&quot; in <code>index.html</code> to some other text).</li>
+<li>Commit. </li>
+<li>One teammate do a <code>git push</code>; the others <code>git pull</code>.</li>
+<li>Among your team, resolve merge conflicts and <code>git push</code> until you all have the same commit sha for HEAD.</li>
+</ol>
+</blockquote>
+<h3 id="create-and-resolve-merge-conflicts---using-branches-and-prs"><a class="header" href="#create-and-resolve-merge-conflicts---using-branches-and-prs">Create And Resolve Merge Conflicts - Using Branches and PR's</a></h3>
+<p>Github supports <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models">two collaborative development models</a>:</p>
+<ul>
+<li>fork and pull</li>
+<li>shared repository &lt;--- This is us</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>&quot;In the shared repository model, collaborators are granted push access to a single shared repository and topic branches are created when changes need to be made. Pull requests (PR's) are useful in this model as they initiate code review and general discussion about a set of changes before the changes are merged into the main development branch. This model is more prevalent with small teams and organizations collaborating on private projects.&quot;</p>
+</blockquote>
+</blockquote>
+<p>We'll be working with the shared repository model.</p>
+<p>🤔 Why is it called a &quot;<strong>Pull</strong> Request&quot;, if you're <strong>pushing</strong> changes?</p>
+<h4 id="lab---createhandle-merge-conflicts-again---but-now-using-pull-requests-in-your-workflow"><a class="header" href="#lab---createhandle-merge-conflicts-again---but-now-using-pull-requests-in-your-workflow">LAB - Create/Handle merge conflicts again - but now using Pull Requests in your workflow</a></h4>
+<blockquote>
+<ol>
+<li>Each teammate: <code>git checkout -b</code> <em>yourOwnBranchName</em></li>
+<li>Each teammate: Change the same line in same file, like before.</li>
+<li>Commit. </li>
+<li><code>git push</code> <em>yourOwnBranchName</em></li>
+<li>Go to Github and make a PR for your branch; choose one or more reviewers.</li>
+<li>Reviewers: review/approve the PRs and merge.</li>
+<li>Review and merge, <code>git pull</code>, etc. until you all have the same commit sha for HEAD.</li>
+</ol>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="prework.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="objects-and-trees-exercise.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="prework.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="objects-and-trees-exercise.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

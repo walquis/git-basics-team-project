@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Common Git Workflows - Git Basics - Collaborating With Git</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="prework.html"><strong aria-hidden="true">2.</strong> Prework</a></li><li class="chapter-item expanded "><a href="session1.html"><strong aria-hidden="true">3.</strong> Session 1</a></li><li class="chapter-item expanded "><a href="objects-and-trees-exercise.html"><strong aria-hidden="true">4.</strong> Objects-and-Trees Exercise</a></li><li class="chapter-item expanded "><a href="session2.html"><strong aria-hidden="true">5.</strong> Session 2</a></li><li class="chapter-item expanded "><a href="common-git-workflows.html" class="active"><strong aria-hidden="true">6.</strong> Common Git Workflows</a></li><li class="chapter-item expanded "><a href="viewing-changes.html"><strong aria-hidden="true">7.</strong> Viewing Changes</a></li><li class="chapter-item expanded "><a href="unix-shell-concepts.html"><strong aria-hidden="true">8.</strong> Unix Shell Concepts</a></li><li class="chapter-item expanded "><a href="syllabus.html"><strong aria-hidden="true">9.</strong> Course Syllabus</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">10.</strong> References</a></li><li class="chapter-item expanded "><a href="instructor-notes.html"><strong aria-hidden="true">11.</strong> Instructor Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="instructor-notes/session1.html"><strong aria-hidden="true">11.1.</strong> Session 1 </a></li><li class="chapter-item expanded "><a href="instructor-notes/session2.html"><strong aria-hidden="true">11.2.</strong> Session 2 </a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Git Basics - Collaborating With Git</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="common-git-workflows"><a class="header" href="#common-git-workflows">Common Git Workflows</a></h1>
+<h2 id="a-basic-workflow---everybody-do-their-work-on-main"><a class="header" href="#a-basic-workflow---everybody-do-their-work-on-main">A Basic Workflow - everybody do their work on <code>main</code></a></h2>
+<p>A dizzying variety of workflows exist, but at some point they pretty much all boil down to (a) merging your team's changes with with your own, and (b) delivering them back to the team.</p>
+<p>Here's one way to accomplish it: Work on a local <code>main</code> branch that tracks the <code>main</code> of your remote, i.e., <code>origin/main</code><sup class="footnote-reference"><a href="#remote-name">1</a></sup>, where your team will rendezvous with changes.</p>
+<ol>
+<li><code>git checkout main</code> - Get onto the branch from which you will push changes.</li>
+<li><code>git pull origin main</code> - Catch your local <code>main</code> up with latest changes from your team.</li>
+<li>Implement your feature and test it.</li>
+<li><code>git add</code> and <code>git commit</code> your changes on your local <code>main</code>.</li>
+<li><code>git pull origin main</code> (in case more changes have been pushed by teammates while you were working).</li>
+<li>If there <em>are</em> changes from &quot;upstream&quot;, a merge will happen (you may need to resolve conflicts).</li>
+<li><code>git push origin main</code> - Share your scintillating creativity with your team by &quot;catching-up the remote <code>origin/main</code> to your <code>main</code>.  (If someone else pushed first--since your last <code>git pull</code>--you'll have to <code>git pull</code> again.  Then beg your team to hold off, it's your turn now!)</li>
+</ol>
+<h2 id="a-pull-request-workflow"><a class="header" href="#a-pull-request-workflow">A Pull Request Workflow</a></h2>
+<p>Instead of working-on/pushing <code>main</code>, create/work-on/push a feature branch, and ask someone to look at it before it joins <code>main</code>.</p>
+<ol>
+<li><code>git checkout main</code> - The branch from which you will branch.</li>
+<li><code>git checkout -b myfeature</code> - Create and checkout a new <code>myfeature</code> branch.</li>
+<li>Implement your feature and test it; add and commit your changes on <code>myfeature</code>.</li>
+<li><code>git push origin myfeature</code> - Make your <code>myfeature</code> branch visible to the team.</li>
+<li>Go to Github and create a <strong>Pull Request (PR)</strong> for <code>myfeature</code>.  Choose one or more reviewers.</li>
+<li>The reviewers look at your diffs, optionally make comments, and approve &amp; merge <code>myfeature</code> to <code>main</code>.</li>
+<li><code>git checkout main</code> - Go back to main so you can catch up.</li>
+<li><code>git pull</code> - Grab the latest changes, including your merged PR.</li>
+</ol>
+<h2 id="resolve-merge-conflict"><a class="header" href="#resolve-merge-conflict">Resolve Merge Conflict</a></h2>
+<p>Merge conflicts (aka &quot;collisions&quot;) happen whenever git's merge algorithm does not have enough info to make the call--for instance, when a given line in a file has been changed in different ways by two parent commits.</p>
+<p>Let's make the above-described kind of merge conflict happen:</p>
+<ol>
+<li>First, make a change to conflict with, by adding a file with one line:</li>
+</ol>
+<pre><code>$ git checkout main
+$ git show
+$ echo &quot;HI THERE&quot; &gt; aNewFile
+$ git add aNewFile
+$ git commit -m &quot;A new file with one line&quot;
+</code></pre>
+<ol>
+<li>Checkout a new branch <code>test</code> <em>from the parent commit</em> of main's HEAD.</li>
+</ol>
+<pre><code>$ git checkout -b test HEAD^
+</code></pre>
+<ol>
+<li>Make a one-line file of the same name as the one created on main.</li>
+</ol>
+<pre><code>$ echo &quot;HI THERE, I'm on a different branch&quot; &gt; aNewFile  # Because on this branch, starting from where we did, aNewFile isn't there yet.
+$ git add aNewFile
+$ git commit -m &quot;A new file with one line, but from a different branch&quot;
+</code></pre>
+<ol>
+<li>Now, attempt to merge from main.</li>
+</ol>
+<pre><code>$ git config --global core.editor &quot;code --wait&quot;  # Set git editor to vscode (only need to do this once)
+$ git merge main
+Auto-merging aNewFile
+CONFLICT (add/add): Merge conflict in aNewFile
+Automatic merge failed; fix conflicts and then commit the result.
+$ git status
+$ code aNewFile
+</code></pre>
+<p>Git has modified our source file!</p>
+<p>Note that VSCode has added some helpful &quot;phantom text&quot;--'(Current Change)' and '(Incoming Change)'--to help clarify what's what. Note also, <strong>that text isn't part of the file</strong>.</p>
+<p>When you've made the file how you want it, and saved it, <code>git add</code> to tell git it's OK now (as git itself tells you when you do <code>git status</code>).</p>
+<p>Finally, finish the merge with a <code>git commit</code> (again, as <code>git status</code> instructs)..</p>
+<h2 id="save-current-work-and-return-to-it-later"><a class="header" href="#save-current-work-and-return-to-it-later">Save Current Work and Return to it Later</a></h2>
+<pre><code>$ git stash  # Push current work--your index and modified stuff--onto a &quot;stash stack&quot;.
+$ git status # Now your workspace is clean (except for files that aren't in git).
+$ git checkout -b someNewBranch   # Or some existing branch
+# Do the work that has pre-empted you, commit/push/etc, and now return to your story...
+$ git checkout main
+$ git stash pop  # Restore your current work to this workspace
+$ git stash list # See if anything still on the stash stack.
+</code></pre>
+<h2 id="clean-up-commit-history-before-pushing---git-rebase"><a class="header" href="#clean-up-commit-history-before-pushing---git-rebase">Clean Up Commit History Before Pushing - <a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">git rebase</a></a></h2>
+<p>This is another instance of using git to practice good communication etiquette.  Nobody wants to see my stumbling around; they just want to see the final draft.</p>
+<p>Assuming I've made a series of commits I don't want people to see, I can turn them all into one commit, <strong>while still keeping the same content</strong>!</p>
+<p>(You may first want to set your git editor to vscode, as demonstrated above in &quot;Resolve Merge Collision&quot;).</p>
+<pre><code>$ git config --global core.editor &quot;code --wait&quot;  # Set your editor to vscode
+$ git rebase --interactive &lt;some-commit-before-the-commits-to-fix&gt;
+</code></pre>
+<p>See the <a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">git rebase</a> tutorial for details on how to work thru the rebase.</p>
+<h2 id="forgot-to-pull-before-committing"><a class="header" href="#forgot-to-pull-before-committing">Forgot to pull before committing</a></h2>
+<p>This workflow is very common for me!</p>
+<p>Another variation of this workflow is &quot;started-my-work-on-wrong-branch&quot;.</p>
+<p>It typically goes like this: </p>
+<ol>
+<li>I cd into a repo workspace that I already have cloned, but haven't touched in awhile.</li>
+<li>I make some changes and commit.</li>
+<li>I <code>git push</code>.</li>
+<li>Git rejects my updates with something like:</li>
+</ol>
+<blockquote>
+<span style="color:red">! [rejected]</span> &nbsp; &nbsp; &nbsp; <span style="color:green">main -> main (non-fast-forward)</span><br>
+<span style="color:red">error: failed to push some refs to 'git@github.com:walquis/learning-git'</span><br>
+<span style="color:gold">hint: Updates were rejected because the tip of your current branch is behind<br>
+hint: its remote counterpart. Integrate the remote changes (e.g.<br>
+hint: 'git pull ...') before pushing again.<br>
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.<br>
+</span>
+</blockquote>
+<p>You can re-enact this scenario in your own repo, by moving your local <code>main</code> branch to one commit behind <code>origin/main</code>.  (How would you do that? Hover <a href="doesnotexist.jpg," title="git reset --hard HEAD^">here</a> to see.)</p>
+<p>Now change a file and git add/commit/push.</p>
+<p>What happened?  Your main has diverged from origin/main.</p>
+<p>What now?  Some options:</p>
+<ol>
+<li>Pull-and-merge - valid, but creates a merge for no good reason - messy graph, confuses your team</li>
+<li>Reset, pull, cherry-pick - makes the graph look like you want it to</li>
+</ol>
+<pre><code>$ git reset --hard @^     # Tip: '@' is a synonym for HEAD
+$ git pull
+$ git cherry-pick &lt;sha-of-commit-you-couldn't-push&gt;
+</code></pre>
+<ol>
+<li>Git rebase - &quot;Replay&quot; changes onto another commit</li>
+</ol>
+<pre><code>$ git fetch         # Remember, 'pull' is a fetch and merge...but I don't want to merge this commit
+$ git rebase origin/main    # Replay current branch's changes onto origin/main
+</code></pre>
+<p>This is easier and more straightforward than cherry-pick, especially if I've made multiple changes.</p>
+<h2 id="find-a-bad-commit---git-bisect"><a class="header" href="#find-a-bad-commit---git-bisect">Find a Bad Commit - <a href="https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git">git bisect</a></a></h2>
+<p>Sometimes when a bug creeps in, it's hard to find where it happened.  <code>git bisect</code> helps you walk through a range of commits in a binary search.</p>
+<pre><code>$ git help bisect   # You can also 'git help' any other git command.
+$ git bisect start &lt;known-bad-commit&gt; &lt;older-known-good-commit&gt;
+# Test the code in your workspace to see if the current version is good.
+$ git bisect good # Or bad, if the test fails
+# Git will keep iterating until the bad commit is identified.
+...
+$ git bisect reset  # Go back to the head of the branch
+</code></pre>
+<p>This is effective, but a little tedious.  What if we could automate it?  If you can create a test.sh script that git can run for you, which will exit with status 0 (true) if the test succeeds, and non-zero (e.g. 1, which will mean false), then git bisect can use that script:</p>
+<pre><code>$ bash test.sh
+$ echo $?  # 0 if good, 1 if bad
+$ git bisect start &lt;known-bad-commit&gt; &lt;older-known-good-commit&gt;
+$ git bisect run bash test.sh
+</code></pre>
+<h2 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h2>
+<ul>
+<li>'git show' - By default, shows diff of HEAD vs previous commit.  Can 'git show' any SHA.</li>
+</ul>
+<hr />
+<div class="footnote-definition" id="remote-name"><sup class="footnote-definition-label">1</sup>
+<p>assuming your remote is named <code>origin</code>.  It probably is.</p>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="session2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="viewing-changes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="session2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="viewing-changes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
