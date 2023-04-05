@@ -16,3 +16,4 @@ Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>
 - __Highly Recommended__ - A bash tutorial, such as [Bash Scripting For Beginners](https://linuxconfig.org/bash-scripting-tutorial-for-beginners).  At a minimum, know these [basic Linux commands](unix-shell-concepts.md).
 - __Be Your Own Best Friend__ - Learn Vim.  Just learn it.  [Here](https://www.openvim.com/), [here](https://linuxconfig.org/vim-tutorial), [here](https://www.tutorialspoint.com/vim/index.htm), and/or [here](https://vim-adventures.com/).
 
+- [gitready.com - Learn git one commit at a time](https://gitready.com/) - Extensive set of tutorials; somewhat dated (2009-ish), but still good stuff.  Nice breakdown of skills into beginner/intermediate/advanced, and a list of resources.

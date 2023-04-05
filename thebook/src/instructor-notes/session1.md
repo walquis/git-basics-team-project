@@ -6,14 +6,16 @@
 - Prework: Ask ppl for red/green reactions w.r.t. completion.
 - If most ppl haven't done it, go over the setup parts.
 
-## Basic Collaborative Workflow
+## The Simplest Possible Collaborative Git Workflow
 
 POINTS TO MAKE:
 - Describe the iterative workflow: pull/add/commit/push.
 - Discuss the pull/merge/push pic.
 - LAB: Ask ppl for red/green reactions w.r.t. completion.
 
-DISCUSS the pull-merge-push diagram
+DESCRIBE the workflow embodied by the pull-merge-push diagram.
+- Context: 'their repo' and 'my repo' are cloned from the origin.
+- Point out missing details, e.g. "step 0", where 'they' make changes
 
 SKETCHING EXERCISE: Walk with the class through the process of placing the `main` and `origin/main` branch labels corresponding with each operation:
 1. "Where do the branch labels start out when 'my repo' and 'their repo' are cloned?" (everything at the green commit).
@@ -25,17 +27,32 @@ SKETCHING EXERCISE: Walk with the class through the process of placing the `main
 1. "What branch labels move when I push from 'my repo'? (`main` on the origin).
 1. "Does Github do a merge when I push?" (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) 
 
+🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
+DISCUSS:
+- Is a merge automatically a conflict? No.
+- What is a merge commit? A commit with 2 or more parents.
+- What is a merge _conflict_? A merge (or rebase--we'll learn about rebase later) in which git cannot decide which change to take.
+
+#### LAB - Simplest Possible Collaborative Git Workflow
+DISCUSS:
+- What was your impression of the collaborative experience?
+- What was difficult?
+- Any ideas about how it might be made smoother, or better in other ways?
+
 - **Time for a break?***
 
-## Anatomy of a Commit, or, The Three Objects
+### Anatomy of a Git Commit, or, "The Three Objects"
 
 POINTS TO MAKE:
 - Git has your back.
   - sha's don't go away when you stop referring to them; they're still in the repo.
-- Discuss "Content-addressable".  _What happens when a commit's content changes?_  Its address changes.
+- Discuss "Content-addressable".  _What happens when a commit's information changes?_  Its address changes.
+  - Reference the commit/tree/blob pic.
 
-Reference the commit/tree/blob pic.
-
+🤔 Is it possible for a commit to have the same SHA as its parent?
+DISCUSS:
+- What would have to be true for this to be the case? (All info in each commit must be identical).
+- A commit's `parent` field is part of that info.
 
 - LAB: Ask ppl for red/green reactions w.r.t. completion of the lab.
 

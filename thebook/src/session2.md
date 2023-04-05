@@ -2,21 +2,35 @@
 
 ### Where to Start?  With a Github project board!
 
-[Demonstrate setting up a simple kanban board under a git org]
+Here's what a board for the sample Solar System website might look like:
+
+![](images/project-board-for-sample-website.png)
+
+Github Projects have lots of features and options for integration with repos, issues, PRs, etc.
+
+Some jumping-off points:
+- [Best practices for Github Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects)
+- [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
 
 #### LAB - Start your project board
-> 1. Team lead: Create a kanban project in your GitHub org, and invite your teammates.
-> 1. Each teammate: Choose a task from this list of changes from the [sample project repo](https://github.com/walquis/git-basics-sample-project-repo), and create a card for it, with your name on it:
-> - [Add a sun image](https://github.com/walquis/git-basics-sample-project-repo/commit/aa7f0ba34df76ddb38912f753457e07108a7c704).
-> - [Begin to use CSS styling](https://github.com/walquis/git-basics-sample-project-repo/commit/da56c38e92e62408c1affd6c71e19ff87f0d93b6).
-> - [Add a list of the first four planets to index.html](https://github.com/walquis/git-basics-sample-project-repo/commit/b4b184b40299ad852dd9cd51e0d4279f795ae98f).
-> - [Add a solar system map](https://github.com/walquis/git-basics-sample-project-repo/commit/4119092cac8ccdeb1b4a3ad719a6cf87d3229502).
-> - [Add faqs](https://github.com/walquis/git-basics-sample-project-repo/commit/5e1d8be4574fae345ac779bddc95f73dd0bf3cc0).
+> 1. **Team lead**: Create a kanban project in your GitHub org, and invite your teammates.
+> 1. **Each teammate**: Choose a task from this list of changes from the [sample project repo](https://github.com/walquis/git-basics-sample-project-repo), and create a card for it, with your name on it:
 > - [Add some about text](https://github.com/walquis/git-basics-sample-project-repo/commit/4c461a996aad0fd5bfa420ac366139805bf334bf).
+> - [Add layout to pages that exist thus far.](https://github.com/walquis/git-basics-sample-project-repo/commit/481c4b796b6b916dc9735065cef141e1803a39a9)
+> - [Add a sun image](https://github.com/walquis/git-basics-sample-project-repo/commit/aa7f0ba34df76ddb38912f753457e07108a7c704).
+> - [Add faqs](https://github.com/walquis/git-basics-sample-project-repo/commit/5e1d8be4574fae345ac779bddc95f73dd0bf3cc0).
+> - [Begin to use CSS styling](https://github.com/walquis/git-basics-sample-project-repo/commit/da56c38e92e62408c1affd6c71e19ff87f0d93b6).
+> - [Add a list of the first four planets to index.html (no images yet)](https://github.com/walquis/git-basics-sample-project-repo/commit/30e40524db51d96520c24df6e56223dae3a586fe).
 > - [Put padding/borders/margins around images](https://github.com/walquis/git-basics-sample-project-repo/commit/d0095aa699e00873c305d62ecd97727bcc4c5bba).
+> - [Add a solar system map](https://github.com/walquis/git-basics-sample-project-repo/commit/4119092cac8ccdeb1b4a3ad719a6cf87d3229502).
+> - [Add the planet images](https://github.com/walquis/git-basics-sample-project-repo/commit/b4b184b40299ad852dd9cd51e0d4279f795ae98f).
 
 #### LAB - Each Team, Run your project
-Spend about 45 minutes implementing the changes you have chosen, and integrating them using Pull Requests.  (Keep your board up-to-date).  If your team gets stuck, get an instructor's attention and we'll work on it together! 
+> Spend about 45 minutes implementing the changes you have chosen.
+> - Deliver your changes using Pull Requests.
+> - Keep your project board up-to-date as you go.
+
+If your team gets stuck, get an instructor's attention and we'll work on it together! 
 
 ### Intro to `git rebase`
 "Replay a series of commits onto a starting point".  When might this be useful?
@@ -37,11 +51,12 @@ For instance, if you're working on `main`, and then realize `origin/main` is ahe
 $ git fetch  # Update your local origin/main pointer
 $ git rebase origin/main  # Replay your changes on top of where origin/main is now
 ```
-> [Robust debate](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge) happens around what constitutes a "good reason" for a **merge** versus a **rebase**.  Some considerations:
+> [Robust discussion](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge) happens around what constitutes a "good reason" for a **merge** versus a **rebase**.  Some considerations:
 > 1. Is there a chance the change on the branch will be rolled back?  Then merge.
 > 1. Would it be useful to refer back to the branch in the future (i.e., to diff it)?  Then merge.
 > 1. Are there remote dependencies on the branch? Then merge.
 > 1. Is the branch not remarkable in any way?  Then rebase for a linear history.
+> 1. Want to minimize the commits with "Merge branch `main` into ..." messages? Then _rebase_ your feature branch **onto** your base branch, and _merge_ your feature branch **into** your base branch.
 >
 > 🤔 What is meant by this statement? "_Rebase is a destructive operation._"
 

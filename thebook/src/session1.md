@@ -11,15 +11,16 @@ cd git-basics-team-project/bin
 source git-aliases.sh
 ```
 1. Define your project teams.
-1. Choose a team lead.
-1. Team lead: create a repo (check the box for including a README)
-1. Invite your team as collaborators
-1. Team: Clone your team lead's repo (do NOT fork it!)
-1. Take a look at a sample project repo.
+1. **Team**: Choose a team lead.
+1. **Team Lead**: Create a repo (check the box for including a README)
+1. **Team Lead**: Invite your team as collaborators
+1. **Each Teammate**: Clone your team lead's repo (do NOT fork it!)
+1. Take a look at the sample project repo, if you haven't already.
 
 **Checkpoint: Everyone has their team lead's repo cloned (including the team lead)**.
 
-### Basic Collaborative Workflow
+### The Simplest Possible Collaborative Git Workflow
+Everybody working on the `main` branch.
 
 **Vocabulary**: remote, merge commit, fast-forward merge
 
@@ -28,11 +29,14 @@ source git-aliases.sh
 A basic workflow in the "shared-repo development model":
 ![](images/pull-merge-push-diagram.jpg)
 
-#### LAB - Basic Collaborative Workflow
-> Each member of the team commit and push at least one (non-merge-conflicting) change.  For instance, each member
-> can add one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
+🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
 
-### The Anatomy of a Git Commit, or, The Three Objects
+#### LAB - Simplest Possible Collaborative Git Workflow
+> 1. **Each teammate**: Commit and push at least one _non-conflicting_ change.  For instance, each teammate
+> can add one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
+> 1. `git push` and `git pull` until all of you have each other's changes and are on the same commit locally.
+
+### Anatomy of a Git Commit, or, "The Three Objects"
 
 **Vocabulary**: sha, content-addressable, blob, tree, commit
 
@@ -43,6 +47,8 @@ A basic workflow in the "shared-repo development model":
 Now that we have some commits, let's take a closer look...
 
 ![](images/commit-tree-blob-diagram.jpg)
+
+🤔 Is it possible for a commit to have the same SHA as its parent?
 
 #### LAB - Anatomy of a Git Commit, or, The Three Objects
 > Use `git cat-file -p` to answer these questions:
@@ -62,7 +68,7 @@ When I last checked (end of March 2023), six of the [top twelve stackoverflow qu
 
 Today we will learn to use `git reset` to move changes back and forth (locally) between the [The Three Trees](objects-and-trees-exercise.md).
 
-This is a rather busy diagram, but worth staring at ...
+A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 ![](images/GitThreeTrees.png)
 
 #### LAB - Practicing with `git reset`
