@@ -153,16 +153,16 @@
 <li>If most ppl haven't done it, go over the setup parts.</li>
 </ul>
 <h2 id="the-simplest-possible-collaborative-git-workflow"><a class="header" href="#the-simplest-possible-collaborative-git-workflow">The Simplest Possible Collaborative Git Workflow</a></h2>
-<p>POINTS TO MAKE:</p>
-<ul>
-<li>Describe the iterative workflow: pull/add/commit/push.</li>
-<li>Discuss the pull/merge/push pic.</li>
-<li>LAB: Ask ppl for red/green reactions w.r.t. completion.</li>
-</ul>
 <p>DESCRIBE the workflow embodied by the pull-merge-push diagram.</p>
 <ul>
-<li>Context: 'their repo' and 'my repo' are cloned from the origin.</li>
-<li>Point out missing details, e.g. &quot;step 0&quot;, where 'they' make changes</li>
+<li>Context: 'their repo' and 'my repo' are cloned from the remote labeled 'origin' (that is, Github).</li>
+</ul>
+<p>POINTS TO MAKE:</p>
+<ul>
+<li><code>git pull</code> is a combination of <code>git fetch</code> and <code>git merge</code>.</li>
+<li>Walk through a 'fast-forward' merge (which is what the 'git push' accomplishes from Github's perspective).</li>
+<li>a <code>git pull</code> from one side looks and mostly works like a <code>git push</code> from the other side (i.e. a &quot;fetch&quot; and a &quot;merge&quot;).</li>
+<li>Talk about what the arrows on the diagram represent: NOT arrow-of-time!  They point <em>backward</em>, because they represent the commit's &quot;parent&quot; field(s), which points to the previous commit (or commits).  This is how git draws its graphs, starting with a branch, and why commits are generally not visible when no more branches are pointing to them.</li>
 </ul>
 <p>SKETCHING EXERCISE: Walk with the class through the process of placing the <code>main</code> and <code>origin/main</code> branch labels corresponding with each operation:</p>
 <ol>
@@ -183,6 +183,9 @@ DISCUSS:</p>
 <li>What is a merge <em>conflict</em>? A merge (or rebase--we'll learn about rebase later) in which git cannot decide which change to take.</li>
 </ul>
 <h4 id="lab---simplest-possible-collaborative-git-workflow"><a class="header" href="#lab---simplest-possible-collaborative-git-workflow">LAB - Simplest Possible Collaborative Git Workflow</a></h4>
+<ul>
+<li>Ask ppl for red/green reactions w.r.t. completion.</li>
+</ul>
 <p>DISCUSS:</p>
 <ul>
 <li>
@@ -201,11 +204,7 @@ DISCUSS:</p>
 <h3 id="anatomy-of-a-git-commit-or-the-three-objects"><a class="header" href="#anatomy-of-a-git-commit-or-the-three-objects">Anatomy of a Git Commit, or, &quot;The Three Objects&quot;</a></h3>
 <p>POINTS TO MAKE:</p>
 <ul>
-<li>Git has your back.
-<ul>
-<li>sha's don't go away when you stop referring to them; they're still in the repo.</li>
-</ul>
-</li>
+<li>Git has your back!  Commits (and other sha objects) don't go away when you stop referring to them; they're still in the repo.</li>
 <li>Discuss &quot;Content-addressable&quot;.  <em>What happens when a commit's information changes?</em>  Its address changes.
 <ul>
 <li>Reference the commit/tree/blob pic.</li>
