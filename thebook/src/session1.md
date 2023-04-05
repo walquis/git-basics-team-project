@@ -27,7 +27,7 @@ Everybody working on the `main` branch.
 **Commands**: `git pull`, `git add`, `git commit`, `git push`, `git fetch`, `git merge`
 
 A basic workflow in the "shared-repo development model":
-![](images/pull-merge-push-diagram.jpg)
+![](images/push-pull-push-diagram.jpg)
 
 🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
 

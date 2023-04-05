@@ -7,15 +7,14 @@
 - If most ppl haven't done it, go over the setup parts.
 
 ## The Simplest Possible Collaborative Git Workflow
+DESCRIBE the workflow embodied by the pull-merge-push diagram.
+- Context: 'their repo' and 'my repo' are cloned from the remote labeled 'origin' (that is, Github).
 
 POINTS TO MAKE:
-- Describe the iterative workflow: pull/add/commit/push.
-- Discuss the pull/merge/push pic.
-- LAB: Ask ppl for red/green reactions w.r.t. completion.
-
-DESCRIBE the workflow embodied by the pull-merge-push diagram.
-- Context: 'their repo' and 'my repo' are cloned from the origin.
-- Point out missing details, e.g. "step 0", where 'they' make changes
+- `git pull` is a combination of `git fetch` and `git merge`.
+- Walk through a 'fast-forward' merge (which is what the 'git push' accomplishes from Github's perspective).
+- a `git pull` from one side looks and mostly works like a `git push` from the other side (i.e. a "fetch" and a "merge").
+- Talk about what the arrows on the diagram represent: NOT arrow-of-time!  They point *backward*, because they represent the commit's "parent" field(s), which points to the previous commit (or commits).  This is how git draws its graphs, starting with a branch, and why commits are generally not visible when no more branches are pointing to them.
 
 SKETCHING EXERCISE: Walk with the class through the process of placing the `main` and `origin/main` branch labels corresponding with each operation:
 1. "Where do the branch labels start out when 'my repo' and 'their repo' are cloned?" (everything at the green commit).
@@ -34,6 +33,8 @@ DISCUSS:
 - What is a merge _conflict_? A merge (or rebase--we'll learn about rebase later) in which git cannot decide which change to take.
 
 #### LAB - Simplest Possible Collaborative Git Workflow
+- Ask ppl for red/green reactions w.r.t. completion.
+
 DISCUSS:
 - What was your impression of the collaborative experience?
 - What was difficult?
@@ -44,8 +45,7 @@ DISCUSS:
 ### Anatomy of a Git Commit, or, "The Three Objects"
 
 POINTS TO MAKE:
-- Git has your back.
-  - sha's don't go away when you stop referring to them; they're still in the repo.
+- Git has your back!  Commits (and other sha objects) don't go away when you stop referring to them; they're still in the repo.
 - Discuss "Content-addressable".  _What happens when a commit's information changes?_  Its address changes.
   - Reference the commit/tree/blob pic.
 
