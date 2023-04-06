@@ -156,8 +156,5 @@ $ git bisect start <known-bad-commit> <older-known-good-commit>
 $ git bisect run bash test.sh
 ```
 
-## Miscellaneous
-- 'git show' - By default, shows diff of HEAD vs previous commit.  Can 'git show' any SHA.
-
 ---
 [^remote-name]: assuming your remote is named `origin`.  It probably is.

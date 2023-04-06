@@ -9,7 +9,7 @@ This course assumes you have ...
 This prework should only take a few minutes. You'll do  a little git environment setup, install the Git Graph plugin, and familiarize yourself with Git Graph by examining a sample repo for a hypothetical project team.
 
 
-## Run these commands in your Terminal.app
+## Run these commands in your Terminal.app or Git bash
 ```bash
 git config --global pull.rebase false  # Tell git what to do when pulling
 git config --global core.editor "code --wait"  # Set git editor to vscode
@@ -34,6 +34,8 @@ This repo records the work of a five-member team: Ned, Nykhia, Dex, Deja, and Xa
 Open `index.html` to view the website in the [git-basics-sample-project-repo](https://github.com/walquis/git-basics-sample-project-repo) that you cloned:  Choose "File --> Open File..." in your browser, navigate to `index.html` and open it.  You should see something like this...
 
 ![](images/the-solar-system-screenshot.jpg)
+
+(You could also view it with a [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension in VSCode).
 
 Point VSCode at the `git-basics-sample-project-repo` directory, and look at the history with GitGraph:
 

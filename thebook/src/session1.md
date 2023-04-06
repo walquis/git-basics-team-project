@@ -12,17 +12,17 @@ source git-aliases.sh
 ```
 1. Define your project teams.
 1. **Team**: Choose a team lead.
-1. **Team Lead**: Create a repo (check the box for including a README)
-1. **Team Lead**: Invite your team as collaborators
-1. **Each Teammate**: Clone your team lead's repo (do NOT fork it!)
+1. **Team Lead**: Create a repo (check the box for including a README).
+1. **Team Lead**: Invite your team as collaborators.
+1. **Each Teammate**: Clone your team lead's repo (do NOT fork it!).
 1. Take a look at the sample project repo, if you haven't already.
 
-**Checkpoint: Everyone has their team lead's repo cloned (including the team lead)**.
+✅ **Checkpoint: Everyone has their team lead's repo cloned (including the team lead)**.
 
 ### The Simplest Possible Collaborative Git Workflow
 Everybody working on the `main` branch.
 
-**Vocabulary**: remote, merge commit, fast-forward merge
+**Vocabulary**: remote, merge commit, "fast-forward merge"
 
 **Commands**: `git pull`, `git add`, `git commit`, `git push`, `git fetch`, `git merge`
 
@@ -41,8 +41,9 @@ A basic workflow in the "shared-repo development model":
 **Vocabulary**: sha, content-addressable, blob, tree, commit
 
 **Commands**: 
+- `git show` - What's in the latest commit.  See [Viewing Repo Changes](./viewing-changes.md) for more.
+- `git reflog` - local history of where HEAD has been.
 - `git cat-file -p` - just for teaching purposes; not part of a normal git workflow
-- `git reflog`
 
 Now that we have some commits, let's take a closer look...
 
@@ -58,6 +59,8 @@ Now that we have some commits, let's take a closer look...
 > 1. What are the contents of HEAD's tree's first blob?
 
 ### Your Local Git repo and The Three Trees - or, "Intro to `git reset`"
+We'll learn to use `git reset` to move changes back and forth (locally) between the "three trees" - **workspace**, **index**, and **HEAD**.  For more in-depth, work thru [The Objects and Trees Exercise](objects-and-trees-exercise.md).
+
 **Vocabulary**:
 - workspace, index, HEAD
 - "detached HEAD" state
@@ -65,8 +68,6 @@ Now that we have some commits, let's take a closer look...
 **Commands**: `git diff`, `git diff --staged`, `git reflog`, `git stash`
 
 When I last checked (end of March 2023), six of the [top twelve stackoverflow questions](https://stackoverflow.com/questions?tab=Votes) were git questions!!  For at least a couple of those, the answer is `git reset`.
-
-Today we will learn to use `git reset` to move changes back and forth (locally) between the [The Three Trees](objects-and-trees-exercise.md).
 
 A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 ![](images/GitThreeTrees.png)

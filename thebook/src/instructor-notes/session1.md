@@ -1,6 +1,8 @@
 # Session 1
 
 ## Setup
+- If Zoom, get a breakout room set up for each team.
+- Have each team rendezvous on Slack.
 - Ppl will need to authenticate with a Personal Access Token, since they (probly) don't have SSH keys set up.
 - Make sure everyone is set up in their project team.
 - Prework: Ask ppl for red/green reactions w.r.t. completion.
@@ -8,32 +10,26 @@
 
 ## The Simplest Possible Collaborative Git Workflow
 DESCRIBE the workflow embodied by the pull-merge-push diagram.
-- Context: 'their repo' and 'my repo' are cloned from the remote labeled 'origin' (that is, Github).
+- Context: 'their repo' and 'my repo' are both cloned from the same repo at the same remote, labeled 'origin' (that is, Github).
 
 POINTS TO MAKE:
 - `git pull` is a combination of `git fetch` and `git merge`.
-- Walk through a 'fast-forward' merge (which is what the 'git push' accomplishes from Github's perspective).
 - a `git pull` from one side looks and mostly works like a `git push` from the other side (i.e. a "fetch" and a "merge").
-- Talk about what the arrows on the diagram represent: NOT arrow-of-time!  They point *backward*, because they represent the commit's "parent" field(s), which points to the previous commit (or commits).  This is how git draws its graphs, starting with a branch, and why commits are generally not visible when no more branches are pointing to them.
+- Talk about what the arrows on the git graph represent.  They are NOT pointing forward in time.  Rather, because they represent a commit' pointer to its parent, they point *backward* to the previous commit (or commits).  This is how git draws its graphs, starting with a branch, and why commits are generally not visible when no more branches are pointing to them.
 
-SKETCHING EXERCISE: Walk with the class through the process of placing the `main` and `origin/main` branch labels corresponding with each operation:
-1. "Where do the branch labels start out when 'my repo' and 'their repo' are cloned?" (everything at the green commit).
-1. "Which branch labels move when 'they' make a change and commit?" (only `main` in 'their repo').
-1. "Which branch labels move when 'they' push?" (their local `origin/main`; Github's `main`).
-1. "What makes branch labels move in 'my repo'?" (`git pull`).
-1. "What is the sequence of branch label movements in 'my repo' when I do 'git pull'? (`origin/main` moves to blue commit; git does the merge and moves `main` to the merge commit).
-1. "What branch labels would move in 'my repo' if I did `git fetch` instead of `git pull`?"  (Just `origin/main`; NOT `main`).
-1. "What branch labels move when I push from 'my repo'? (`main` on the origin).
-1. "Does Github do a merge when I push?" (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) 
+- Using Concepts drawings on iPad, walk through a 'fast-forward' merge (which is what the 'git push' accomplishes from Github's perspective).
+- Trace how `origin/main` and the remote's `main` move as a result of `git push` and `git pull` (and how they do NOT move for local operations such as `git commit`).
+- "Does Github do a merge when I push?" (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) 
 
-🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
 DISCUSS:
-- Is a merge automatically a conflict? No.
+🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
+- Does a merge always mean a conflict? No.
 - What is a merge commit? A commit with 2 or more parents.
 - What is a merge _conflict_? A merge (or rebase--we'll learn about rebase later) in which git cannot decide which change to take.
 
 #### LAB - Simplest Possible Collaborative Git Workflow
-- Ask ppl for red/green reactions w.r.t. completion.
+- Ask ppl to post green Zoom reactions upon completion of lab.
+- Or red Zoom reactions if stuck.
 
 DISCUSS:
 - What was your impression of the collaborative experience?

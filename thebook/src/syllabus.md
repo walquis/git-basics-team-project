@@ -44,6 +44,7 @@ By the end of this course, students will be able to...
 - git add
 - git status
 - git diff \[\--staged\]
+- git show
 - git commit
 - git reset \[\--soft, \--mixed, \--hard \]
 - git branch
@@ -55,8 +56,8 @@ By the end of this course, students will be able to...
  
 #### Identify and explain these components of a repo graph (as seen with "git log \--all \--decorate \--oneline \--graph"):
 - HEAD
-- master
-- origin/master
+- main
+- origin/main
 - shas
 - the lines along the left side
 - branch/merge points

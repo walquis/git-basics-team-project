@@ -98,15 +98,15 @@ $ ls -l
 $ file HEAD
 HEAD: ASCII text
 $ cat HEAD
-ref: refs/heads/master
-$ file refs/heads/master
-refs/heads/master: ASCII text
-$ cat !$  # BANG-dolla!  bash shorthand for "last argument of previous command"
+ref: refs/heads/main
+$ file refs/heads/main
+refs/heads/main: ASCII text
+$ cat !$  # BANG-dollar!  bash shorthand for "last argument of previous command"
 fc223df6e6f71a506f9bda0fac71b16041fd7004  # Your SHA will differ from this one (why?)
 $ ls -l refs
 $ ls -l refs/remotes
 $ ls -l refs/remotes/origin
-$ file refs/remotes/origin/master
+$ file refs/remotes/origin/main
 $ cat !$
 fc223df6e6f71a506f9bda0fac71b16041fd7004
 ```
@@ -121,9 +121,9 @@ $ git cat-file -t HEAD
 commit
 ```
 
-Let's look at the origin/master commit (HEAD was the same as origin/master, until you committed hi.txt).
+Let's look at the origin/main commit (HEAD was the same as origin/main, until you committed hi.txt).
 ```
-$ git cat-file -p origin/master
+$ git cat-file -p origin/main
 tree 07018552500e8ebd52c2011c51a9b21a01c11ce4
 parent b1c24a12c733be55ab2512fc003a84405bf68126
 author Chris Walquist <cwalquist@drw.com> 1615843154 -0500
