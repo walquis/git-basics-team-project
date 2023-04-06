@@ -159,15 +159,15 @@ source git-aliases.sh
 <ol>
 <li>Define your project teams.</li>
 <li><strong>Team</strong>: Choose a team lead.</li>
-<li><strong>Team Lead</strong>: Create a repo (check the box for including a README)</li>
-<li><strong>Team Lead</strong>: Invite your team as collaborators</li>
-<li><strong>Each Teammate</strong>: Clone your team lead's repo (do NOT fork it!)</li>
+<li><strong>Team Lead</strong>: Create a repo (check the box for including a README).</li>
+<li><strong>Team Lead</strong>: Invite your team as collaborators.</li>
+<li><strong>Each Teammate</strong>: Clone your team lead's repo (do NOT fork it!).</li>
 <li>Take a look at the sample project repo, if you haven't already.</li>
 </ol>
-<p><strong>Checkpoint: Everyone has their team lead's repo cloned (including the team lead)</strong>.</p>
+<p>✅ <strong>Checkpoint: Everyone has their team lead's repo cloned (including the team lead)</strong>.</p>
 <h3 id="the-simplest-possible-collaborative-git-workflow"><a class="header" href="#the-simplest-possible-collaborative-git-workflow">The Simplest Possible Collaborative Git Workflow</a></h3>
 <p>Everybody working on the <code>main</code> branch.</p>
-<p><strong>Vocabulary</strong>: remote, merge commit, fast-forward merge</p>
+<p><strong>Vocabulary</strong>: remote, merge commit, &quot;fast-forward merge&quot;</p>
 <p><strong>Commands</strong>: <code>git pull</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>, <code>git fetch</code>, <code>git merge</code></p>
 <p>A basic workflow in the &quot;shared-repo development model&quot;:
 <img src="images/push-pull-push-diagram.jpg" alt="" /></p>
@@ -184,8 +184,9 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 <p><strong>Vocabulary</strong>: sha, content-addressable, blob, tree, commit</p>
 <p><strong>Commands</strong>: </p>
 <ul>
+<li><code>git show</code> - What's in the latest commit.  See <a href="./viewing-changes.html">Viewing Repo Changes</a> for more.</li>
+<li><code>git reflog</code> - local history of where HEAD has been.</li>
 <li><code>git cat-file -p</code> - just for teaching purposes; not part of a normal git workflow</li>
-<li><code>git reflog</code></li>
 </ul>
 <p>Now that we have some commits, let's take a closer look...</p>
 <p><img src="images/commit-tree-blob-diagram.jpg" alt="" /></p>
@@ -201,6 +202,7 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 </ol>
 </blockquote>
 <h3 id="your-local-git-repo-and-the-three-trees---or-intro-to-git-reset"><a class="header" href="#your-local-git-repo-and-the-three-trees---or-intro-to-git-reset">Your Local Git repo and The Three Trees - or, &quot;Intro to <code>git reset</code>&quot;</a></h3>
+<p>We'll learn to use <code>git reset</code> to move changes back and forth (locally) between the &quot;three trees&quot; - <strong>workspace</strong>, <strong>index</strong>, and <strong>HEAD</strong>.  For more in-depth, work thru <a href="objects-and-trees-exercise.html">The Objects and Trees Exercise</a>.</p>
 <p><strong>Vocabulary</strong>:</p>
 <ul>
 <li>workspace, index, HEAD</li>
@@ -208,7 +210,6 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 </ul>
 <p><strong>Commands</strong>: <code>git diff</code>, <code>git diff --staged</code>, <code>git reflog</code>, <code>git stash</code></p>
 <p>When I last checked (end of March 2023), six of the <a href="https://stackoverflow.com/questions?tab=Votes">top twelve stackoverflow questions</a> were git questions!!  For at least a couple of those, the answer is <code>git reset</code>.</p>
-<p>Today we will learn to use <code>git reset</code> to move changes back and forth (locally) between the <a href="objects-and-trees-exercise.html">The Three Trees</a>.</p>
 <p>A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 <img src="images/GitThreeTrees.png" alt="" /></p>
 <h4 id="lab---practicing-with-git-reset"><a class="header" href="#lab---practicing-with-git-reset">LAB - Practicing with <code>git reset</code></a></h4>

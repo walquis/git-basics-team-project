@@ -147,6 +147,8 @@
                         <h1 id="session-1"><a class="header" href="#session-1">Session 1</a></h1>
 <h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
 <ul>
+<li>If Zoom, get a breakout room set up for each team.</li>
+<li>Have each team rendezvous on Slack.</li>
 <li>Ppl will need to authenticate with a Personal Access Token, since they (probly) don't have SSH keys set up.</li>
 <li>Make sure everyone is set up in their project team.</li>
 <li>Prework: Ask ppl for red/green reactions w.r.t. completion.</li>
@@ -155,36 +157,40 @@
 <h2 id="the-simplest-possible-collaborative-git-workflow"><a class="header" href="#the-simplest-possible-collaborative-git-workflow">The Simplest Possible Collaborative Git Workflow</a></h2>
 <p>DESCRIBE the workflow embodied by the pull-merge-push diagram.</p>
 <ul>
-<li>Context: 'their repo' and 'my repo' are cloned from the remote labeled 'origin' (that is, Github).</li>
+<li>Context: 'their repo' and 'my repo' are both cloned from the same repo at the same remote, labeled 'origin' (that is, Github).</li>
 </ul>
 <p>POINTS TO MAKE:</p>
 <ul>
-<li><code>git pull</code> is a combination of <code>git fetch</code> and <code>git merge</code>.</li>
-<li>Walk through a 'fast-forward' merge (which is what the 'git push' accomplishes from Github's perspective).</li>
-<li>a <code>git pull</code> from one side looks and mostly works like a <code>git push</code> from the other side (i.e. a &quot;fetch&quot; and a &quot;merge&quot;).</li>
-<li>Talk about what the arrows on the diagram represent: NOT arrow-of-time!  They point <em>backward</em>, because they represent the commit's &quot;parent&quot; field(s), which points to the previous commit (or commits).  This is how git draws its graphs, starting with a branch, and why commits are generally not visible when no more branches are pointing to them.</li>
+<li>
+<p><code>git pull</code> is a combination of <code>git fetch</code> and <code>git merge</code>.</p>
+</li>
+<li>
+<p>a <code>git pull</code> from one side looks and mostly works like a <code>git push</code> from the other side (i.e. a &quot;fetch&quot; and a &quot;merge&quot;).</p>
+</li>
+<li>
+<p>Talk about what the arrows on the git graph represent.  They are NOT pointing forward in time.  Rather, because they represent a commit' pointer to its parent, they point <em>backward</em> to the previous commit (or commits).  This is how git draws its graphs, starting with a branch, and why commits are generally not visible when no more branches are pointing to them.</p>
+</li>
+<li>
+<p>Using Concepts drawings on iPad, walk through a 'fast-forward' merge (which is what the 'git push' accomplishes from Github's perspective).</p>
+</li>
+<li>
+<p>Trace how <code>origin/main</code> and the remote's <code>main</code> move as a result of <code>git push</code> and <code>git pull</code> (and how they do NOT move for local operations such as <code>git commit</code>).</p>
+</li>
+<li>
+<p>&quot;Does Github do a merge when I push?&quot; (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) </p>
+</li>
 </ul>
-<p>SKETCHING EXERCISE: Walk with the class through the process of placing the <code>main</code> and <code>origin/main</code> branch labels corresponding with each operation:</p>
-<ol>
-<li>&quot;Where do the branch labels start out when 'my repo' and 'their repo' are cloned?&quot; (everything at the green commit).</li>
-<li>&quot;Which branch labels move when 'they' make a change and commit?&quot; (only <code>main</code> in 'their repo').</li>
-<li>&quot;Which branch labels move when 'they' push?&quot; (their local <code>origin/main</code>; Github's <code>main</code>).</li>
-<li>&quot;What makes branch labels move in 'my repo'?&quot; (<code>git pull</code>).</li>
-<li>&quot;What is the sequence of branch label movements in 'my repo' when I do 'git pull'? (<code>origin/main</code> moves to blue commit; git does the merge and moves <code>main</code> to the merge commit).</li>
-<li>&quot;What branch labels would move in 'my repo' if I did <code>git fetch</code> instead of <code>git pull</code>?&quot;  (Just <code>origin/main</code>; NOT <code>main</code>).</li>
-<li>&quot;What branch labels move when I push from 'my repo'? (<code>main</code> on the origin).</li>
-<li>&quot;Does Github do a merge when I push?&quot; (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) </li>
-</ol>
-<p>🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
-DISCUSS:</p>
+<p>DISCUSS:
+🤔 What is the difference between a merge commit, and a commit that has a merge conflict?</p>
 <ul>
-<li>Is a merge automatically a conflict? No.</li>
+<li>Does a merge always mean a conflict? No.</li>
 <li>What is a merge commit? A commit with 2 or more parents.</li>
 <li>What is a merge <em>conflict</em>? A merge (or rebase--we'll learn about rebase later) in which git cannot decide which change to take.</li>
 </ul>
 <h4 id="lab---simplest-possible-collaborative-git-workflow"><a class="header" href="#lab---simplest-possible-collaborative-git-workflow">LAB - Simplest Possible Collaborative Git Workflow</a></h4>
 <ul>
-<li>Ask ppl for red/green reactions w.r.t. completion.</li>
+<li>Ask ppl to post green Zoom reactions upon completion of lab.</li>
+<li>Or red Zoom reactions if stuck.</li>
 </ul>
 <p>DISCUSS:</p>
 <ul>
