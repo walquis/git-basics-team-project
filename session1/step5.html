@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Unix Shell Concepts - Git Basics - Collaborating With Git</title>
+        <title>step 2.2 - merge - 2nd 1/2 of pull - Git Basics - Collaborating With Git</title>
 
 
         <!-- Custom HTML head -->
@@ -12,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,7 +35,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
         </script>
 
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="prework.html"><strong aria-hidden="true">2.</strong> Prework</a></li><li class="chapter-item expanded "><a href="session1.html"><strong aria-hidden="true">3.</strong> Session 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="session1/simple-workflow.html"><strong aria-hidden="true">3.1.</strong> Breakdown of Simple Workflow</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="session1/step0.html"><strong aria-hidden="true">3.1.1.</strong> step 0 - everybody checkout main</a></li><li class="chapter-item expanded "><a href="session1/step1.html"><strong aria-hidden="true">3.1.2.</strong> step 0.5 - they commit locally</a></li><li class="chapter-item expanded "><a href="session1/step2.html"><strong aria-hidden="true">3.1.3.</strong> step 1 - they push</a></li><li class="chapter-item expanded "><a href="session1/step3.html"><strong aria-hidden="true">3.1.4.</strong> I make local changes too</a></li><li class="chapter-item expanded "><a href="session1/step4.html"><strong aria-hidden="true">3.1.5.</strong> step 2.1 - fetch - 1st 1/2 of pull</a></li><li class="chapter-item expanded "><a href="session1/step5.html"><strong aria-hidden="true">3.1.6.</strong> step 2.2 - merge - 2nd 1/2 of pull</a></li><li class="chapter-item expanded "><a href="session1/step6.html"><strong aria-hidden="true">3.1.7.</strong> step 3 - I push</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="objects-and-trees-exercise.html"><strong aria-hidden="true">4.</strong> Objects-and-Trees Exercise</a></li><li class="chapter-item expanded "><a href="session2.html"><strong aria-hidden="true">5.</strong> Session 2</a></li><li class="chapter-item expanded "><a href="common-git-workflows.html"><strong aria-hidden="true">6.</strong> Common Git Workflows</a></li><li class="chapter-item expanded "><a href="viewing-changes.html"><strong aria-hidden="true">7.</strong> Viewing Changes</a></li><li class="chapter-item expanded "><a href="unix-shell-concepts.html" class="active"><strong aria-hidden="true">8.</strong> Unix Shell Concepts</a></li><li class="chapter-item expanded "><a href="syllabus.html"><strong aria-hidden="true">9.</strong> Course Syllabus</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">10.</strong> References</a></li><li class="chapter-item expanded "><a href="instructor-notes.html"><strong aria-hidden="true">11.</strong> Instructor Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="instructor-notes/session1.html"><strong aria-hidden="true">11.1.</strong> Session 1 </a></li><li class="chapter-item expanded "><a href="instructor-notes/session2.html"><strong aria-hidden="true">11.2.</strong> Session 2 </a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../prework.html"><strong aria-hidden="true">2.</strong> Prework</a></li><li class="chapter-item expanded "><a href="../session1.html"><strong aria-hidden="true">3.</strong> Session 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../session1/simple-workflow.html"><strong aria-hidden="true">3.1.</strong> Breakdown of Simple Workflow</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../session1/step0.html"><strong aria-hidden="true">3.1.1.</strong> step 0 - everybody checkout main</a></li><li class="chapter-item expanded "><a href="../session1/step1.html"><strong aria-hidden="true">3.1.2.</strong> step 0.5 - they commit locally</a></li><li class="chapter-item expanded "><a href="../session1/step2.html"><strong aria-hidden="true">3.1.3.</strong> step 1 - they push</a></li><li class="chapter-item expanded "><a href="../session1/step3.html"><strong aria-hidden="true">3.1.4.</strong> I make local changes too</a></li><li class="chapter-item expanded "><a href="../session1/step4.html"><strong aria-hidden="true">3.1.5.</strong> step 2.1 - fetch - 1st 1/2 of pull</a></li><li class="chapter-item expanded "><a href="../session1/step5.html" class="active"><strong aria-hidden="true">3.1.6.</strong> step 2.2 - merge - 2nd 1/2 of pull</a></li><li class="chapter-item expanded "><a href="../session1/step6.html"><strong aria-hidden="true">3.1.7.</strong> step 3 - I push</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../objects-and-trees-exercise.html"><strong aria-hidden="true">4.</strong> Objects-and-Trees Exercise</a></li><li class="chapter-item expanded "><a href="../session2.html"><strong aria-hidden="true">5.</strong> Session 2</a></li><li class="chapter-item expanded "><a href="../common-git-workflows.html"><strong aria-hidden="true">6.</strong> Common Git Workflows</a></li><li class="chapter-item expanded "><a href="../viewing-changes.html"><strong aria-hidden="true">7.</strong> Viewing Changes</a></li><li class="chapter-item expanded "><a href="../unix-shell-concepts.html"><strong aria-hidden="true">8.</strong> Unix Shell Concepts</a></li><li class="chapter-item expanded "><a href="../syllabus.html"><strong aria-hidden="true">9.</strong> Course Syllabus</a></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">10.</strong> References</a></li><li class="chapter-item expanded "><a href="../instructor-notes.html"><strong aria-hidden="true">11.</strong> Instructor Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../instructor-notes/session1.html"><strong aria-hidden="true">11.1.</strong> Session 1 </a></li><li class="chapter-item expanded "><a href="../instructor-notes/session2.html"><strong aria-hidden="true">11.2.</strong> Session 2 </a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -115,7 +115,7 @@
                     <h1 class="menu-title">Git Basics - Collaborating With Git</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -144,37 +144,17 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Some knowledge and experience with the following material will be very helpful going into the git class.</p>
-<h2 id="basic-unix-commands"><a class="header" href="#basic-unix-commands">Basic Unix Commands</a></h2>
-<ul>
-<li>ls, and its '-l', '-a', '-r', and '-t' options</li>
-<li>pwd - print working directory</li>
-<li>cd  - change directory</li>
-<li>cat - 'concatenate'</li>
-<li>grep - 'get regular expression and print'</li>
-<li>mkdir - 'make directory'</li>
-<li>vim - The Best Editor in the World (or at least really good)</li>
-<li>ps - process status</li>
-</ul>
-<h2 id="unixshell-concepts"><a class="header" href="#unixshell-concepts">Unix/Shell Concepts</a></h2>
-<p>This is the &quot;air you breathe&quot; when working on a computer running any variant of Unix--whether Linux, Mac OS X, Ubuntu-on-Windows, Cygwin, etc.</p>
-<ul>
-<li>The Bash shell; .bash_profile and .bashrc</li>
-<li>Environment Variables</li>
-<li>The PATH environment variable</li>
-<li>Standard Input (aka STDIN), Standard Output (STDOUT), Standard Error (STDERR)</li>
-<li>Pipes (that is, the vertical bar, '|') and I/O Redirection (e.g., '&lt;', '&gt;', '&lt;&lt;', '&gt;&gt;', '2&gt;&amp;1')</li>
-</ul>
+                        <p><img src="step-5.jpg" alt="" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="viewing-changes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../session1/step4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="syllabus.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../session1/step6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -184,11 +164,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="viewing-changes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../session1/step4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="syllabus.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../session1/step6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -203,13 +183,13 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
