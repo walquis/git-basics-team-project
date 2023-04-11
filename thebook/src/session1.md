@@ -47,7 +47,7 @@ A basic workflow in the "shared-repo development model":
 
 Now that we have some commits, let's take a closer look...
 
-![](images/commit-tree-blob-diagram.jpg)
+![](images/commit-diagram.png)
 
 🤔 Is it possible for a commit to have the same SHA as its parent?
 
