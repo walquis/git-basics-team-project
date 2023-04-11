@@ -182,7 +182,7 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 </blockquote>
 <h3 id="anatomy-of-a-git-commit-or-the-three-objects"><a class="header" href="#anatomy-of-a-git-commit-or-the-three-objects">Anatomy of a Git Commit, or, &quot;The Three Objects&quot;</a></h3>
 <p><strong>Vocabulary</strong>: sha, content-addressable, blob, tree, commit</p>
-<p><strong>Commands</strong>: </p>
+<p><strong>Commands</strong>:</p>
 <ul>
 <li><code>git show</code> - What's in the latest commit.  See <a href="./viewing-changes.html">Viewing Repo Changes</a> for more.</li>
 <li><code>git reflog</code> - local history of where HEAD has been.</li>
@@ -202,7 +202,7 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 </ol>
 </blockquote>
 <h3 id="your-local-git-repo-and-the-three-trees---or-intro-to-git-reset"><a class="header" href="#your-local-git-repo-and-the-three-trees---or-intro-to-git-reset">Your Local Git repo and The Three Trees - or, &quot;Intro to <code>git reset</code>&quot;</a></h3>
-<p>We'll learn to use <code>git reset</code> to move changes back and forth (locally) between the &quot;three trees&quot; - <strong>workspace</strong>, <strong>index</strong>, and <strong>HEAD</strong>.  For more in-depth, work thru <a href="objects-and-trees-exercise.html">The Objects and Trees Exercise</a>.</p>
+<p>We'll learn to use <code>git reset</code> to move changes back and forth between the &quot;three trees&quot; - <strong>workspace</strong>, <strong>index</strong>, and <strong>HEAD</strong>.  For more in-depth, work thru <a href="objects-and-trees-exercise.html">The Objects and Trees Exercise</a>.</p>
 <p><strong>Vocabulary</strong>:</p>
 <ul>
 <li>workspace, index, HEAD</li>
@@ -212,19 +212,19 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 <p>When I last checked (end of March 2023), six of the <a href="https://stackoverflow.com/questions?tab=Votes">top twelve stackoverflow questions</a> were git questions!!  For at least a couple of those, the answer is <code>git reset</code>.</p>
 <p>A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 <img src="images/GitThreeTrees.png" alt="" /></p>
-<h4 id="lab---practicing-with-git-reset"><a class="header" href="#lab---practicing-with-git-reset">LAB - Practicing with <code>git reset</code></a></h4>
-<p>Use each of the <code>--soft</code>, <code>--mixed</code>, and <code>--hard</code> options to <code>git reset</code> at least once.</p>
+<h4 id="lab---modify-committed-changes-with-git-reset"><a class="header" href="#lab---modify-committed-changes-with-git-reset">LAB - Modify committed changes with <code>git reset</code></a></h4>
+<p>Use each of <code>git reset</code>'s <code>--soft</code>, <code>--mixed</code>, and <code>--hard</code> options at least once.</p>
 <blockquote>
 <ol>
 <li>Make a change and commit it (do not <code>git push</code>!).</li>
-<li>Revert the change using <code>git reset</code>.</li>
+<li>Undo the change using <code>git reset</code>.</li>
 <li>Make another change, and commit.</li>
 <li>Revert, using another option of <code>git reset</code>.  Commit.</li>
 <li>Revert, using another option of <code>git reset</code>.  Commit.</li>
 </ol>
 </blockquote>
-<p>We've only used <code>git reset</code> to move our current branch back one commit.  But with <code>git reset</code>, we can move our current branch anywhere we want.  When might this be useful?</p>
-<p><strong>Scenario</strong>: You accidentally make commits on <code>main</code>, but then realize you should be on a branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).</p>
+<p>🤔 So far, we've only used <code>git reset</code> to move our current branch back one commit.  But with <code>git reset</code>, we can move our current branch anywhere we want.  When might this be useful?</p>
+<p><strong>Scenario</strong>: You accidentally make commits on <code>main</code>, but then realize you should be on a different branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).</p>
 <h4 id="lab---simulate-branching-after-the-fact"><a class="header" href="#lab---simulate-branching-after-the-fact">LAB - Simulate branching &quot;after-the-fact&quot;</a></h4>
 <blockquote>
 <ol>
@@ -238,7 +238,7 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 <blockquote>
 <ol>
 <li>Each teammate: Change the same line in same file (e.g. Change &quot;The Solar System&quot; in <code>index.html</code> to some other text).</li>
-<li>Commit. </li>
+<li>Commit.</li>
 <li>One teammate do a <code>git push</code>; the others <code>git pull</code>.</li>
 <li>Among your team, resolve merge conflicts and <code>git push</code> until you all have the same commit sha for HEAD.</li>
 </ol>
@@ -261,7 +261,7 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 <ol>
 <li>Each teammate: <code>git checkout -b</code> <em>yourOwnBranchName</em></li>
 <li>Each teammate: Change the same line in same file, like before.</li>
-<li>Commit. </li>
+<li>Commit.</li>
 <li><code>git push</code> <em>yourOwnBranchName</em></li>
 <li>Go to Github and make a PR for your branch; choose one or more reviewers.</li>
 <li>Reviewers: review/approve the PRs and merge.</li>
