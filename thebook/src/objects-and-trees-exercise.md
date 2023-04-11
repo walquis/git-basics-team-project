@@ -191,7 +191,7 @@ Git manages your changes using three trees:
 | Index | The commit-in-progress, aka "staging" |
 | Workspace | Your local filesystem (except for the .git directory itself |
 
-On the 'green path' (that is, no mistakes or side journeys), changes start in the __workspace__ and flow to the __index__ via `git add```, and finally into the repo via `git commit` (i.e., the branch to which __HEAD__ points moves to the next commit):
+On the 'green path' (that is, no mistakes or side journeys), changes start in the __workspace__ and flow to the __index__ via `git add`, and finally into the repo via `git commit` (i.e., the branch to which __HEAD__ points moves to the next commit):
 
 | __Tree:__ | -- **Workspace** -- | -- **Index** -- | -- **HEAD** --
 | --: | ---- | ---- |
