@@ -40,7 +40,7 @@ A basic workflow in the "shared-repo development model":
 
 **Vocabulary**: sha, content-addressable, blob, tree, commit
 
-**Commands**: 
+**Commands**:
 - `git show` - What's in the latest commit.  See [Viewing Repo Changes](./viewing-changes.md) for more.
 - `git reflog` - local history of where HEAD has been.
 - `git cat-file -p` - just for teaching purposes; not part of a normal git workflow
@@ -59,7 +59,7 @@ Now that we have some commits, let's take a closer look...
 > 1. What are the contents of HEAD's tree's first blob?
 
 ### Your Local Git repo and The Three Trees - or, "Intro to `git reset`"
-We'll learn to use `git reset` to move changes back and forth (locally) between the "three trees" - **workspace**, **index**, and **HEAD**.  For more in-depth, work thru [The Objects and Trees Exercise](objects-and-trees-exercise.md).
+We'll learn to use `git reset` to move changes back and forth between the "three trees" - **workspace**, **index**, and **HEAD**.  For more in-depth, work thru [The Objects and Trees Exercise](objects-and-trees-exercise.md).
 
 **Vocabulary**:
 - workspace, index, HEAD
@@ -72,17 +72,17 @@ When I last checked (end of March 2023), six of the [top twelve stackoverflow qu
 A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 ![](images/GitThreeTrees.png)
 
-#### LAB - Practicing with `git reset`
-Use each of the `--soft`, `--mixed`, and `--hard` options to `git reset` at least once.
+#### LAB - Modify committed changes with `git reset`
+Use each of `git reset`'s `--soft`, `--mixed`, and `--hard` options at least once.
 > 1. Make a change and commit it (do not `git push`!).
-> 1. Revert the change using `git reset`.
+> 1. Undo the change using `git reset`.
 > 1. Make another change, and commit.
 > 1. Revert, using another option of `git reset`.  Commit.
 > 1. Revert, using another option of `git reset`.  Commit.
 
-We've only used `git reset` to move our current branch back one commit.  But with `git reset`, we can move our current branch anywhere we want.  When might this be useful?
+🤔 So far, we've only used `git reset` to move our current branch back one commit.  But with `git reset`, we can move our current branch anywhere we want.  When might this be useful?
 
-**Scenario**: You accidentally make commits on `main`, but then realize you should be on a branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).
+**Scenario**: You accidentally make commits on `main`, but then realize you should be on a different branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).
 
 #### LAB - Simulate branching "after-the-fact"
 > 1. Make 3 or 4 commits on `main`.  Then realize Oops, I should be on another branch.
@@ -93,7 +93,7 @@ We've only used `git reset` to move our current branch back one commit.  But wit
 
 #### LAB - merge conflicts
 > 1. Each teammate: Change the same line in same file (e.g. Change "The Solar System" in `index.html` to some other text).
-> 1. Commit. 
+> 1. Commit.
 > 1. One teammate do a `git push`; the others `git pull`.
 > 1. Among your team, resolve merge conflicts and `git push` until you all have the same commit sha for HEAD.
 
@@ -111,7 +111,7 @@ We'll be working with the shared repository model.
 #### LAB - Create/Handle merge conflicts again - but now using Pull Requests in your workflow
 > 1. Each teammate: `git checkout -b` _yourOwnBranchName_
 > 1. Each teammate: Change the same line in same file, like before.
-> 1. Commit. 
+> 1. Commit.
 > 1. `git push` _yourOwnBranchName_
 > 1. Go to Github and make a PR for your branch; choose one or more reviewers.
 > 1. Reviewers: review/approve the PRs and merge.

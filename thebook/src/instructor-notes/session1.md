@@ -19,7 +19,7 @@ POINTS TO MAKE:
 
 - Using Concepts drawings on iPad, walk through a 'fast-forward' merge (which is what the 'git push' accomplishes from Github's perspective).
 - Trace how `origin/main` and the remote's `main` move as a result of `git push` and `git pull` (and how they do NOT move for local operations such as `git commit`).
-- "Does Github do a merge when I push?" (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.) 
+- "Does Github do a merge when I push?" (No, I've already done the merge locally; it only updates its branch pointer and commits--including the merge commit--associated with the branch I'm pushing.)
 
 DISCUSS:
 🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
@@ -35,8 +35,6 @@ DISCUSS:
 - What was your impression of the collaborative experience?
 - What was difficult?
 - Any ideas about how it might be made smoother, or better in other ways?
-
-- **Time for a break?***
 
 ### Anatomy of a Git Commit, or, "The Three Objects"
 
@@ -61,10 +59,10 @@ POINTS TO MAKE:
   - `git stash` lets you switch contexts quickly.
 - `git reset` is a local-only command.
 
-We've only used `git reset` to move our current branch back one commit.  But `git reset` will move our current branch anywhere we tell it.  When might this be useful?
-- When re-arranging branches.  Suppose you made changes on `main`, but meant to branch first?  Just make the branch where you're at, and move `main` back to where it belongs (as long as you haven't pushed those changes yet).
+🤔 DISCUSS: We've only used `git reset` to move our current branch back one commit.  But `git reset` will move our current branch anywhere we tell it.  When might this be useful?
+- When re-arranging branches.  Suppose you made changes on `main`, but meant to branch first?  Just make a branch at the commit you're on (`git branch someNewBranchName`), and then use `git reset` to move `main` back to where it belongs (as long as you haven't pushed those changes yet).
 
-- **Time for a break?***
+Show using `git reflog` and `git branch` to get a commit back.
 
 Have a conversation about doing a `git reset` to something before `origin`; and relatedly, `git push -f` and its pitfalls.
 
