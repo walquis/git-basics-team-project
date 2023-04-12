@@ -1,1 +1,1 @@
-![](step-1.jpg)
+# Step 0.5 - Teammate commits locally

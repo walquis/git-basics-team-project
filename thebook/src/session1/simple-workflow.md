@@ -1,9 +1,9 @@
 # Breakdown of Simple Collaborative Workflow
 This sequence of images represents the progression of a workflow where my teammate first makes a change locally and pushes, and then I also make a change locally--but now I must integrate with their change (via a `git pull origin main`) before I too can push.
 
-(Note that the images are arranged such that you can bounce between them with right and left arrow keys and visually compare the changes between steps.)
+(Note that the images are arranged such that, once you're viewing one of them, you can bounce back and forth between them with right and left arrow keys, visually comparing frame-by-frame what happens between steps.)
 
-## Step 0 - [everybody checkout `main`](./step0.md)
+## Step 1 - [Everybody checkout `main`](./image0.md)
 When I and my teammates set up to collaborate, we all `git clone` a shared repo--something like this...
 ```
 $ git clone https://github.com/org-or-user/the-team-repo   # Make local copy of repo
@@ -21,33 +21,36 @@ As you will see, this tracking is not "live"; no automatic notification is happe
 <span class="hljs" style="color:red">origin/main</span>'s
 value _in my repo_ is updated only when I perform certain activities--mainly `git push` and `git pull`.
 
-## Step 0.5 - [they commit locally](./step1.md)
-
+## Step 2 - [Teammate commits work](./image1.md)
 To kick-off collaboration in this illustration, my teammate does some local work worthy of sharing--the commit represented by the pink circle.
 
-## Step 1 - [They push `main` to the remote named "origin"](./step2.md)
-Now they push their work, with something like this:
+Key Points:
+- `git commit` is a local-only operation.  No communication happens to or from any remote repo.
+- Because a commit is local-only, my teammate's `main` moves, but not `origin/main`.
+- Because a commit is local-only, neither does `main` on the remote called "origin" (at least, not as a result of this teammate's commit.  Somebody else could have pushed and moved `main` on the remote, but the teammate won't know about it yet).
+
+## Step 3 - [Teammate pushes](./image2.md)
+Now your teammate shares the work they've committed to `main`, by pushing to the remote named "origin", with something like this:
 ```
 $ git push origin main
 ```
-Notice the two main changes:
-1. The pink commit has been copied to the remote named "origin".
-1. The remote's `main` branch has been updated to reflect the new work--and correspondingly, my teammate's local
+Key points:
+- The pink commit has been copied to the remote named "origin".
+- The remote's `main` branch has been updated to reflect the new work--and correspondingly, my teammate's local
 <span class="hljs" style="color:red">origin/main</span>
 tracking branch is updated as well.
-
-Note also that nothing happens in my local repo as a result of their push.
+- Nothing happens in my local repo as a result of my teammate's push.
 
 OK, now it's my turn...
 
-## [I make local changes too, before I've talked with "origin"](./step3.md)
+## [Step 4 - I make local changes too](./image3.md)
 My commit is represented by the blue-ish circle.
 
-(Note that my 
-<span class="hljs" style="color:red">origin/main</span>
-tracking branch has not yet moved, because I've not yet run any commands that reach out to the remote.)
+Key points:
+- This is before I've talked with "origin".
+- My <span class="hljs" style="color:red">origin/main</span> tracking branch has not yet moved, because I've not yet run any commands that reach out to the remote.
 
-### Step 2.1 - [fetch - first 1/2 of pull](./step4.md)
+### Step 5.1 - [I pull (first 1/2 - fetch)](./image4.md)
 I now pull, by running something like this to see if there are changes to integrate (as indeed there are in this case):
 ```
 $ git pull origin main
@@ -63,15 +66,14 @@ $ git merge origin/main  # Merge into my current branch from the (now-up-to-date
 ```
 You can run these explicitly, instead of a `git pull`; perhaps I want to see what's happened on the remote before I integrate those changes, so I `git fetch`, and take a look before doing a `git merge`.
 
-## Step 2.2 - [merge - second 1/2 of pull](./step5.md)
-
+### Step 5.1 - [I pull (second 1/2 - merge)](./image5.md)
 As mentioned, the second half of a `git pull` is a merge operation; the merge commit is represented by the grayish circle.
 
 By definition, a merge commit is a commit with two or more parents.
 
 (A merge may be automatic, or it may result in a conflict; we'll cover conflicts later in this course.)
 
-## Step 3 - [I push `main` to "origin")](./step6.md)
+## Step 6 - [I push `main` to "origin"](./image6.md)
 Now that I've committed the work onto my local `main` branch to integrate the changes, I can push that work on `main` back to the remote called "origin":
 ```
 $ git push origin main 

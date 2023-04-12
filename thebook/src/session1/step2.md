@@ -1,1 +1,1 @@
-![](step-2.jpg)
+# Step 1 - Teammate pushes

@@ -20,14 +20,16 @@ source git-aliases.sh
 ✅ **Checkpoint: Everyone has their team lead's repo cloned (including the team lead)**.
 
 ### The Simplest Possible Collaborative Git Workflow
-Everybody working on the `main` branch.
+Everybody working on the `main` branch...pretty simple (but not the best!)
 
 **Vocabulary**: remote, merge commit, "fast-forward merge"
 
 **Commands**: `git pull`, `git add`, `git commit`, `git push`, `git fetch`, `git merge`
 
-A basic workflow in the "shared-repo development model":
+A basic workflow in the ["shared-repository model"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) of development:
+
 ![](images/push-pull-push-diagram.jpg)
+Click [here](./session1/simple-workflow.md) for a walk-through of this workflow.
 
 🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
 
