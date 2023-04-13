@@ -8,5 +8,5 @@ This sequence of images represents the progression of a workflow where my teamma
 ## Step 3 - [Teammate pushes](./image2.md)
 ## [Step 4 - I make local changes too](./image3.md)
 ### Step 5.1 - [I pull (first 1/2 - fetch)](./image4.md)
-### Step 5.1 - [I pull (second 1/2 - merge)](./image5.md)
+### Step 5.2 - [I pull (second 1/2 - merge)](./image5.md)
 ## Step 6 - [I push `main` to "origin"](./image6.md)
