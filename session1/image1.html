@@ -144,7 +144,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><img src="image1.png" alt="" /></p>
+                        <p><img src="image1.png" alt="" />
+To kick off collaboration, my teammate does some local work worthy of sharing--the commit represented by the pink circle.</p>
+<h3 id="key-points"><a class="header" href="#key-points">Key Points:</a></h3>
+<ul>
+<li><strong><code>git commit</code> is a local-only operation.</strong>  No communication happens to or from any remote repo.</li>
+<li>Because <code>git commit</code> is local-only, <strong>my teammate's <code>main</code> moves, but not <code>origin/main</code>.</strong></li>
+<li>Because <code>git commit</code> is local-only, <strong><code>main</code> on the remote called &quot;origin&quot; does not move either</strong> (at least, not as a result of this teammate's commit.  Somebody else could have <code>git push</code>'d and hence moved <code>main</code> on the remote, but the teammate won't know about it yet).</li>
+</ul>
 
                     </main>
 

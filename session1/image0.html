@@ -144,7 +144,19 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><img src="image0.png" alt="" /></p>
+                        <p><img src="image0.png" alt="" />
+When I and my teammates set up to collaborate, we all <code>git clone</code> a shared repo--something like this...</p>
+<pre><code>$ git clone https://github.com/org-or-user/the-team-repo   # Make local copy of repo
+$ git checkout main   # Point HEAD at &quot;main&quot;, i.e., make &quot;main&quot; my current branch
+</code></pre>
+<p>In this way, we all start with the same understanding of where branch <code>main</code> is--the commit represented by the green circle.</p>
+<h3 id="key-points"><a class="header" href="#key-points">Key Points:</a></h3>
+<ul>
+<li><strong>The <span class="hljs" style="color:red">origin/main</span>
+branch, seen in both local repos, is a &quot;tracking branch&quot;.</strong> git uses it to keep track of where the <span class="hljs" style="color:red">main</span> branch on the remote called &quot;origin&quot; is pointing.</li>
+<li><strong>As you will see, this tracking is not &quot;live&quot;</strong>; no automatic cross-repo notification is happening.</li>
+<li><strong>I have no reason to ever <code>git checkout</code> a tracking branch</strong>.  <span class="hljs" style="color:red">origin/main</span>'s value <em>in my repo</em> is updated when I perform certain activities--mainly <code>git push</code> and <code>git pull</code>.</li>
+</ul>
 
                     </main>
 

@@ -144,7 +144,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><img src="image4.png" alt="" /></p>
+                        <p><img src="image4.png" alt="" />
+I now pull, by running something like this to see if there are changes to integrate (as indeed there are in this case):</p>
+<pre><code>$ git pull origin main
+</code></pre>
+<h3 id="key-points"><a class="header" href="#key-points">Key Points:</a></h3>
+<ul>
+<li><strong>A <code>git pull</code> is a two-part operation</strong><sup class="footnote-reference"><a href="#gitpushmirror">1</a></sup>.  The first part, shown above, is called &quot;fetch&quot;, and brings into my repo's DB any commits from the remote that belong to the requested branch and are not already here.</li>
+<li>The second part is &quot;merge&quot;, which updates my local branch with those changes.</li>
+<li>Essentially, a <code>git pull</code> combines these two commands:</li>
+</ul>
+<pre><code>$ git fetch origin main  # Grab commits associated with current branch, and update tracking branch
+$ git merge origin/main  # Merge into my current branch from the (now-up-to-date) tracking branch
+</code></pre>
+<p>I can run these explicitly, instead of a <code>git pull</code>; perhaps I want to see what's happened on the remote before I integrate those changes, so I might <code>git fetch</code> and take a look before doing a <code>git merge</code>.</p>
+<hr />
+<div class="footnote-definition" id="gitpushmirror"><sup class="footnote-definition-label">1</sup>
+<p>As mentioned earlier, <code>git pull</code> is conceptually a mirror image of <code>git push</code>.</p>
+</div>
 
                     </main>
 

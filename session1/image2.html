@@ -144,7 +144,23 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><img src="image2.png" alt="" /></p>
+                        <p><img src="image2.png" alt="" />
+Now my teammate shares the work they've committed to <code>main</code>, by pushing to the remote named &quot;origin&quot;, with something like this:</p>
+<pre><code>$ git push origin main
+</code></pre>
+<h3 id="key-points"><a class="header" href="#key-points">Key points:</a></h3>
+<ul>
+<li><strong>The pink commit has been copied to the remote named &quot;origin&quot;.</strong> In general, any commits reachable from <code>main</code> are copied over if not already there.</li>
+<li><strong>The remote's <code>main</code> branch has been updated to reflect the new work</strong>--and correspondingly, my teammate's local <span class="hljs" style="color:red">origin/main</span> tracking branch is updated as well.<sup class="footnote-reference"><a href="#ffwdmerge">1</a></sup></li>
+<li><strong>Nothing happens in my local repo</strong> as a result of my teammate's push.</li>
+</ul>
+<hr />
+<div class="footnote-definition" id="ffwdmerge"><sup class="footnote-definition-label">1</sup>
+<p>As we'll see soon, a <code>git pull</code> is a 2-part operation: &quot;fetch&quot; and &quot;merge&quot;.  A <code>git push</code> is the same 2-part operation, but in the other direction.  Moving the <code>main</code> pointer forward on the remote, as is done here,
+is an example of that second &quot;merge&quot; part.  Because no changes have reached the remote since our teammate last pulled, the <code>main</code> pointer can simply be moved forward; hence, this is called a &quot;fast-forward merge&quot;.
+This is the only kind of merge possible with a <code>git push</code>.
+If there turn out to be changes remotely that we didn't know about, a merge commit (that is, a commit with multiple parents) would be needed.  <code>git push</code> doesn't do those, so the <code>git push</code> is rejected and no branches are updated (unless you use <code>--force</code>; but don't do that unless you know exactly what will happen!)</p>
+</div>
 
                     </main>
 

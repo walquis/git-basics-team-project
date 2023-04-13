@@ -148,76 +148,12 @@
 <p>This sequence of images represents the progression of a workflow where my teammate first makes a change locally and pushes, and then I also make a change locally--but now I must integrate with their change (via a <code>git pull origin main</code>) before I too can push.</p>
 <p>(Note that the images are arranged such that, once you're viewing one of them, you can bounce back and forth between them with right and left arrow keys, visually comparing frame-by-frame what happens between steps.)</p>
 <h2 id="step-1---everybody-checkout-main"><a class="header" href="#step-1---everybody-checkout-main">Step 1 - <a href="./image0.html">Everybody checkout <code>main</code></a></a></h2>
-<p>When I and my teammates set up to collaborate, we all <code>git clone</code> a shared repo--something like this...</p>
-<pre><code>$ git clone https://github.com/org-or-user/the-team-repo   # Make local copy of repo
-$ git checkout main   # Point HEAD at &quot;main&quot;...i.e., make &quot;main&quot; my current branch
-</code></pre>
-<p>In this way, we all start with the same understanding of where branch <code>main</code> is--the commit represented by the green circle.</p>
-<p>The
-<span class="hljs" style="color:red">origin/main</span>
-branch, seen in both local repos, is a &quot;tracking branch&quot;. git uses it to keep track of where the
-<span class="hljs" style="color:red">main</span>
-branch on the remote called &quot;origin&quot; is pointing.</p>
-<p>As you will see, this tracking is not &quot;live&quot;; no automatic notification is happening.
-<span class="hljs" style="color:red">origin/main</span>'s
-value <em>in my repo</em> is updated only when I perform certain activities--mainly <code>git push</code> and <code>git pull</code>.</p>
 <h2 id="step-2---teammate-commits-work"><a class="header" href="#step-2---teammate-commits-work">Step 2 - <a href="./image1.html">Teammate commits work</a></a></h2>
-<p>To kick-off collaboration in this illustration, my teammate does some local work worthy of sharing--the commit represented by the pink circle.</p>
-<p>Key Points:</p>
-<ul>
-<li><code>git commit</code> is a local-only operation.  No communication happens to or from any remote repo.</li>
-<li>Because a commit is local-only, my teammate's <code>main</code> moves, but not <code>origin/main</code>.</li>
-<li>Because a commit is local-only, neither does <code>main</code> on the remote called &quot;origin&quot; (at least, not as a result of this teammate's commit.  Somebody else could have pushed and moved <code>main</code> on the remote, but the teammate won't know about it yet).</li>
-</ul>
 <h2 id="step-3---teammate-pushes"><a class="header" href="#step-3---teammate-pushes">Step 3 - <a href="./image2.html">Teammate pushes</a></a></h2>
-<p>Now your teammate shares the work they've committed to <code>main</code>, by pushing to the remote named &quot;origin&quot;, with something like this:</p>
-<pre><code>$ git push origin main
-</code></pre>
-<p>Key points:</p>
-<ul>
-<li>The pink commit has been copied to the remote named &quot;origin&quot;.</li>
-<li>The remote's <code>main</code> branch has been updated to reflect the new work--and correspondingly, my teammate's local
-<span class="hljs" style="color:red">origin/main</span>
-tracking branch is updated as well.</li>
-<li>Nothing happens in my local repo as a result of my teammate's push.</li>
-</ul>
-<p>OK, now it's my turn...</p>
 <h2 id="step-4---i-make-local-changes-too"><a class="header" href="#step-4---i-make-local-changes-too"><a href="./image3.html">Step 4 - I make local changes too</a></a></h2>
-<p>My commit is represented by the blue-ish circle.</p>
-<p>Key points:</p>
-<ul>
-<li>This is before I've talked with &quot;origin&quot;.</li>
-<li>My <span class="hljs" style="color:red">origin/main</span> tracking branch has not yet moved, because I've not yet run any commands that reach out to the remote.</li>
-</ul>
 <h3 id="step-51---i-pull-first-12---fetch"><a class="header" href="#step-51---i-pull-first-12---fetch">Step 5.1 - <a href="./image4.html">I pull (first 1/2 - fetch)</a></a></h3>
-<p>I now pull, by running something like this to see if there are changes to integrate (as indeed there are in this case):</p>
-<pre><code>$ git pull origin main
-</code></pre>
-<p>A <code>git pull</code> is a two-phase operation (essentially it's a mirror image of <code>git push</code>).  The first phase, called &quot;fetch&quot;, brings into my repo's DB the news of commits and branches from the remote.</p>
-<p>The second phase is &quot;merge&quot;.</p>
-<p>Essentially, a pull combines these two commands:</p>
-<pre><code>$ git fetch origin main  # Grab commits associated with current branch, and update tracking branch
-$ git merge origin/main  # Merge into my current branch from the (now-up-to-date) tracking branch
-</code></pre>
-<p>You can run these explicitly, instead of a <code>git pull</code>; perhaps I want to see what's happened on the remote before I integrate those changes, so I <code>git fetch</code>, and take a look before doing a <code>git merge</code>.</p>
 <h3 id="step-51---i-pull-second-12---merge"><a class="header" href="#step-51---i-pull-second-12---merge">Step 5.1 - <a href="./image5.html">I pull (second 1/2 - merge)</a></a></h3>
-<p>As mentioned, the second half of a <code>git pull</code> is a merge operation; the merge commit is represented by the grayish circle.</p>
-<p>By definition, a merge commit is a commit with two or more parents.</p>
-<p>(A merge may be automatic, or it may result in a conflict; we'll cover conflicts later in this course.)</p>
 <h2 id="step-6---i-push-main-to-origin"><a class="header" href="#step-6---i-push-main-to-origin">Step 6 - <a href="./image6.html">I push <code>main</code> to &quot;origin&quot;</a></a></h2>
-<p>Now that I've committed the work onto my local <code>main</code> branch to integrate the changes, I can push that work on <code>main</code> back to the remote called &quot;origin&quot;:</p>
-<pre><code>$ git push origin main 
-</code></pre>
-<p>Now I'm all caught up, and the remote is caught up.</p>
-<p>Notice the changes that happen:</p>
-<ol>
-<li>Two commits are sent to the remote: My original local commit, and the merge commit.</li>
-<li>The remote's <code>main</code> branch has been updated to reflect the new work--and correspondingly, my teammate's local 
-<span class="hljs" style="color:red">origin/main</span>
-tracking branch is updated as well.  In other words, the same process happened for me when I pushed, as happened for them when they pushed.</li>
-</ol>
-<p>As before, my push updates the remote (that is &quot;origin&quot;, which happens to be Github), but it does <strong>NOT</strong> update my anything in my teammate's repo.  That would require explicit activity on their part.</p>
-<p>Finally, note that now <em>my teammate</em>  is behind!  How would they catch up?</p>
 
                     </main>
 
