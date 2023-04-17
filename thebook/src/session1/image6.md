@@ -1,4 +1,5 @@
 ![](image6.png)
+
 Now that I've done the work on my local `main` branch to integrate the changes (via a merge commit), I can push that work on `main` back to the remote called "origin", like this:
 ```
 $ git push origin main 

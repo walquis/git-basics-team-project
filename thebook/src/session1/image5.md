@@ -1,4 +1,5 @@
 ![](image5.png)
+
 The second half of the `git pull` is a "merge", shown above. The merge commit is represented by the grayish circle.
 
 ### Key Points:

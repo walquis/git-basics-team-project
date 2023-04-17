@@ -1,8 +1,10 @@
 ![](image4.png)
+
 I now pull, by running something like this to see if there are changes to integrate (as indeed there are in this case):
 ```
 $ git pull origin main
 ```
+
 ### Key Points:
 - **A `git pull` is a two-part operation**[^gitpushmirror].  The first part, shown above, is called "fetch", and brings into my repo's DB any commits from the remote that belong to the requested branch and are not already here.
 - The second part is "merge", which updates my local branch with those changes.

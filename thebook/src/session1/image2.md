@@ -1,8 +1,10 @@
 ![](image2.png)
+
 Now my teammate shares the work they've committed to `main`, by pushing to the remote named "origin", with something like this:
 ```
 $ git push origin main
 ```
+
 ### Key points:
 - **The pink commit has been copied to the remote named "origin".** In general, any commits reachable from `main` are copied over if not already there.
 - **The remote's `main` branch has been updated to reflect the new work**--and correspondingly, my teammate's local <span class="hljs" style="color:red">origin/main</span> tracking branch is updated as well.[^ffwdmerge]

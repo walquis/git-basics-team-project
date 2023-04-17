@@ -1,4 +1,5 @@
 ![](image0.png)
+
 When I and my teammates set up to collaborate, we all `git clone` a shared repo--something like this...
 ```
 $ git clone https://github.com/org-or-user/the-team-repo   # Make local copy of repo

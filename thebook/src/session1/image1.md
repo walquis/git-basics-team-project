@@ -1,4 +1,5 @@
 ![](image1.png)
+
 To kick off collaboration, my teammate does some local work worthy of sharing--the commit represented by the pink circle.
 
 ### Key Points:
