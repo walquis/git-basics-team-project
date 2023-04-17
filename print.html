@@ -346,16 +346,24 @@ can add one of these files: <code>index.html</code>, <code>help.html</code>, <co
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="breakdown-of-simple-collaborative-workflow"><a class="header" href="#breakdown-of-simple-collaborative-workflow">Breakdown of Simple Collaborative Workflow</a></h1>
 <p>This sequence of images represents the progression of a workflow where my teammate first makes a change locally and pushes, and then I also make a change locally--but now I must integrate with their change (via a <code>git pull origin main</code>) before I too can push.</p>
-<p>(Note that the images are arranged such that, once you're viewing one of them, you can bounce back and forth between them with right and left arrow keys, visually comparing frame-by-frame what happens between steps.)</p>
+<p>Click into each step to view the details.</p>
+<p>(Note that the steps are arranged such that, once you've clicked on one of them, you can bounce back and forth between them with right and left arrow keys, visually comparing frame-by-frame what happens between steps.)</p>
 <h2 id="step-1---everybody-checkout-main"><a class="header" href="#step-1---everybody-checkout-main">Step 1 - <a href="session1/./image0.html">Everybody checkout <code>main</code></a></a></h2>
+<p><a href="session1/./image0.html"><img src="session1/./image0.png" alt="" /></a></p>
 <h2 id="step-2---teammate-commits-work"><a class="header" href="#step-2---teammate-commits-work">Step 2 - <a href="session1/./image1.html">Teammate commits work</a></a></h2>
+<p><a href="session1/./image1.html"><img src="session1/./image1.png" alt="" /></a></p>
 <h2 id="step-3---teammate-pushes"><a class="header" href="#step-3---teammate-pushes">Step 3 - <a href="session1/./image2.html">Teammate pushes</a></a></h2>
+<p><a href="session1/./image2.html"><img src="session1/./image2.png" alt="" /></a></p>
 <h2 id="step-4---i-make-local-changes-too"><a class="header" href="#step-4---i-make-local-changes-too"><a href="session1/./image3.html">Step 4 - I make local changes too</a></a></h2>
+<p><a href="session1/./image3.html"><img src="session1/./image3.png" alt="" /></a></p>
 <h3 id="step-51---i-pull-first-12---fetch"><a class="header" href="#step-51---i-pull-first-12---fetch">Step 5.1 - <a href="session1/./image4.html">I pull (first 1/2 - fetch)</a></a></h3>
+<p><a href="session1/./image4.html"><img src="session1/./image4.png" alt="" /></a></p>
 <h3 id="step-52---i-pull-second-12---merge"><a class="header" href="#step-52---i-pull-second-12---merge">Step 5.2 - <a href="session1/./image5.html">I pull (second 1/2 - merge)</a></a></h3>
+<p><a href="session1/./image5.html"><img src="session1/./image5.png" alt="" /></a></p>
 <h2 id="step-6---i-push-main-to-origin"><a class="header" href="#step-6---i-push-main-to-origin">Step 6 - <a href="session1/./image6.html">I push <code>main</code> to &quot;origin&quot;</a></a></h2>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image0.png" alt="" />
-When I and my teammates set up to collaborate, we all <code>git clone</code> a shared repo--something like this...</p>
+<p><a href="session1/./image6.html"><img src="session1/./image6.png" alt="" /></a></p>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image0.png" alt="" /></p>
+<p>When I and my teammates set up to collaborate, we all <code>git clone</code> a shared repo--something like this...</p>
 <pre><code>$ git clone https://github.com/org-or-user/the-team-repo   # Make local copy of repo
 $ git checkout main   # Point HEAD at &quot;main&quot;, i.e., make &quot;main&quot; my current branch
 </code></pre>
@@ -367,16 +375,16 @@ branch, seen in both local repos, is a &quot;tracking branch&quot;.</strong> git
 <li><strong>As you will see, this tracking is not &quot;live&quot;</strong>; no automatic cross-repo notification is happening.</li>
 <li><strong>I have no reason to ever <code>git checkout</code> a tracking branch</strong>.  <span class="hljs" style="color:red">origin/main</span>'s value <em>in my repo</em> is updated when I perform certain activities--mainly <code>git push</code> and <code>git pull</code>.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image1.png" alt="" />
-To kick off collaboration, my teammate does some local work worthy of sharing--the commit represented by the pink circle.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image1.png" alt="" /></p>
+<p>To kick off collaboration, my teammate does some local work worthy of sharing--the commit represented by the pink circle.</p>
 <h3 id="key-points-1"><a class="header" href="#key-points-1">Key Points:</a></h3>
 <ul>
 <li><strong><code>git commit</code> is a local-only operation.</strong>  No communication happens to or from any remote repo.</li>
 <li>Because <code>git commit</code> is local-only, <strong>my teammate's <code>main</code> moves, but not <code>origin/main</code>.</strong></li>
 <li>Because <code>git commit</code> is local-only, <strong><code>main</code> on the remote called &quot;origin&quot; does not move either</strong> (at least, not as a result of this teammate's commit.  Somebody else could have <code>git push</code>'d and hence moved <code>main</code> on the remote, but the teammate won't know about it yet).</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image2.png" alt="" />
-Now my teammate shares the work they've committed to <code>main</code>, by pushing to the remote named &quot;origin&quot;, with something like this:</p>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image2.png" alt="" /></p>
+<p>Now my teammate shares the work they've committed to <code>main</code>, by pushing to the remote named &quot;origin&quot;, with something like this:</p>
 <pre><code>$ git push origin main
 </code></pre>
 <h3 id="key-points-2"><a class="header" href="#key-points-2">Key points:</a></h3>
@@ -392,15 +400,15 @@ is an example of that second &quot;merge&quot; part.  Because no changes have re
 This is the only kind of merge possible with a <code>git push</code>.
 If there turn out to be changes remotely that we didn't know about, a merge commit (that is, a commit with multiple parents) would be needed.  <code>git push</code> doesn't do those, so the <code>git push</code> is rejected and no branches are updated (unless you use <code>--force</code>; but don't do that unless you know exactly what will happen!)</p>
 </div>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image3.png" alt="" />
-Now I join the picture.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image3.png" alt="" /></p>
+<p>Now I join the picture.</p>
 <h3 id="key-points-3"><a class="header" href="#key-points-3">Key points:</a></h3>
 <ul>
 <li>Like my teammate, I've made a local commit after cloning.  My commit is represented by the blue-ish circle.</li>
 <li><strong>my <span class="hljs" style="color:red">origin/main</span> tracking branch has not yet moved</strong>, because I've not yet run any commands that reach out to the remote called &quot;origin&quot;.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image4.png" alt="" />
-I now pull, by running something like this to see if there are changes to integrate (as indeed there are in this case):</p>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image4.png" alt="" /></p>
+<p>I now pull, by running something like this to see if there are changes to integrate (as indeed there are in this case):</p>
 <pre><code>$ git pull origin main
 </code></pre>
 <h3 id="key-points-4"><a class="header" href="#key-points-4">Key Points:</a></h3>
@@ -417,8 +425,8 @@ $ git merge origin/main  # Merge into my current branch from the (now-up-to-date
 <div class="footnote-definition" id="gitpushmirror"><sup class="footnote-definition-label">1</sup>
 <p>As mentioned earlier, <code>git pull</code> is conceptually a mirror image of <code>git push</code>.</p>
 </div>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image5.png" alt="" />
-The second half of the <code>git pull</code> is a &quot;merge&quot;, shown above. The merge commit is represented by the grayish circle.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image5.png" alt="" /></p>
+<p>The second half of the <code>git pull</code> is a &quot;merge&quot;, shown above. The merge commit is represented by the grayish circle.</p>
 <h3 id="key-points-5"><a class="header" href="#key-points-5">Key Points:</a></h3>
 <ul>
 <li>By definition, <strong>a merge commit is a commit with two or more parents</strong>.</li>
@@ -426,8 +434,8 @@ The second half of the <code>git pull</code> is a &quot;merge&quot;, shown above
 <li><strong>A merge commit is not created until the merge is complete</strong>, whether automatically by git, or manually by resolving merge conflicts.</li>
 <li><strong>It's generally not obvious from a commit graph whether a merge had conflicts.</strong></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image6.png" alt="" />
-Now that I've done the work on my local <code>main</code> branch to integrate the changes (via a merge commit), I can push that work on <code>main</code> back to the remote called &quot;origin&quot;, like this:</p>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="session1/image6.png" alt="" /></p>
+<p>Now that I've done the work on my local <code>main</code> branch to integrate the changes (via a merge commit), I can push that work on <code>main</code> back to the remote called &quot;origin&quot;, like this:</p>
 <pre><code>$ git push origin main 
 </code></pre>
 <p>Now I'm all caught up, and the remote is caught up.</p>
