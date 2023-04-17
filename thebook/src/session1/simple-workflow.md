@@ -1,5 +1,5 @@
 # Breakdown of Simple Collaborative Workflow
-This sequence of images represents the progression of a workflow where my teammate first makes a change locally and pushes, and then I also make a change locally--but now I must integrate with their change (via a `git pull origin main`) before I too can push.
+This sequence represents a workflow where my teammate first makes a change locally and pushes.  I also make a change locally--but now I must integrate their change (via a `git pull origin main`) before I too can push.
 
 Click into each step to view the details.
 
@@ -13,9 +13,9 @@ Click into each step to view the details.
 [![](./image2.png)](./image2.md)
 ## [Step 4 - I make local changes too](./image3.md)
 [![](./image3.png)](./image3.md)
-### Step 5.1 - [I pull (first 1/2 - fetch)](./image4.md)
+## Step 5.1 - [I pull (first 1/2 - fetch)](./image4.md)
 [![](./image4.png)](./image4.md)
-### Step 5.2 - [I pull (second 1/2 - merge)](./image5.md)
+## Step 5.2 - [I pull (second 1/2 - merge)](./image5.md)
 [![](./image5.png)](./image5.md)
 ## Step 6 - [I push `main` to "origin"](./image6.md)
 [![](./image6.png)](./image6.md)
