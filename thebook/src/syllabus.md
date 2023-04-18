@@ -2,7 +2,7 @@
 
 We will learn how git's _data model_, __The Three Objects__, forms the basis of a git repo's architecture.
 
-We will learn to use git's _state model_, __The Three Trees__, to confidently manage changes between a workspace and a local git repo. 
+We will learn to use git's _state model_, __The Three Trees__, to confidently manage changes between a working tree and a local git repo. 
 
 We will learn to use __Pull Requests__ within git workflows to communicate our changes to others.
 
@@ -32,7 +32,7 @@ By the end of this course, students will be able to...
 - sha
 - content-addressable filesystem
 - blob, tree, commit
-- workspace, index, HEAD
+- working tree, index, HEAD
 - symbolic ref
 - branch
 - remote
@@ -82,4 +82,4 @@ These are the three trees:
 
 - __HEAD__ - pointer to the current branch, which points to a commit
 - __Index__ - the place you add to; the staging area for commits
-- __Workspace__ - the files checked out on disk (not including the git repo itself - that would be too meta)
+- __Working Tree - the files checked out on disk (not including the git repo itself - that would be too meta)

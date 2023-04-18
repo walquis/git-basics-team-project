@@ -1,14 +1,14 @@
 # Hints For Viewing Repo Changes
 
 ## Git Diff - the command line
-Note that the diff'ing methods below only compare commits, that is, changes *already committed to the repo*.  They don't address contents of your working directory or index.  For that, use "git diff" (which shows your index vs. workspace), or "git diff --staged" (HEAD vs. index).
+Note that the diff'ing methods below only compare commits, that is, changes *already committed to the repo*.  They don't address contents of your working directory or index.  For that, use "git diff" (which shows your index vs. working tree), or "git diff --staged" (HEAD vs. index).
 1. See a given commit's diffs relative to its parent commit...
 
 In this form of `git show`, you see ONLY a single commit's diffs, even if you provide a branch name instead of a sha.  Just saying `git show` displays your most recent commit's changes.
 ```
 $ git show 3f29a16  # (Substitute your own commit sha)
 ```
-`git show` can be handy whenever you just want to see a single commit's worth of diffs.  You can do this from anywhere--there is no need, for instance, to get your workspace into a clean state, checkout a particular branch, and "git diff".
+`git show` can be handy whenever you just want to see a single commit's worth of diffs.  You can do this from anywhere--there is no need, for instance, to get your working tree into a clean state, checkout a particular branch, and "git diff".
 
 2. View diffs on an entire branch, relative to another branch...
 ```

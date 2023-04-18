@@ -28,6 +28,6 @@ I've presented some variation of this material to every CodePlatoon cohort since
 ---
 [^3objs]: The **three objects** are `commit`, `tree`, `blob
 
-[^3trees]: The **three trees** are `HEAD`, `index`, `workspace`
+[^3trees]: The **three trees** are `HEAD`, `index`, `working tree`
 
 [^sample-repo-note]:  You can't view the rendered `index.html` directly from Github, which only shows the HTML source.  View it by cloning the [sample repo](https://github.com/walquis/git-basics-sample-project-repo) and opening `index.html` in your browser (via "File --> Open File...").

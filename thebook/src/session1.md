@@ -3,24 +3,24 @@
 ### Setup
 1. Has everyone done the [Prework](prework.md)?
 1. Open your Linux shell.
-1. Run these commands to set up some handy aliases...
-```bash
-# Clone this repo only if you haven't already done so...
-git clone https://github.com/walquis/git-basics-team-project
-cd git-basics-team-project/bin
-source git-aliases.sh
-```
 1. Define your project teams.
 1. **Team**: Choose a team lead.
-1. **Team Lead**: Create a repo (check the box for including a README).
-1. **Team Lead**: Invite your team as collaborators.
-1. **Each Teammate**: Clone your team lead's repo (do NOT fork it!).
-1. Take a look at the sample project repo, if you haven't already.
+1. **Team Lead**: Fork the starter repo.  Choose a name for it: `solar-system`, for example.
+1. **Team Lead**: Invite your team as collaborators to `solar-system`.
+1. **Whole Team, including Team Lead**: Clone team lead's repo (do NOT fork it!).
+1. Run these commands to set up some handy aliases...
+```bash
+cd solar-system/bin
+source git-aliases.sh
+adog
+```
 
 ✅ **Checkpoint: Everyone has their team lead's repo cloned (including the team lead)**.
 
+✅ **Checkpoint: Everyone has their aliases working. (Check by running `adog` as shown above).**
+
 ### The Simplest Possible Collaborative Git Workflow
-Everybody working on the `main` branch...pretty simple (but not the best!)
+"Simple" is everybody working on the `main` branch...pretty simple, but not the best!
 
 **Vocabulary**: remote, merge commit, "fast-forward merge"
 
@@ -35,8 +35,10 @@ Click [here](./session1/simple-workflow.md) for a walk-through of this workflow.
 
 #### LAB - Simplest Possible Collaborative Git Workflow
 > 1. **Each teammate**: Commit and push at least one _non-conflicting_ change.  For instance, each teammate
-> can add one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
+> can modify one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
 > 1. `git push` and `git pull` until all of you have each other's changes and are on the same commit locally.
+
+✅ **Checkpoint: Your team is all on the same commit. (Check by running `adog` and observing which commit HEAD is on).**
 
 ### Anatomy of a Git Commit, or, "The Three Objects"
 
@@ -61,10 +63,10 @@ Now that we have some commits, let's take a closer look...
 > 1. What are the contents of HEAD's tree's first blob?
 
 ### Your Local Git repo and The Three Trees - or, "Intro to `git reset`"
-We'll learn to use `git reset` to move changes back and forth between the "three trees" - **workspace**, **index**, and **HEAD**.  For more in-depth, work thru [The Objects and Trees Exercise](objects-and-trees-exercise.md).
+We'll learn to use `git reset` to move changes back and forth between the "three trees" - **working tree**, **index**, and **HEAD**.  For more in-depth, work thru [The Objects and Trees Exercise](objects-and-trees-exercise.md).
 
 **Vocabulary**:
-- workspace, index, HEAD
+- working tree, index, HEAD
 - "detached HEAD" state
 
 **Commands**: `git diff`, `git diff --staged`, `git reflog`, `git stash`
@@ -74,7 +76,7 @@ When I last checked (end of March 2023), six of the [top twelve stackoverflow qu
 A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 ![](images/GitThreeTrees.png)
 
-#### LAB - Modify committed changes with `git reset`
+#### LAB - Commit changes and then modify them with `git reset`
 Use each of `git reset`'s `--soft`, `--mixed`, and `--hard` options at least once.
 > 1. Make a change and commit it (do not `git push`!).
 > 1. Undo the change using `git reset`.

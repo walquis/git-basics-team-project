@@ -7,7 +7,7 @@ Most of these are from <a href="https://git-scm.com" target="_blank">Git-Scm</a>
 - 2.5 - Fundamental - Skim - 5 min - [Working With Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
 - 5.2 - Nice-to-Know - Skim - 10 min - [Contributing to a Project](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)
 - __Essential__ - [Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects) - The Three Objects: Commit, Tree, Blog
-- __Essential__ - [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) - The Three Trees: HEAD, Index, Workspace
+- __Essential__ - [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) - The Three Trees: HEAD, Index, Working Tree
 - [Branches In a Nutshell](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
 - [Resolve Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts)
 - [Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) - Replay a string of commits onto another place

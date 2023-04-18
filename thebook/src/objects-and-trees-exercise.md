@@ -52,7 +52,7 @@ The git DB is "a content-addressable filesystem".&nbsp;  That is, objects are st
 
 How is this done?
 
-From your repo's workspace root, take a look around using the following as a guide.  NOTE: Your values for git SHA's will be different than what is shown here, since the contents of your objects are different.
+From your repo's root directory, take a look around using the following as a guide.  NOTE: Your values for git SHA's will be different than what is shown here, since the contents of your objects are different.
 ```
 $ git rev-parse HEAD
 9cd690631f73c4a396e02348744a3a2379f737bc
@@ -181,7 +181,7 @@ What SHAs from your repo (whether commit, tree, or blob) would correspond to thi
 So there they are:  __The Three Objects__.  __commit__, __tree__, and __blob__. Next up: How do they work in practice?
 
 ## The Three Trees
-HEAD, Index, and Workspace
+HEAD, Index, and Working Tree
 
 Git manages your changes using three trees:
 
@@ -189,11 +189,11 @@ Git manages your changes using three trees:
 | ---- | ---- |
 | HEAD | The latest commit |
 | Index | The commit-in-progress, aka "staging" |
-| Workspace | Your local filesystem (except for the .git directory itself |
+| Working Tree | Your local filesystem (except for the .git directory itself |
 
-On the 'green path' (that is, no mistakes or side journeys), changes start in the __workspace__ and flow to the __index__ via `git add`, and finally into the repo via `git commit` (i.e., the branch to which __HEAD__ points moves to the next commit):
+On the 'green path' (that is, no mistakes or side journeys), changes start in the __working tree__ and flow to the __index__ via `git add`, and finally into the repo via `git commit` (i.e., the branch to which __HEAD__ points moves to the next commit):
 
-| __Tree:__ | -- **Workspace** -- | -- **Index** -- | -- **HEAD** --
+| __Tree:__ | -- **Working Tree** -- | -- **Index** -- | -- **HEAD** --
 | --: | ---- | ---- |
 | __Operation:__ | 1. \<make changes\> | 2. `git add` (stage changes) | 3. `git commit`
 
@@ -203,13 +203,13 @@ See also this workflow diagram from git-scm.com:
 
 Sometimes it's necessary to move changes the other way--for instance, when you need to add a forgotten file, change a commit message, or revert a commit.
 
-`git reset`: The command that can assist with all this and more.  Why is it called "reset"?  Possibly because it resets trees to a state that already exists in the repo.  Unlike `git add` and `git commit`, which push new states INTO the repo, `git reset` pulls existing state the other way, OUT of the repo, and into one or more of HEAD, the index, and even the workspace.
+`git reset`: The command that can assist with all this and more.  Why is it called "reset"?  Possibly because it resets trees to a state that already exists in the repo.  Unlike `git add` and `git commit`, which push new states INTO the repo, `git reset` pulls existing state the other way, OUT of the repo, and into one or more of HEAD, the index, and even the working tree.
 
 | Tree | Role | `git reset` "hardness"<br>needed to move the tree
 | ---- | ---- | ----
 | HEAD | The latest commit | \--soft
 | Index | The commit-in-progress | \--mixed (also moves HEAD.) The default.
-| Workspace | Your local filesystem | \--hard (also moves HEAD and Index.)
+| Working Tree | Your local filesystem | \--hard (also moves HEAD and Index.)
 
 `git reset` needs to know two things:
 1. The "hardness"--that is, how many trees are to be reset, and
@@ -219,13 +219,13 @@ If you just type "git reset", the default hardness is "\--mixed", and the defaul
 
 ## Putting It Together - Moving Objects Among Trees
 
-Let's follow a single file through this workflow, starting with workspace changes, which will move into the index, and then into a commit.  Then, we'll revert it, tree by tree, all the way back using `git reset`.
+Let's follow a single file through this workflow, starting with working-tree changes, which will move into the index, and then into a commit.  Then, we'll revert it, tree by tree, all the way back using `git reset`.
 
 ### 1. Move a change forward through the trees
 
 Make a change (which tree are you working in now, as you run the following commands?) ...
 ```
-$ code index.html   #  (or whatever file you may have in your workspace)
+$ code index.html   #  (or whatever file you may have in your working tree)
 # Make a minor change to index.html in your editor, and save it. Then...
 $ git status  # or use the 'gs' alias
 $ git diff    # or use the 'gd' alias
@@ -311,7 +311,7 @@ Test your understanding:
 <!-- Github Markdown doesn't do colspan -->
 <table class="bb">
 <tr><th>"hardness"</th><th colspan="3">Trees that are reset &lt;ToThisCommit&gt;</th></tr>
-<tr class="bb"><th></th><th>Workspace</th><th>Index</th><th>HEAD</th></tr>
+<tr class="bb"><th></th><th>Working Tree</th><th>Index</th><th>HEAD</th></tr>
 <tr><td>--soft</td><td>-</td><td>-</td><td>YES</td></tr>
 <tr><td>--mixed</td><td>-</td><td>YES</td><td>YES</td></tr>
 <tr><td>--hard</td><td>YES</td><td>YES</td><td>YES</td></tr>

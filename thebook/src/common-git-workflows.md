@@ -70,11 +70,11 @@ Finally, finish the merge with a `git commit` (again, as `git status` instructs)
 ## Save Current Work and Return to it Later
 ```
 $ git stash  # Push current work--your index and modified stuff--onto a "stash stack".
-$ git status # Now your workspace is clean (except for files that aren't in git).
+$ git status # Now your working tree is clean (except for files that aren't in git).
 $ git checkout -b someNewBranch   # Or some existing branch
 # Do the work that has pre-empted you, commit/push/etc, and now return to your story...
 $ git checkout main
-$ git stash pop  # Restore your current work to this workspace
+$ git stash pop  # Restore your current work to this working tree
 $ git stash list # See if anything still on the stash stack.
 ```
 
@@ -98,7 +98,7 @@ This workflow is very common for me!
 Another variation of this workflow is "started-my-work-on-wrong-branch".
 
 It typically goes like this: 
-1. I cd into a repo workspace that I already have cloned, but haven't touched in awhile.
+1. I cd into a repo that I already have cloned, but haven't touched in awhile.
 1. I make some changes and commit.
 1. I `git push`.
 1. Git rejects my updates with something like:
@@ -141,7 +141,7 @@ Sometimes when a bug creeps in, it's hard to find where it happened.  `git bisec
 ```
 $ git help bisect   # You can also 'git help' any other git command.
 $ git bisect start <known-bad-commit> <older-known-good-commit>
-# Test the code in your workspace to see if the current version is good.
+# Test the code in your working tree to see if the current version is good.
 $ git bisect good # Or bad, if the test fails
 # Git will keep iterating until the bad commit is identified.
 ...
