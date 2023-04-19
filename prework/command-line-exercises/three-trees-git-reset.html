@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Three Trees and Git Reset - Git Basics - Collaborating With Git</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../../prework.html"><strong aria-hidden="true">2.</strong> Prework</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../prework/env-setup.html"><strong aria-hidden="true">2.1.</strong> Set Up Git Environment</a></li><li class="chapter-item expanded "><a href="../../prework/git-graph-install.html"><strong aria-hidden="true">2.2.</strong> Install Git-Graph plugin for VSCode</a></li><li class="chapter-item expanded "><a href="../../prework/explore-website-code.html"><strong aria-hidden="true">2.3.</strong> Explore the website's code</a></li><li class="chapter-item expanded "><a href="../../prework/command-line-exercises.html"><strong aria-hidden="true">2.4.</strong> Command-line Exercises</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../prework/command-line-exercises/three-trees-git-reset.html" class="active"><strong aria-hidden="true">2.4.1.</strong> Three Trees and Git Reset</a></li><li class="chapter-item expanded "><a href="../../prework/command-line-exercises/branching.html"><strong aria-hidden="true">2.4.2.</strong> Branching</a></li><li class="chapter-item expanded "><a href="../../prework/command-line-exercises/merge-with-no-conflict.html"><strong aria-hidden="true">2.4.3.</strong> Merging Without Conflict</a></li><li class="chapter-item expanded "><a href="../../prework/command-line-exercises/merge-conflict.html"><strong aria-hidden="true">2.4.4.</strong> Handle Merge Conflict</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../session1.html"><strong aria-hidden="true">3.</strong> Session 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../session1/simple-workflow.html"><strong aria-hidden="true">3.1.</strong> Breakdown of Simple Workflow</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../session1/image0.html"><strong aria-hidden="true">3.1.1.</strong> Step 1 - Everybody checkout main</a></li><li class="chapter-item expanded "><a href="../../session1/image1.html"><strong aria-hidden="true">3.1.2.</strong> Step 2 - Teammate commits work</a></li><li class="chapter-item expanded "><a href="../../session1/image2.html"><strong aria-hidden="true">3.1.3.</strong> Step 3 - Teammate pushes</a></li><li class="chapter-item expanded "><a href="../../session1/image3.html"><strong aria-hidden="true">3.1.4.</strong> Step 4 - I make local changes too</a></li><li class="chapter-item expanded "><a href="../../session1/image4.html"><strong aria-hidden="true">3.1.5.</strong> Step 5.1 - I pull (first 1/2 - fetch)</a></li><li class="chapter-item expanded "><a href="../../session1/image5.html"><strong aria-hidden="true">3.1.6.</strong> Step 5.2 - I pull (second 1/2 - merge</a></li><li class="chapter-item expanded "><a href="../../session1/image6.html"><strong aria-hidden="true">3.1.7.</strong> Step 6 - I push main to "origin"</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../objects-and-trees-exercise.html"><strong aria-hidden="true">4.</strong> Objects-and-Trees Exercise</a></li><li class="chapter-item expanded "><a href="../../session2.html"><strong aria-hidden="true">5.</strong> Session 2</a></li><li class="chapter-item expanded "><a href="../../common-git-workflows.html"><strong aria-hidden="true">6.</strong> Common Git Workflows</a></li><li class="chapter-item expanded "><a href="../../viewing-changes.html"><strong aria-hidden="true">7.</strong> Viewing Changes</a></li><li class="chapter-item expanded "><a href="../../unix-shell-concepts.html"><strong aria-hidden="true">8.</strong> Unix Shell Concepts</a></li><li class="chapter-item expanded "><a href="../../syllabus.html"><strong aria-hidden="true">9.</strong> Course Syllabus</a></li><li class="chapter-item expanded "><a href="../../references.html"><strong aria-hidden="true">10.</strong> References</a></li><li class="chapter-item expanded "><a href="../../instructor-notes.html"><strong aria-hidden="true">11.</strong> Instructor Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../instructor-notes/session1.html"><strong aria-hidden="true">11.1.</strong> Session 1 </a></li><li class="chapter-item expanded "><a href="../../instructor-notes/session2.html"><strong aria-hidden="true">11.2.</strong> Session 2 </a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Git Basics - Collaborating With Git</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="the-three-trees-and-git-reset"><a class="header" href="#the-three-trees-and-git-reset">The Three Trees and <code>git reset</code></a></h2>
+<p>(excerpted from the <a href="/objects-and-trees-exercise.html">Objects and Trees Exercise</a>).</p>
+<p>Git manages your local changes using three trees: HEAD, Index, and Working Tree.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>Tree</strong></th><th><strong>Role</strong></th></tr></thead><tbody>
+<tr><td>HEAD</td><td>The latest commit</td></tr>
+<tr><td>Index</td><td>The commit-in-progress, aka &quot;staging&quot;</td></tr>
+<tr><td>Working Tree</td><td>Your local filesystem (except for the .git directory itself</td></tr>
+</tbody></table>
+</div>
+<p>On the 'green path' (that is, no mistakes or side journeys), changes start in the <strong>working tree</strong> and flow to the <strong>index</strong> (aka &quot;staging area&quot; via <code>git add</code>, and finally into the repo's commit history via <code>git commit</code> (i.e., the branch to which <strong>HEAD</strong> points moves to the next commit):</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right"><strong>Tree:</strong></th><th><strong>Working Tree</strong></th><th><strong>Index</strong></th><th><strong>HEAD</strong></th></tr></thead><tbody>
+<tr><td style="text-align: right"><strong>Operation:</strong></td><td>1. &lt;make changes&gt;</td><td>2. <code>git add</code> (stage changes)</td><td>3. <code>git commit</code></td></tr>
+</tbody></table>
+</div>
+<p>(Note that HEAD typically points to a branch name, not directly to a commit--this is what it means to be &quot;checked out&quot; on a branch.  So when <code>git reset</code> is used to move HEAD, it actually moves <em>the branch to which HEAD points</em>).</p>
+<p>See also this workflow diagram from git-scm.com.  Notice that a <code>git checkout</code> updates <em>all three trees</em>:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-workflow.png" alt="" /></p>
+<p>Sometimes it's necessary to move changes the other way.  For instance, you may want to...</p>
+<ol>
+<li>Add a forgotten file,</li>
+<li>Change a commit message, or</li>
+<li>Revert a commit.</li>
+</ol>
+<p>The <code>git reset</code> can assist with all this and more.</p>
+<p>Why is it called &quot;reset&quot;?  Possibly because it resets trees to a state that already exists in the repo.</p>
+<p><code>git reset</code> needs to know two things:</p>
+<ol>
+<li>The &quot;hardness&quot;--that is, how many trees are to be reset, and</li>
+<li>Which commit SHA to (re)set the tree(s) to.</li>
+</ol>
+<p>If you just type &quot;git reset&quot;, the default hardness is &quot;--mixed&quot;, and the default commit SHA is HEAD.</p>
+<div class="table-wrapper"><table><thead><tr><th>Tree</th><th>Role</th><th><code>git reset</code> &quot;hardness&quot;<br>needed to move the tree</th></tr></thead><tbody>
+<tr><td>HEAD</td><td>The latest commit</td><td>--soft</td></tr>
+<tr><td>Index</td><td>The commit-in-progress</td><td>--mixed (also moves HEAD.) The default.</td></tr>
+<tr><td>Working Tree</td><td>Your local filesystem</td><td>--hard (also moves HEAD and Index.)</td></tr>
+</tbody></table>
+</div>
+<h3 id="another-picture-of-how-git-reset---softmixedhard-tothiscommit--works"><a class="header" href="#another-picture-of-how-git-reset---softmixedhard-tothiscommit--works">Another picture of how <code>&quot;git reset --soft/mixed/hard &lt;ToThisCommit&gt;&quot;</code>  works</a></h3>
+<style>
+  /* For the git-versus-github table */
+  td { text-align: center; }
+  tr.bb { border-bottom: 2px solid black !important; }
+  .bb table { border-collapse:collapse; }
+  th { background-color: #b3a497; }
+  th.thcolspan { background-color: #d3c4b7; }
+</style>
+<!-- Github Markdown doesn't do colspan -->
+<table class="bb">
+<tr><th>"hardness"</th><th class="thcolspan" colspan="3">Trees that are reset &lt;ToThisCommit&gt;</th></tr>
+<tr class="bb"><th></th><th>Working Tree</th><th>Index</th><th>HEAD</th></tr>
+<tr><td>--soft</td><td>-</td><td>-</td><td>YES</td></tr>
+<tr><td>--mixed</td><td>-</td><td>YES</td><td>YES</td></tr>
+<tr><td>--hard</td><td>YES</td><td>YES</td><td>YES</td></tr>
+</table>
+<h2 id="moving-objects-among-trees"><a class="header" href="#moving-objects-among-trees">Moving Objects Among Trees</a></h2>
+<p>Let's move a single file through this workflow, starting with working-tree changes, which will move into the index, and then into a commit.  Then, we'll revert it, tree by tree, all the way back using <code>git reset</code>.</p>
+<h3 id="1-move-a-change-forward-through-the-trees"><a class="header" href="#1-move-a-change-forward-through-the-trees">1. Move a change forward through the trees</a></h3>
+<p>Make a change (which tree are you working in now, as you run the following commands?) ...</p>
+<pre><code>code index.html   #  (or whatever file you may have in your working tree)
+# Make a minor change to index.html in your editor, and save it. Then...
+git status  # or use the 'gs' alias
+git diff    # or use the 'gd' alias
+</code></pre>
+<p>Add to the index.</p>
+<pre><code>git add views.py    # or 'ga' aFile.txt
+git status
+git diff
+git diff --staged   # or use the 'gds' alias
+</code></pre>
+<p>Which tree (or trees) have the change now?</p>
+<p>Commit it...</p>
+<pre><code>git rev-parse HEAD
+git commit -m &quot;Commented in views.py&quot;  # or use the 'gc' alias: gc -m &quot;Commented...&quot;
+git status
+</code></pre>
+<p>Now which tree (or trees) have the change?</p>
+<h3 id="2-move-the-same-change-backward-through-the-trees"><a class="header" href="#2-move-the-same-change-backward-through-the-trees">2. Move the same change backward through the trees</a></h3>
+<p>Recall that besides specifying &quot;hardness&quot;, we need to tell <code>git reset</code> the commit-SHA to align with--that is, which SHA to reset to.</p>
+<p>(What is the previous value of HEAD?)</p>
+<pre><code>git rev-parse HEAD
+git reset
+git rev-parse HEAD   # What happened?  Why?
+git rev-parse HEAD^   # What does the caret (^) mean?*
+git status
+git reset --soft &lt;previous-value-of-head&gt;
+git rev-parse HEAD
+git status
+git diff
+git diff --staged
+</code></pre>
+<p>* To understand ^, ~, @{push}, and other revision notation, see <a href="https://git-scm.com/docs/revisions">Git Revisions</a>.</p>
+<p>What happened?  What is <code>git status</code> telling you, and why?</p>
+<p>What happened to the commit that we were on before doing a `git reset```?  How might we get back to it?</p>
+<p>Now the branch that HEAD points to has been &quot;reset&quot;, back to where it was before we committed.  Which tree has changed?</p>
+<p>Let's change the next tree...</p>
+<pre><code>git reset   # Same command, but now something  happened.  Why?
+git status
+git diff
+git diff --staged
+</code></pre>
+<p>What changed this time?</p>
+<p>Let's change the third tree...</p>
+<pre><code>git reset --hard
+git status
+git diff
+git diff --staged
+</code></pre>
+<p>Test your understanding:</p>
+<ul>
+<li>What happened to each tree at each step?</li>
+<li>How is <code>git reset &lt;paths&gt;</code> the opposite of `git add <paths>```?</li>
+<li>When would each variation of <code>git reset</code> come in handy?</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../prework/command-line-exercises.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../prework/command-line-exercises/branching.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../prework/command-line-exercises.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../prework/command-line-exercises/branching.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
