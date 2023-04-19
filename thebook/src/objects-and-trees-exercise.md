@@ -33,15 +33,14 @@ The git client is a big bag of commands for implementing version control using a
 
 In 2008, the social coding platform [github.com](https://github.com) came into existence, built around the git client.
 
-When working with the git client and github.com, it's useful to keep in mind which operations belong to which tool.
+When working with the git client and github.com, it's useful to keep in mind which operations/concepts belong to which tool.
 
-| -- **git** -- | -- **github.com** -- |
+| **git** | **github.com** |
 | --- | --- |
 | repo | repo |
 | clone | fork |
-| commit,<br> push,<br>merge | |
 | pull | pull request |
-| | org,<br> team,<br> collaborator,<br> org owner |
+| commit,<br> push,<br>merge | org,<br> team,<br> collaborator,<br> org owner |
 
 ## The Git Data Model - The Three Objects
 
@@ -88,8 +87,8 @@ Create a `hi.txt` file with a line or two of content in it, and commit it into t
 
 - What SHA corresponds to the commit?
 - Can you find that SHA under .git/objects?
-- Extra credit: Using `git cat-file -p```, can you trace from the commit SHA, all the way to the blob SHA that contains the actual contents of `hi.txt```?  HINT: there is a 'tree' SHA between the 'commit' and the 'blob', which is revealed through judicious use of `git cat-file -p```.  What is the SHA of that blob object?
-- How would you print the contents of your hi.txt file, using `git cat-file -p```?
+- Extra credit: Using `git cat-file -p`, can you trace from the commit SHA, all the way to the blob SHA that contains the actual contents of `hi.txt`?  HINT: there is a 'tree' SHA between the 'commit' and the 'blob', which is revealed through judicious use of `git cat-file -p`.  What is the SHA of that blob object?
+- How would you print the contents of your hi.txt file, using `git cat-file -p`?
 
 #### While we're here...What else can we see in .git?
 ```
@@ -115,7 +114,7 @@ So, how is HEAD stored in the git repo?  How about local and remote branches?
 
 ## The Three Git Objects - Commit, Tree, Blob
 
-What kind of SHA is HEAD?
+What kind of SHA is `HEAD`?
 ```
 $ git cat-file -t HEAD
 commit
@@ -132,14 +131,14 @@ committer Chris Walquist <cwalquist@drw.com> 1615843154 -0500
 ignore _site directory
 ```
 
-What kind of SHA is 07018?
+What kind of SHA is `07018`?
 
 ```
 $ git cat-file -t 07018
 tree
 ```
 
-What is in 07018?  (Remember, your exact SHA, and its contents, will be different than this example)
+What is in `07018`?  (Remember, your exact SHA, and its contents, will be different than this example)
 
 ```
 $ git cat-file -p 07018
@@ -158,7 +157,7 @@ $ git cat-file -p 07018
 100644 blob 1f8bc52a33198cf0837159cec540611e65365cc1	views.py
 ```
 
-What SHA contains the contents of the first entry in 07018?  What is that entry's name?
+What SHA contains the contents of the first entry in `07018`?  What is that entry's name?
 
 How do you tell whether it's a filename or a directory name?  Hint: What kind of SHA is the first entry?
 
@@ -183,9 +182,9 @@ So there they are:  __The Three Objects__.  __commit__, __tree__, and __blob__. 
 ## The Three Trees
 HEAD, Index, and Working Tree
 
-Git manages your changes using three trees:
+Git manages your local changes using three trees:
 
-| -- **Tree** -- | -- **Role** -- |
+| **Tree** | **Role** |
 | ---- | ---- |
 | HEAD | The latest commit |
 | Index | The commit-in-progress, aka "staging" |
@@ -193,20 +192,23 @@ Git manages your changes using three trees:
 
 On the 'green path' (that is, no mistakes or side journeys), changes start in the __working tree__ and flow to the __index__ via `git add`, and finally into the repo via `git commit` (i.e., the branch to which __HEAD__ points moves to the next commit):
 
-| __Tree:__ | -- **Working Tree** -- | -- **Index** -- | -- **HEAD** --
-| --: | ---- | ---- |
-| __Operation:__ | 1. \<make changes\> | 2. `git add` (stage changes) | 3. `git commit`
+| _Tree:_ | **Working Tree** | **Index** | **HEAD** |
+| --: | ---- | ---- | ---- |
+| _Operation:_ | 1. \<make changes\> | 2. `git add` (stage changes) | 3. `git commit`
 
-See also this workflow diagram from git-scm.com:
+See also this workflow diagram from git-scm.com.  Notice that a `git checkout` updates _all three trees_:
 
 ![](https://git-scm.com/book/en/v2/images/reset-workflow.png)
 
-Sometimes it's necessary to move changes the other way--for instance, when you need to add a forgotten file, change a commit message, or revert a commit.
+Sometimes it's necessary to move changes the other way.  For instance, you may want to...
+1. Add a forgotten file,
+2. Change a commit message, or
+3. Revert a commit.
 
-`git reset`: The command that can assist with all this and more.  Why is it called "reset"?  Possibly because it resets trees to a state that already exists in the repo.  Unlike `git add` and `git commit`, which push new states INTO the repo, `git reset` pulls existing state the other way, OUT of the repo, and into one or more of HEAD, the index, and even the working tree.
+`git reset`: The command that can assist with all this and more.  Why is it called "reset"?  Possibly because it resets trees to a state that already exists in the repo.  Unlike `git add` and `git commit`, which push new states INTO the repo, `git reset` propagates existing state the other way, OUT of the repo to HEAD, the index, and even the working tree.
 
-| Tree | Role | `git reset` "hardness"<br>needed to move the tree
-| ---- | ---- | ----
+| Tree | Role | `git reset` "hardness"<br>needed to move the tree |
+| ---- | ---- | ---- |
 | HEAD | The latest commit | \--soft
 | Index | The commit-in-progress | \--mixed (also moves HEAD.) The default.
 | Working Tree | Your local filesystem | \--hard (also moves HEAD and Index.)
@@ -306,11 +308,13 @@ Test your understanding:
   td { text-align: center; }
   tr.bb { border-bottom: 2px solid black !important; }
   .bb table { border-collapse:collapse; }
+  th { background-color: #b3a497; }
+  th.thcolspan { background-color: #d3c4b7; }
 </style>
 
 <!-- Github Markdown doesn't do colspan -->
 <table class="bb">
-<tr><th>"hardness"</th><th colspan="3">Trees that are reset &lt;ToThisCommit&gt;</th></tr>
+<tr><th>"hardness"</th><th class="thcolspan" colspan="3">Trees that are reset &lt;ToThisCommit&gt;</th></tr>
 <tr class="bb"><th></th><th>Working Tree</th><th>Index</th><th>HEAD</th></tr>
 <tr><td>--soft</td><td>-</td><td>-</td><td>YES</td></tr>
 <tr><td>--mixed</td><td>-</td><td>YES</td><td>YES</td></tr>
