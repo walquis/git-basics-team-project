@@ -13,6 +13,7 @@ Using **pull requests** (aka PR's), you will communicate local changes to your t
 
 ### Goals
 1. Know how to read the commit graph, and use git commands confidently to make it look like you want.
+1. Clearly and efficiently communicate changes with your team using git commands, and Github workflow tools such as Pull Requests.
 1. Understand how basic git commands such as `git add`, `git commit`, and `git reset` move the state of your local changes among __The Three Trees__.
 1. Understand __The Three Objects__ of the git data model well enough to know what git operations are required in real-life scenarios.
 1. Make changes confidently, by knowing specifically how git has your back.

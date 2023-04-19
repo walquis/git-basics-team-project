@@ -27,7 +27,7 @@ alias adog='git log --all --decorate --oneline --graph'
 
 Once you've worked through these exercises, you should be ready for the class!
 
-Feel free to take a look at the [syllabus](syllabus.md).
+Feel free to take a look at the [syllabus](/syllabus.md).
 
 If you want to do more before class starts, [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) is a useful deep dive.
 
