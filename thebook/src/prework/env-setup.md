@@ -23,5 +23,5 @@ git clone https://github.com/walquis/git-basics-sample-project-repo
 git clone https://github.com/walquis/git-basics-starter-repo
 
 cd git-basics-starter-repo
+bin/git-aliases.sh
 ```
-

@@ -7,7 +7,9 @@ You'll briefly cover these topics:
 - Merging (where you handle a merge conflict)
 
 ## Preflight Check:
-Make sure `adog` works on your \*nix command line. cd into your git-basics-starter-repo and run `adog`.  You should see something like this:
+Make sure `adog` works on your \*nix command line (`adog` is the alias you established during "Set Up Git Environment").
+
+cd into your git-basics-starter-repo and run `adog`.  You should see something like this:
 ```
 cd git-basics-starter-repo
 adog
@@ -16,9 +18,10 @@ adog
 
 ```
 
-If not, run this and try again:
+If not, set the alias with this command and try `adog` again:
 ```
 alias adog='git log --all --decorate --oneline --graph'
+adog
 ```
 
 ## [Get Started!](./command-line-exercises/three-trees-git-reset.md)

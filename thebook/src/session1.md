@@ -24,7 +24,7 @@ adog
 
 **Vocabulary**: remote, merge commit, "fast-forward merge"
 
-**Commands**: `git pull`, `git add`, `git commit`, `git push`, `git fetch`, `git merge`
+**Commands**: `git checkout`, `git checkout -b`, `git pull`, `git add`, `git commit -m`, `git branch`, `git push`, `git fetch`, `git merge`
 
 A basic workflow in the ["shared-repository model"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) of development:
 
@@ -69,7 +69,7 @@ We'll learn to use `git reset` to move changes back and forth between the "three
 - working tree, index, HEAD
 - "detached HEAD" state
 
-**Commands**: `git diff`, `git diff --staged`, `git reflog`, `git stash`
+**Commands**: `git reset --soft`, `git reset --mixed`, `git reset --hard`, `git diff`, `git diff --staged`, `git reflog`, `git stash`
 
 When I last checked (end of March 2023), six of the [top twelve stackoverflow questions](https://stackoverflow.com/questions?tab=Votes) were git questions!!  For at least a couple of those, the answer is `git reset`.
 
@@ -89,7 +89,7 @@ Use each of `git reset`'s `--soft`, `--mixed`, and `--hard` options at least onc
 **Scenario**: You accidentally make commits on `main`, but then realize you should be on a different branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).
 
 #### LAB - Simulate branching "after-the-fact"
-> 1. Make 3 or 4 commits on `main`.  Then realize Oops, I should be on another branch.
+> 1. Make 3 or 4 commits on `main`.  Then realize Ooops, I should be on another branch.
 > 1. Make a branch at your current location.  _Hover [here](doesnotexist.jpg, "'git branch mybranch' (not 'git checkout mybranch'!  Why is that?)") for a hint._
 > 1. Use `git reset` to move `main` back to where it should be.
 
