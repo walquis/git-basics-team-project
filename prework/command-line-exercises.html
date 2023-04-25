@@ -153,15 +153,17 @@
 <li>Merging (where you handle a merge conflict)</li>
 </ul>
 <h2 id="preflight-check"><a class="header" href="#preflight-check">Preflight Check:</a></h2>
-<p>Make sure <code>adog</code> works on your *nix command line. cd into your git-basics-starter-repo and run <code>adog</code>.  You should see something like this:</p>
+<p>Make sure <code>adog</code> works on your *nix command line (<code>adog</code> is the alias you established during &quot;Set Up Git Environment&quot;).</p>
+<p>cd into your git-basics-starter-repo and run <code>adog</code>.  You should see something like this:</p>
 <pre><code>cd git-basics-starter-repo
 adog
 * 2dd739a (HEAD -&gt; main, origin/main) Some handy git aliases, and an initial .gitignore
 * 4ca41a7 Initial commit
 
 </code></pre>
-<p>If not, run this and try again:</p>
+<p>If not, set the alias with this command and try <code>adog</code> again:</p>
 <pre><code>alias adog='git log --all --decorate --oneline --graph'
+adog
 </code></pre>
 <h2 id="get-started"><a class="header" href="#get-started"><a href="./command-line-exercises/three-trees-git-reset.html">Get Started!</a></a></h2>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next?</a></h2>

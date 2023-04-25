@@ -205,6 +205,7 @@ git clone https://github.com/walquis/git-basics-sample-project-repo
 git clone https://github.com/walquis/git-basics-starter-repo
 
 cd git-basics-starter-repo
+bin/git-aliases.sh
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="install-the-gitgraph-plugin-in-your-vscode"><a class="header" href="#install-the-gitgraph-plugin-in-your-vscode">Install the GitGraph plugin in your VSCode</a></h2>
 <p>Visit the <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">GitGraph Plugin Install</a> page and follow the install instructions.</p>
@@ -243,15 +244,17 @@ cd git-basics-starter-repo
 <li>Merging (where you handle a merge conflict)</li>
 </ul>
 <h2 id="preflight-check"><a class="header" href="#preflight-check">Preflight Check:</a></h2>
-<p>Make sure <code>adog</code> works on your *nix command line. cd into your git-basics-starter-repo and run <code>adog</code>.  You should see something like this:</p>
+<p>Make sure <code>adog</code> works on your *nix command line (<code>adog</code> is the alias you established during &quot;Set Up Git Environment&quot;).</p>
+<p>cd into your git-basics-starter-repo and run <code>adog</code>.  You should see something like this:</p>
 <pre><code>cd git-basics-starter-repo
 adog
 * 2dd739a (HEAD -&gt; main, origin/main) Some handy git aliases, and an initial .gitignore
 * 4ca41a7 Initial commit
 
 </code></pre>
-<p>If not, run this and try again:</p>
+<p>If not, set the alias with this command and try <code>adog</code> again:</p>
 <pre><code>alias adog='git log --all --decorate --oneline --graph'
+adog
 </code></pre>
 <h2 id="get-started"><a class="header" href="#get-started"><a href="prework/./command-line-exercises/three-trees-git-reset.html">Get Started!</a></a></h2>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next?</a></h2>
@@ -583,7 +586,7 @@ adog
 <h3 id="the-simplest-possible-collaborative-git-workflow"><a class="header" href="#the-simplest-possible-collaborative-git-workflow">The Simplest Possible Collaborative Git Workflow</a></h3>
 <p>&quot;Simple&quot; is everybody working on the <code>main</code> branch...pretty simple, but not the best!</p>
 <p><strong>Vocabulary</strong>: remote, merge commit, &quot;fast-forward merge&quot;</p>
-<p><strong>Commands</strong>: <code>git pull</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>, <code>git fetch</code>, <code>git merge</code></p>
+<p><strong>Commands</strong>: <code>git checkout</code>, <code>git checkout -b</code>, <code>git pull</code>, <code>git add</code>, <code>git commit -m</code>, <code>git branch</code>, <code>git push</code>, <code>git fetch</code>, <code>git merge</code></p>
 <p>A basic workflow in the <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models">&quot;shared-repository model&quot;</a> of development:</p>
 <p><img src="images/push-pull-push-diagram.jpg" alt="" />
 Click <a href="./session1/simple-workflow.html">here</a> for a walk-through of this workflow.</p>
@@ -625,7 +628,7 @@ can modify one of these files: <code>index.html</code>, <code>help.html</code>, 
 <li>working tree, index, HEAD</li>
 <li>&quot;detached HEAD&quot; state</li>
 </ul>
-<p><strong>Commands</strong>: <code>git diff</code>, <code>git diff --staged</code>, <code>git reflog</code>, <code>git stash</code></p>
+<p><strong>Commands</strong>: <code>git reset --soft</code>, <code>git reset --mixed</code>, <code>git reset --hard</code>, <code>git diff</code>, <code>git diff --staged</code>, <code>git reflog</code>, <code>git stash</code></p>
 <p>When I last checked (end of March 2023), six of the <a href="https://stackoverflow.com/questions?tab=Votes">top twelve stackoverflow questions</a> were git questions!!  For at least a couple of those, the answer is <code>git reset</code>.</p>
 <p>A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 <img src="images/GitThreeTrees.png" alt="" /></p>
@@ -645,7 +648,7 @@ can modify one of these files: <code>index.html</code>, <code>help.html</code>, 
 <h4 id="lab---simulate-branching-after-the-fact"><a class="header" href="#lab---simulate-branching-after-the-fact">LAB - Simulate branching &quot;after-the-fact&quot;</a></h4>
 <blockquote>
 <ol>
-<li>Make 3 or 4 commits on <code>main</code>.  Then realize Oops, I should be on another branch.</li>
+<li>Make 3 or 4 commits on <code>main</code>.  Then realize Ooops, I should be on another branch.</li>
 <li>Make a branch at your current location.  <em>Hover <a href="doesnotexist.jpg," title="'git branch mybranch' (not 'git checkout mybranch'!  Why is that?)">here</a> for a hint.</em></li>
 <li>Use <code>git reset</code> to move <code>main</code> back to where it should be.</li>
 </ol>
@@ -1047,6 +1050,7 @@ $ git diff --staged
 <li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue">link PR to issue</a></li>
 </ul>
 <h4 id="lab---start-your-project-board"><a class="header" href="#lab---start-your-project-board">LAB - Start your project board</a></h4>
+<p>NOTE: The following links give an idea of how to implement the described change, but your mileage may vary considerably.</p>
 <blockquote>
 <ol>
 <li><strong>Team lead</strong>: Create a kanban project in your GitHub org, and invite your teammates.</li>
@@ -1054,6 +1058,7 @@ $ git diff --staged
 </ol>
 <ul>
 <li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/4c461a996aad0fd5bfa420ac366139805bf334bf">Add some about text</a>.</li>
+<li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/4b50701dfcf8c8830d45e5e34b9b13612cf96d2e">Build out the menu</a>.</li>
 <li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/481c4b796b6b916dc9735065cef141e1803a39a9">Add layout to pages that exist thus far.</a></li>
 <li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/aa7f0ba34df76ddb38912f753457e07108a7c704">Add a sun image</a>.</li>
 <li><a href="https://github.com/walquis/git-basics-sample-project-repo/commit/5e1d8be4574fae345ac779bddc95f73dd0bf3cc0">Add faqs</a>.</li>
