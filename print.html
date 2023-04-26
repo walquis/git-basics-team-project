@@ -577,8 +577,8 @@ Automatic merge failed; fix conflicts and then commit the result.
 <li><strong>Whole Team, including Team Lead</strong>: Clone team lead's repo (do NOT fork it!).</li>
 <li>Run these commands to set up some handy aliases...</li>
 </ol>
-<pre><code class="language-bash">cd solar-system/bin
-source git-aliases.sh
+<pre><code class="language-bash">cd solar-system
+source bin/git-aliases.sh
 adog
 </code></pre>
 <p>✅ <strong>Checkpoint: Everyone has their team lead's repo cloned (including the team lead)</strong>.</p>
@@ -600,6 +600,7 @@ can modify one of these files: <code>index.html</code>, <code>help.html</code>, 
 </ol>
 </blockquote>
 <p>✅ <strong>Checkpoint: Your team is all on the same commit. (Check by running <code>adog</code> and observing which commit HEAD is on).</strong></p>
+<p>🤔 Will a given commit always have the same SHA after it has been <code>git push</code>'d or <code>git pull</code>'d?  Why or why not?</p>
 <h3 id="anatomy-of-a-git-commit-or-the-three-objects"><a class="header" href="#anatomy-of-a-git-commit-or-the-three-objects">Anatomy of a Git Commit, or, &quot;The Three Objects&quot;</a></h3>
 <p><strong>Vocabulary</strong>: sha, content-addressable, blob, tree, commit</p>
 <p><strong>Commands</strong>:</p>
@@ -628,7 +629,7 @@ can modify one of these files: <code>index.html</code>, <code>help.html</code>, 
 <li>working tree, index, HEAD</li>
 <li>&quot;detached HEAD&quot; state</li>
 </ul>
-<p><strong>Commands</strong>: <code>git reset --soft</code>, <code>git reset --mixed</code>, <code>git reset --hard</code>, <code>git diff</code>, <code>git diff --staged</code>, <code>git reflog</code>, <code>git stash</code></p>
+<p><strong>Commands</strong>: <br><code>git reset --soft</code>, <code>git reset --mixed</code>, <code>git reset --hard</code>,<br> <code>git diff</code>, <code>git diff --staged</code>,<br> <code>git reflog</code>, <code>git stash</code></p>
 <p>When I last checked (end of March 2023), six of the <a href="https://stackoverflow.com/questions?tab=Votes">top twelve stackoverflow questions</a> were git questions!!  For at least a couple of those, the answer is <code>git reset</code>.</p>
 <p>A busy diagram--it shows the objects as well as the trees--but worth pondering ...
 <img src="images/GitThreeTrees.png" alt="" /></p>
