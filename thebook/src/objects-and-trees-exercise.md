@@ -141,23 +141,18 @@ tree
 What is in `07018`?  (Remember, your exact SHA, and its contents, will be different than this example)
 
 ```
-$ git cat-file -p 07018
-100644 blob 2d45b22d4cbfebf78a5c78c46ecdc44fca2e1d27	.gitignore
-100644 blob 60cfe42a4102d0ad6be5ec1373f3cec61a439b23	README.md
-100644 blob 324e2e0cc5bfe49dd3faef7b674e7ba24c5347a7	app.py
-040000 tree 577935a1899acf406349842178b4caf8ab171116	bin
-100644 blob f9c1905abf276dce13ee3b883d50e699c450c728	config.py
-100644 blob 719b71285df083da25fa967460beee0a520df64c	config.yml.sample
-040000 tree 6a51471d23a4c65df321b424ba35fb2651c95b9a	config
-040000 tree 3a8b3bfe5b18db9a7317480cf1ac77d217cc1e34	db
-040000 tree 393a18221eb58a427601b4cd3b4cc7490ecc7037	lib
-100644 blob 7bac10d65439b807b8cf852b2781d7782725fad3	main.py
-040000 tree 8473c63a37cfec1c0458282195054aca4b7564a6	models
-100644 blob 308747b19d7876166a1e8385652de498c4743599	requirements.txt
-100644 blob 1f8bc52a33198cf0837159cec540611e65365cc1	views.py
-```
+$ git cat-file -p 9c94
+100644 blob 1377554ebea6f98a2c748183bc5a96852af12ac2	.gitignore
+100644 blob 5dbb683a366d3db08fa9adb8389759bc1a7151d1	about.html
+040000 tree b926a635d3b58e146cbf9dad4593f75b6568e1c6	bin
+100644 blob fa9e798a76c72b95ac7939eca39c432001eb637f	faq.html
+100644 blob 21fccfeade64cc2240f5395fa5949d612f5422f8	help.html
+040000 tree abd4dc21a6bb32bc275bd095761187852a308393	images
+100644 blob 16a46ac3537a1b56fd5dd8380df79463e3cea28a	index.html
+100644 blob 9103c17890d85e851d01765890932f9331102ba7	map.html
+100644 blob e076b3f199fe75ee38d2e71981e0c266e189fb2b	styles.css
 
-What SHA contains the contents of the first entry in `07018`?  What is that entry's name?
+What SHA contains the contents of the first entry in `9c94`?  What is that entry's name?
 
 How do you tell whether it's a filename or a directory name?  Hint: What kind of SHA is the first entry?
 
@@ -225,7 +220,7 @@ Let's follow a single file through this workflow, starting with working-tree cha
 
 ### 1. Move a change forward through the trees
 
-Make a change (which tree are you working in now, as you run the following commands?) ...
+Make a change (which tree are you working in now, as you run the following commands?) such as adding a menu item link ...
 ```
 $ code index.html   #  (or whatever file you may have in your working tree)
 # Make a minor change to index.html in your editor, and save it. Then...
@@ -235,7 +230,7 @@ $ git diff    # or use the 'gd' alias
 
 Add to the index.
 ```
-$ git add views.py    # or 'ga' aFile.txt
+$ git add index.html    # or use the 'ga' alias
 $ git status
 $ git diff
 $ git diff --staged   # or use the 'gds' alias
@@ -246,7 +241,7 @@ Which tree (or trees) have the change now?
 Commit it...
 ```
 $ git rev-parse HEAD
-$ git commit -m "Commented in views.py"  # or use the 'gc' alias: gc -m "Commented..."
+$ git commit -m "Added a menu item link to index.html"  # or use the 'gc' alias: gc -m "Added a..."
 $ git status
 ```
 

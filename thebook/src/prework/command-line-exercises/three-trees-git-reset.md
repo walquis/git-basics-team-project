@@ -70,7 +70,7 @@ Let's move a single file through this workflow, starting with working-tree chang
 
 ### 1. Move a change forward through the trees
 
-Make a change (which tree are you working in now, as you run the following commands?) ...
+Make a change (which tree are you working in now, as you run the following commands?) such as adding a menu item link...
 ```
 code index.html   #  (or whatever file you may have in your working tree)
 # Make a minor change to index.html in your editor, and save it. Then...
@@ -80,7 +80,7 @@ git diff    # or use the 'gd' alias
 
 Add to the index.
 ```
-git add views.py    # or 'ga' aFile.txt
+git add index.html    # or 'ga' aFile.txt
 git status
 git diff
 git diff --staged   # or use the 'gds' alias
@@ -91,7 +91,7 @@ Which tree (or trees) have the change now?
 Commit it...
 ```
 git rev-parse HEAD
-git commit -m "Commented in views.py"  # or use the 'gc' alias: gc -m "Commented..."
+git commit -m "Added item to menu in index.html"  # or use the 'gc' alias: gc -m "Added..."
 git status
 ```
 
