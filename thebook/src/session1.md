@@ -10,8 +10,8 @@
 1. **Whole Team, including Team Lead**: Clone team lead's repo (do NOT fork it!).
 1. Run these commands to set up some handy aliases...
 ```bash
-cd solar-system/bin
-source git-aliases.sh
+cd solar-system
+source bin/git-aliases.sh
 adog
 ```
 
@@ -39,6 +39,8 @@ Click [here](./session1/simple-workflow.md) for a walk-through of this workflow.
 > 1. `git push` and `git pull` until all of you have each other's changes and are on the same commit locally.
 
 ✅ **Checkpoint: Your team is all on the same commit. (Check by running `adog` and observing which commit HEAD is on).**
+
+🤔 Will a given commit always have the same SHA after it has been `git push`'d or `git pull`'d?  Why or why not?
 
 ### Anatomy of a Git Commit, or, "The Three Objects"
 
@@ -69,7 +71,7 @@ We'll learn to use `git reset` to move changes back and forth between the "three
 - working tree, index, HEAD
 - "detached HEAD" state
 
-**Commands**: `git reset --soft`, `git reset --mixed`, `git reset --hard`, `git diff`, `git diff --staged`, `git reflog`, `git stash`
+**Commands**: <br>`git reset --soft`, `git reset --mixed`, `git reset --hard`,<br> `git diff`, `git diff --staged`,<br> `git reflog`, `git stash`
 
 When I last checked (end of March 2023), six of the [top twelve stackoverflow questions](https://stackoverflow.com/questions?tab=Votes) were git questions!!  For at least a couple of those, the answer is `git reset`.
 
