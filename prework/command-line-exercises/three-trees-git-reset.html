@@ -201,14 +201,14 @@
 <h2 id="moving-objects-among-trees"><a class="header" href="#moving-objects-among-trees">Moving Objects Among Trees</a></h2>
 <p>Let's move a single file through this workflow, starting with working-tree changes, which will move into the index, and then into a commit.  Then, we'll revert it, tree by tree, all the way back using <code>git reset</code>.</p>
 <h3 id="1-move-a-change-forward-through-the-trees"><a class="header" href="#1-move-a-change-forward-through-the-trees">1. Move a change forward through the trees</a></h3>
-<p>Make a change (which tree are you working in now, as you run the following commands?) ...</p>
+<p>Make a change (which tree are you working in now, as you run the following commands?) such as adding a menu item link...</p>
 <pre><code>code index.html   #  (or whatever file you may have in your working tree)
 # Make a minor change to index.html in your editor, and save it. Then...
 git status  # or use the 'gs' alias
 git diff    # or use the 'gd' alias
 </code></pre>
 <p>Add to the index.</p>
-<pre><code>git add views.py    # or 'ga' aFile.txt
+<pre><code>git add index.html    # or 'ga' aFile.txt
 git status
 git diff
 git diff --staged   # or use the 'gds' alias
@@ -216,7 +216,7 @@ git diff --staged   # or use the 'gds' alias
 <p>Which tree (or trees) have the change now?</p>
 <p>Commit it...</p>
 <pre><code>git rev-parse HEAD
-git commit -m &quot;Commented in views.py&quot;  # or use the 'gc' alias: gc -m &quot;Commented...&quot;
+git commit -m &quot;Added item to menu in index.html&quot;  # or use the 'gc' alias: gc -m &quot;Added...&quot;
 git status
 </code></pre>
 <p>Now which tree (or trees) have the change?</p>

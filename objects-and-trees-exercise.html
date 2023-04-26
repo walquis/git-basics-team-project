@@ -252,146 +252,175 @@ ignore _site directory
 tree
 </code></pre>
 <p>What is in <code>07018</code>?  (Remember, your exact SHA, and its contents, will be different than this example)</p>
-<pre><code>$ git cat-file -p 07018
-100644 blob 2d45b22d4cbfebf78a5c78c46ecdc44fca2e1d27	.gitignore
-100644 blob 60cfe42a4102d0ad6be5ec1373f3cec61a439b23	README.md
-100644 blob 324e2e0cc5bfe49dd3faef7b674e7ba24c5347a7	app.py
-040000 tree 577935a1899acf406349842178b4caf8ab171116	bin
-100644 blob f9c1905abf276dce13ee3b883d50e699c450c728	config.py
-100644 blob 719b71285df083da25fa967460beee0a520df64c	config.yml.sample
-040000 tree 6a51471d23a4c65df321b424ba35fb2651c95b9a	config
-040000 tree 3a8b3bfe5b18db9a7317480cf1ac77d217cc1e34	db
-040000 tree 393a18221eb58a427601b4cd3b4cc7490ecc7037	lib
-100644 blob 7bac10d65439b807b8cf852b2781d7782725fad3	main.py
-040000 tree 8473c63a37cfec1c0458282195054aca4b7564a6	models
-100644 blob 308747b19d7876166a1e8385652de498c4743599	requirements.txt
-100644 blob 1f8bc52a33198cf0837159cec540611e65365cc1	views.py
+<pre><code>$ git cat-file -p 9c94
+100644 blob 1377554ebea6f98a2c748183bc5a96852af12ac2	.gitignore
+100644 blob 5dbb683a366d3db08fa9adb8389759bc1a7151d1	about.html
+040000 tree b926a635d3b58e146cbf9dad4593f75b6568e1c6	bin
+100644 blob fa9e798a76c72b95ac7939eca39c432001eb637f	faq.html
+100644 blob 21fccfeade64cc2240f5395fa5949d612f5422f8	help.html
+040000 tree abd4dc21a6bb32bc275bd095761187852a308393	images
+100644 blob 16a46ac3537a1b56fd5dd8380df79463e3cea28a	index.html
+100644 blob 9103c17890d85e851d01765890932f9331102ba7	map.html
+100644 blob e076b3f199fe75ee38d2e71981e0c266e189fb2b	styles.css
+
+What SHA contains the contents of the first entry in `9c94`?  What is that entry's name?
+
+How do you tell whether it's a filename or a directory name?  Hint: What kind of SHA is the first entry?
+
 </code></pre>
-<p>What SHA contains the contents of the first entry in <code>07018</code>?  What is that entry's name?</p>
-<p>How do you tell whether it's a filename or a directory name?  Hint: What kind of SHA is the first entry?</p>
-<pre><code>$ git cat-file -p 2d45b
-__pycache__
+<p>$ git cat-file -p 2d45b
+<strong>pycache</strong>
 venv
 *.swp
 *.pyc
 *.sqlite3
-_site
+_site</p>
+<pre><code>
+Consider this git object diagram, courtesy of git-scm.com:
+
+![](https://git-scm.com/book/en/v2/images/data-model-3.png &quot;Git Data Model&quot;)
+
+What SHAs from your repo (whether commit, tree, or blob) would correspond to this diagram's latest commit?
+
+So there they are:  __The Three Objects__.  __commit__, __tree__, and __blob__. Next up: How do they work in practice?
+
+## The Three Trees
+HEAD, Index, and Working Tree
+
+Git manages your local changes using three trees:
+
+| **Tree** | **Role** |
+| ---- | ---- |
+| HEAD | The latest commit |
+| Index | The commit-in-progress, aka &quot;staging&quot; |
+| Working Tree | Your local filesystem (except for the .git directory itself |
+
+On the 'green path' (that is, no mistakes or side journeys), changes start in the __working tree__ and flow to the __index__ via `git add`, and finally into the repo via `git commit` (i.e., the branch to which __HEAD__ points moves to the next commit):
+
+| _Tree:_ | **Working Tree** | **Index** | **HEAD** |
+| --: | ---- | ---- | ---- |
+| _Operation:_ | 1. \&lt;make changes\&gt; | 2. `git add` (stage changes) | 3. `git commit`
+
+See also this workflow diagram from git-scm.com.  Notice that a `git checkout` updates _all three trees_:
+
+![](https://git-scm.com/book/en/v2/images/reset-workflow.png)
+
+Sometimes it's necessary to move changes the other way.  For instance, you may want to...
+1. Add a forgotten file,
+2. Change a commit message, or
+3. Revert a commit.
+
+`git reset`: The command that can assist with all this and more.  Why is it called &quot;reset&quot;?  Possibly because it resets trees to a state that already exists in the repo.  Unlike `git add` and `git commit`, which push new states INTO the repo, `git reset` propagates existing state the other way, OUT of the repo to HEAD, the index, and even the working tree.
+
+| Tree | Role | `git reset` &quot;hardness&quot;&lt;br&gt;needed to move the tree |
+| ---- | ---- | ---- |
+| HEAD | The latest commit | \--soft
+| Index | The commit-in-progress | \--mixed (also moves HEAD.) The default.
+| Working Tree | Your local filesystem | \--hard (also moves HEAD and Index.)
+
+`git reset` needs to know two things:
+1. The &quot;hardness&quot;--that is, how many trees are to be reset, and
+2. Which commit SHA to (re)set the tree(s) to.
+
+If you just type &quot;git reset&quot;, the default hardness is &quot;\--mixed&quot;, and the default commit SHA is HEAD.
+
+## Putting It Together - Moving Objects Among Trees
+
+Let's follow a single file through this workflow, starting with working-tree changes, which will move into the index, and then into a commit.  Then, we'll revert it, tree by tree, all the way back using `git reset`.
+
+### 1. Move a change forward through the trees
+
+Make a change (which tree are you working in now, as you run the following commands?) such as adding a menu item link ...
 </code></pre>
-<p>Consider this git object diagram, courtesy of git-scm.com:</p>
-<p><img src="https://git-scm.com/book/en/v2/images/data-model-3.png" alt="" title="Git Data Model" /></p>
-<p>What SHAs from your repo (whether commit, tree, or blob) would correspond to this diagram's latest commit?</p>
-<p>So there they are:  <strong>The Three Objects</strong>.  <strong>commit</strong>, <strong>tree</strong>, and <strong>blob</strong>. Next up: How do they work in practice?</p>
-<h2 id="the-three-trees"><a class="header" href="#the-three-trees">The Three Trees</a></h2>
-<p>HEAD, Index, and Working Tree</p>
-<p>Git manages your local changes using three trees:</p>
-<div class="table-wrapper"><table><thead><tr><th><strong>Tree</strong></th><th><strong>Role</strong></th></tr></thead><tbody>
-<tr><td>HEAD</td><td>The latest commit</td></tr>
-<tr><td>Index</td><td>The commit-in-progress, aka &quot;staging&quot;</td></tr>
-<tr><td>Working Tree</td><td>Your local filesystem (except for the .git directory itself</td></tr>
-</tbody></table>
-</div>
-<p>On the 'green path' (that is, no mistakes or side journeys), changes start in the <strong>working tree</strong> and flow to the <strong>index</strong> via <code>git add</code>, and finally into the repo via <code>git commit</code> (i.e., the branch to which <strong>HEAD</strong> points moves to the next commit):</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: right"><em>Tree:</em></th><th><strong>Working Tree</strong></th><th><strong>Index</strong></th><th><strong>HEAD</strong></th></tr></thead><tbody>
-<tr><td style="text-align: right"><em>Operation:</em></td><td>1. &lt;make changes&gt;</td><td>2. <code>git add</code> (stage changes)</td><td>3. <code>git commit</code></td></tr>
-</tbody></table>
-</div>
-<p>See also this workflow diagram from git-scm.com.  Notice that a <code>git checkout</code> updates <em>all three trees</em>:</p>
-<p><img src="https://git-scm.com/book/en/v2/images/reset-workflow.png" alt="" /></p>
-<p>Sometimes it's necessary to move changes the other way.  For instance, you may want to...</p>
-<ol>
-<li>Add a forgotten file,</li>
-<li>Change a commit message, or</li>
-<li>Revert a commit.</li>
-</ol>
-<p><code>git reset</code>: The command that can assist with all this and more.  Why is it called &quot;reset&quot;?  Possibly because it resets trees to a state that already exists in the repo.  Unlike <code>git add</code> and <code>git commit</code>, which push new states INTO the repo, <code>git reset</code> propagates existing state the other way, OUT of the repo to HEAD, the index, and even the working tree.</p>
-<div class="table-wrapper"><table><thead><tr><th>Tree</th><th>Role</th><th><code>git reset</code> &quot;hardness&quot;<br>needed to move the tree</th></tr></thead><tbody>
-<tr><td>HEAD</td><td>The latest commit</td><td>--soft</td></tr>
-<tr><td>Index</td><td>The commit-in-progress</td><td>--mixed (also moves HEAD.) The default.</td></tr>
-<tr><td>Working Tree</td><td>Your local filesystem</td><td>--hard (also moves HEAD and Index.)</td></tr>
-</tbody></table>
-</div>
-<p><code>git reset</code> needs to know two things:</p>
-<ol>
-<li>The &quot;hardness&quot;--that is, how many trees are to be reset, and</li>
-<li>Which commit SHA to (re)set the tree(s) to.</li>
-</ol>
-<p>If you just type &quot;git reset&quot;, the default hardness is &quot;--mixed&quot;, and the default commit SHA is HEAD.</p>
-<h2 id="putting-it-together---moving-objects-among-trees"><a class="header" href="#putting-it-together---moving-objects-among-trees">Putting It Together - Moving Objects Among Trees</a></h2>
-<p>Let's follow a single file through this workflow, starting with working-tree changes, which will move into the index, and then into a commit.  Then, we'll revert it, tree by tree, all the way back using <code>git reset</code>.</p>
-<h3 id="1-move-a-change-forward-through-the-trees"><a class="header" href="#1-move-a-change-forward-through-the-trees">1. Move a change forward through the trees</a></h3>
-<p>Make a change (which tree are you working in now, as you run the following commands?) ...</p>
-<pre><code>$ code index.html   #  (or whatever file you may have in your working tree)
-# Make a minor change to index.html in your editor, and save it. Then...
-$ git status  # or use the 'gs' alias
-$ git diff    # or use the 'gd' alias
+<p>$ code index.html   #  (or whatever file you may have in your working tree)</p>
+<h1 id="make-a-minor-change-to-indexhtml-in-your-editor-and-save-it-then"><a class="header" href="#make-a-minor-change-to-indexhtml-in-your-editor-and-save-it-then">Make a minor change to index.html in your editor, and save it. Then...</a></h1>
+<p>$ git status  # or use the 'gs' alias
+$ git diff    # or use the 'gd' alias</p>
+<pre><code>
+Add to the index.
 </code></pre>
-<p>Add to the index.</p>
-<pre><code>$ git add views.py    # or 'ga' aFile.txt
+<p>$ git add index.html    # or use the 'ga' alias
 $ git status
 $ git diff
-$ git diff --staged   # or use the 'gds' alias
+$ git diff --staged   # or use the 'gds' alias</p>
+<pre><code>
+Which tree (or trees) have the change now?
+
+Commit it...
 </code></pre>
-<p>Which tree (or trees) have the change now?</p>
-<p>Commit it...</p>
-<pre><code>$ git rev-parse HEAD
-$ git commit -m &quot;Commented in views.py&quot;  # or use the 'gc' alias: gc -m &quot;Commented...&quot;
-$ git status
+<p>$ git rev-parse HEAD
+$ git commit -m &quot;Added a menu item link to index.html&quot;  # or use the 'gc' alias: gc -m &quot;Added a...&quot;
+$ git status</p>
+<pre><code>
+Now which tree (or trees) have the change?
+
+### 2. Move the same change backward through the trees
+
+Recall that besides specifying &quot;hardness&quot;, we need to tell `git reset` the commit-SHA to align with--that is, which SHA to reset to.
+
+(What is the previous value of HEAD?)
 </code></pre>
-<p>Now which tree (or trees) have the change?</p>
-<h3 id="2-move-the-same-change-backward-through-the-trees"><a class="header" href="#2-move-the-same-change-backward-through-the-trees">2. Move the same change backward through the trees</a></h3>
-<p>Recall that besides specifying &quot;hardness&quot;, we need to tell <code>git reset</code> the commit-SHA to align with--that is, which SHA to reset to.</p>
-<p>(What is the previous value of HEAD?)</p>
-<pre><code>$ git rev-parse HEAD
+<p>$ git rev-parse HEAD
 $ git reset
 $ git rev-parse HEAD   # What happened?  Why?
 $ git rev-parse HEAD^   # What does the caret (^) mean?*
 $ git status
-$ git reset --soft &lt;previous-value-of-head&gt;
+$ git reset --soft <previous-value-of-head>
 $ git rev-parse HEAD
 $ git status
 $ git diff
-$ git diff --staged
+$ git diff --staged</p>
+<pre><code>
+\* To understand ^, ~, @{push}, and other revision notation, see [Git Revisions](https://git-scm.com/docs/revisions).
+
+What happened?  What is `git status` telling you, and why?
+
+What happened to the commit that we were on before doing a `git reset```?  How might we get back to it?
+
+Now the branch that HEAD points to has been &quot;reset&quot;, back to where it was before we committed.  Which tree has changed?
+
+Let's change the next tree...
 </code></pre>
-<p>* To understand ^, ~, @{push}, and other revision notation, see <a href="https://git-scm.com/docs/revisions">Git Revisions</a>.</p>
-<p>What happened?  What is <code>git status</code> telling you, and why?</p>
-<p>What happened to the commit that we were on before doing a `git reset```?  How might we get back to it?</p>
-<p>Now the branch that HEAD points to has been &quot;reset&quot;, back to where it was before we committed.  Which tree has changed?</p>
-<p>Let's change the next tree...</p>
-<pre><code>$ git reset   # Same command, but now something  happened.  Why?
+<p>$ git reset   # Same command, but now something  happened.  Why?
 $ git status
 $ git diff
-$ git diff --staged
+$ git diff --staged</p>
+<pre><code>
+What changed this time?
+
+Let's change the third tree...
 </code></pre>
-<p>What changed this time?</p>
-<p>Let's change the third tree...</p>
-<pre><code>$ git reset --hard
+<p>$ git reset --hard
 $ git status
 $ git diff
-$ git diff --staged
-</code></pre>
-<p>Test your understanding:</p>
-<ul>
-<li>What happened to each tree at each step?</li>
-<li>How is <code>git reset &lt;paths&gt;</code> the opposite of `git add <paths>```?</li>
-<li>When would each variation of <code>git reset</code> come in handy?</li>
-</ul>
-<h3 id="another-picture-of-how-git-reset---softmixedhard-tothiscommit--works"><a class="header" href="#another-picture-of-how-git-reset---softmixedhard-tothiscommit--works">Another picture of how <code>&quot;git reset --soft/mixed/hard &lt;ToThisCommit&gt;&quot;</code>  works</a></h3>
-<style>
+$ git diff --staged</p>
+<pre><code>
+Test your understanding:
+- What happened to each tree at each step?
+- How is `git reset &lt;paths&gt;` the opposite of `git add &lt;paths&gt;```?
+- When would each variation of `git reset` come in handy?
+
+### Another picture of how `&quot;git reset --soft/mixed/hard &lt;ToThisCommit&gt;&quot;` &amp;nbsp;works
+
+&lt;style&gt;
   /* For the git-versus-github table */
   td { text-align: center; }
   tr.bb { border-bottom: 2px solid black !important; }
   .bb table { border-collapse:collapse; }
   th { background-color: #b3a497; }
   th.thcolspan { background-color: #d3c4b7; }
-</style>
-<!-- Github Markdown doesn't do colspan -->
-<table class="bb">
-<tr><th>"hardness"</th><th class="thcolspan" colspan="3">Trees that are reset &lt;ToThisCommit&gt;</th></tr>
-<tr class="bb"><th></th><th>Working Tree</th><th>Index</th><th>HEAD</th></tr>
-<tr><td>--soft</td><td>-</td><td>-</td><td>YES</td></tr>
-<tr><td>--mixed</td><td>-</td><td>YES</td><td>YES</td></tr>
-<tr><td>--hard</td><td>YES</td><td>YES</td><td>YES</td></tr>
-</table>
+&lt;/style&gt;
+
+&lt;!-- Github Markdown doesn't do colspan --&gt;
+&lt;table class=&quot;bb&quot;&gt;
+&lt;tr&gt;&lt;th&gt;&quot;hardness&quot;&lt;/th&gt;&lt;th class=&quot;thcolspan&quot; colspan=&quot;3&quot;&gt;Trees that are reset &amp;lt;ToThisCommit&amp;gt;&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&quot;bb&quot;&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Working Tree&lt;/th&gt;&lt;th&gt;Index&lt;/th&gt;&lt;th&gt;HEAD&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;--soft&lt;/td&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;YES&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;--mixed&lt;/td&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;YES&lt;/td&gt;&lt;td&gt;YES&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;--hard&lt;/td&gt;&lt;td&gt;YES&lt;/td&gt;&lt;td&gt;YES&lt;/td&gt;&lt;td&gt;YES&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+</code></pre>
 
                     </main>
 
