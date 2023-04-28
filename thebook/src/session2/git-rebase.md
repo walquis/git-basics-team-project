@@ -1,9 +1,9 @@
-### Intro to `git rebase`
+# Intro to `git rebase`
 "Replay a series of commits onto a starting point".  When might this be useful?
 
 A couple of common scenarios:
 
-#### Avoid Unnecessary Merge Commits
+## Avoid Unnecessary Merge Commits
 **Scenario**: You are working on a shared branch.  You make some commits, but then realize you haven't first "caught up" (i.e., `git pull`) with what's been going on remotely.  (A common way to "realize" this is to attempt to push, and get rejected).
 
 A variation of this scenario is that you were caught up when you started working, but in the meantime someone else has pushed.
@@ -27,12 +27,13 @@ $ git rebase origin/main  # Replay your changes on top of where origin/main is n
 > 🤔 What is meant by this statement? "_Rebase is a destructive operation._"
 
 
-#### LAB - Simulate the above scenario and practice resolving it with `git rebase`:
+### LAB - Simulate the above scenario and practice resolving it with `git rebase`:
 > 1. Checkout a branch that starts 3 or four commits before `main`. _Hover [here](./doesnotexist.jpg, "See the git-checkout docs and 'start-point' option") for a hint._
 > 1. Make a couple of commits on that branch.
 > 1. Then use `git rebase` to replay those commits onto `main`.
 
-#### Interactive rebase (`git rebase -i`) -- Edit Commit History Before Pushing
+## Interactive rebase (`git rebase -i`) -- Edit Commit History Before Pushing
 
-#### LAB - Make 3 or 4 commits on current branch, and squash/rearrange with `git rebase -i`
+### LAB
+> Make 3 or 4 commits on current branch, and squash/rearrange with `git rebase -i`.
 

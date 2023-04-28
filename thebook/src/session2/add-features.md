@@ -1,5 +1,7 @@
-## Run your project as a team
+# Run your project as a team
+
 NOTE: The following links give an idea of how to implement the described change, but your mileage may vary considerably.
+
 > 1. **Team lead**: Create a kanban project in your GitHub org, and invite your teammates.
 > 1. **Each teammate**: Choose a task from this list of changes from the [sample project repo](https://github.com/walquis/git-basics-sample-project-repo), and create a card for it, with your name on it:
 > - [Add some about text](https://github.com/walquis/git-basics-sample-project-repo/commit/4c461a996aad0fd5bfa420ac366139805bf334bf).
@@ -13,7 +15,7 @@ NOTE: The following links give an idea of how to implement the described change,
 > - [Add a solar system map](https://github.com/walquis/git-basics-sample-project-repo/commit/4119092cac8ccdeb1b4a3ad719a6cf87d3229502).
 > - [Add the planet images](https://github.com/walquis/git-basics-sample-project-repo/commit/b4b184b40299ad852dd9cd51e0d4279f795ae98f).
 
-#### LAB - Each Team, Run your project
+## LAB - Each Team, Run your project
 > Spend about 45 minutes implementing the changes you have chosen.
 > - Deliver your changes using Pull Requests.
 > - Keep your project board up-to-date as you go.
