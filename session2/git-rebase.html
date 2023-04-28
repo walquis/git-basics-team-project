@@ -144,10 +144,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h3 id="intro-to-git-rebase"><a class="header" href="#intro-to-git-rebase">Intro to <code>git rebase</code></a></h3>
+                        <h1 id="intro-to-git-rebase"><a class="header" href="#intro-to-git-rebase">Intro to <code>git rebase</code></a></h1>
 <p>&quot;Replay a series of commits onto a starting point&quot;.  When might this be useful?</p>
 <p>A couple of common scenarios:</p>
-<h4 id="avoid-unnecessary-merge-commits"><a class="header" href="#avoid-unnecessary-merge-commits">Avoid Unnecessary Merge Commits</a></h4>
+<h2 id="avoid-unnecessary-merge-commits"><a class="header" href="#avoid-unnecessary-merge-commits">Avoid Unnecessary Merge Commits</a></h2>
 <p><strong>Scenario</strong>: You are working on a shared branch.  You make some commits, but then realize you haven't first &quot;caught up&quot; (i.e., <code>git pull</code>) with what's been going on remotely.  (A common way to &quot;realize&quot; this is to attempt to push, and get rejected).</p>
 <p>A variation of this scenario is that you were caught up when you started working, but in the meantime someone else has pushed.</p>
 <p>You can do a <code>git pull</code> now, which will result in a merge.  But merging for no good reason is probably not a very good option.  In other words, if you'd started with <code>git pull</code>, there would be no merge commit.</p>
@@ -167,7 +167,7 @@ $ git rebase origin/main  # Replay your changes on top of where origin/main is n
 </ol>
 <p>🤔 What is meant by this statement? &quot;<em>Rebase is a destructive operation.</em>&quot;</p>
 </blockquote>
-<h4 id="lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase"><a class="header" href="#lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase">LAB - Simulate the above scenario and practice resolving it with <code>git rebase</code>:</a></h4>
+<h3 id="lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase"><a class="header" href="#lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase">LAB - Simulate the above scenario and practice resolving it with <code>git rebase</code>:</a></h3>
 <blockquote>
 <ol>
 <li>Checkout a branch that starts 3 or four commits before <code>main</code>. <em>Hover <a href="./doesnotexist.jpg," title="See the git-checkout docs and 'start-point' option">here</a> for a hint.</em></li>
@@ -175,8 +175,11 @@ $ git rebase origin/main  # Replay your changes on top of where origin/main is n
 <li>Then use <code>git rebase</code> to replay those commits onto <code>main</code>.</li>
 </ol>
 </blockquote>
-<h4 id="interactive-rebase-git-rebase--i----edit-commit-history-before-pushing"><a class="header" href="#interactive-rebase-git-rebase--i----edit-commit-history-before-pushing">Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</a></h4>
-<h4 id="lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i"><a class="header" href="#lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i">LAB - Make 3 or 4 commits on current branch, and squash/rearrange with <code>git rebase -i</code></a></h4>
+<h2 id="interactive-rebase-git-rebase--i----edit-commit-history-before-pushing"><a class="header" href="#interactive-rebase-git-rebase--i----edit-commit-history-before-pushing">Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</a></h2>
+<h3 id="lab"><a class="header" href="#lab">LAB</a></h3>
+<blockquote>
+<p>Make 3 or 4 commits on current branch, and squash/rearrange with <code>git rebase -i</code>.</p>
+</blockquote>
 
                     </main>
 
