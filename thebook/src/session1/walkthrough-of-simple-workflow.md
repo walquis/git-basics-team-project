@@ -1,4 +1,4 @@
-# Breakdown of Simple Collaborative Workflow
+# Walk-through of Simple Workflow
 This sequence represents a workflow where my teammate first makes a change locally and pushes.  I also make a change locally--but now I must integrate their change (via a `git pull origin main`) before I too can push.
 
 Click into each step to view the details.
