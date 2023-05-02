@@ -1,6 +1,8 @@
 # Table of Contents
 - [Overview](./overview.md)
-- [Prework](./prework.md)
+- [Course Syllabus](./syllabus.md)
+- [Prework - For Non-Developers](./prework-non-devs.md)
+- [Prework - For All Students](./prework.md)
   - [Set Up Git Environment](./prework/env-setup.md)
   - [Install Git-Graph plugin for VSCode](./prework/git-graph-install.md)
   - [Explore the website's code](./prework/explore-website-code.md)
@@ -30,7 +32,6 @@
 - [Common Git Workflows](./common-git-workflows.md)
 - [Viewing Changes](./viewing-changes.md)
 - [Unix Shell Concepts](./unix-shell-concepts.md)
-- [Course Syllabus](./syllabus.md)
 - [References](./references.md)
 - [Instructor Notes](./instructor-notes.md)
   - [Session 1 ](./instructor-notes/session1.md)

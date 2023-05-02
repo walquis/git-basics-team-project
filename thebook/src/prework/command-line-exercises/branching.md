@@ -38,7 +38,7 @@ adog
 ```
 🤔 Your commit will have a different hash code, or SHA, than `ccaf82c`.  Why might that be?  (["The Three Objects"](/objects-and-trees-exercise.html) explains).
 
-**Key Takeaways:**
+**Some Key Takeaways:**
 - Use `adog`, `git status`, `git diff`, and `git diff --staged` constantly.
 - `git diff` shows differences between working tree and index.
 - `git diff --staged` shows differences between index and HEAD.

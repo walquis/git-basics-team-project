@@ -1,23 +1,13 @@
 # Syllabus for Collaborating with git
 
-We will learn how git's _data model_, __The Three Objects__, forms the basis of a git repo's architecture.
-
-We will learn to use git's _state model_, __The Three Trees__, to confidently manage changes between a working tree and a local git repo. 
-
-We will learn to use __Pull Requests__ within git workflows to communicate our changes to others.
-
-In the course of running a collaborative software development project, you will use various git commands in a **Bash shell** to examine and change the state of git objects in these trees on your local machine.  Some of these commands may be familiar (e.g., `git checkout`, `git add`, `git commit`, `git status`, `git diff`) and some may not (`git reset`, `git diff --staged`, `git rebase`, `git cherry-pick`).
-
-Using **pull requests** (aka PR's), you will communicate local changes to your team for review and integration into the team's shared work stream.
-
-
 ### Goals
-1. Know how to read the commit graph, and use git commands confidently to make it look like you want.
+1. Read a repo's commit graph, and use git commands confidently to make it look like you want.
 1. Clearly and efficiently communicate changes with your team using git commands, and Github workflow tools such as Pull Requests.
-1. Understand how basic git commands such as `git add`, `git commit`, and `git reset` move the state of your local changes among __The Three Trees__.
-1. Understand __The Three Objects__ of the git data model well enough to know what git operations are required in real-life scenarios.
-1. Make changes confidently, by knowing specifically how git has your back.
+1. Capably manage the state of your local changes using basic git commands such as `git add`, `git commit`, and `git reset` to move them among __The Three Trees__.
+1. When using git commands in real-life scenarios, know their effects in terms of __The Three Objects__ of git's data model.
+1. Make changes confidently, knowing specifically how git has your back with commands such as `git reflog`.
  
+
 ### Objectives
 
 By the end of this course, students will be able to...
