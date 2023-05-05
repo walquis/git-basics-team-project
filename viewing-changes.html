@@ -144,28 +144,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="hints-for-viewing-repo-changes"><a class="header" href="#hints-for-viewing-repo-changes">Hints For Viewing Repo Changes</a></h1>
+                        <h1 id="viewing-changes"><a class="header" href="#viewing-changes">Viewing Changes</a></h1>
 <h2 id="git-diff---the-command-line"><a class="header" href="#git-diff---the-command-line">Git Diff - the command line</a></h2>
-<p>Note that the diff'ing methods below only compare commits, that is, changes <em>already committed to the repo</em>.  They don't address contents of your working directory or index.  For that, use &quot;git diff&quot; (which shows your index vs. working tree), or &quot;git diff --staged&quot; (HEAD vs. index).</p>
-<ol>
-<li>See a given commit's diffs relative to its parent commit...</li>
-</ol>
-<p>In this form of <code>git show</code>, you see ONLY a single commit's diffs, even if you provide a branch name instead of a sha.  Just saying <code>git show</code> displays your most recent commit's changes.</p>
+<h3 id="see-a-given-commits-diffs-relative-to-its-parent-commit"><a class="header" href="#see-a-given-commits-diffs-relative-to-its-parent-commit">See a given commit's diffs relative to its parent commit...</a></h3>
+<p>In this form of <code>git show</code>, you see ONLY a single commit's diffs, even if you provide a branch name instead of a sha.  <code>git show</code> with no arguments displays your most recent commit's changes, relative to its parent.</p>
+<p><code>git show someSha</code> - shows <code>someSha</code>'s diffs.  You can do this from anywhere--there is no need, for instance, to get your working tree into a clean state, checkout a particular branch, and &quot;git diff&quot;.</p>
 <pre><code>$ git show 3f29a16  # (Substitute your own commit sha)
 </code></pre>
-<p><code>git show</code> can be handy whenever you just want to see a single commit's worth of diffs.  You can do this from anywhere--there is no need, for instance, to get your working tree into a clean state, checkout a particular branch, and &quot;git diff&quot;.</p>
-<ol start="2">
-<li>View diffs on an entire branch, relative to another branch...</li>
-</ol>
-<pre><code>$ git diff main..otherbranch  # In the diff output, main is on the left, otherbranch on the right.
+<h3 id="view-diffs-on-an-entire-branch-relative-to-another-branch"><a class="header" href="#view-diffs-on-an-entire-branch-relative-to-another-branch">View diffs on an entire branch, relative to another branch...</a></h3>
+<pre><code>$ git diff main..otherbranch 
 </code></pre>
-<ol start="3">
-<li>Exclude files from diff... For some branch comparisons, you may want to exclude one or more files from the <code>git diff</code> output. For instance, no need to see an entire jquery file when it's added to the code base. And, you may not want to view diffs in a &quot;docs&quot; directory ...</li>
-</ol>
+<p>In the diff output, <code>main</code> is on the left, <code>otherbranch</code> on the right.</p>
+<h3 id="exclude-files-from-diff"><a class="header" href="#exclude-files-from-diff">Exclude files from diff...</a></h3>
+<p>For some branch comparisons, you may want to exclude one or more files from the <code>git diff</code> output (For instance, no need to see entire contents of a jquery file when it's committed). And, you may not want to view diffs in a &quot;docs&quot; directory.  The &quot;exclude&quot; syntax looks like this:</p>
 <pre><code>$ git diff main..sample-solution ':(exclude)*jquery*.js' ':(exclude)docs/'
 </code></pre>
-<h2 id="view-your-changes-on-githubcom"><a class="header" href="#view-your-changes-on-githubcom">View your changes on github.com</a></h2>
-<p>Navigate to your repo on https://github.com.  Then click &quot;Contribute&quot;, directly under the green &quot;Code&quot; button, then &quot;Compare&quot;.  This will show diffs with respect to <code>main</code>.</p>
+<h3 id="view-your-changes-on-githubcom"><a class="header" href="#view-your-changes-on-githubcom">View your changes on github.com</a></h3>
+<p>Navigate to your repo on https://github.com.  Then append &quot;/compare&quot; to your URL.  As the UI says, from here you can &quot;Compare and review just about anything&quot;.  I find it a bit strange that there's no button for getting to this page ... 🤷</p>
+<blockquote>
+<p>Note that the above diff'ing methods apply to commits, that is, changes <em>already committed to the repo</em>.  They don't deal with changes in your working tree or index.  For that, use &quot;git diff&quot; (which shows working tree vs. index), or &quot;git diff --staged&quot; (index vs. HEAD).</p>
+</blockquote>
 <h2 id="download-sourcetree-and-point-it-at-your-local-repo"><a class="header" href="#download-sourcetree-and-point-it-at-your-local-repo">Download <a href="https://www.sourcetreeapp.com">SourceTree</a> and point it at your local repo</a></h2>
 <p>Or download another git GUI, such as Github Desktop--but SourceTree is quite good.</p>
 <p>Browse the changes, and explore the options for viewing changes--for instance, highlighting multiple commits with shift-click will show diffs across those commits; also, the file viewer can switch from flat list to tree view; etc.</p>

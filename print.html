@@ -1206,11 +1206,27 @@ Test your understanding:
 </blockquote>
 <p>If your team gets stuck, get an instructor's attention and we'll work on it together! </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="intro-to-git-rebase"><a class="header" href="#intro-to-git-rebase">Intro to <code>git rebase</code></a></h1>
+<p>(IN-PROGRESS)</p>
 <p>&quot;Replay a series of commits onto a starting point&quot;.  When might this be useful?</p>
-<p>A couple of common scenarios:</p>
-<h2 id="avoid-unnecessary-merge-commits"><a class="header" href="#avoid-unnecessary-merge-commits">Avoid Unnecessary Merge Commits</a></h2>
-<p><strong>Scenario</strong>: You are working on a shared branch.  You make some commits, but then realize you haven't first &quot;caught up&quot; (i.e., <code>git pull</code>) with what's been going on remotely.  (A common way to &quot;realize&quot; this is to attempt to push, and get rejected).</p>
-<p>A variation of this scenario is that you were caught up when you started working, but in the meantime someone else has pushed.</p>
+<p>You can think of rebase as a series of cherry-pick operations; for each cherry-picked commit, git uses the merge machinery to apply the changes implied by that commit.</p>
+<p>Situations for which <code>git rebase</code> is the solution often fall into two general categories:</p>
+<ol>
+<li>Avoiding unnecessary merge commits <em>after fetching</em>.</li>
+<li>Editing your commit history locally <em>before pushing</em>.</li>
+</ol>
+<h2 id="after-fetching---avoiding-unnecessary-merge-commits"><a class="header" href="#after-fetching---avoiding-unnecessary-merge-commits">After fetching - Avoiding Unnecessary Merge Commits</a></h2>
+<p>Why does it matter whether or not a commit is expressed as a merge?  Generally, there should be a good reason for the merge.  Just because you <strong>can</strong> merge, it doesn't always mean you <strong>must</strong> merge.</p>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge">Robust discussion</a> happens around what constitutes a &quot;good reason&quot; for a <strong>merge</strong> versus a <strong>rebase</strong>.  Some considerations:</p>
+<ol>
+<li>Is there a chance the change on the branch will be rolled back?  Then <strong>merge</strong>.</li>
+<li>Would it be useful to refer back to the branch in the future (i.e., to diff it)?  Then <strong>merge</strong>.</li>
+<li>Are there remote dependencies on the branch? Then <strong>merge</strong>.</li>
+<li>Is the branch not remarkable in any way?  Then <strong>rebase</strong> for a more linear history.</li>
+<li>Want to minimize the commits with &quot;Merge branch <code>main</code> into ...&quot; messages? Then <strong>rebase</strong> your feature branch <em>onto</em> your base branch (e.g., <code>main</code>), and <strong>merge</strong> your feature branch <em>into</em> your base branch.</li>
+</ol>
+</blockquote>
+<p><strong>Scenario</strong>: You were caught up when you started working, but in the meantime someone else has pushed.</p>
 <p>You can do a <code>git pull</code> now, which will result in a merge.  But merging for no good reason is probably not a very good option.  In other words, if you'd started with <code>git pull</code>, there would be no merge commit.</p>
 <p>Fortunately, if you want a more linear history, a single <code>git rebase</code> command will allow this.  Simply <code>git fetch</code> (which updates your local git repo with news from the remote), and then <code>git rebase</code> onto the tip of the branch you're tracking.</p>
 <p>For instance, if you're working on <code>main</code>, and then realize <code>origin/main</code> is ahead of you, you can do something like this to re-home your local <code>main</code> to the latest <code>origin/main</code>:</p>
@@ -1218,17 +1234,10 @@ Test your understanding:
 $ git rebase origin/main  # Replay your changes on top of where origin/main is now
 </code></pre>
 <blockquote>
-<p><a href="https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge">Robust discussion</a> happens around what constitutes a &quot;good reason&quot; for a <strong>merge</strong> versus a <strong>rebase</strong>.  Some considerations:</p>
-<ol>
-<li>Is there a chance the change on the branch will be rolled back?  Then merge.</li>
-<li>Would it be useful to refer back to the branch in the future (i.e., to diff it)?  Then merge.</li>
-<li>Are there remote dependencies on the branch? Then merge.</li>
-<li>Is the branch not remarkable in any way?  Then rebase for a linear history.</li>
-<li>Want to minimize the commits with &quot;Merge branch <code>main</code> into ...&quot; messages? Then <em>rebase</em> your feature branch <strong>onto</strong> your base branch, and <em>merge</em> your feature branch <strong>into</strong> your base branch.</li>
-</ol>
 <p>🤔 What is meant by this statement? &quot;<em>Rebase is a destructive operation.</em>&quot;</p>
 </blockquote>
-<h3 id="lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase"><a class="header" href="#lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase">LAB - Simulate the above scenario and practice resolving it with <code>git rebase</code>:</a></h3>
+<p>Suppose you are working on a shared branch.  You make some commits, but then realize you haven't first &quot;caught up&quot; (i.e., <code>git pull</code>) with what's been going on remotely.  (A common way to &quot;realize&quot; this is to attempt to push, and get rejected).</p>
+<h4 id="lab---simulate-the-after-fetch-scenario-and-practice-resolving-it-with-git-rebase"><a class="header" href="#lab---simulate-the-after-fetch-scenario-and-practice-resolving-it-with-git-rebase">LAB - Simulate the &quot;after-fetch&quot; scenario and practice resolving it with <code>git rebase</code>:</a></h4>
 <blockquote>
 <ol>
 <li>Checkout a branch that starts 3 or four commits before <code>main</code>. <em>Hover <a href="session2/./doesnotexist.jpg," title="See the git-checkout docs and 'start-point' option">here</a> for a hint.</em></li>
@@ -1236,8 +1245,17 @@ $ git rebase origin/main  # Replay your changes on top of where origin/main is n
 <li>Then use <code>git rebase</code> to replay those commits onto <code>main</code>.</li>
 </ol>
 </blockquote>
-<h2 id="interactive-rebase-git-rebase--i----edit-commit-history-before-pushing"><a class="header" href="#interactive-rebase-git-rebase--i----edit-commit-history-before-pushing">Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</a></h2>
-<h3 id="lab"><a class="header" href="#lab">LAB</a></h3>
+<h1 id="before-pushing---editing-commit-history-with-git-rebase--i"><a class="header" href="#before-pushing---editing-commit-history-with-git-rebase--i">Before Pushing - Editing commit history with <code>git rebase -i</code></a></h1>
+<p>Another set of <code>git rebase</code> scenarios involve editing your commit history <em>before pushing</em>, rather than <em>after fetching</em>.</p>
+<h2 id="scenario"><a class="header" href="#scenario">Scenario:</a></h2>
+<p>Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</p>
+<ul>
+<li>squash commits into fewer commits (with no change in content)</li>
+<li>reword a comment</li>
+<li>remove a commit</li>
+<li>reorder commits</li>
+</ul>
+<h4 id="lab"><a class="header" href="#lab">LAB</a></h4>
 <blockquote>
 <p>Make 3 or 4 commits on current branch, and squash/rearrange with <code>git rebase -i</code>.</p>
 </blockquote>
@@ -1380,28 +1398,26 @@ $ git bisect run bash test.sh
 <div class="footnote-definition" id="remote-name"><sup class="footnote-definition-label">1</sup>
 <p>assuming your remote is named <code>origin</code>.  It probably is.</p>
 </div>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hints-for-viewing-repo-changes"><a class="header" href="#hints-for-viewing-repo-changes">Hints For Viewing Repo Changes</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="viewing-changes"><a class="header" href="#viewing-changes">Viewing Changes</a></h1>
 <h2 id="git-diff---the-command-line"><a class="header" href="#git-diff---the-command-line">Git Diff - the command line</a></h2>
-<p>Note that the diff'ing methods below only compare commits, that is, changes <em>already committed to the repo</em>.  They don't address contents of your working directory or index.  For that, use &quot;git diff&quot; (which shows your index vs. working tree), or &quot;git diff --staged&quot; (HEAD vs. index).</p>
-<ol>
-<li>See a given commit's diffs relative to its parent commit...</li>
-</ol>
-<p>In this form of <code>git show</code>, you see ONLY a single commit's diffs, even if you provide a branch name instead of a sha.  Just saying <code>git show</code> displays your most recent commit's changes.</p>
+<h3 id="see-a-given-commits-diffs-relative-to-its-parent-commit"><a class="header" href="#see-a-given-commits-diffs-relative-to-its-parent-commit">See a given commit's diffs relative to its parent commit...</a></h3>
+<p>In this form of <code>git show</code>, you see ONLY a single commit's diffs, even if you provide a branch name instead of a sha.  <code>git show</code> with no arguments displays your most recent commit's changes, relative to its parent.</p>
+<p><code>git show someSha</code> - shows <code>someSha</code>'s diffs.  You can do this from anywhere--there is no need, for instance, to get your working tree into a clean state, checkout a particular branch, and &quot;git diff&quot;.</p>
 <pre><code>$ git show 3f29a16  # (Substitute your own commit sha)
 </code></pre>
-<p><code>git show</code> can be handy whenever you just want to see a single commit's worth of diffs.  You can do this from anywhere--there is no need, for instance, to get your working tree into a clean state, checkout a particular branch, and &quot;git diff&quot;.</p>
-<ol start="2">
-<li>View diffs on an entire branch, relative to another branch...</li>
-</ol>
-<pre><code>$ git diff main..otherbranch  # In the diff output, main is on the left, otherbranch on the right.
+<h3 id="view-diffs-on-an-entire-branch-relative-to-another-branch"><a class="header" href="#view-diffs-on-an-entire-branch-relative-to-another-branch">View diffs on an entire branch, relative to another branch...</a></h3>
+<pre><code>$ git diff main..otherbranch 
 </code></pre>
-<ol start="3">
-<li>Exclude files from diff... For some branch comparisons, you may want to exclude one or more files from the <code>git diff</code> output. For instance, no need to see an entire jquery file when it's added to the code base. And, you may not want to view diffs in a &quot;docs&quot; directory ...</li>
-</ol>
+<p>In the diff output, <code>main</code> is on the left, <code>otherbranch</code> on the right.</p>
+<h3 id="exclude-files-from-diff"><a class="header" href="#exclude-files-from-diff">Exclude files from diff...</a></h3>
+<p>For some branch comparisons, you may want to exclude one or more files from the <code>git diff</code> output (For instance, no need to see entire contents of a jquery file when it's committed). And, you may not want to view diffs in a &quot;docs&quot; directory.  The &quot;exclude&quot; syntax looks like this:</p>
 <pre><code>$ git diff main..sample-solution ':(exclude)*jquery*.js' ':(exclude)docs/'
 </code></pre>
-<h2 id="view-your-changes-on-githubcom"><a class="header" href="#view-your-changes-on-githubcom">View your changes on github.com</a></h2>
-<p>Navigate to your repo on https://github.com.  Then click &quot;Contribute&quot;, directly under the green &quot;Code&quot; button, then &quot;Compare&quot;.  This will show diffs with respect to <code>main</code>.</p>
+<h3 id="view-your-changes-on-githubcom"><a class="header" href="#view-your-changes-on-githubcom">View your changes on github.com</a></h3>
+<p>Navigate to your repo on https://github.com.  Then append &quot;/compare&quot; to your URL.  As the UI says, from here you can &quot;Compare and review just about anything&quot;.  I find it a bit strange that there's no button for getting to this page ... 🤷</p>
+<blockquote>
+<p>Note that the above diff'ing methods apply to commits, that is, changes <em>already committed to the repo</em>.  They don't deal with changes in your working tree or index.  For that, use &quot;git diff&quot; (which shows working tree vs. index), or &quot;git diff --staged&quot; (index vs. HEAD).</p>
+</blockquote>
 <h2 id="download-sourcetree-and-point-it-at-your-local-repo"><a class="header" href="#download-sourcetree-and-point-it-at-your-local-repo">Download <a href="https://www.sourcetreeapp.com">SourceTree</a> and point it at your local repo</a></h2>
 <p>Or download another git GUI, such as Github Desktop--but SourceTree is quite good.</p>
 <p>Browse the changes, and explore the options for viewing changes--for instance, highlighting multiple commits with shift-click will show diffs across those commits; also, the file viewer can switch from flat list to tree view; etc.</p>
@@ -1633,13 +1649,13 @@ DISCUSS:</p>
 <h4 id="lab---start-your-project-board"><a class="header" href="#lab---start-your-project-board">LAB - Start your project board</a></h4>
 <h4 id="lab---each-team-run-your-project-1"><a class="header" href="#lab---each-team-run-your-project-1">LAB - Each Team, Run your project</a></h4>
 <h3 id="intro-to-git-rebase-1"><a class="header" href="#intro-to-git-rebase-1">Intro to <code>git rebase</code></a></h3>
-<h4 id="avoid-unnecessary-merge-commits-1"><a class="header" href="#avoid-unnecessary-merge-commits-1">Avoid Unnecessary Merge Commits</a></h4>
+<h4 id="avoid-unnecessary-merge-commits"><a class="header" href="#avoid-unnecessary-merge-commits">Avoid Unnecessary Merge Commits</a></h4>
 <p>Discuss the statement, &quot;Rebase is a destructive operation&quot;.  This is an opportunity to further sink in the concept of how SHAs are created: by hashing a git object's contents.</p>
 <ul>
 <li><em>What is being destroyed?</em>  Even if a commit's <strong>content</strong> remains the same (its trees and blobs), the commit itself is going to have different content (e.g., date).  Therefore, if another commit B was pointing to commit A, that commit B will not hear about A's replacement.</li>
 </ul>
-<h4 id="lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase-1"><a class="header" href="#lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase-1">LAB - Simulate the above scenario and practice resolving it with <code>git rebase</code>:</a></h4>
-<h4 id="interactive-rebase-git-rebase--i----edit-commit-history-before-pushing-1"><a class="header" href="#interactive-rebase-git-rebase--i----edit-commit-history-before-pushing-1">Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</a></h4>
+<h4 id="lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase"><a class="header" href="#lab---simulate-the-above-scenario-and-practice-resolving-it-with-git-rebase">LAB - Simulate the above scenario and practice resolving it with <code>git rebase</code>:</a></h4>
+<h4 id="interactive-rebase-git-rebase--i----edit-commit-history-before-pushing"><a class="header" href="#interactive-rebase-git-rebase--i----edit-commit-history-before-pushing">Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</a></h4>
 <h4 id="lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i"><a class="header" href="#lab---make-3-or-4-commits-on-current-branch-and-squashrearrange-with-git-rebase--i">LAB - Make 3 or 4 commits on current branch, and squash/rearrange with <code>git rebase -i</code></a></h4>
 <h3 id="intro-to-git-cherry-pick----if-time-1"><a class="header" href="#intro-to-git-cherry-pick----if-time-1">Intro to <code>git cherry-pick</code> -- if time</a></h3>
 <h3 id="wrap-up-1"><a class="header" href="#wrap-up-1">Wrap-up</a></h3>
