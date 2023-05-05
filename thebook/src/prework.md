@@ -14,3 +14,4 @@ Next, you'll take a quick look at the website, to see what kind of coding we'll 
 
 Finally, you'll do some work at the command line to introduce you to the git commands and concepts that we'll cover in more depth during the class.
 
+## [Start the Prework](prework/env-setup.md)
