@@ -145,10 +145,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="intro-to-git-rebase"><a class="header" href="#intro-to-git-rebase">Intro to <code>git rebase</code></a></h1>
-<p>(IN-PROGRESS)</p>
-<p>&quot;Replay a series of commits onto a starting point&quot;.  When might this be useful?</p>
-<p>You can think of rebase as a series of cherry-pick operations; for each cherry-picked commit, git uses the merge machinery to apply the changes implied by that commit.</p>
-<p>Situations for which <code>git rebase</code> is the solution often fall into two general categories:</p>
+<p>&quot;Replay a series of commits onto a starting point&quot;.</p>
+<p>When might this be useful?  Situations for which <code>git rebase</code> is the solution often fall into two general categories:</p>
 <ol>
 <li>Avoiding unnecessary merge commits <em>after fetching</em>.</li>
 <li>Editing your commit history locally <em>before pushing</em>.</li>
@@ -156,7 +154,7 @@
 <h2 id="after-fetching---avoiding-unnecessary-merge-commits"><a class="header" href="#after-fetching---avoiding-unnecessary-merge-commits">After fetching - Avoiding Unnecessary Merge Commits</a></h2>
 <p>Why does it matter whether or not a commit is expressed as a merge?  Generally, there should be a good reason for the merge.  Just because you <strong>can</strong> merge, it doesn't always mean you <strong>must</strong> merge.</p>
 <blockquote>
-<p><a href="https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge">Robust discussion</a> happens around what constitutes a &quot;good reason&quot; for a <strong>merge</strong> versus a <strong>rebase</strong>.  Some considerations:</p>
+<p>There is <a href="https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge">Robust discussion</a> around what constitutes a &quot;good reason&quot; for a <strong>merge</strong> versus a <strong>rebase</strong>.  Some considerations:</p>
 <ol>
 <li>Is there a chance the change on the branch will be rolled back?  Then <strong>merge</strong>.</li>
 <li>Would it be useful to refer back to the branch in the future (i.e., to diff it)?  Then <strong>merge</strong>.</li>
@@ -165,9 +163,9 @@
 <li>Want to minimize the commits with &quot;Merge branch <code>main</code> into ...&quot; messages? Then <strong>rebase</strong> your feature branch <em>onto</em> your base branch (e.g., <code>main</code>), and <strong>merge</strong> your feature branch <em>into</em> your base branch.</li>
 </ol>
 </blockquote>
-<p><strong>Scenario</strong>: You were caught up when you started working, but in the meantime someone else has pushed.</p>
-<p>You can do a <code>git pull</code> now, which will result in a merge.  But merging for no good reason is probably not a very good option.  In other words, if you'd started with <code>git pull</code>, there would be no merge commit.</p>
-<p>Fortunately, if you want a more linear history, a single <code>git rebase</code> command will allow this.  Simply <code>git fetch</code> (which updates your local git repo with news from the remote), and then <code>git rebase</code> onto the tip of the branch you're tracking.</p>
+<p><strong>Scenario</strong>: You were in sync with <code>origin/some-shared-branch</code> when you started working, but now you discover when delivering your changes that someone else has pushed, and your <code>git push</code> is rejected.</p>
+<p>You can do a <code>git pull</code> now, which will result in a merge.  But merging for no good reason is not a very good option.  Assuming it is not important to you and your team to track when each of you last sync'd up with the remote, then you're in step with consideration 5 above, &quot;Minimize 'Merge branch X into Y' messages&quot;.</p>
+<p>A single <code>git rebase</code> command will &quot;catch you up&quot; without a spurious merge.  Simply <code>git fetch</code> (which updates your local git repo with news from the remote), and then <code>git rebase some-shared-branch</code>, which moves your local <code>some-shared-branch</code> to the tip of the branch you're tracking.</p>
 <p>For instance, if you're working on <code>main</code>, and then realize <code>origin/main</code> is ahead of you, you can do something like this to re-home your local <code>main</code> to the latest <code>origin/main</code>:</p>
 <pre><code>$ git fetch  # Update your local origin/main pointer
 $ git rebase origin/main  # Replay your changes on top of where origin/main is now
@@ -175,28 +173,41 @@ $ git rebase origin/main  # Replay your changes on top of where origin/main is n
 <blockquote>
 <p>🤔 What is meant by this statement? &quot;<em>Rebase is a destructive operation.</em>&quot;</p>
 </blockquote>
-<p>Suppose you are working on a shared branch.  You make some commits, but then realize you haven't first &quot;caught up&quot; (i.e., <code>git pull</code>) with what's been going on remotely.  (A common way to &quot;realize&quot; this is to attempt to push, and get rejected).</p>
-<h4 id="lab---simulate-the-after-fetch-scenario-and-practice-resolving-it-with-git-rebase"><a class="header" href="#lab---simulate-the-after-fetch-scenario-and-practice-resolving-it-with-git-rebase">LAB - Simulate the &quot;after-fetch&quot; scenario and practice resolving it with <code>git rebase</code>:</a></h4>
+<h4 id="lab---simulate-the-after-fetch-scenario-and-resolve-it-with-git-rebase"><a class="header" href="#lab---simulate-the-after-fetch-scenario-and-resolve-it-with-git-rebase">LAB - Simulate the &quot;after-fetch&quot; scenario and resolve it with <code>git rebase</code>.</a></h4>
 <blockquote>
 <ol>
-<li>Checkout a branch that starts 3 or four commits before <code>main</code>. <em>Hover <a href="./doesnotexist.jpg," title="See the git-checkout docs and 'start-point' option">here</a> for a hint.</em></li>
+<li>Create a branch that branches from a commit 3 commits before <code>main</code>, and checkout onto it. <em>Hover <a href="./doesnotexist.jpg," title="See the git-checkout docs and 'start-point' option">here</a> for a hint.</em>  That commit is the <strong>base</strong> of your branch.</li>
 <li>Make a couple of commits on that branch.</li>
-<li>Then use <code>git rebase</code> to replay those commits onto <code>main</code>.</li>
+<li>Use <code>git rebase</code> to replay your commits onto <code>main</code>...that is, &quot;re-base&quot; your branch to start from where <code>main</code> is, giving your branch a new <strong>base</strong> commit.</li>
 </ol>
 </blockquote>
 <h1 id="before-pushing---editing-commit-history-with-git-rebase--i"><a class="header" href="#before-pushing---editing-commit-history-with-git-rebase--i">Before Pushing - Editing commit history with <code>git rebase -i</code></a></h1>
 <p>Another set of <code>git rebase</code> scenarios involve editing your commit history <em>before pushing</em>, rather than <em>after fetching</em>.</p>
-<h2 id="scenario"><a class="header" href="#scenario">Scenario:</a></h2>
-<p>Interactive rebase (<code>git rebase -i</code>) -- Edit Commit History Before Pushing</p>
+<p>You can think of rebase as a series of cherry-pick operations; for each cherry-picked commit, git uses the merge machinery to apply the changes implied by that commit.</p>
+<p><strong>Scenario</strong>:  You've made lots of local commits, and want to &quot;clean up&quot; before pushing to the remote.</p>
 <ul>
-<li>squash commits into fewer commits (with no change in content)</li>
-<li>reword a comment</li>
-<li>remove a commit</li>
-<li>reorder commits</li>
+<li>Squash commits into fewer commits (with no change in content)</li>
+<li>Reword a comment</li>
+<li>Remove a commit</li>
+<li>Reorder commits</li>
 </ul>
-<h4 id="lab"><a class="header" href="#lab">LAB</a></h4>
+<h4 id="lab---edit-commit-history-with-git-rebase--i-before-pushing"><a class="header" href="#lab---edit-commit-history-with-git-rebase--i-before-pushing">LAB - Edit commit history with <code>git rebase -i</code> before pushing.</a></h4>
+<p>(You won't actually push anything to a remote, but just practice getting ready to do so).</p>
+<p>As you work, be sure to make liberal use of <code>adog</code> and <code>git show</code> to keep track of where you are with your changes and what is happening to your git history as you rebase.</p>
 <blockquote>
-<p>Make 3 or 4 commits on current branch, and squash/rearrange with <code>git rebase -i</code>.</p>
+<ol>
+<li>Commit a change that has a typo.  For instance, edit the heading in <code>index.html</code> to be &quot;The Hole Solar System&quot;.</li>
+<li>Commit a fix to the first typo, but another typo.  For instance, &quot;Teh Whole Solar System&quot;.</li>
+<li>Commit fix to the second typo: &quot;The Whole Solar System&quot;.</li>
+<li>Commit an entirely unnecessary change.  For instance, in <code>index.html</code>, add an HTML comment on line 1: <code>&lt;!-- this line is entirely unnecessary --&gt;</code>.</li>
+<li>Commit a change not related to the previous ones.  For instance, add text to <code>help.html</code>: <code>&lt;p&gt;Of all the help topics there are, this is one of them&lt;/p&gt;.</code></li>
+<li>Run <code>git rebase -i HEAD~5</code>.</li>
+<li>Referencing the instructions <code>git rebase</code> helpfully includes as comments, squash your three typo commits into one commit that doesn't contain any record of the typos.</li>
+<li>Run <code>git rebase -i HEAD~3</code>.</li>
+<li>This time, remove the 'entirely unnecessary change' commit.</li>
+<li>Run <code>git rebase -i HEAD~2</code>.</li>
+<li>Now, move the most recent commit earlier in the commit list.</li>
+</ol>
 </blockquote>
 
                     </main>
