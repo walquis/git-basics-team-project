@@ -1,12 +1,12 @@
 # Consider Using a Github Project Board
 
-Github projects is a low-overhead tool to manage project tasks and milestones.
+Github Projects is a low-overhead, low-barrier-to-entry tool for managing project tasks and milestones.
+
+Github Projects have lots of integrations with repos, issues, PRs, etc.  But you can start simple, and add integrations as you need them--or not.
 
 Here's what a board for the sample Solar System website might look like:
 
 ![](../images/project-board-for-sample-website.png)
-
-Github Projects have lots of features and options for integration with repos, issues, PRs, etc.
 
 Some jumping-off points:
 - [Best practices for Github Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects)
