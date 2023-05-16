@@ -33,6 +33,7 @@
 - [Common Git Workflows](./common-git-workflows.md)
 - [Viewing Changes](./viewing-changes.md)
 - [References](./references.md)
+- [Git Basics Cheat Sheet](./cheat-sheet.md)
 - [Instructor Notes](./instructor-notes.md)
   - [Session 1 ](./instructor-notes/session1.md)
   - [Session 2 ](./instructor-notes/session2.md)
