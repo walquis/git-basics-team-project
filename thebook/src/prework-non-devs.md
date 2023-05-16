@@ -1,6 +1,8 @@
 # Prework (For Non-Developers)
 
-If Version Control, Git and the Bash shell are all new to you, start here.  This material sets the stage for engaging with the [Prework - For All Students](./prework.md).
+If Version Control, Git and the Bash shell are all new to you, start with this page.
+
+From here, the next step is [Prework - For All Students](./prework.md).
 
 ## Bash
 - Watch [Hallden. "Linux Commands You Need to Know"](https://www.youtube.com/watch?v=J2zquYPJbWY) - 12 minutes.  Can probly put it on 2x playback without missing much.  Keep an eye out for these commands:
