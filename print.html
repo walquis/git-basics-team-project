@@ -327,7 +327,7 @@
 git config --global core.editor &quot;code --wait&quot;  # Set your git editor to vscode
 
 cd                          # Start from your home directory
-mkdir -p src
+mkdir src
 cd src                      # Or, cd to wherever you keep code projects
 
 # Although you won't be committing anything to it, 
@@ -340,8 +340,16 @@ git clone https://github.com/walquis/git-basics-sample-project-repo
 #
 git clone https://github.com/walquis/git-basics-starter-repo
 
+# Add some handy aliases to your current shell.
+#
 cd git-basics-starter-repo
 bin/git-aliases.sh
+
+# Test that the 'adog' alias works...
+#
+adog
+* 2dd739a (HEAD -&gt; main, origin/main, origin/HEAD) Some handy git aliases, and an initial .gitignore
+* 4ca41a7 Initial commit
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="install-the-gitgraph-plugin-in-your-vscode"><a class="header" href="#install-the-gitgraph-plugin-in-your-vscode">Install the GitGraph plugin in your VSCode</a></h2>
 <p>Visit the <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">GitGraph Plugin Install</a> page and follow the install instructions.</p>
@@ -1532,7 +1540,8 @@ $ git bisect run bash test.sh
 <p><a href="https://gitready.com/">gitready.com - Learn git one commit at a time</a> - Extensive set of tutorials; somewhat dated (2009-ish), but still good stuff.  Nice breakdown of skills into beginner/intermediate/advanced, and a list of resources.</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p><img src="git-basics-cheat-sheet-v1.page1.png" alt="" />
+<div style="break-before: page; page-break-before: always;"></div><p><a href="git-basics-cheat-sheet-v1.pdf">View/Download as PDF</a>
+<img src="git-basics-cheat-sheet-v1.page1.png" alt="" />
 <img src="git-basics-cheat-sheet-v1.page2.png" alt="" />
 <img src="git-basics-cheat-sheet-v1.page3.png" alt="" />
 <img src="git-basics-cheat-sheet-v1.page4.png" alt="" /></p>
