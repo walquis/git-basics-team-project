@@ -2,6 +2,8 @@
 
 Visit the [GitGraph Plugin Install](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) page and follow the install instructions.
 
+(NOTE: If you're using PyCharm, you can skip this step; git integration is built-in. Or if you like, PyCharm also has plugins like Git Machete for enhancing git integration.)
+
 ## Explore the sample website's code and repo history
 This repo records the work of a hypothetical five-member team: Ned, Nykhia, Dex, Deja, and Xavier.
 

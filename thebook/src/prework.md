@@ -4,6 +4,7 @@ This course assumes you have ...
 1. A [GitHub](https://github.com) account.
 1. Visual Studio Code installed.
 1. Access to some sort of bash shell: On MacOSX, Terminal.app; on Windows, it would be [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) or [Git For Windows](https://gitforwindows.org/).
+1. At least some familiarity with a Linux shell.  If not, take a look at [Prework for Non-Developers](./prework-non-devs.md).
 
 
 This prework introduces the concepts you'll cover in the 2-session course, and also takes you on a tour of the website you'll build collaboratively using git.

@@ -3,7 +3,7 @@ We'll examine two repos:
 1. A sample of the "Solar System" website.
 1. A "starter" repo for that website.  (You'll delete it after this prework, and then re-clone a copy from your team lead's fork when class starts).
 
-Run these commands in your Terminal.app or Git bash
+Run these commands in your Terminal.app or Git bash:
 ```bash
 git config --global pull.rebase false  # Tell git what to do when pulling
 git config --global core.editor "code --wait"  # Set your git editor to vscode
@@ -17,8 +17,8 @@ cd src                      # Or, cd to wherever you keep code projects
 #
 git clone https://github.com/walquis/git-basics-sample-project-repo
 
-# A "starter" repo of  website.  You'll delete it after this prework, and then re-clone 
-# from your team lead's fork when class starts).
+# A "starter" repo of the website.  You'll delete it after this prework,
+# and then re-clone from your team lead's fork when class starts).
 #
 git clone https://github.com/walquis/git-basics-starter-repo
 

@@ -1,6 +1,6 @@
 # Intro to `git rebase`
 
-"Replay a series of commits onto a starting point".
+**Rebase**: "Replay a series of commits onto a starting point".
 
 When might this be useful?  Situations for which `git rebase` is the solution often fall into two general categories:
 1. Avoiding unnecessary merge commits _after fetching_.
@@ -19,38 +19,39 @@ Why does it matter whether or not a commit is expressed as a merge?  Generally, 
 
 **Scenario**: You were in sync with `origin/some-shared-branch` when you started working, but now you discover when delivering your changes that someone else has pushed, and your `git push` is rejected.
 
-You can do a `git pull` now, which will result in a merge.  But merging for no good reason is not a very good option.  Assuming it is not important to you and your team to track when each of you last sync'd up with the remote, then you're in step with consideration 5 above, "Minimize 'Merge branch X into Y' messages".
+You can do a `git pull` now, which will result in a merge[^merge-default].
+But merging for no good reason is not a very good option.  Assuming you and your team don't need to record every time one of you sync's up with the remote, then you're in step with consideration 5 above, "Minimize 'Merge branch X into Y' messages".
 
-A single `git rebase` command will "catch you up" without a spurious merge.  Simply `git fetch` (which updates your local git repo with news from the remote), and then `git rebase some-shared-branch`, which moves your local `some-shared-branch` to the tip of the branch you're tracking.
+A `git rebase` will "catch you up" without a spurious merge.  Simply `git fetch` to update your local git repo with news from the remote, and then `git rebase origin/some-shared-branch`, which re-anchors (or "re-bases") your local `some-shared-branch` to the tip of the `some-shared-branch` you're tracking w.r.t. the remote called `origin`.
 
 For instance, if you're working on `main`, and then realize `origin/main` is ahead of you, you can do something like this to re-home your local `main` to the latest `origin/main`:
 ```
 $ git fetch  # Update your local origin/main pointer
-$ git rebase origin/main  # Replay your changes on top of where origin/main is now
+$ git rebase origin/main  # Replay your changes onto where origin/main is now
 ```
 > 🤔 What is meant by this statement? "_Rebase is a destructive operation._"
 
 
 #### LAB - Simulate the "after-fetch" scenario and resolve it with `git rebase`.
-> 1. Create a branch that branches from a commit 3 commits before `main`, and checkout onto it. _Hover [here](./doesnotexist.jpg, "See the git-checkout docs and 'start-point' option") for a hint._  That commit is the **base** of your branch.
+> 1. Create a branch that branches from a commit 3 commits before `main`, and checkout onto that branch. _Hover [here](./doesnotexist.jpg, "See the git-checkout docs and 'start-point' option") for a hint._  That commit is the **base** of your branch.
 > 1. Make a couple of commits on that branch.
 > 1. Use `git rebase` to replay your commits onto `main`...that is, "re-base" your branch to start from where `main` is, giving your branch a new **base** commit.
 
 # Before Pushing - Editing commit history with `git rebase -i`
 
-Another set of `git rebase` scenarios involve editing your commit history _before pushing_, rather than _after fetching_.
+Another set of `git rebase` operations involve editing your commit history _before pushing_, rather than _after fetching_.
 
-You can think of rebase as a series of cherry-pick operations; for each cherry-picked commit, git uses the merge machinery to apply the changes implied by that commit.
+If you're familiar with `git cherry-pick`, you can think of rebase as a series of cherry-pick operations; for each cherry-picked commit, git uses the merge machinery to apply the changes implied by that commit.
 
-**Scenario**:  You've made lots of local commits, and want to "clean up" before pushing to the remote.
+**Scenario**:  You've made lots of local commits, and want to "clean up" before pushing to the remote.  The most common clean-up operations include:
 
-- Squash commits into fewer commits (with no change in content)
-- Reword a comment
-- Remove a commit
-- Reorder commits
+- Squashing commits into fewer commits (with no change in content)
+- Rewording a comment
+- Removing a commit
+- Reordering commits
 
 #### LAB - Edit commit history with `git rebase -i` before pushing.
-(You won't actually push anything to a remote, but just practice getting ready to do so).
+(You won't actually push anything to a remote in this lab, but just practice getting ready to do so).
 
 As you work, be sure to make liberal use of `adog` and `git show` to keep track of where you are with your changes and what is happening to your git history as you rebase.
 > 1. Commit a change that has a typo.  For instance, edit the heading in `index.html` to be "The Hole Solar System".
@@ -64,3 +65,8 @@ As you work, be sure to make liberal use of `adog` and `git show` to keep track 
 > 1. This time, remove the 'entirely unnecessary change' commit.
 > 1. Run `git rebase -i HEAD~2`.
 > 1. Now, move the most recent commit earlier in the commit list.
+
+Note as you do this that you are not changing any commits that fall on or before where tracking branches (e.g., `origin/main`) are pointing.  That is because the branches pointing to these commits have already been shared beyond your repo, and changing them after that fact would immediately make things complicated and messy for anyone else using them.
+
+---
+[^merge-default] By default, that is. The default `git pull` behavior for a repo can be changed to **rebase** instead of **merge** by running `git config pull.rebase true`.
