@@ -5,21 +5,24 @@ If Version Control, Git and the Bash shell are all new to you, start with this p
 From here, the next step is [Prework - For All Students](./prework.md).
 
 ## Bash
-- Watch [Hallden. "Linux Commands You Need to Know"](https://www.youtube.com/watch?v=J2zquYPJbWY) - 12 minutes.  Can probly put it on 2x playback without missing much.  Keep an eye out for these commands:
-    - `ls` and its '-l', '-a', '-r', and '-t' options
-    - `pwd` - print working directory
-    - `mkdir` - 'make directory'
-    - `cd`  - change directory
-    - `cat` - 'concatenate'
-    - `rm` and its `-r` and `-f` options
-    - `grep` - 'get regular expression and print'
-    - `ps` - process status
+Watch [Hallden. "Linux Commands You Need to Know"](https://www.youtube.com/watch?v=J2zquYPJbWY) - 12 minutes.  Can probly put it on 2x playback without missing much.  Keep an eye out for these commands:
+- `ls` and its '-l', '-a', '-r', and '-t' options
+- `cd`  - change directory
+- `mkdir` - 'make directory'
+- `pwd` - print working directory
+- `rm` and its `-r` and `-f` options.  Also `rmdir`.
+- `mv` - move files/dirs
+- `cp` - copy files
 
-Also, keep an eye out for these key concepts:
-- **Environment Variables**, especially the `PATH` environment variable.
-- Standard Input (**STDIN**), Standard Output (**STDOUT**), Standard Error (**STDERR**).
-- **Pipes** (that is, the vertical bar, `|`) and **I/O Redirection** (e.g., `<`, `>`, `<<`, `>>`, `2>&1`).
-- Shell config files: `.bash_profile` and `.bashrc` (for the Bash shell).
+Not in this video, but worth knowing:
+- `grep` - 'get regular expression and print' - very powerful, esp. with `-r`, `-i`, and/or `-l`
+- `cat` - 'concatenate' - see file contents
+
+Also, these key concepts are essential to Linux:
+- [**Environment Variables**](https://likegeeks.com/linux-environment-variables/), especially the `PATH` environment variable.
+- [Standard Input (**STDIN**), Standard Output (**STDOUT**), Standard Error (**STDERR**)](https://likegeeks.com/shell-scripting-awesome-guide-part4/)
+- [**Pipes** (that is, the vertical bar, `|`) and **I/O Redirection**](https://ryanstutorials.net/linuxtutorial/piping.php) (e.g., `<`, `>`, `<<`, `>>`, `2>&1`).
+- [Shell config files: `.bash_profile` and `.bashrc` (for the Bash shell)](https://effective-shell.com/part-5-building-your-toolkit/configuring-the-shell/).
 
 
 ## Why version control, and why Git
