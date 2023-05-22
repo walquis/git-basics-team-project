@@ -25,7 +25,8 @@ git clone https://github.com/walquis/git-basics-starter-repo
 # Add some handy aliases to your current shell.
 #
 cd git-basics-starter-repo
-bin/git-aliases.sh
+
+source bin/git-aliases.sh
 
 # Test that the 'adog' alias works...
 #

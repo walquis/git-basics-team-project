@@ -11,6 +11,7 @@ From here, the next step is [Prework - For All Students](./prework.md).
     - `mkdir` - 'make directory'
     - `cd`  - change directory
     - `cat` - 'concatenate'
+    - `rm` and its `-r` and `-f` options
     - `grep` - 'get regular expression and print'
     - `ps` - process status
 
