@@ -256,6 +256,7 @@
 <li><code>mkdir</code> - 'make directory'</li>
 <li><code>cd</code>  - change directory</li>
 <li><code>cat</code> - 'concatenate'</li>
+<li><code>rm</code> and its <code>-r</code> and <code>-f</code> options</li>
 <li><code>grep</code> - 'get regular expression and print'</li>
 <li><code>ps</code> - process status</li>
 </ul>
@@ -343,7 +344,8 @@ git clone https://github.com/walquis/git-basics-starter-repo
 # Add some handy aliases to your current shell.
 #
 cd git-basics-starter-repo
-bin/git-aliases.sh
+
+source bin/git-aliases.sh
 
 # Test that the 'adog' alias works...
 #
