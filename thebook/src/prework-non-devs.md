@@ -24,6 +24,7 @@ Also, these key concepts are essential to Linux:
 - [**Pipes** (that is, the vertical bar, `|`) and **I/O Redirection**](https://ryanstutorials.net/linuxtutorial/piping.php) (e.g., `<`, `>`, `<<`, `>>`, `2>&1`).
 - [Shell config files: `.bash_profile` and `.bashrc` (for the Bash shell)](https://effective-shell.com/part-5-building-your-toolkit/configuring-the-shell/).
 
+A summary of commands covered in the above videos is [here](./prework-non-devs-video-outlines.md).
 
 ## Why version control, and why Git
 - Watch [Colt Steele. "Learn Git in 15 minutes"](https://www.youtube.com/watch?v=USjZcfj8yxE) - comes with a transcript and covers the right stuff in the terminal.

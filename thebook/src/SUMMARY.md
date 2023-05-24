@@ -2,6 +2,7 @@
 - [Overview](./overview.md)
 - [Course Syllabus](./syllabus.md)
 - [Prework - For Non-Developers](./prework-non-devs.md)
+  - [Video Transcripts](./prework-non-devs-video-outlines.md)
 - [Prework - For All Students](./prework.md)
   - [Set Up Git Environment](./prework/env-setup.md)
   - [Install Git-Graph plugin for VSCode](./prework/git-graph-install.md)
