@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Video Transcripts - Git Basics - Collaborating With Git</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="syllabus.html"><strong aria-hidden="true">2.</strong> Course Syllabus</a></li><li class="chapter-item expanded "><a href="prework-non-devs.html"><strong aria-hidden="true">3.</strong> Prework - For Non-Developers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prework-non-devs-video-outlines.html" class="active"><strong aria-hidden="true">3.1.</strong> Video Transcripts</a></li></ol></li><li class="chapter-item expanded "><a href="prework.html"><strong aria-hidden="true">4.</strong> Prework - For All Students</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prework/env-setup.html"><strong aria-hidden="true">4.1.</strong> Set Up Git Environment</a></li><li class="chapter-item expanded "><a href="prework/git-graph-install.html"><strong aria-hidden="true">4.2.</strong> Install Git-Graph plugin for VSCode</a></li><li class="chapter-item expanded "><a href="prework/explore-website-code.html"><strong aria-hidden="true">4.3.</strong> Orientation on project's starter code</a></li><li class="chapter-item expanded "><a href="prework/command-line-exercises.html"><strong aria-hidden="true">4.4.</strong> Command-line Exercises</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prework/command-line-exercises/three-trees-git-reset.html"><strong aria-hidden="true">4.4.1.</strong> Three Trees and Git Reset</a></li><li class="chapter-item expanded "><a href="prework/command-line-exercises/branching.html"><strong aria-hidden="true">4.4.2.</strong> Branching</a></li><li class="chapter-item expanded "><a href="prework/command-line-exercises/merge-with-no-conflict.html"><strong aria-hidden="true">4.4.3.</strong> Merging Without Conflict</a></li><li class="chapter-item expanded "><a href="prework/command-line-exercises/merge-conflict.html"><strong aria-hidden="true">4.4.4.</strong> Handle Merge Conflict</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="session1.html"><strong aria-hidden="true">5.</strong> Session 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="session1/simple-collab-workflow.html"><strong aria-hidden="true">5.1.</strong> Simple Collaborative Workflow</a></li><li class="chapter-item expanded "><a href="session1/walkthrough-of-simple-workflow.html"><strong aria-hidden="true">5.2.</strong> Walk-through of Simple Workflow</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="session1/image0.html"><strong aria-hidden="true">5.2.1.</strong> Step 1 - Everybody checkout main</a></li><li class="chapter-item expanded "><a href="session1/image1.html"><strong aria-hidden="true">5.2.2.</strong> Step 2 - Teammate commits work</a></li><li class="chapter-item expanded "><a href="session1/image2.html"><strong aria-hidden="true">5.2.3.</strong> Step 3 - Teammate pushes</a></li><li class="chapter-item expanded "><a href="session1/image3.html"><strong aria-hidden="true">5.2.4.</strong> Step 4 - I make local changes too</a></li><li class="chapter-item expanded "><a href="session1/image4.html"><strong aria-hidden="true">5.2.5.</strong> Step 5.1 - I pull (first 1/2 - fetch)</a></li><li class="chapter-item expanded "><a href="session1/image5.html"><strong aria-hidden="true">5.2.6.</strong> Step 5.2 - I pull (second 1/2 - merge</a></li><li class="chapter-item expanded "><a href="session1/image6.html"><strong aria-hidden="true">5.2.7.</strong> Step 6 - I push main to "origin"</a></li></ol></li><li class="chapter-item expanded "><a href="session1/the-three-objects.html"><strong aria-hidden="true">5.3.</strong> Anatomy of a Git Commit, or, The Three Objects</a></li><li class="chapter-item expanded "><a href="session1/intro-to-git-reset.html"><strong aria-hidden="true">5.4.</strong> Your Local Git repo and The Three Trees - or, "Intro to git reset"</a></li><li class="chapter-item expanded "><a href="session1/resolve-merge-conflict.html"><strong aria-hidden="true">5.5.</strong> Create And Resolve Merge Conflicts - With Basic Workflow</a></li></ol></li><li class="chapter-item expanded "><a href="objects-and-trees-exercise.html"><strong aria-hidden="true">6.</strong> Objects-and-Trees Exercise</a></li><li class="chapter-item expanded "><a href="session2.html"><strong aria-hidden="true">7.</strong> Session 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="session2/github-project-board.html"><strong aria-hidden="true">7.1.</strong> Github Project Boards</a></li><li class="chapter-item expanded "><a href="session2/add-features.html"><strong aria-hidden="true">7.2.</strong> Add Features As a Team</a></li><li class="chapter-item expanded "><a href="session2/git-cherry-pick.html"><strong aria-hidden="true">7.3.</strong> Intro to Git Cherry-Pick</a></li><li class="chapter-item expanded "><a href="session2/git-rebase.html"><strong aria-hidden="true">7.4.</strong> Intro to Git Rebase</a></li></ol></li><li class="chapter-item expanded "><a href="common-git-workflows.html"><strong aria-hidden="true">8.</strong> Common Git Workflows</a></li><li class="chapter-item expanded "><a href="viewing-changes.html"><strong aria-hidden="true">9.</strong> Viewing Changes</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">10.</strong> References</a></li><li class="chapter-item expanded "><a href="cheat-sheet.html"><strong aria-hidden="true">11.</strong> Git Basics Cheat Sheet</a></li><li class="chapter-item expanded "><a href="instructor-notes.html"><strong aria-hidden="true">12.</strong> Instructor Notes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="instructor-notes/session1.html"><strong aria-hidden="true">12.1.</strong> Session 1 </a></li><li class="chapter-item expanded "><a href="instructor-notes/session2.html"><strong aria-hidden="true">12.2.</strong> Session 2 </a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Git Basics - Collaborating With Git</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="outline-of-prework-for-non-devs-videos"><a class="header" href="#outline-of-prework-for-non-devs-videos">Outline of Prework-for-non-devs Videos</a></h1>
+<h2 id="hallden-linux-commands-you-need-to-know"><a class="header" href="#hallden-linux-commands-you-need-to-know"><a href="https://www.youtube.com/watch?v=J2zquYPJbWY">Hallden. &quot;Linux Commands You Need to Know&quot;</a></a></h2>
+<p>Eight basic commands</p>
+<pre><code>ls
+[autocomplete with tab]
+ls *.txt
+ls -al
+
+cd  Desktop
+cd 
+cd ..
+
+mkdir Desktop/folder
+
+pwd
+
+touch Desktop/hello.txt
+
+rm (and rmdir)
+
+mv myfile Documents/
+
+cp Documents/myfile.txt Downloads
+</code></pre>
+<h2 id="colt-steele-learn-git-in-15-minutes"><a class="header" href="#colt-steele-learn-git-in-15-minutes"><a href="https://www.youtube.com/watch?v=USjZcfj8yxE">Colt Steele. &quot;Learn Git in 15 minutes&quot;</a></a></h2>
+<ul>
+<li>repos - local, remote</li>
+</ul>
+<pre><code>git init
+ls -a
+git status
+touch index.html
+# Getting changes into git is 2-stage:
+git add index.html
+git commit -m &quot;commit message&quot;
+
+git log
+touch app.js
+touch styles.css
+
+# Edit index.html, app.js and styles.css
+
+git add index.html
+git commit -m &quot;add app logic&quot;
+
+git add .
+
+git commit -m &quot;add basics styles&quot;
+
+# Edit styles.css
+git add styles.css
+git commit -m &quot;change bg color on body&quot;
+
+git checkout [hash]
+
+branch - timeline of commits
+
+(* says HEAD detached)
+
+git checkout master
+
+git branch crazycolors
+git checkout crazycolors
+
+[edit files]
+git add .
+git commit -m &quot;add animated bg&quot;
+
+git checkout master
+
+git merge crazycolors
+</code></pre>
+<h2 id="fireship-learning-git-it-how-to-use-git-and-github"><a class="header" href="#fireship-learning-git-it-how-to-use-git-and-github"><a href="https://www.youtube.com/watch?v=HkdAHXoRtos">Fireship Learning. &quot;Git it? How to use Git and Github&quot;</a></a></h2>
+<p>A series of small milestones</p>
+<ul>
+<li>
+<p>create multiple branches</p>
+</li>
+<li>
+<p>The GitLens plugin for vscode</p>
+</li>
+</ul>
+<pre><code>git init
+touch .gitignore - or use VSCode plugin to generate one
+
+git add .
+
+git reset --hard
+
+# Make many small commits
+
+git add .
+git commit -m &quot; ... &quot;
+
+git branch
+
+git checkout -b feature
+
+# &quot;back to original state on the master&quot; ???
+
+git stash
+
+git stash pop OR git stash apply
+
+git checkout master
+git merge feature
+
+git merge feature --squash
+# &quot;It won't actually change the head commit on the master branch,
+# so you'll need to add an additional commit on your own that says
+# something like 'merged in feature branch' &quot;
+# (Huh?? He should probly use 'git rebase -i' instead)
+
+git remote add origin 
+git push origin master
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="prework-non-devs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="prework.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="prework-non-devs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="prework.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
