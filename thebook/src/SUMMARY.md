@@ -13,6 +13,7 @@
     - [Merging Without Conflict](./prework/command-line-exercises/merge-with-no-conflict.md)
     - [Handle Merge Conflict](./prework/command-line-exercises/merge-conflict.md)
 - [Session 1](./session1.md)
+  - [Set Up Starter Repo](./session1/setup-starter-repo.md)
   - [Simple Collaborative Workflow](./session1/simple-collab-workflow.md)
   - [Walk-through of Simple Workflow](./session1/walkthrough-of-simple-workflow.md)
     - [Step 1 - Everybody checkout main](./session1/image0.md)
