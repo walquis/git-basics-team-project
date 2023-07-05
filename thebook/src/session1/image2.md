@@ -5,10 +5,13 @@ Now my teammate shares the work they've committed to `main`, by pushing to the r
 $ git push origin main
 ```
 
-### Key points:
-- **The pink commit has been copied to the remote named "origin".** In general, any commits reachable from `main` are copied over if not already there.
-- **The remote's `main` branch has been updated to reflect the new work**--and correspondingly, my teammate's local <span class="hljs" style="color:red">origin/main</span> tracking branch is updated as well.[^ffwdmerge]
-- **Nothing happens in my local repo** as a result of my teammate's push.
+### Key Learning Points:
+✅ **The pink commit has been copied to the remote named "origin".** In general, any commits reachable from `main` are copied over if not already there.
+
+✅ **The remote's `main` branch has been updated to reflect the new work**--and correspondingly, my teammate's local <span class="hljs" style="color:red">origin/main</span> tracking branch is updated as well.[^ffwdmerge]
+
+✅ **Nothing happens in my local repo** as a result of my teammate's push.
+
 ---
 [^ffwdmerge]: As we'll see soon, a `git pull` is a 2-part operation: "fetch" and "merge".  A `git push` is the same 2-part operation, but in the other direction.  Moving the `main` pointer forward on the remote, as is done here,
 is an example of that second "merge" part.  Because no changes have reached the remote since our teammate last pulled, the `main` pointer can simply be moved forward; hence, this is called a "fast-forward merge".

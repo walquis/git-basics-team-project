@@ -34,7 +34,7 @@
   - [Intro to Git Rebase](./session2/git-rebase.md)
 - [Common Git Workflows](./common-git-workflows.md)
 - [Viewing Changes](./viewing-changes.md)
-- [References](./references.md)
+- [References & Further Study](./references.md)
 - [Git Basics Cheat Sheet](./cheat-sheet.md)
 - [Instructor Notes](./instructor-notes.md)
   - [Session 1 ](./instructor-notes/session1.md)
