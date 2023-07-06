@@ -151,7 +151,7 @@ $ git cat-file -p 9c94
 100644 blob 16a46ac3537a1b56fd5dd8380df79463e3cea28a	index.html
 100644 blob 9103c17890d85e851d01765890932f9331102ba7	map.html
 100644 blob e076b3f199fe75ee38d2e71981e0c266e189fb2b	styles.css
-
+```
 What SHA contains the contents of the first entry in `9c94`?  What is that entry's name?
 
 How do you tell whether it's a filename or a directory name?  Hint: What kind of SHA is the first entry?
