@@ -35,4 +35,4 @@ Use each of `git reset`'s `--soft`, `--mixed`, and `--hard` options at least onc
 
 ✅ `git` doesn't care as much about your working tree as you might assume.  It mostly cares about the objects in its database **and frequently uses its database to overwrite your working tree**.  That said, `git` is not reckless; it will give you warnings about `git` operations that might be destructive to your local work.
 
-✅ If you can understand and make the round-trip through the "Managing Local Changes" diagram in the [Cheat Sheet](/cheat-sheet.md), you have a great foundation for understanding how git works!
+✅ If you can understand and make the round-trip through the "Managing Local Changes" diagram in the [Cheat Sheet](../cheat-sheet.md), you have a great foundation for understanding how git works!

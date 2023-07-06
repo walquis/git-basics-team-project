@@ -36,7 +36,7 @@ adog
 * 2dd739a (origin/main, main) Some handy git aliases, and an initial .gitignore
 * 4ca41a7 Initial commit
 ```
-🤔 Your commit will have a different hash code, or SHA, than `ccaf82c`.  Why might that be?  (["The Three Objects"](/objects-and-trees-exercise.html) explains).
+🤔 Your commit will have a different hash code, or SHA, than `ccaf82c`.  Why might that be?  (["The Three Objects"](../../objects-and-trees-exercise.md) explains).
 
 **Some Key Takeaways:**
 - Use `adog`, `git status`, `git diff`, and `git diff --staged` constantly.
