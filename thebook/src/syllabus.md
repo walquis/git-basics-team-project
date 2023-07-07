@@ -73,4 +73,4 @@ These are the three trees:
 
 - __HEAD__ - pointer to the current branch, which points to a commit
 - __Index__ - the place you add to; the staging area for commits
-- __Working Tree - the files checked out on disk (not including the git repo itself - that would be too meta)
+- __Working Tree__ - the files checked out on disk (not including the git repo itself - that would be too meta)
