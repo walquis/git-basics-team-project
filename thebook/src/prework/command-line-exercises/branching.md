@@ -1,6 +1,7 @@
 # Branching
+A branch is just a named pointer to a commit.  Creating a branch does not in itself result in any new commits.  When HEAD is pointing to a branch--that is, when you have the branch "checked out"--then the branch, and HEAD along with it, will be moved to a new commit as it is created, and that new commit will name the branch's previous reference as its parent, creating a commit history.
 
-Checkout a new branch, `mybranch`.  Make change to index.html.
+Checkout a new branch, `mybranch`.  Make a change to index.html...
 ```
 cd git-basics-starter-repo
 adog
@@ -36,10 +37,10 @@ adog
 * 2dd739a (origin/main, main) Some handy git aliases, and an initial .gitignore
 * 4ca41a7 Initial commit
 ```
-🤔 Your commit will have a different hash code, or SHA, than `ccaf82c`.  Why might that be?  (["The Three Objects"](../../objects-and-trees-exercise.md) explains).
+🤔 Your particular commit will have a different hash code, or SHA, than `ccaf82c`.  Why might that be?  (["The Three Objects"](../../objects-and-trees-exercise.md) explains).
 
-**Some Key Takeaways:**
+**Key Takeaways:**
 - Use `adog`, `git status`, `git diff`, and `git diff --staged` constantly.
 - `git diff` shows differences between working tree and index.
 - `git diff --staged` shows differences between index and HEAD.
-- Although `git branch mybranch` creates `mybranch`, it doesn't checkout to it (that is, `HEAD` is not pointed at `mybranch`).
+- Although `git branch mybranch` creates `mybranch`, it doesn't checkout to it (that is, `HEAD` is not pointed at `mybranch`).  You have to `git checkout` or `git switch` to it.

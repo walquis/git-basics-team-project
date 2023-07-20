@@ -15,7 +15,7 @@ adog
 
 **Checkpoints**:
 
-✅ Everyone (including team lead) has cloned their team lead's repo.
+✅ Everyone (including team lead) has cloned their team lead's **forked repo** (and NOT the original walquis/git-basics-starter-repo).
 
 ✅ Everyone has their aliases working. (Check by running `adog` as shown above).
 

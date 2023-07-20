@@ -1,15 +1,18 @@
-# Command-line Exercises
+# Git From the Command Line
+You may be wondering at this point, Why not learn Git from the point of view of _\<insert-your-favorite-IDE-here>_?  The git plugins in those IDE's generally function as wrappers around the git command-line client, and sometimes hide what's actually going on, as well as hiding capabilities available in the git client.  Additionally, IDE's differ in how they present git functionality.
+
+The most direct and cross-compatible way to learn git is to interact with it at the command line level.
 
 You'll briefly cover these topics:
 - `git reset`
-- branching
+- Branching
 - Merging (with no conflicts)
-- Merging (where you handle a merge conflict)
+- Merging (with handling a merge conflict)
+
+🤔 What is the difference between a merge commit, versus a merge commit that has a merge conflict?
 
 ## Preflight Check:
-Make sure `adog` works on your \*nix command line (`adog` is the alias you established during "Set Up Git Environment").
-
-cd into your git-basics-starter-repo and run `adog`.  You should see something like this:
+Make sure `adog` works on your \*nix command line (`adog` is the alias you established during "Set Up Git Environment").  cd into your git-basics-starter-repo and run `adog`.  You should see something like this:
 ```
 cd git-basics-starter-repo
 adog

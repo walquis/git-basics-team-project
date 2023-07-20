@@ -1,5 +1,5 @@
 # Simple Collaborative Git Workflow
-"Simple" is everybody working on the `main` branch...pretty simple, but not the best!
+"Simple" is everybody working on the same branch.  A team of any size normally wouldn't do this, but it helps illustrate the nuts and bolts of collaborating.
 
 **Vocabulary**: remote, merge commit, "fast-forward merge"
 
@@ -7,15 +7,12 @@
 
 A basic workflow in the ["shared-repository model"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) of development:
 
-![](images/push-pull-push-diagram.jpg)
-Click [here](./walkthrough-of-simple-workflow.md) for a walk-through of this workflow.
+![](../images/push-pull-push-diagram.jpg)
+Click [here](./walkthrough-of-simple-workflow.md) for a step-by-step walk-through of this workflow.
 
-🤔 What is the difference between a merge commit, and a commit that has a merge conflict?
-
-#### LAB - Simplest Possible Collaborative Git Workflow
-> 1. **Each teammate**: Commit and push at least one _non-conflicting_ change.  For instance, each teammate
-> can modify one of these files: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
-> 1. `git push` and `git pull` until all of you have each other's changes and are on the same commit locally.
+#### LAB - Simple Collaborative Git Workflow
+> 1. **Each teammate**: Working from the `main` branch, commit and push at least one _non-conflicting_ change.  For instance, each teammate can choose one of these files to modify: `index.html`, `help.html`, `about.html`, `faq.html`, `map.html`.
+> 1. `git push` and `git pull` until all of you have each other's changes and each of your repos is on the exact same commit.
 
 ✅ **Checkpoint: Your team is all on the same commit. (Check by running `adog` and observing which commit HEAD is on).**
 

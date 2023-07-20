@@ -14,4 +14,4 @@ branch, seen in both local repos, is a "tracking branch".** git uses it to keep 
 
 ✅ **As you will see, this tracking is not "live"**; no automatic cross-repo notification is happening.
 
-✅ **I have no reason to ever `git checkout` a tracking branch**.  <span class="hljs" style="color:red">origin/main</span>'s value _in my repo_ is updated when I perform certain activities--mainly `git push` and `git pull`.
+✅ **I normally have no reason to `git checkout` a tracking branch** like <span class="hljs" style="color:red">origin/main</span>.  Its value in my repo is updated when I `git push` and `git pull`.

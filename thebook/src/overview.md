@@ -27,7 +27,7 @@ As a devops professional with three-ish decades of experience in version control
 
 Eventually I tired of memorizing magic spells and decided to buckle down and learn the basics of git.  Suddenly, git started making sense😮!  That feeling of enlightenment, along with the big boost in my productivity, helped inspire this course.
 
-I've presented some variation of this material to every CodePlatoon cohort since Bravo.  Equipped with a firm grasp of these git fundamentals, graduates have reported that they have become go-to resources for git in their software teams.
+I've presented some variation of this material to nearly every [CodePlatoon](https://codeplatoon.org) cohort since Bravo.  Equipped with a firm grasp of these git fundamentals, graduates have reported they've become go-to resources for git in their software teams.
 
 ---
 [^3objs]: The **three objects** are `commit`, `tree`, and `blob`
