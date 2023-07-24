@@ -26,4 +26,4 @@ If your team gets stuck, get an instructor's attention and we'll work on it toge
 
 ---
 
-[^team-lead-fork] Somewhat confusingly, your team lead _does_ fork once, from the git-basics course's repo, but that is only your team lead, and only for training purposes, to establish a repo for the team to collaborate on. No changes are flowing back to the git-basics course's original repo.
+[^team-lead-fork] Somewhat confusingly...Even though using shared-repo and not fork-pull model, your team lead _does_ fork once, from the git-basics-starter-repo--but only to establish a repo for the team to collaborate on. No changes are flowing back to the original walquis/git-basics-starter-repo.
