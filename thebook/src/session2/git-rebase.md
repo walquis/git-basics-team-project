@@ -66,7 +66,9 @@ As you work, be sure to make liberal use of `adog` and `git show` to keep track 
 > 1. Run `git rebase -i HEAD~2`.
 > 1. Now, move the most recent commit earlier in the commit list.
 
-Note as you do this that you are not changing any commits that fall on or before where tracking branches (e.g., `origin/main`) are pointing.  That is because the branches pointing to these commits have already been shared beyond your repo, and changing them after that fact would immediately make things complicated and messy for anyone else using them.
+NOTE as you do this that you do not change any commits that occur at or before remote tracking branches (e.g., `origin/main`).  If you've done this, and are then tempted to use `git push --force` to "work around" resulting `git push` error messages, beware.  The branches pointing to these commits have **already been shared outside your local repo, and changing them afterward would immediately make things complicated and messy for anyone who has `git pull`'d them!** 
+
+![](/images/git-push-dash-dash-force.jpg)
 
 ---
 [^merge-default] By default, that is. The default `git pull` behavior for a repo can be changed to **rebase** instead of **merge** by running `git config pull.rebase true`.
