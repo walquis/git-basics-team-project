@@ -19,12 +19,25 @@ Use each of `git reset`'s `--soft`, `--mixed`, and `--hard` options at least onc
 > 1. Make a change and commit it (do not `git push`!).
 > 1. Undo the change using `git reset`.
 > 1. Make another change, and commit.
-> 1. Revert, using another option of `git reset`.  Commit.
-> 1. Revert, using another option of `git reset`.  Commit.
+> 1. Undo it, using another option of `git reset`.  Commit.
+> 1. Undo it, using another option of `git reset`.  Commit.
 
 🤔 So far, we've only used `git reset` to move our current branch back one commit.  But with `git reset`, we can move our current branch anywhere we want.  When might this be useful?
 
-**Scenario**: You accidentally make commits on `main`, but then realize you should be on a different branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).
+**Scenario 1**: You accidentally make commits on `main`, but then realize you should be on a different branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).
+
+🤔 When might `git reset` be the wrong way to back out changes?
+(TODO: Instructor, be sure to cover this!)
+
+**Scenario 2**: Same as above, except that you've already pushed those changes 😬, which means your teammates may have pulled them.  If you `git reset`, you'll get a merge conflict when you try to push.  And if you `git push --force`, your teammates will very likely be upset with you!  How do you "gracefully" undo those changes?
+
+<details><summary>Show a solution</summary>
+
+No problem; just use [`git revert`](https://git-scm.com/docs/git-revert)!
+
+(Instructor TO-DO: Cover how `git revert` differs from `git reset`, and exctly why/when it's more palatable to your teammates.)
+
+</details>
 
 #### LAB - Simulate branching "after-the-fact"
 > 1. Make 3 or 4 commits on `main`.  Then realize, "Ooops, I should be on another branch".
