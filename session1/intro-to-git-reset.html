@@ -192,12 +192,19 @@
 <li>Make a change and commit it (do not <code>git push</code>!).</li>
 <li>Undo the change using <code>git reset</code>.</li>
 <li>Make another change, and commit.</li>
-<li>Revert, using another option of <code>git reset</code>.  Commit.</li>
-<li>Revert, using another option of <code>git reset</code>.  Commit.</li>
+<li>Undo it, using another option of <code>git reset</code>.  Commit.</li>
+<li>Undo it, using another option of <code>git reset</code>.  Commit.</li>
 </ol>
 </blockquote>
 <p>🤔 So far, we've only used <code>git reset</code> to move our current branch back one commit.  But with <code>git reset</code>, we can move our current branch anywhere we want.  When might this be useful?</p>
-<p><strong>Scenario</strong>: You accidentally make commits on <code>main</code>, but then realize you should be on a different branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).</p>
+<p><strong>Scenario 1</strong>: You accidentally make commits on <code>main</code>, but then realize you should be on a different branch--for instance, in order to push that branch and submit a Pull Request for it (we'll discuss PR's soon).</p>
+<p>🤔 When might <code>git reset</code> be the wrong way to back out changes?
+(TODO: Instructor, be sure to cover this!)</p>
+<p><strong>Scenario 2</strong>: Same as above, except that you've already pushed those changes 😬, which means your teammates may have pulled them.  If you <code>git reset</code>, you'll get a merge conflict when you try to push.  And if you <code>git push --force</code>, your teammates will very likely be upset with you!  How do you "gracefully" undo those changes?</p>
+<details><summary>Show a solution</summary>
+<p>No problem; just use <a href="https://git-scm.com/docs/git-revert"><code>git revert</code></a>!</p>
+<p>(Instructor TO-DO: Cover how <code>git revert</code> differs from <code>git reset</code>, and exctly why/when it's more palatable to your teammates.)</p>
+</details>
 <h4 id="lab---simulate-branching-after-the-fact"><a class="header" href="#lab---simulate-branching-after-the-fact">LAB - Simulate branching "after-the-fact"</a></h4>
 <blockquote>
 <ol>
